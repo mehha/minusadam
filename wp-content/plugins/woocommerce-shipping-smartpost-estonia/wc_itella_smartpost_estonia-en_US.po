@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Itella SmartPOST Estonia\n"
+"POT-Creation-Date: 2013-04-12 18:35+0200\n"
+"PO-Revision-Date: 2015-08-12 00:38+0100\n"
+"Last-Translator: \n"
+"Language-Team: Aktsiamaailm OÜ <info@e-abi.ee>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"Language: en\n"
+
+msgid "Itella SmartPOST"
+msgstr "Itella SmartPOST"
+
+msgid "Allows customer to choose Itella SmartPOST as a shipping method"
+msgstr "Allows customer to choose Itella SmartPOST as a shipping method"
+
+msgid "XS price"
+msgstr "XS price"
+
+msgid "S price"
+msgstr "S price"
+
+msgid "M price"
+msgstr "M price"
+
+msgid "L price"
+msgstr "L price"
+
+msgid "XL price"
+msgstr "XL price"
+
+msgid "Choose parcel terminal"
+msgstr "Choose parcel terminal"
+
+msgid "Chosen parcel terminal"
+msgstr "Chosen parcel terminal"
+
+msgid "Please select a parcel terminal"
+msgstr "Please select a parcel terminal"
+
+msgid "Please refresh the page and select a different parcel terminal"
+msgstr "Please refresh the page and select a different parcel terminal"
+
+msgid "Parcel terminal changed to %s"
+msgstr "Parcel terminal changed to %s"
+
+msgid "Itella SmartEXPRESS"
+msgstr "Itella SmartEXPRESS"
+
+msgid "Allows customer to choose Itella SmartEXPRESS as a shipping method"
+msgstr "Allows customer to choose Itella SmartEXPRESS as a shipping method"
+
+msgid "Itella SmartKULLER"
+msgstr "Itella SmartKULLER"
+
+msgid "Allows customer to choose Itella SmartKULLER as a shipping method"
+msgstr "Allows customer to choose Itella SmartKULLER as a shipping method"
+
+msgid "Any time"
+msgstr "Any time"
+
+msgid "9-17"
+msgstr "9-17"
+
+msgid "17-21"
+msgstr "17-21"
+
+msgid "Choose pickup time"
+msgstr "Choose pickup time"
+
+msgid "Chosen pickup time"
+msgstr "Chosen pickup time"
+
+msgid "Please select a pickup time"
+msgstr "Please select a pickup time"
+
+msgid "Please refresh the page and select a different pickup time"
+msgstr "Please refresh the page and select a different pickup time"
+
+msgid "Pickup time changed to %s"
+msgstr "Pickup time changed to %s"
+
+msgid "XXL price"
+msgstr "XXL price"
+
+msgid "Itella Postal Office"
+msgstr "Itella Postal Office"
+
+msgid "Allows customer to choose Itella Postal Office as a shipping method"
+msgstr "Allows customer to choose Itella Postal Office as a shipping method"
+
+msgid "Choose postal office"
+msgstr "Choose postal office"
+
+msgid "Chosen postal office"
+msgstr "Chosen postal office"
+
+msgid "Please select a postal office"
+msgstr "Please select a postal office"
+
+msgid "Please refresh the page and select a different postal office"
+msgstr "Please refresh the page and select a different postal office"
+
+msgid "Postal office changed to %s"
+msgstr "Postal office changed to %s"

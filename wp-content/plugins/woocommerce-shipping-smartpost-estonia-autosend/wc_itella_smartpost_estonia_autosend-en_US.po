@@ -1,0 +1,90 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Aktsiamaailm OÜ <info@e-abi.ee>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid ""
+"Services have not been defined for country %s, please verify your Itella "
+"configuration"
+msgstr ""
+"Services have not been defined for country %s, please verify your Itella "
+"configuration"
+
+msgid "Enable automatic data sending to Itella server"
+msgstr "Enable automatic data sending to Itella server"
+
+msgid "Only if the order has been paid for or the order is COD"
+msgstr "Only if the order has been paid for or the order is COD"
+
+msgid "Itella self-service username"
+msgstr "Itella self-service username"
+
+msgid "Itella self-service password"
+msgstr "Itella self-service password"
+
+msgid "Itella parcel sender name"
+msgstr "Itella parcel sender name"
+
+msgid "Itella parcel sender phone"
+msgstr "Itella parcel sender phone"
+
+msgid "Itella parcel sender email"
+msgstr "Itella parcel sender email"
+
+msgid "Packing slip format"
+msgstr "Packing slip format"
+
+msgid "Itella services"
+msgstr "Itella services"
+
+msgid ""
+"Used only with automatic data sending. Allowed values are any of [Express,"
+"IdCheck,AgeCheck,NotifyEmail,NotifyPhone,PaidByRecipient]."
+msgstr ""
+"Used only with automatic data sending. Allowed values are any of [Express,"
+"IdCheck,AgeCheck,NotifyEmail,NotifyPhone,PaidByRecipient]."
+
+msgid "Additional service codes (comma separated)"
+msgstr "Additional service codes (comma separated)"
+
+msgid "Itella Estonia API request failed with response: %s"
+msgstr "Itella Estonia API request failed with response: %s"
+
+msgid "Product attribute name for declaring extra services in a product"
+msgstr "Product attribute name for declaring extra services in a product"
+
+msgid "Refer to readme.txt for extra information about this feature"
+msgstr "Refer to readme.txt for extra information about this feature"
+
+msgid "Customer attribute name, which holds social security code"
+msgstr "Customer attribute name, which holds social security code"
+
+msgid "IdCheck service requires social security number"
+msgstr "IdCheck service requires social security number"
+
+msgid "IdCheck service requires registered customer"
+msgstr "IdCheck service requires registered customer"
+
+msgid ""
+"IdCheck service requires customer to have social security number in "
+"attribute %s"
+msgstr ""
+"IdCheck service requires customer to have social security number in "
+"attribute %s"
+
+msgid "Add sender info to parcel data"
+msgstr "Add sender info to parcel data"
+
+msgid ""
+"Itella business clients should leave this setting disabled or it may cause a "
+"failure in packing slip creation"
+msgstr ""
+"Itella business clients should leave this setting disabled or it may cause a "
+"failure in packing slip creation"
