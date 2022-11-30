@@ -1,0 +1,11 @@
+export const WpCurrentClasses = ['current-post-ancestor',
+  'current-page-ancestor',
+  'current-menu-ancestor',
+  'current-menu-parent',
+  'current-page-parent',
+  'current_page_parent',
+  'current-menu-item',
+  'current_page_item',
+  'current_page_ancestor',
+  'current-category-ancestor',
+];

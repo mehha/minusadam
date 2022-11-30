@@ -1,0 +1,15 @@
+html {
+  @apply xl:h-full;
+}
+
+body {
+  @apply font-sans xl:h-full;
+}
+
+#app {
+  @apply xl:h-full xl:flex xl:flex-col;
+}
+
+.brand {
+  @apply text-3xl font-medium text-indigo-500;
+}

@@ -2,3 +2,5 @@
 /.idea
 /wp-content/plugins/ns-cloner-pro/
 /wp-content/plugins/ns-cloner-site-copier/
+wp-content/cache
+wp-content/cache/acorn/views
