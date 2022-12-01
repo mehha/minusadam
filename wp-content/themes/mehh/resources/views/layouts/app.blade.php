@@ -1,10 +1,10 @@
-<a class="sr-only focus:not-sr-only" href="#main">
+<a class="visually-hidden-focusable skip-to-content" href="#main">
   {{ __('Skip to content') }}
 </a>
 
 @include('partials.header')
 
-  <main id="main" class="py-8 prose prose-lg main mx-auto px-4 {{$wide}}">
+  <main id="main" class="main {{$wide}}">
     @yield('content')
   </main>
 

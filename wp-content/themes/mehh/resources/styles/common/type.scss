@@ -1,0 +1,14 @@
+a {
+  @include theme-transition;
+
+  .icon {
+    path {
+      @include theme-transition;
+    }
+  }
+
+  //Decrypted emails
+  &[href^="javascript:"] {
+    word-break: break-word;
+  }
+}

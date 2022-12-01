@@ -26,10 +26,10 @@ class Alert extends Component
      * @var array
      */
     public $types = [
-        'default' => 'text-indigo-50 bg-indigo-400',
-        'success' => 'text-green-50 bg-green-400',
-        'caution' => 'text-yellow-50 bg-yellow-400',
-        'warning' => 'text-red-50 bg-red-400',
+        'default' => 'alert alert-primary',
+        'success' => 'alert alert-success',
+        'caution' => 'alert alert-danger',
+        'warning' => 'alert alert-warning',
     ];
 
     /**

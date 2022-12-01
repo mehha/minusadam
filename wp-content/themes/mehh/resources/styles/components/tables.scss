@@ -1,0 +1,52 @@
+//Table RWD
+.table-wrap {
+  position: relative;
+  width: 100%;
+
+  table,
+  .module-pipeline-inner {
+    width: 100%;
+    overflow: auto;
+  }
+
+  &.overflow {
+    table,
+    .module-pipeline-inner {
+      display: block;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    &.right-active {
+      .shadow-right {
+        display: block;
+      }
+    }
+
+    &.left-active {
+      .shadow-left {
+        display: block;
+      }
+    }
+
+    .shadow-left {
+      background: url("../images/table-shadow-left.png") repeat-y 0 0;
+      position: absolute;
+      width: 26px;
+      left: 0;
+      top: 0;
+      height: 100%;
+      display: none;
+    }
+
+    .shadow-right {
+      background: url("../images/table-shadow-right.png") repeat-y 0 0;
+      position: absolute;
+      width: 26px;
+      right: 0;
+      top: 0;
+      height: 100%;
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+//.wpforms-field-label {
+//}
+
+//General
+@media (max-width: 380px) {
+  #rc-imageselect,
+  .g-recaptcha,
+  .special-captcha {
+    transform: scale(0.86);
+    transform-origin: 0 0;
+  }
+}

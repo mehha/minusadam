@@ -6,7 +6,6 @@ if (function_exists('acf_add_local_field_group')):
         'key' => 'group_6dada4300eafdc',
         'title' => 'Page settings',
         'fields' => array(
-
             array(
                 'key' => 'field_adada0asss34',
                 'label' => 'Wide layout',
@@ -14,6 +13,16 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'true_false',
                 'default_value' => 0,
                 'column_width' => '',
+                'ui' => 1,
+            ),
+            array(
+                'key' => 'field_adada0ascftt',
+                'label' => 'Hide title',
+                'name' => 'hide_title',
+                'type' => 'true_false',
+                'default_value' => 0,
+                'column_width' => '',
+                'ui' => 1,
             ),
         ),
         'location' => array(

@@ -1,0 +1,15 @@
+nav {
+  .menu-main-menu-container {
+    > ul {
+      > li {
+        > a {
+          @apply uppercase transition-colors hover:text-mhGreen-light;
+        }
+
+        > .sub-menu {
+          @apply hidden absolute left-0 right-0 top-full p-10 shadow shadow-amber-100;
+        }
+      }
+    }
+  }
+}

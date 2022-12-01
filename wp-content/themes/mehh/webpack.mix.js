@@ -21,7 +21,11 @@ mix
   .sass('resources/styles/editor.scss', 'styles')
   .options({
     processCssUrls: false,
-    postCss: [require('tailwindcss')],
+    postCss: [
+      require('postcss-pxtorem')({
+        propList: ['font-size', 'line-height', 'letter-spacing'],
+      }),
+    ],
   });
 
 mix

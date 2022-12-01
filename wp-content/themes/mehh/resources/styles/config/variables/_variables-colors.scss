@@ -1,0 +1,24 @@
+//For admin color picker color swatches add colors in admin/global.scss
+
+$white: #fff;
+$black: #000;
+$gray-light: #efefef;
+$gray: #76777b;
+$gray-dark: #2b383b;
+
+$orange: #fd7e14;
+$yellow: #fc0;
+$red: #f43319;
+$green: #2dcb48;
+
+$primary: $orange;
+$secondary: $yellow;
+
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+
+$body-color: $black;
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-color: $secondary;

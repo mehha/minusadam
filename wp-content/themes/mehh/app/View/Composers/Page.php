@@ -24,17 +24,19 @@ class Page extends Composer
     {
         return [
             'wide' => $this->wideLayout(),
+            'hide_title' => $this->hideTitle(),
         ];
     }
 
-    /**
-     * Returns the site name.
-     *
-     * @return string
-     */
     public function wideLayout()
     {
         $wide = function_exists('get_field') ?  get_field('wide_layout') : false;
-        return $wide ? 'max-w-full' : 'max-w-7xl';
+        return $wide ? 'container-fluid' : 'container';
+    }
+
+    public function hideTitle()
+    {
+        $title = function_exists('get_field') ?  get_field('hide_title') : false;
+        return $title ?: false;
     }
 }

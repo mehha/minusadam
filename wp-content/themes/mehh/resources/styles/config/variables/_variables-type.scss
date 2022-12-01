@@ -1,0 +1,58 @@
+//@font-face {
+//  font-family: "akzidenzgroteskpro";
+//  src:
+//    url("../fonts/akzidgroprolig.woff2") format("woff2"),
+//    url("../fonts/akzidgroprolig.woff") format("woff");
+//  font-weight: 300;
+//  font-style: normal;
+//  font-display: block;
+//}
+
+//@font-face {
+//  font-family: "akzidenzgroteskpro";
+//  src:
+//    url("../fonts/akzidgroproreg.woff2") format("woff2"),
+//    url("../fonts/akzidgroproreg.woff") format("woff");
+//  font-weight: 400;
+//  font-style: normal;
+//  font-display: block;
+//}
+
+$font-primary: sans-serif;
+$font-secondary: serif;
+
+$font-family-base: $font-primary;
+//$font-family-sans-serif: $font-primary;
+//$headings-font-family:        $font-secondary;
+
+//$font-size-base: 1.125rem;
+$font-weight-base: 400;
+$line-height-base: 1.38;
+$font-weight-bolder: 700;
+
+//Meta, other elements with small fontsize
+$font-size-sm: 14px;
+
+//Fontsize for <small></small>
+$small-font-size: 12px;
+
+//In content
+$headings-font-weight: 700;
+$headings-line-height: 1.2;
+$h1-font-size: 40px;
+$h2-font-size: 32px;
+$h3-font-size: 24px;
+$h4-font-size: 20px;
+$h5-font-size: 16px;
+$h6-font-size: 16px;
+
+//Modules etc
+$display-font-weight: 700;
+$display-font-sizes: (
+  1: 40px,
+  2: 32px,
+  3: 24px,
+  4: 20px,
+  5: 18px,
+  6: 16px
+);

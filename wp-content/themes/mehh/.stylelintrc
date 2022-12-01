@@ -4,8 +4,24 @@
     "declaration-colon-newline-after": null,
     "value-list-comma-newline-after": null,
     "no-empty-source": null,
+    "value-keyword-case": null,
     "no-descending-specificity": null,
     "at-rule-empty-line-before": null,
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
+    "color-hex-case": null,
+    "declaration-bang-space-before": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/no-global-function-names": null,
+    "selector-no-vendor-prefix": [
+      true,
+      {
+        "ignoreSelectors": ["::-webkit-input-placeholder", "::-moz-placeholder"]
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {

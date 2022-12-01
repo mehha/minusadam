@@ -1,0 +1,50 @@
+@mixin container-narrow($padding-x: $container-padding-x) {
+  max-width: $container-narrow;
+  width: 100%;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin hover-focus-active() {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+@mixin theme-transition($target: all, $time: 0.2s, $easing: ease-in-out) {
+  transition: $target $time $easing;
+}
+
+@mixin wp-current-menu-item() {
+  &.current-post-ancestor,
+  &.current-page-ancestor,
+  &.current-menu-ancestor,
+  &.current-menu-parent,
+  &.current-page-parent,
+  &.current-menu-item,
+  &.current_page_item,
+  &.current_page_ancestor,
+  &.current-category-ancestor {
+    @content;
+  }
+}
+
+@mixin input-placeholder($color: $body-color, $transform: none, $fontSize: 1rem, $fontWeight: 400) {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $color;
+    font-size: $fontSize;
+    text-transform: $transform;
+    font-weight: $fontWeight;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $color;
+    font-size: $fontSize;
+    text-transform: $transform;
+    font-weight: $fontWeight;
+  }
+}
