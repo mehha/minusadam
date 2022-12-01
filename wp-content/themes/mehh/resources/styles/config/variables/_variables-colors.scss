@@ -8,11 +8,12 @@ $gray-dark: #2b383b;
 
 $orange: #fd7e14;
 $yellow: #fc0;
-$red: #f43319;
-$green: #2dcb48;
+$red: #ac0125;
+$green: #b1d1c9;
+$green-dark: #98b4ad;
 
-$primary: $orange;
-$secondary: $yellow;
+$primary: $green;
+$secondary: $red;
 
 $success: $green;
 $warning: $yellow;
@@ -21,4 +22,4 @@ $danger: $red;
 $body-color: $black;
 $link-color: $primary;
 $link-decoration: none;
-$link-hover-color: $secondary;
+$link-hover-color: $green-dark;

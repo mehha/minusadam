@@ -1,15 +1,14 @@
-nav {
-  .menu-main-menu-container {
-    > ul {
-      > li {
-        > a {
-          @apply uppercase transition-colors hover:text-mhGreen-light;
-        }
-
-        > .sub-menu {
-          @apply hidden absolute left-0 right-0 top-full p-10 shadow shadow-amber-100;
-        }
+.navbar {
+  .nav-item {
+    @include wp-current-menu-item {
+      > a {
+        color: var(--bs-primary);
       }
     }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
   }
 }

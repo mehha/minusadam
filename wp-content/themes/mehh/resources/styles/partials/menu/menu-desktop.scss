@@ -1,5 +1,48 @@
 @include media-breakpoint-up(lg) {
   .navbar {
+    .nav-item {
+      //.nav-link {
+      //  padding-left: 1rem;
+      //  padding-right: 1rem;
+      //  line-height: 1.2;
+      //  font-size: 1rem;
+      //}
+
+      &.menu-item-has-children {
+        position: relative;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+          .sub-menu {
+            display: block;
+          }
+        }
+
+        > .sub-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: $gray-100;
+          padding-top: 20px;
+          padding-bottom: 16px;
+          min-width: 220px;
+
+          .sub-menu {
+            a {
+              padding-left: 1.5rem;
+            }
+
+            .sub-menu {
+              a {
+                padding-left: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .sub-menu {
       display: none;
     }

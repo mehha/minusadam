@@ -1,5 +1,2 @@
-.single {
-  main {
-    @apply container;
-  }
-}
+//Container class utility class
+.container-narrow { @include container-narrow; }

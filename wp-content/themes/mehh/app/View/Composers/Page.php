@@ -23,15 +23,8 @@ class Page extends Composer
     public function with()
     {
         return [
-            'wide' => $this->wideLayout(),
             'hide_title' => $this->hideTitle(),
         ];
-    }
-
-    public function wideLayout()
-    {
-        $wide = function_exists('get_field') ?  get_field('wide_layout') : false;
-        return $wide ? 'container-fluid' : 'container';
     }
 
     public function hideTitle()
