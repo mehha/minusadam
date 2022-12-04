@@ -1,0 +1,21 @@
+.wp-block-woocommerce-mini-cart {
+  .wc-block-mini-cart__button {
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+
+  .wc-block-mini-cart__amount {
+    margin: 0;
+    color: $body-color;
+  }
+
+  .wc-block-mini-cart__icon {
+    width: 18px;
+  }
+
+  .wc-block-mini-cart__badge {
+    background-color: $body-color;
+    color: $white;
+    font-size: 12px;
+  }
+}

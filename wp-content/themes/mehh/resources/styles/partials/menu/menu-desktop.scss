@@ -1,12 +1,12 @@
 @include media-breakpoint-up(lg) {
   .navbar {
     .nav-item {
-      //.nav-link {
-      //  padding-left: 1rem;
-      //  padding-right: 1rem;
-      //  line-height: 1.2;
-      //  font-size: 1rem;
-      //}
+      .nav-link {
+        //padding-left: 1.5rem;
+        //padding-right: 1.5rem;
+        //line-height: 1.2;
+        //font-size: 1rem;
+      }
 
       &.menu-item-has-children {
         position: relative;
@@ -36,6 +36,62 @@
             .sub-menu {
               a {
                 padding-left: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //Top nav
+    &.navbar-top {
+      background-color: #f9f9f9;
+
+      &.navbar {
+        --bs-navbar-color: #878787;
+
+        .nav-item {
+          &:not(:last-child) {
+            position: relative;
+
+            &::after {
+              content: "|";
+              right: -2px;
+              top: 50%;
+              transform: translateY(-56%);
+              position: absolute;
+              color: #bdbdbd;
+            }
+          }
+        }
+      }
+    }
+
+    //Primary nav
+    &.navbar-primary {
+      background-color: $white;
+      border-top: 2px solid $gray-light;
+      padding-top: 20px;
+      @include theme-transition;
+
+      .nav-link {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 14px;
+      }
+
+      .container {
+        .collapse {
+          padding-bottom: 20px;
+          border-bottom: 2px solid $green;
+          @include theme-transition;
+
+          > div > ul {
+            > .nav-item {
+              &:first-child {
+                > .nav-link {
+                  padding-left: 0;
+                }
               }
             }
           }

@@ -1,0 +1,25 @@
+@include media-breakpoint-down(lg) {
+  .navbar-middle {
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .wp-block-image {
+      img {
+        max-height: 50px;
+        width: auto;
+      }
+    }
+  }
+
+  .navbar-primary {
+    background-color: $gray-dark;
+
+    .navbar-nav {
+      margin-top: 20px;
+
+      .nav-link {
+        color: $white;
+      }
+    }
+  }
+}

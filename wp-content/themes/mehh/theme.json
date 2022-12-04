@@ -6,13 +6,23 @@
       "palette": [
         {
           "slug": "primary",
-          "color": "#111",
+          "color": "#b1d1c9",
           "name": "Primary"
         },
         {
           "slug": "secondary",
-          "color": "#fefefe",
+          "color": "#ac0125",
           "name": "Secondary"
+        },
+        {
+          "slug": "minusadam-green",
+          "color": "#09647c",
+          "name": "Minusadam green"
+        },
+        {
+          "slug": "beige",
+          "color": "#dec18c",
+          "name": "Beige"
         }
       ]
     }

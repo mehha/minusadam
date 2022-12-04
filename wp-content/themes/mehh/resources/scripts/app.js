@@ -11,12 +11,14 @@ import {handleFancybox} from "./components/fancybox";
 import {handleMenu} from "./components/menu";
 import {handleTables} from "./components/tables";
 import {handleCheckScroll} from "./utilities/check-scroll";
+// import {handleDropdowns} from "./components/dropdowns";
 
 const mountedFns = [
   handleFancybox,
   handleMenu,
   handleTables,
   handleCheckScroll,
+  // handleDropdowns,
 ]
 
 // Run fn-s

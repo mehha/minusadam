@@ -13,18 +13,22 @@
 
 header.banner {
   @include theme-transition(transform, 0.2s, ease-in-out);
-
-  border-bottom: 1px solid $gray-light;
 }
 
 .not-top.scrolled-down {
   header.banner {
     @include media-breakpoint-up(xl) {
-      transform: translateY(-39px);
+      transform: translateY(-54px);
 
-      .navbar-main {
-        padding-top: 8px;
-        padding-bottom: 8px;
+      .navbar-primary {
+        border-bottom: 2px solid #b1d1c9;
+        padding-bottom: 0;
+        padding-top: 10px;
+
+        .navbar-collapse {
+          border-bottom: none;
+          padding-bottom: 10px;
+        }
       }
     }
   }

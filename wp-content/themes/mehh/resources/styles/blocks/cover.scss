@@ -1,0 +1,17 @@
+.wp-block-cover {
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  .wp-block-cover__inner-container {
+    .wp-block-group {
+      text-align: center;
+      z-index: 1;
+      margin-bottom: 0;
+      position: relative;
+      max-width: 380px;
+      //max-height: 245px;
+      padding: 60px 45px;
+      @include inner-border;
+    }
+  }
+}

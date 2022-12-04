@@ -1,0 +1,5 @@
+.wp-block-spacer {
+  @include media-breakpoint-down(md) {
+    height: 2rem!important;
+  }
+}

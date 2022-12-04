@@ -17,7 +17,7 @@ add_filter('excerpt_more', function () {
 
 //Nav extra class to li
 add_filter('nav_menu_css_class', function ($classes, $item, $args) {
-    if ( 'primary_navigation' === $args->theme_location ) {
+    if ( 'primary_navigation' === $args->theme_location || 'top_navigation' === $args->theme_location ) {
         $classes[] = "nav-item";
     }
 

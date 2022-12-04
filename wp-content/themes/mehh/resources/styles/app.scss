@@ -6,6 +6,10 @@
 
 //Blocks
 @import "blocks/cover";
+@import "blocks/spacer";
+@import "blocks/woocommerce/product-categories-list";
+@import "blocks/woocommerce/product-new";
+@import "blocks/woocommerce/mini-cart";
 
 //Common
 @import "common/global";
@@ -27,3 +31,5 @@
 @import "partials/footer";
 @import "partials/header";
 @import "partials/page-header";
+@import "partials/woocommerce/woocommerce-general";
+@import "partials/woocommerce/woocommerce-single";

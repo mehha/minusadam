@@ -39,9 +39,9 @@ body {
 }
 
 main {
-  padding-top: 57px;
+  padding-top: 112px;
   @include media-breakpoint-up(xl) {
-    padding-top: 112px;
+    padding-top: 229px;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
@@ -49,6 +49,7 @@ main {
 }
 
 .page,
+.woocommerce-page,
 .single,
 .archive,
 .search,
