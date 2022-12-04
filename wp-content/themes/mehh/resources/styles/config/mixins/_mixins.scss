@@ -3,11 +3,11 @@
   ol {
     padding-left: 1rem;
 
-    li {
-      &::marker {
-        color: $primary;
-      }
-    }
+    //li {
+    //  &::marker {
+    //    color: $primary;
+    //  }
+    //}
   }
 }
 

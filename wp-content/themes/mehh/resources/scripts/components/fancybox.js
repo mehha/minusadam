@@ -15,7 +15,7 @@ export function handleFancybox() {
   });
 
   // Gallery
-  const galleryFancyItems = ['.gallery-item a:not(.no-fancy)'];
+  const galleryFancyItems = ['.gallery-item a:not(.no-fancy)', '.woocommerce-product-gallery__wrapper a'];
   galleryFancyItems.forEach(function (value) {
     Fancybox.bind(value, {
       groupAll: true,

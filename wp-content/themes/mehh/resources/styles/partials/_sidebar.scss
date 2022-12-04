@@ -1,0 +1,19 @@
+//Primary sidebar
+.has-primary-sidebar {
+  @include media-breakpoint-up(lg) {
+    .wrap {
+      display: flex;
+      flex-direction: row-reverse;
+
+      .content {
+        width: calc(100% - 280px);
+        padding-left: 2rem;
+      }
+
+      .sidebar-primary {
+        width: 280px;
+        min-width: 260px;
+      }
+    }
+  }
+}

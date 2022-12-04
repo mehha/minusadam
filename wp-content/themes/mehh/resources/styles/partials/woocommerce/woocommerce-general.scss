@@ -23,7 +23,7 @@
       gap: 2rem;
     }
     @include media-breakpoint-up(lg) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
 
     &::before {

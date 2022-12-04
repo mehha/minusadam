@@ -1,0 +1,10 @@
+.wp-block-tag-cloud {
+  &.is-style-outline {
+    gap: 2px;
+
+    .tag-cloud-link {
+      font-size: 12px!important;
+      padding: 2px 6px;
+    }
+  }
+}
