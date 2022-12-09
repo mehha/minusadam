@@ -10,5 +10,14 @@
     "/styles/app.css": "/styles/app.css?id=9a752bcb476870267b92908878a146ed",
     "/styles/editor.css": "/styles/editor.css?id=585928e8c78eb8d737d6f348803321bc",
     "/scripts/vendor.js": "/scripts/vendor.js?id=9febf4c4329c9f3fcf527f5af51f0d14",
-    "/scripts/vendor.asset.php": "/scripts/vendor.asset.php?id=bc3d790c899ffedff351384d21256ec2"
+    "/scripts/vendor.asset.php": "/scripts/vendor.asset.php?id=bc3d790c899ffedff351384d21256ec2",
+    "/images/android-chrome-192x192.png": "/images/android-chrome-192x192.png?id=e7c6c7b8e2be4333bd19beeb6bdfe9bb",
+    "/images/android-chrome-384x384.png": "/images/android-chrome-384x384.png?id=1fb9cf5b0b505b5600346709252dd6ff",
+    "/images/apple-touch-icon.png": "/images/apple-touch-icon.png?id=59cc8f357adb14c84749437b32a00df4",
+    "/images/browserconfig.xml": "/images/browserconfig.xml?id=a493ba0aa0b8ec8068d786d7248bb92c",
+    "/images/favicon-16x16.png": "/images/favicon-16x16.png?id=0f33c24a231674a2edb9a0dd1fa4267f",
+    "/images/favicon-32x32.png": "/images/favicon-32x32.png?id=366ef10a64e223c240e3cd71b6c22870",
+    "/images/favicon.ico": "/images/favicon.ico?id=d5df721ba6009206767a5e01f991520d",
+    "/images/mstile-150x150.png": "/images/mstile-150x150.png?id=ee25ac0c4abfce68caf03ecaac17c9d4",
+    "/images/site.webmanifest": "/images/site.webmanifest?id=57425a403714747b47dd0c0b3524a5f1"
 }

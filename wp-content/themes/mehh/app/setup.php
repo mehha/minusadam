@@ -182,6 +182,13 @@ add_action('after_setup_theme', function () {
 
 //Add scripts to head
 add_action('wp_head', function () { ?>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php print get_stylesheet_directory_uri(); ?>/public/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php print get_stylesheet_directory_uri(); ?>/public/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php print get_stylesheet_directory_uri(); ?>/public/images/favicon-16x16.png">
+    <link rel="manifest" href="<?php print get_stylesheet_directory_uri(); ?>/public/images/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#09647c">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -253,5 +260,5 @@ add_action('admin_bar_menu', function ($wp_admin_bar) {
 
 //Maintenance mode
 add_action('get_header', function () {
-    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance mode active!');}
+//    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance mode active!');}
 });
