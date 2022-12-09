@@ -313,3 +313,15 @@ namespace App;
 // remove_action('woocommerce_before_lost_password_form', 'woocommerce_output_all_notices', 10);
 // remove_action('before_woocommerce_pay', 'woocommerce_output_all_notices', 10);
 // remove_action('woocommerce_before_reset_password_form', 'woocommerce_output_all_notices', 10);
+
+//Remove marketing
+add_filter( 'woocommerce_admin_features', function( $features ) {
+    /**
+     * Filter list of features and remove those not needed     *
+     */
+    return array_values(
+        array_filter( $features, function($feature) {
+            return $feature !== 'marketing';
+        } )
+    );
+} );
