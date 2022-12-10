@@ -260,5 +260,5 @@ add_action('admin_bar_menu', function ($wp_admin_bar) {
 
 //Maintenance mode
 add_action('get_header', function () {
-//    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance mode active!');}
+    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance mode active!');}
 });
