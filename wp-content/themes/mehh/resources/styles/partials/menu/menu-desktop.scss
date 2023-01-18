@@ -46,11 +46,15 @@
     //Top nav
     &.navbar-top {
       background-color: #f9f9f9;
+      padding-top: 0;
+      padding-bottom: 0;
 
       &.navbar {
         --bs-navbar-color: #878787;
 
         .nav-item {
+          font-size: 14px;
+
           &:not(:last-child) {
             position: relative;
 
@@ -71,7 +75,7 @@
     &.navbar-primary {
       background-color: $white;
       border-top: 2px solid $gray-light;
-      padding-top: 20px;
+      padding-top: 10px;
       @include theme-transition;
 
       .nav-link {
@@ -82,7 +86,7 @@
 
       .container {
         .collapse {
-          padding-bottom: 20px;
+          padding-bottom: 10px;
           border-bottom: 2px solid $green;
           @include theme-transition;
 

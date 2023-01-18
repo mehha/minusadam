@@ -1,20 +1,43 @@
 .wp-block-woocommerce-product-categories {
-  background-color: $green;
-  padding: 2rem 1rem;
-  height: 100%;
+  &.green {
+    background-color: $green;
+    padding: 2rem 1rem;
+    height: 100%;
 
-  ul {
-    display: grid;
-    gap: 1rem;
+    ul {
+      display: grid;
+      gap: 1rem;
 
-    li {
-      color: $white;
+      li {
+        color: $white;
 
-      ul {
-        margin-top: 1rem;
+        ul {
+          margin-top: 1rem;
+        }
       }
     }
+
+    @include white-link;
   }
 
-  @include white-link;
+  &:has(.wc-block-product-categories-list-item__image) {
+    ul {
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2rem;
+    }
+
+    li {
+      margin: 0;
+      text-align: center;
+    }
+
+    .wc-block-product-categories-list-item__image {
+      display: block;
+      max-width: 100%;
+      margin: 0 0 1rem;
+      border: none;
+    }
+  }
 }

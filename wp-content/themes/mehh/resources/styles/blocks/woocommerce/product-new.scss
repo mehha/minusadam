@@ -1,49 +1,65 @@
 .wp-block-product-new {
-  .wc-block-grid__products {
-    margin: 0;
-    gap: 1rem;
-    display: grid!important;
-    grid-template-columns: repeat(2, 1fr);
-    @include media-breakpoint-up(sm) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    @include media-breakpoint-up(lg) {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  &.has-1-columns {
+    ul {
+      margin: 0;
 
-    .wc-block-grid__product {
-      border: 1px solid $gray-light;
-      max-width: 100%;
-      @include theme-transition;
-
-      @include hover-focus-active {
-        border: 1px solid $gray;
-      }
-
-      .wc-block-grid__product-image {
-        margin-bottom: 1rem;
-
-        //img {
-        //  @include media-breakpoint-down(sm) {
-        //    width: 100%;
-        //  }
-        //}
-      }
-
-      .wc-block-grid__product-title {
-        font-size: 15px;
-        text-transform: unset;
-        color: $body-color;
-        padding-left: 8px;
-        padding-right: 8px;
+      li {
+        border: none;
       }
 
       .wc-block-grid__product-price {
-        padding-left: 8px;
-        padding-right: 8px;
-        color: $primary;
-        font-size: 15px;
+        margin: 0;
+      }
+    }
+  }
+
+  &.has-multiple-rows {
+    .wc-block-grid__products {
+      margin: 0;
+      gap: 1rem;
+      display: grid!important;
+      grid-template-columns: repeat(2, 1fr);
+      @include media-breakpoint-up(sm) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .wc-block-grid__product {
+        border: 1px solid $gray-light;
+        max-width: 100%;
+        @include theme-transition;
+
+        @include hover-focus-active {
+          border: 1px solid $gray;
+        }
+
+        .wc-block-grid__product-image {
+          margin-bottom: 1rem;
+
+          //img {
+          //  @include media-breakpoint-down(sm) {
+          //    width: 100%;
+          //  }
+          //}
+        }
+
+        .wc-block-grid__product-title {
+          font-size: 15px;
+          text-transform: unset;
+          color: $body-color;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+
+        .wc-block-grid__product-price {
+          padding-left: 8px;
+          padding-right: 8px;
+          color: $primary;
+          font-size: 15px;
+        }
       }
     }
   }
