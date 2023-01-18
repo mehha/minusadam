@@ -29,6 +29,10 @@
     li {
       margin: 0;
       text-align: center;
+
+      > ul {
+        display: none;
+      }
     }
 
     .wc-block-product-categories-list-item__image {
