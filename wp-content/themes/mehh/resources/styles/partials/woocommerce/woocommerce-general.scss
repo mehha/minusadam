@@ -15,62 +15,58 @@
   }
 
   ul.products {
-    gap: 1rem;
-    display: grid!important;
-    grid-template-columns: repeat(2, 1fr);
-    @include media-breakpoint-up(sm) {
+    &.columns-3 {
+      gap: 1rem;
+      display: grid!important;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    @include media-breakpoint-up(lg) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    &::before {
-      content: none;
-    }
-
-    li.product {
-      width: 100%!important;
-      margin: 0!important;
-      text-align: center;
-      border: 1px solid $gray-light;
-      @include theme-transition;
-
-      @include hover-focus-active {
-        border: 1px solid $gray;
+      @include media-breakpoint-up(sm) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      a {
-        img {
-          margin-bottom: 0;
-        }
+      &::before {
+        content: none;
       }
 
-      .woocommerce-loop-product__link {
-        h2 {
-          padding-left: 8px;
-          padding-right: 8px;
-          color: $body-color;
-          font-size: 15px;
-          font-family: $font-secondary;
-          @include theme-transition;
+      li.product {
+        width: 100%!important;
+        margin: 0!important;
+        text-align: center;
 
-          @include hover-focus-active {
-            color: $link-hover-color;
+        a {
+          img {
+            margin-bottom: 0;
           }
         }
 
-        .price {
-          padding-left: 8px;
-          padding-right: 8px;
-          font-size: 15px;
-          color: $primary;
-        }
-      }
+        .woocommerce-loop-product__link {
+          h2 {
+            padding-left: 8px;
+            padding-right: 8px;
+            color: $body-color;
+            font-size: 15px;
+            font-family: $font-secondary;
+            @include theme-transition;
 
-      .add_to_cart_button {
-        display: none;
+            @include hover-focus-active {
+              color: $link-hover-color;
+            }
+          }
+
+          .price {
+            padding-left: 8px;
+            padding-right: 8px;
+            font-size: 15px;
+            color: $primary;
+          }
+        }
+
+        .add_to_cart_button {
+          display: none;
+        }
       }
     }
   }
