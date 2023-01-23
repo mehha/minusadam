@@ -1,0 +1,15 @@
+.single {
+  &:has(.top-image) {
+    .main-content-wrapper {
+      @include clearfix;
+    }
+
+    .top-image {
+      @include media-breakpoint-up(md) {
+        float: left;
+        margin-right: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}

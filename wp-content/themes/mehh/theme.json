@@ -28,6 +28,11 @@
           "slug": "green-3",
           "color": "#86b5a9",
           "name": "Green 3"
+        },
+        {
+          "slug": "kama-blue",
+          "color": "#06205c",
+          "name": "Blue"
         }
       ]
     }

@@ -1,14 +1,14 @@
 <header class="banner fixed-top">
 
-  <nav class="navbar navbar-top d-none d-lg-flex navbar-expand-lg">
-    <div class="container">
-      @if (has_nav_menu('top_navigation'))
-        <div id="navbarPrimary" class="collapse navbar-collapse justify-content-end" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-          {!! wp_nav_menu(['theme_location' => 'top_navigation', 'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', 'anchor_class' => 'nav-link', 'echo' => false]) !!}
-        </div>
-      @endif
-    </div>
-  </nav>
+  @if (has_nav_menu('top_navigation'))
+    <nav class="navbar navbar-top d-none d-lg-flex navbar-expand-lg">
+      <div class="container">
+          <div id="navbarPrimary" class="collapse navbar-collapse justify-content-end" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
+            {!! wp_nav_menu(['theme_location' => 'top_navigation', 'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', 'anchor_class' => 'nav-link', 'echo' => false]) !!}
+          </div>
+      </div>
+    </nav>
+  @endif
 
   <div class="navbar-middle bg-white container">
     @php(dynamic_sidebar('sidebar-header'))
@@ -22,7 +22,7 @@
       </button>
 
       @if (has_nav_menu('primary_navigation'))
-        <div id="navbarPrimary" class="collapse navbar-collapse justify-content-start text-uppercase" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
+        <div id="navbarPrimary" class="collapse navbar-collapse justify-content-start" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
           {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', 'anchor_class' => 'nav-link', 'echo' => false]) !!}
         </div>
       @endif

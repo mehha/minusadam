@@ -15,18 +15,43 @@
         &:focus,
         &:focus-within {
           .sub-menu {
-            display: block;
+            visibility: visible;
+            opacity: 1;
           }
         }
 
         > .sub-menu {
           position: absolute;
-          top: 100%;
+          top: calc(100% + 12px);
           left: 0;
           background-color: $gray-100;
-          padding-top: 20px;
-          padding-bottom: 16px;
+          padding-top: 10px;
+          padding-bottom: 10px;
           min-width: 220px;
+
+          .not-top & {
+            top: calc(100% + 8px);
+          }
+
+          &::before {
+            content: "";
+            width: 100%;
+            height: 12px;
+            background-color: transparent;
+            display: inline-block;
+            bottom: 100%;
+            left: 0;
+            position: absolute;
+
+            .not-top & {
+              height: 8px;
+            }
+          }
+
+          a {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
 
           .sub-menu {
             a {
@@ -104,7 +129,9 @@
     }
 
     .sub-menu {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      @include theme-transition;
     }
   }
 }

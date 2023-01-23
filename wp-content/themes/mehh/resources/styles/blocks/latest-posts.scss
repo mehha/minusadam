@@ -1,0 +1,9 @@
+.wp-block-latest-posts__list {
+  .wp-block-latest-posts__post-title {
+    @include font-size(28px);
+  }
+
+  .wp-block-latest-posts__post-excerpt {
+    margin-top: 1rem;
+  }
+}

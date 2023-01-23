@@ -10,7 +10,7 @@
         color: $white;
 
         ul {
-          margin-top: 1rem;
+          display: none;
         }
       }
     }
@@ -22,8 +22,15 @@
     ul {
       padding-left: 0;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       grid-gap: 2rem;
+
+      @include media-breakpoint-up(sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include media-breakpoint-up(md) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     li {
@@ -32,6 +39,10 @@
 
       > ul {
         display: none;
+      }
+
+      img {
+        width: 100%;
       }
     }
 

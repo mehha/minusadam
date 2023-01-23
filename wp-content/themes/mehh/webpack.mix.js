@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
+require('laravel-mix-copy-watched');
 
 /*
  |--------------------------------------------------------------------------
@@ -35,8 +36,8 @@ mix
   .extract();
 
 mix
-  .copyDirectory('resources/images', 'public/images')
-  .copyDirectory('resources/fonts', 'public/fonts');
+  .copyWatched('resources/images', 'public/images')
+  .copyWatched('resources/fonts', 'public/fonts');
 
 mix
   .sourceMaps(false, 'inline-source-map')

@@ -8,6 +8,7 @@
 @import "blocks/cover";
 @import "blocks/spacer";
 @import "blocks/tag-cloud";
+@import "blocks/latest-posts";
 @import "blocks/woocommerce/product-categories-list";
 @import "blocks/woocommerce/product-new";
 @import "blocks/woocommerce/mini-cart";
@@ -33,5 +34,6 @@
 @import "partials/header";
 @import "partials/sidebar";
 @import "partials/page-header";
+@import "partials/single";
 @import "partials/woocommerce/woocommerce-general";
 @import "partials/woocommerce/woocommerce-single";
