@@ -134,4 +134,14 @@
       @include theme-transition;
     }
   }
+
+  //Middle one with logo
+  .navbar-middle {
+    .wp-block-image {
+      img {
+        margin-top: 10px;
+        margin-bottom: 9px;
+      }
+    }
+  }
 }

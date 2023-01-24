@@ -31,3 +31,16 @@ add_filter('nav_menu_link_attributes', function ($classes, $item, $args) {
     }
     return $classes;
 }, 1, 3);
+
+/**
+ * Add custom mime types support
+ *
+ * */
+add_filter('upload_mimes', function ($mimes) {
+    $mimes['svg']   = 'image/svg+xml';
+    $mimes['htm']   = 'text/html';
+    $mimes['xhtml'] = 'application/xhtml+xml';
+    $mimes['zip']   = 'application/zip';
+    $mimes['eps']   = 'image/x-eps';
+    return $mimes;
+});
