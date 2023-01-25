@@ -248,12 +248,10 @@ add_action('wp', function () {
 add_action('admin_menu', function () {
     remove_menu_page( 'edit-comments.php' );
     remove_menu_page( 'edit.php?post_type=acf-field-group' );
-    remove_menu_page( 'wpforms-overview' );
     remove_menu_page( 'sb-instagram-feed' );
 }, 1000);
 
 add_action('admin_bar_menu', function ($wp_admin_bar) {
-    $wp_admin_bar->remove_node('wpforms-menu');
 //    $wp_admin_bar->remove_node('updates');
     $wp_admin_bar->remove_node('comments');
 }, 1000);
