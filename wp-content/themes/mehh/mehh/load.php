@@ -1,7 +1,8 @@
 <?php
 
 $acf_fields = array(
-    'fields/general.php'
+    'general/acf-fields.php',
+    'contact-form/contact-form.php',
 );
 
 foreach ($acf_fields as $key => $field) {
