@@ -56,8 +56,8 @@ class ContactForm extends Composer
        		if ( empty( $validation_messages ) ) {
 
        			$mail    = get_option( 'admin_email' );
-       			$subject = 'Uus sõnum Minusadam kodulehelt. Saatja: ' . $full_name;
-       			$message = $message . '<br> - Kliendi email: ' . $mail;
+       			$subject = 'Uus sõnum Minusadam kodulehelt.';
+       			$message = 'Saatja: ' . $full_name . '<br>Kliendi email: ' . $mail .'<br><br>'. $message;
                 $headers = array('Content-Type: text/html; charset=UTF-8');
 
        			wp_mail( $mail, $subject, $message, $headers );
