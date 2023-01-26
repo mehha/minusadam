@@ -28,9 +28,11 @@
     <textarea id="message" class="form-control" name="message" rows="3" required></textarea>
   </div>
 
-  <div class="col-12 recaptcha-container mb-4">
-    <div id="g-recaptcha" class="g-recaptcha" data-sitekey="{{get_field('captcha_key', 'options')}}"></div>
-  </div>
+  @if(get_field('captcha_key', 'options'))
+    <div class="col-12 recaptcha-container mb-4">
+      <div id="g-recaptcha" class="g-recaptcha" data-sitekey="{{get_field('captcha_key', 'options')}}"></div>
+    </div>
+  @endif
 
   @if(get_field('privacy_disclaimer', 'options'))
     <div class="col-12">
