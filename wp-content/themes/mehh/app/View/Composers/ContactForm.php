@@ -57,7 +57,7 @@ class ContactForm extends Composer
 
        			$mail    = get_field('contact_form_recipient', 'options') ? get_field('contact_form_recipient', 'options') : get_option( 'admin_email' );
        			$subject = 'Uus sõnum Minusadam kodulehelt';
-       			$message = 'Saatja: ' . $full_name . '<br>Kliendi email: ' . $mail .'<br><br>'. $message;
+       			$message = 'Saatja: ' . $full_name . '<br>Kliendi email: ' . $email .'<br><br>'. $message;
                 $headers = array('Content-Type: text/html; charset=UTF-8');
 
        			wp_mail( $mail, $subject, $message, $headers );
