@@ -55,7 +55,7 @@ class ContactForm extends Composer
        		//Send an email to the WordPress administrator if there are no validation errors
        		if ( empty( $validation_messages ) ) {
 
-       			$mail    = get_field('contact_form_recipient') ? get_field('contact_form_recipient') : get_option( 'admin_email' );
+       			$mail    = get_field('contact_form_recipient', 'options') ? get_field('contact_form_recipient', 'options') : get_option( 'admin_email' );
        			$subject = 'Uus sõnum Minusadam kodulehelt';
        			$message = 'Saatja: ' . $full_name . '<br>Kliendi email: ' . $mail .'<br><br>'. $message;
                 $headers = array('Content-Type: text/html; charset=UTF-8');
