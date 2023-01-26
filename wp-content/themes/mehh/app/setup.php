@@ -243,6 +243,11 @@ add_action('wp', function () {
     }
 });
 
+//Add lang files https://roots.io/sage/docs/localization/
+add_action('after_setup_theme', function () {
+    load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+});
+
 //Organize admin menu
 //http://minusadam.test/et/wp-admin/edit-comments.php
 add_action('admin_menu', function () {

@@ -10,6 +10,25 @@ if( function_exists('acf_add_options_page') ):
         'title' => 'Contact form options',
         'fields' => array (
             array (
+                'key' => 'field_5beadaadi33asxdrt',
+                'label' => 'Recipient',
+                'name' => 'contact_form_recipient',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array (
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array (
                 'key' => 'field_5beadaadi33asc4cf',
                 'label' => 'Privacy disclaimer',
                 'name' => 'privacy_disclaimer',
