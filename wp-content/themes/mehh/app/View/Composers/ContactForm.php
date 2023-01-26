@@ -56,7 +56,7 @@ class ContactForm extends Composer
        		if ( empty( $validation_messages ) ) {
 
        			$mail    = get_option( 'admin_email' );
-       			$subject = 'Uus sõnum Minusadam kodulehelt.';
+       			$subject = 'Uus sõnum Minusadam kodulehelt';
        			$message = 'Saatja: ' . $full_name . '<br>Kliendi email: ' . $mail .'<br><br>'. $message;
                 $headers = array('Content-Type: text/html; charset=UTF-8');
 
@@ -79,6 +79,15 @@ class ContactForm extends Composer
 
         return [
             'success_message' => $success_message,
+            'recaptcha_lang' => $this->getRecaptchaLang()
         ];
+    }
+
+    private function getRecaptchaLang() {
+        $lang = 'et';
+//        if(get_current_blog_id() != 3){
+//            $lang = 'en';
+//        }
+        return $lang;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 $acf_fields = array(
-    'general/acf-fields.php',
+    'page/page.php',
     'contact-form/contact-form.php',
 );
 
