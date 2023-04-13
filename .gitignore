@@ -4,3 +4,4 @@
 /wp-content/plugins/ns-cloner-site-copier/
 /wp-content/cache/
 config-local.php
+config-staging.php

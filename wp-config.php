@@ -23,14 +23,16 @@
 
 if ( file_exists( dirname( __FILE__ ) . '/config-local.php' ) ) {
     include( dirname( __FILE__ ) . '/config-local.php' );
+} elseif ( file_exists( dirname( __FILE__ ) . '/config-staging.php' ) ) {
+    include( dirname( __FILE__ ) . '/config-staging.php' );
 } else {
-	define( 'DB_NAME', 'minusada_wp' );
+	define( 'DB_NAME', '' );
 
 	/** Database username */
-	define( 'DB_USER', 'minusada_wpusr' );
+	define( 'DB_USER', '' );
 
 	/** Database password */
-	define( 'DB_PASSWORD', '7V+t*FU^y2h&FEZL' );
+	define( 'DB_PASSWORD', '' );
 
 	/** Database hostname */
 	define( 'DB_HOST', 'localhost' );
