@@ -197,6 +197,35 @@ add_action('wp_head', function () { ?>
     <?php
 }, 100);
 
+//Admin styles
+add_action('login_head', function(){
+
+    echo '<style>
+    #login h1 a {
+            background: url('.get_stylesheet_directory_uri().'/public/images/logo.svg) no-repeat center top;
+            background-size: 240px auto;
+            width: 240px;
+            height: 58px;
+            margin: 0 auto 20px;
+        }
+         body { background: #fff; }
+         .button-primary {
+            background: #09647c !important;
+            color: #fff !important;
+            border: none !important;
+            text-shadow none;
+            border-radius: 0!important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            padding: 8px 16px;
+          }
+          .login #login_error, .login .message, .login .success {
+            border-left: 4px solid #09647c;
+          }
+        </style>';
+} );
+
 /**
  * Register the theme sidebars.
  *

@@ -7,8 +7,8 @@ a {
     }
   }
 
-  //Decrypted emails
-  &[href^="javascript:"] {
+  //Break emails
+  &[href^="mailto:"] {
     word-break: break-word;
   }
 }
