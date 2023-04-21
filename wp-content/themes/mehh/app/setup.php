@@ -294,3 +294,11 @@ add_action('admin_bar_menu', function ($wp_admin_bar) {
 add_action('get_header', function () {
 //    if ( !is_user_logged_in() ) {wp_die('Maintenance mode active!');}
 });
+
+/*
+ * Disable users from sitemap
+ *
+ */
+add_filter( 'wp_sitemaps_add_provider', function ($provider, $name) {
+    return ( $name == 'users' ) ? false : $provider;
+}, 10, 2);
