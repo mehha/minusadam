@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "payments\n"
 "POT-Creation-Date: 2023-04-05 14:20:42+00:00\n"
-"PO-Revision-Date: 2023-04-21 09:58+0300\n"
+"PO-Revision-Date: 2023-04-21 10:07+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: et\n"
@@ -1679,7 +1679,7 @@ msgstr ""
 
 #: includes/class-wc-payments.php:1629
 msgid "OR"
-msgstr ""
+msgstr "Või"
 
 #: includes/compat/subscriptions/class-wc-payments-email-failed-authentication-retry.php:26
 msgid "Payment authentication requested email"
