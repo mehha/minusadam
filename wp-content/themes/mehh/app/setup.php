@@ -197,6 +197,20 @@ add_action('wp_head', function () { ?>
     <?php
 }, 100);
 
+//Add scripts to head very top
+add_action('wp_head', function () { ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HW3V99Y84B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HW3V99Y84B');
+    </script>
+    <?php
+}, -1000);
+
 //Admin styles
 add_action('login_head', function(){
 
