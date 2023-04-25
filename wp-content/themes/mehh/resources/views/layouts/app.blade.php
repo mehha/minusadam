@@ -15,3 +15,7 @@
   @endif
 
 @include('partials.footer')
+
+@if(!isset($_COOKIE['cookies_accepted']))
+  @include('components.cookie-banner')
+@endif

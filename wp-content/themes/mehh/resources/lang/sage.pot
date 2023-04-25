@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-26T12:20:59+02:00\n"
+"POT-Creation-Date: 2023-04-25T11:36:07+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 
@@ -41,19 +41,19 @@ msgstr ""
 msgid "Top Navigation"
 msgstr ""
 
-#: app/setup.php:214
+#: app/setup.php:257
 msgid "Primary"
 msgstr ""
 
-#: app/setup.php:219
+#: app/setup.php:262
 msgid "Header"
 msgstr ""
 
-#: app/setup.php:224
+#: app/setup.php:267
 msgid "Footer"
 msgstr ""
 
-#: app/setup.php:229
+#: app/setup.php:272
 msgid "Woocommerce sidebar"
 msgstr ""
 
@@ -93,6 +93,14 @@ msgstr ""
 
 #: resources/views/404.blade.php:11
 msgid "Sorry, but the page you are trying to view does not exist."
+msgstr ""
+
+#: resources/views/components/cookie-banner.blade.php:2
+msgid "This site uses cookies to improve your experience. By continuing to use this site, you consent to our use of cookies."
+msgstr ""
+
+#: resources/views/components/cookie-banner.blade.php:3
+msgid "Accept"
 msgstr ""
 
 #: resources/views/forms/search.blade.php:4

@@ -1,0 +1,17 @@
+#cookie-banner {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  padding: 1rem;
+  max-width: 400px;
+  background-color: $green-100;
+  border: 1px solid $green;
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+  }
+}

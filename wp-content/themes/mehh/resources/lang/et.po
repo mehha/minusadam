@@ -1,11 +1,9 @@
-# Copyright (C) 2023 Mehh Media based on Roots
-# This file is distributed under the MIT License.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mehh Media Theme 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mehh\n"
-"POT-Creation-Date: 2023-01-26T12:20:59+02:00\n"
-"PO-Revision-Date: 2023-01-26 12:27+0200\n"
+"POT-Creation-Date: 2023-04-25T11:36:07+03:00\n"
+"PO-Revision-Date: 2023-04-25 11:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: et\n"
@@ -43,19 +41,19 @@ msgstr ""
 msgid "Top Navigation"
 msgstr ""
 
-#: app/setup.php:214
+#: app/setup.php:257
 msgid "Primary"
 msgstr ""
 
-#: app/setup.php:219
+#: app/setup.php:262
 msgid "Header"
 msgstr ""
 
-#: app/setup.php:224
+#: app/setup.php:267
 msgid "Footer"
 msgstr ""
 
-#: app/setup.php:229
+#: app/setup.php:272
 msgid "Woocommerce sidebar"
 msgstr ""
 
@@ -96,6 +94,18 @@ msgstr ""
 #: resources/views/404.blade.php:11
 msgid "Sorry, but the page you are trying to view does not exist."
 msgstr ""
+
+#: resources/views/components/cookie-banner.blade.php:2
+msgid ""
+"This site uses cookies to improve your experience. By continuing to use this "
+"site, you consent to our use of cookies."
+msgstr ""
+"Minusadam.com kasutab küpsiseid teie kogemuse parandamiseks. Lehel sirvides "
+"nõustud vajalike küpsiste kasutamisega."
+
+#: resources/views/components/cookie-banner.blade.php:3
+msgid "Accept"
+msgstr "Nõustun"
 
 #: resources/views/forms/search.blade.php:4
 msgctxt "label"

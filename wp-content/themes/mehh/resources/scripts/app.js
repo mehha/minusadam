@@ -12,6 +12,7 @@ import {handleMenu} from "./components/menu";
 import {handleTables} from "./components/tables";
 import {handleCheckScroll} from "./utilities/check-scroll";
 import {handleForms} from "./components/forms";
+import {handleCookieBanner} from "./components/cookie_banner";
 // import {handleDropdowns} from "./components/dropdowns";
 
 const mountedFns = [
@@ -21,6 +22,7 @@ const mountedFns = [
   handleCheckScroll,
   // handleDropdowns,
   handleForms,
+  handleCookieBanner,
 ]
 
 // Run fn-s
