@@ -52,6 +52,12 @@ class ContactForm extends Composer
        			$validation_messages[] = esc_html__( 'Please enter a valid message.', 'sage' );
        		}
 
+            // Check for honeypot field
+            if ( isset( $_POST['honeypot'] ) && ! empty( $_POST['honeypot'] ) ) {
+                // If honeypot field is not empty, it means a bot filled it, so reject the submission
+                die( 'Form submission failed. Please try again.' );
+            }
+
        		//Send an email to the WordPress administrator if there are no validation errors
        		if ( empty( $validation_messages ) ) {
 
