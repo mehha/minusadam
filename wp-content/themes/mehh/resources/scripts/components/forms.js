@@ -5,7 +5,6 @@ export function handleForms() {
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
     let startTime = performance.now();
-    console.log('startTime1', startTime)
 
     form.addEventListener('submit', event => {
       // Recaptcha
@@ -13,10 +12,6 @@ export function handleForms() {
       let FormCaptcha = document.querySelector('#g-recaptcha');
       const endTime = performance.now();
       const timeElapsed = endTime - startTime;
-
-      console.log('startTime', startTime)
-      console.log('endTime', endTime)
-      console.log(timeElapsed)
 
       if (event.target.classList.contains('needs-validation') && FormCaptcha) {
         // eslint-disable-next-line no-undef
@@ -30,7 +25,7 @@ export function handleForms() {
         reCaptcha = true;
       }
 
-      if (!form.checkValidity() || !reCaptcha || timeElapsed < 500) {
+      if (!form.checkValidity() || !reCaptcha || timeElapsed < 2000) {
         event.preventDefault()
         event.stopPropagation()
       }
