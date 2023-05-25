@@ -6,16 +6,27 @@ class MiniCartGateway extends BaseGateway {
     constructor(cart, props) {
         super(props);
         this.cart = cart;
+        this.retryCount = 0;
         this.initialize();
     }
 
     initialize() {
         this.cart.on('fragmentsChanged', super.initialize.bind(this));
+        $(document.body).on('wc_ppcp_on_destroy', this.createButton.bind(this));
         super.initialize();
     }
 
     needsShipping() {
         return this.cart.needsShipping();
+    }
+
+    createButton() {
+        const container = this.getButtonContainer();
+        if (!container && this.retryCount < 10) {
+            this.retryCount += 1;
+            return setTimeout(this.createButton.bind(this), 500);
+        }
+        super.createButton();
     }
 
     getButtonContainer() {

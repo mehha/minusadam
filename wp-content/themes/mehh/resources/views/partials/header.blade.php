@@ -22,8 +22,13 @@
       </button>
 
       @if (has_nav_menu('primary_navigation'))
-        <div id="navbarPrimary" class="collapse navbar-collapse justify-content-start" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
+        <div id="navbarPrimary" class="collapse navbar-collapse justify-content-between" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
           {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', 'anchor_class' => 'nav-link', 'echo' => false]) !!}
+
+          <div class="language-switcher d-flex gap-2 small mb-3 mb-lg-0">
+            @if(function_exists( 'the_msls' )) {{the_msls()}} @endif
+          </div>
+
         </div>
       @endif
 

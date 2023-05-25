@@ -47,8 +47,16 @@ class CartOrder extends AbstractCart {
 		$this->calculate_totals();
 		$order = $this->get_order_from_cart( $request );
 		try {
-			if ( $this->is_checkout_initiated( $request ) && $this->is_checkout_validation_enabled() ) {
-				$this->validate_checkout_fields( WC()->customer, $request );
+			if ( $this->is_checkout_initiated( $request ) ) {
+				if ( $this->is_checkout_validation_enabled() ) {
+					$this->validate_checkout_fields( WC()->customer, $request );
+				}
+				/**
+				 * 3rd party code can use this action to perform custom validations.
+				 *
+				 * @since 1.0.31
+				 */
+				do_action( 'wc_ppcp_validate_checkout_fields', $request );
 			}
 
 			$result = $this->client->orders->create( $order );

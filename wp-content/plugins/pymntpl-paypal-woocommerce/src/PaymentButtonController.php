@@ -175,4 +175,8 @@ class PaymentButtonController {
 		$this->minicart_location = $location;
 	}
 
+	public function get_minicart_location() {
+		return $this->minicart_location;
+	}
+
 }

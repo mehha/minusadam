@@ -59,4 +59,8 @@ class Constants {
 
 	const PAYPAL_TRACKING_NUMBER = '_ppcp_tracking_number';
 
+	const PRODUCTION = 'production';
+
+	const SANDBOX = 'sandbox';
+
 }

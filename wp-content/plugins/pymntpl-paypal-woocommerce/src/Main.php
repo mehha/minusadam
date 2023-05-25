@@ -89,6 +89,7 @@ class Main {
 		$this->container->get( PaymentButtonController::class );
 		$this->container->get( Conversion\Controller::class );
 		$this->container->get( WebhookEventReceiver::class );
+		$this->container->get( OrderApplicationUrlHandler::class );
 		$this->container->get( RefundsManager::class );
 		$this->container->get( PayPalQueryParams::class );
 		$this->container->get( ContextHandler::class );
@@ -217,6 +218,12 @@ class Main {
 				$container->get( PaymentHandler::class ),
 				$container->get( Logger::class )
 			);
+		} );
+		$this->container->register( OrderApplicationUrlHandler::class, function ( $container ) {
+			$handler = new OrderApplicationUrlHandler( $container->get( PaymentGateways::class ) );
+			$handler->initialize();
+
+			return $handler;
 		} );
 		$this->container->register( RefundsManager::class, function ( $container ) {
 			return new RefundsManager();

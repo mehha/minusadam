@@ -207,8 +207,10 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 		} else {
 			$result = $this->payment_handler->process_payment( $order );
 			if ( ! $result->success() ) {
-				$result->set_error_message( sprintf( __( 'There was an error processing your payment. Reason: %s', 'pymntpl-paypal-woocommerce' ), $result->get_error_message() ) );
-				wc_add_notice( $result->get_error_message(), 'error' );
+				if ( ! $result->needs_approval() ) {
+					$result->set_error_message( sprintf( __( 'There was an error processing your payment. Reason: %s', 'pymntpl-paypal-woocommerce' ), $result->get_error_message() ) );
+					wc_add_notice( $result->get_error_message(), 'error' );
+				}
 
 				return $result->get_failure_response();
 			} else {

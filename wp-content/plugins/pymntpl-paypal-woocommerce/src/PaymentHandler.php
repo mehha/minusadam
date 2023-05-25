@@ -67,22 +67,26 @@ class PaymentHandler {
 			if ( is_wp_error( $paypal_order ) ) {
 				throw new \Exception( $paypal_order->get_error_message() );
 			}
+			$paypal_order_id = $paypal_order->getId();
 			if ( ! $paypal_order->isComplete() ) {
 				if ( ! $this->use_billing_agreement ) {
 					// update the order, so it has the most recent order data.
-					$response = $this->client->orders->update( $paypal_order->id, $this->get_update_order_params( $order, $paypal_order ) );
+					$response = $this->client->orders->update( $paypal_order->getId(), $this->get_update_order_params( $order, $paypal_order ) );
 					if ( is_wp_error( $response ) ) {
 						throw new \Exception( $response->get_error_message() );
 					}
 				}
+
 				if ( Order::CAPTURE === $paypal_order->intent ) {
 					OrderLock::set_order_lock( $order );
-					$paypal_order = $this->client->orders->capture( $paypal_order->id, $this->get_payment_source( $order ) );
+					$paypal_order = $this->client->orders->capture( $paypal_order->getId(), $this->get_payment_source( $order ) );
 				} else {
-					$paypal_order = $this->client->orders->authorize( $paypal_order->id, $this->get_payment_source( $order ) );
+					$paypal_order = $this->client->orders->authorize( $paypal_order->getId(), $this->get_payment_source( $order ) );
 				}
 			}
 			$result = new PaymentResult( $paypal_order, $order, $this->payment_method );
+			$result->set_paypal_order_id( $paypal_order_id );
+			$result->set_environment( $this->client->getEnvironment() );
 
 			if ( $result->success() ) {
 				$this->payment_complete( $order, $result );

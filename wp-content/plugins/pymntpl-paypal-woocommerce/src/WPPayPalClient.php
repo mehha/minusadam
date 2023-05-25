@@ -69,7 +69,7 @@ class WPPayPalClient extends \PaymentPlugins\PayPalSDK\PayPalClient {
 			], true ) ) );
 
 			// return WP_Error object
-			return new \WP_Error( $e->getCode(), $e->getMessage(), [
+			return new \WP_Error( $e->getErrorCode(), $e->getMessage(), [
 				'status' => \is_numeric( $e->getCode() ) ? $e->getCode() : 200,
 				'error'  => $e->getData()
 			] );

@@ -91,6 +91,20 @@ class PurchaseUnitFactory extends AbstractFactory {
 				$discount->setValue( $this->round( $discount->getValue() + abs( $diff2 ) ) );
 			}
 		}
+		/**
+		 * PayPal's API can't handle quantities less than 1, so remove the items
+		 * from the purchase unit if the quantity is less than 1.
+		 */
+		foreach ( $pu->getItems() as $item ) {
+			/**
+			 * @var \PaymentPlugins\PayPalSDK\Item $item
+			 */
+			if ( $item->getQuantity() < 1 ) {
+				$pu->getAmount()->setBreakdown( null );
+				$pu->setItems( null );
+				break;
+			}
+		}
 	}
 
 	private function generate_invoice_id( $id ) {

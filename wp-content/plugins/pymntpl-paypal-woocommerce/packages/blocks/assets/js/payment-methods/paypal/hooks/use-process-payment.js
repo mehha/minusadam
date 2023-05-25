@@ -3,12 +3,11 @@ import {convertPayPalAddressToCart, extractFullName} from "@ppcp/utils";
 import {isEmpty} from 'lodash';
 import {getSetting} from '@woocommerce/settings';
 import {
-    versionCompare,
     DEFAULT_BILLING_ADDRESS,
     DEFAULT_SHIPPING_ADDRESS
 } from "../../../utils";
 
-const version = getSetting('ppcpGeneralData').blocksVersion
+const isOlderVersion = getSetting('ppcpGeneralData').isOlderVersion
 
 export const useProcessPayment = (
     {
@@ -94,7 +93,7 @@ export const useProcessPayment = (
                             ppcp_paypal_order_id: paymentData.orderId,
                             ppcp_billing_token: paymentData.billingToken
                         },
-                        ...(versionCompare(version, '9.5.0', '<') &&
+                        ...(isOlderVersion &&
                             {
                                 billingData: {
                                     ...DEFAULT_BILLING_ADDRESS,
@@ -110,7 +109,7 @@ export const useProcessPayment = (
                     }
                 }
                 if (needsShipping) {
-                    if (versionCompare(version, '9.5.0', '<')) {
+                    if (isOlderVersion) {
                         response.meta.shippingData = {
                             address: {
                                 ...shippingAddress, ...convertShippingAddress(paymentData.order)

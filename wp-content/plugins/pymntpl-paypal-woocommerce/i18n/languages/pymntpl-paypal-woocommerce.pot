@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Payment Plugins for PayPal WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Payment Plugins for PayPal WooCommerce 1.0.30\n"
+"Project-Id-Version: Payment Plugins for PayPal WooCommerce 1.0.31\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pymntpl-paypal-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-19T21:30:01+00:00\n"
+"POT-Creation-Date: 2023-05-23T20:14:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: pymntpl-paypal-woocommerce\n"
@@ -993,64 +993,64 @@ msgstr ""
 msgid "PayPal does not support currency %. Please use a supported currency."
 msgstr ""
 
-#: src/PaymentHandler.php:91
+#: src/PaymentHandler.php:95
 msgid "Error processing payment. Reason: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:123
+#: src/PaymentHandler.php:127
 msgid "PayPal capture status is pending. Reason: %1$s. Payment will complete when capture.completed webhook is received."
 msgstr ""
 
-#: src/PaymentHandler.php:138
+#: src/PaymentHandler.php:142
 msgid "PayPal order %s created. %s"
 msgstr ""
 
-#: src/PaymentHandler.php:139
+#: src/PaymentHandler.php:143
 msgid "Capture ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:139
+#: src/PaymentHandler.php:143
 msgid "Authorization ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:233
+#: src/PaymentHandler.php:237
 msgid "To process a refund, there must be a transaction id associated with the order."
 msgstr ""
 
-#: src/PaymentHandler.php:236
+#: src/PaymentHandler.php:240
 msgid "This payment has a status of Authorize. Only captured payments can be refunded."
 msgstr ""
 
-#: src/PaymentHandler.php:279
+#: src/PaymentHandler.php:283
 msgid "Error capturing payment. Reason: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:283
+#: src/PaymentHandler.php:287
 msgid "Payment captured in PayPal. Capture ID: %s Amount: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:315
+#: src/PaymentHandler.php:319
 msgid "A valid authorization ID is required to perform a void."
 msgstr ""
 
-#: src/PaymentHandler.php:329
-#: src/PaymentHandler.php:360
+#: src/PaymentHandler.php:333
+#: src/PaymentHandler.php:364
 msgid "PayPal authorization cancelled. Authorization ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:353
+#: src/PaymentHandler.php:357
 msgid "Order cancellation"
 msgstr ""
 
-#: src/Payments/Gateways/AbstractGateway.php:210
+#: src/Payments/Gateways/AbstractGateway.php:211
 msgid "There was an error processing your payment. Reason: %s"
 msgstr ""
 
-#: src/Payments/Gateways/AbstractGateway.php:227
+#: src/Payments/Gateways/AbstractGateway.php:229
 msgid "Error processing refund. Reason: %s"
 msgstr ""
 
-#: src/Payments/Gateways/AbstractGateway.php:243
+#: src/Payments/Gateways/AbstractGateway.php:245
 #: src/WebhookEventReceiver.php:118
 msgid "Order refunded in PayPal. Amount: %1$s. Refund ID: %2$s"
 msgstr ""
@@ -1624,7 +1624,7 @@ msgstr ""
 #: templates/checkout/paypal.php:25
 #: packages/blocks/assets/js/payment-methods/paypal/index.js:150
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:655
+#: packages/blocks/build/blocks-commons.js:654
 msgid "Cancel"
 msgstr ""
 
@@ -1646,19 +1646,19 @@ msgstr ""
 
 #: packages/blocks/assets/js/payment-methods/paypal/hooks/use-validate-checkout.js:16
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:768
+#: packages/blocks/build/blocks-commons.js:767
 msgid "Please click the PayPal button before placing your order."
 msgstr ""
 
 #: packages/blocks/assets/js/payment-methods/paypal/index.js:136
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:641
+#: packages/blocks/build/blocks-commons.js:640
 msgid "Please fill out all required fields and click Place Order."
 msgstr ""
 
 #: packages/blocks/assets/js/payment-methods/paypal/index.js:147
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:652
+#: packages/blocks/build/blocks-commons.js:651
 msgid "Your PayPal payment method is ready to be processed. Please review your order details then click Place Order"
 msgstr ""
 

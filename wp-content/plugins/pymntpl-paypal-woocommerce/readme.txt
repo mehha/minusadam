@@ -4,7 +4,7 @@ Tags: paypal, paylater, venmo, credit cards
 Requires at least: 4.7
 Tested up to: 6.2
 Requires PHP: 7.1
-Stable tag: 1.0.30
+Stable tag: 1.0.31
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ Our documentation has a step-by-step guide on how to connect the plugin to your 
 Payment Plugins is the team behind several of the highest reviewed and installed Payment integrations for WooCommerce.
 
 == Changelog ==
+= 1.0.31 - 5/23/23 =
+* Fixed - Handle case where the order requires additional approval before it can be processed
+* Fixed - Add Billing Agreement and Payer ID to subscriptions created via FunnelKit Upsell
+* Added - action wc_ppcp_validate_checkout_fields so 3rd party code can add custom validations when the PayPal button is clicked on the checkout page
+* Added - Support for the FunnelKit Cart plugin
 = 1.0.30 - 4/19/23 =
 * Fixed - PayLater Elementor widget triggering Elementor editor error under certain conditions
 * Updated - Improved checkout page validation logic

@@ -10,6 +10,7 @@ use PaymentPlugins\WooCommerce\PPCP\Assets\AssetsApi;
 use PaymentPlugins\WooCommerce\PPCP\Cache\CacheHandler;
 use PaymentPlugins\WooCommerce\PPCP\Config;
 use PaymentPlugins\WooCommerce\PPCP\Package\AbstractPackage;
+use PaymentPlugins\WooCommerce\PPCP\PaymentButtonController;
 use PaymentPlugins\WooCommerce\PPCP\PaymentHandler;
 use PaymentPlugins\PPCP\WooFunnels\Upsell\PaymentGateways\PayPal;
 
@@ -28,6 +29,9 @@ class Package extends AbstractPackage {
 			$this->container->get( Checkout\ExpressIntegration::class );
 			$this->container->get( FieldMappings::class );
 		}
+		if ( $this->is_cart_active() ) {
+			$this->container->get( Cart\CartIntegration::class );
+		}
 	}
 
 	public function register_dependencies() {
@@ -36,6 +40,9 @@ class Package extends AbstractPackage {
 		}
 		if ( $this->is_checkout_active() ) {
 			$this->register_checkout();
+		}
+		if ( $this->is_cart_active() ) {
+			$this->register_cart();
 		}
 		$this->container->register( self::ASSETS, function ( $container ) {
 			return new AssetsApi( new Config( $this->version, dirname( __FILE__ ) ) );
@@ -70,8 +77,17 @@ class Package extends AbstractPackage {
 		} );
 	}
 
+	private function register_cart() {
+		$this->container->register( Cart\CartIntegration::class, function ( $container ) {
+			$cart = new Cart\CartIntegration( $container->get( PaymentButtonController::class ) );
+			$cart->initialize();
+
+			return $cart;
+		} );
+	}
+
 	public function is_active() {
-		return $this->is_upsell_active() || $this->is_checkout_active();
+		return $this->is_upsell_active() || $this->is_checkout_active() || $this->is_cart_active();
 	}
 
 	public function is_upsell_active() {
@@ -80,6 +96,10 @@ class Package extends AbstractPackage {
 
 	public function is_checkout_active() {
 		return class_exists( 'WFACP_Core' );
+	}
+
+	public function is_cart_active() {
+		return class_exists( '\FKCart\Plugin' );
 	}
 
 }

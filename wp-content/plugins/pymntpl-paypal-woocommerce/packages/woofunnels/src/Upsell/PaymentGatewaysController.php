@@ -21,6 +21,7 @@ class PaymentGatewaysController {
 		add_filter( 'wfocu_gateways_paypal_support_non_reference_trans', [ $this, 'add_no_reference_txn_support' ] );
 		add_action( 'wfocu_footer_before_print_scripts', [ $this, 'enqueue_scripts' ] );
 		add_filter( 'wfocu_localized_data', [ $this, 'add_script_data' ] );
+		add_action( 'wfocu_subscription_created_for_upsell', [ $this, 'update_subscription_meta' ], 10, 3 );
 	}
 
 	public function get_supported_gateways( $gateways ) {
@@ -84,6 +85,21 @@ class PaymentGatewaysController {
 		$ids[] = 'ppcp';
 
 		return $ids;
+	}
+
+	/**
+	 * @param \WC_Subscription $subscription
+	 * @param string           $product_hash
+	 * @param \WC_Order        $order
+	 *
+	 * @return void
+	 */
+	public function update_subscription_meta( $subscription, $product_hash, $order ) {
+		if ( $this->is_supported_gateway( $subscription->get_payment_method() ) ) {
+			$subscription->update_meta_data( Constants::BILLING_AGREEMENT_ID, $order->get_meta( Constants::BILLING_AGREEMENT_ID ) );
+			$subscription->update_meta_data( Constants::PAYER_ID, $order->get_meta( Constants::PAYER_ID ) );
+			$subscription->save();
+		}
 	}
 
 }
