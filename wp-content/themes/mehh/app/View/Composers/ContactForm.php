@@ -37,6 +37,7 @@ class ContactForm extends Composer
        		$full_name = isset( $_POST['full_name'] ) ? sanitize_text_field( $_POST['full_name'] ) : '';
        		$email     = isset( $_POST['email'] ) ? sanitize_text_field( $_POST['email'] ) : '';
        		$message   = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
+            $time = esc_attr($_POST['time']);
 
        		//Validate the data
        		if ( strlen( $full_name ) === 0 ) {
@@ -54,8 +55,21 @@ class ContactForm extends Composer
 
             // Check for honeypot field
             if ( isset( $_POST['honeypot'] ) && ! empty( $_POST['honeypot'] ) ) {
-                // If honeypot field is not empty, it means a bot filled it, so reject the submission
-                die( 'Form submission failed. Please try again.' );
+                $validation_messages[] = esc_html__( 'Error in contact form (honeypot).', 'sage' );
+            }
+
+            if(!esc_attr(isset($_POST['form-type'])) || esc_attr($_POST['form-type']) != 'contact-form'){
+                $validation_messages[] = esc_html__( 'Error in contact form.', 'sage' );
+            }
+
+//            Check time
+            if (!is_numeric($time) || ($time + 4 > time())) {
+                $validation_messages[] = esc_html__( 'You have not filled out all the information required (time).', 'sage' );
+            }
+
+            // REFERER ERROR
+            if (!check_ajax_referer('contact_nonce')) {
+                $validation_messages[] = esc_html__( 'check_ajax_referer error in contact form.', 'sage' );
             }
 
        		//Send an email to the WordPress administrator if there are no validation errors

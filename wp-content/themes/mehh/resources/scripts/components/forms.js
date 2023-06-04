@@ -25,7 +25,7 @@ export function handleForms() {
         reCaptcha = true;
       }
 
-      if (!form.checkValidity() || !reCaptcha || timeElapsed < 2000) {
+      if (!form.checkValidity() || !reCaptcha || timeElapsed < 6000) {
         event.preventDefault()
         event.stopPropagation()
       }

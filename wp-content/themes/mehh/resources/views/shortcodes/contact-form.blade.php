@@ -28,6 +28,8 @@
     <textarea id="message" class="form-control" name="message" rows="3" required></textarea>
   </div>
 
+  <input type="hidden" name="form-type" value="contact-form"/>
+
   @if(get_field('captcha_key', 'options'))
     <div class="col-12 recaptcha-container mb-4">
       <div id="g-recaptcha" class="g-recaptcha" data-sitekey="{{get_field('captcha_key', 'options')}}"></div>
@@ -55,5 +57,7 @@
   </div>
 
   <input class="btn btn-primary mt-4" type="submit" id="contact-form-submit" value="{{__('Submit', 'sage')}}">
+  <input type="hidden" name="time" value="{{time()}}"/>
+  @php(wp_nonce_field('contact_nonce'))
 
 </form>
