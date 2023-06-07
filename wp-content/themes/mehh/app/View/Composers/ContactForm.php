@@ -55,21 +55,21 @@ class ContactForm extends Composer
 
             // Check for honeypot field
             if ( isset( $_POST['honeypot'] ) && ! empty( $_POST['honeypot'] ) ) {
-                $validation_messages[] = esc_html__( 'Error in contact form (honeypot).', 'sage' );
+                return false;
             }
 
             if(!esc_attr(isset($_POST['form-type'])) || esc_attr($_POST['form-type']) != 'contact-form'){
-                $validation_messages[] = esc_html__( 'Error in contact form.', 'sage' );
+                return false;
             }
 
 //            Check time
             if (!is_numeric($time) || ($time + 4 > time())) {
-                $validation_messages[] = esc_html__( 'You have not filled out all the information required (time).', 'sage' );
+                return __('You have not filled out all the information required', 'sage');
             }
 
             // REFERER ERROR
             if (!check_ajax_referer('contact_nonce')) {
-                $validation_messages[] = esc_html__( 'check_ajax_referer error in contact form.', 'sage' );
+                return false;
             }
 
        		//Send an email to the WordPress administrator if there are no validation errors
