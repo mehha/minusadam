@@ -296,6 +296,7 @@ add_action('after_setup_theme', function () {
 add_action('admin_menu', function () {
     remove_menu_page( 'edit-comments.php' );
     remove_menu_page( 'edit.php?post_type=acf-field-group' );
+    remove_menu_page( 'limit-login-attempts' );
     remove_menu_page( 'sb-instagram-feed' );
 }, 1000);
 
