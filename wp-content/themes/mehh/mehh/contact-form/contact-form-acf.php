@@ -49,7 +49,7 @@ if( function_exists('acf_add_options_page') ):
             ),
             array (
                 'key' => 'field_5be3a3asassdc4cf',
-                'label' => 'Captcha key',
+                'label' => 'Captcha sitekey',
                 'name' => 'captcha_key',
                 'type' => 'text',
                 'instructions' => '',

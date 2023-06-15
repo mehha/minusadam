@@ -72,6 +72,33 @@ class ContactForm extends Composer
                 $validation_messages[] = esc_html__( 'check_ajax_referer error in contact form.', 'sage' );
             }
 
+            // VERIFY CAPTCHA
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $fields = array(
+                'secret' => '6LcBqCokAAAAABmLojSAO8UDJKZI76xxZ123FNkE',
+                'response' => $_POST['g-recaptcha-response'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            );
+
+            $fields_string = '';
+            foreach ($fields as $key => $value) {
+                $fields_string .= $key . '=' . $value . '&';
+            }
+            $fields_string = rtrim($fields_string, '&');
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, count($fields));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+            $result = json_decode(curl_exec($ch));
+
+            if (!$result->success) {
+                return __('Captcha not clicked', 'sage');
+            }
+
        		//Send an email to the WordPress administrator if there are no validation errors
        		if ( empty( $validation_messages ) ) {
 
