@@ -25,7 +25,7 @@ class PluginValidation {
 			?>
             <div class="notice notice-error woocommerce-message">
                 <h4>
-					<?php echo $msg ?>
+					<?php echo esc_html( $msg ) ?>
                 </h4>
             </div>
 			<?php

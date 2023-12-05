@@ -37,6 +37,7 @@ class CartItem extends AbstractCart {
 	 */
 	public function handle_post_request( \WP_REST_Request $request ) {
 		wc_maybe_define_constant( 'WOOCOMMERCE_CART', true );
+		$this->populate_post_data( $request );
 		list( $product_id, $qty, $variation_id, $variation ) = $cart_params = $this->get_add_to_cart_params( $request );
 		// remove item before adding, ensuring qty's are accurate
 		WC()->cart->remove_cart_item( WC()->cart->generate_cart_id( $product_id, $variation_id, $variation ) );

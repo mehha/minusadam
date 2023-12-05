@@ -35,7 +35,14 @@ class WC_Payments_Admin_Settings {
 	 */
 	public function __construct( WC_Payment_Gateway_WCPay $gateway ) {
 		$this->gateway = $gateway;
+	}
 
+	/**
+	 * Initializes this class's WP hooks.
+	 *
+	 * @return void
+	 */
+	public function init_hooks() {
 		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'display_test_mode_notice' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( WCPAY_PLUGIN_FILE ), [ $this, 'add_plugin_links' ] );
 	}
@@ -49,7 +56,13 @@ class WC_Payments_Admin_Settings {
 			<div id="wcpay-test-mode-notice" class="notice notice-warning">
 				<p>
 					<b><?php esc_html_e( 'Test mode active: ', 'woocommerce-payments' ); ?></b>
-					<?php esc_html_e( "All transactions are simulated. Customers can't make real purchases through WooCommerce Payments.", 'woocommerce-payments' ); ?>
+					<?php
+						echo sprintf(
+							/* translators: %s: WooPayments */
+							esc_html__( "All transactions are simulated. Customers can't make real purchases through %s.", 'woocommerce-payments' ),
+							'WooPayments'
+						);
+					?>
 				</p>
 			</div>
 			<?php
@@ -72,7 +85,7 @@ class WC_Payments_Admin_Settings {
 	}
 
 	/**
-	 * Whether the current page is the WooCommerce Payments settings page.
+	 * Whether the current page is the WooPayments settings page.
 	 *
 	 * @return bool
 	 */

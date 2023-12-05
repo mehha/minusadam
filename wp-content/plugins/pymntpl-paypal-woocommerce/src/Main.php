@@ -95,6 +95,7 @@ class Main {
 		$this->container->get( ContextHandler::class );
 		$this->container->get( AjaxFrontendHandler::class );
 		$this->container->get( ShortCodesController::class );
+		$this->container->get( Messages::class );
 
 		if ( is_admin() ) {
 			$this->container->get( SettingsApi::class );
@@ -342,6 +343,20 @@ class Main {
 		$this->container->register( \PaymentPlugins\PPCP\Elementor\Package::class, function ( $container ) {
 			return new \PaymentPlugins\PPCP\Elementor\Package( $container, $this->version );
 		} );
+		$this->container->register( \PaymentPlugins\PPCP\WooCommerceExtraProductOptions\Package::class, function ( $container ) {
+			return new \PaymentPlugins\PPCP\WooCommerceExtraProductOptions\Package( $container, $this->version );
+		} );
+		$this->container->register( \PaymentPlugins\PPCP\WooCommerceShipStation\Package::class, function ( $container ) {
+			return new \PaymentPlugins\PPCP\WooCommerceShipStation\Package( $container, $this->version );
+		} );
+		$this->container->register( \PaymentPlugins\PPCP\WooCommerceGermanized\Package::class, function ( $container ) {
+			return new \PaymentPlugins\PPCP\WooCommerceGermanized\Package( $container, $this->version );
+		} );
+		$this->container->register( \PaymentPlugins\PPCP\WooCommerceProductAddons\Package::class, function ( $container ) {
+			return new \PaymentPlugins\PPCP\WooCommerceProductAddons\Package( $container, $this->version );
+		} );
+
+
 		$this->container->register( PackageRegistry::class, function ( $container ) {
 			return new PackageRegistry( $container );
 		} );
@@ -353,7 +368,11 @@ class Main {
 				\PaymentPlugins\PPCP\Stripe\Package::class,
 				\PaymentPlugins\PPCP\WooFunnels\Package::class,
 				\PaymentPlugins\PPCP\MondialRelay\Package::class,
-				\PaymentPlugins\PPCP\Elementor\Package::class
+				\PaymentPlugins\PPCP\Elementor\Package::class,
+				\PaymentPlugins\PPCP\WooCommerceExtraProductOptions\Package::class,
+				\PaymentPlugins\PPCP\WooCommerceShipStation\Package::class,
+				\PaymentPlugins\PPCP\WooCommerceGermanized\Package::class,
+				\PaymentPlugins\PPCP\WooCommerceProductAddons\Package::class
 			] );
 
 			return $package_controller;
@@ -366,7 +385,7 @@ class Main {
 	}
 
 	public function load_text_domain() {
-		load_plugin_textdomain( 'pymntpl-paypal-woocommerce', false, $this->path . 'i18n/languages' );
+		load_plugin_textdomain( 'pymntpl-paypal-woocommerce', false, dirname( $this->plugin_name ) . '/i18n/languages' );
 	}
 
 	private function declare_features() {
@@ -374,6 +393,7 @@ class Main {
 			add_action( 'before_woocommerce_init', function () {
 				try {
 					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $this->file, true );
+					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', $this->file, true );
 				} catch ( \Exception $e ) {
 				}
 			} );

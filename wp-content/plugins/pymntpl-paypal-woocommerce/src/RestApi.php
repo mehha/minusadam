@@ -21,9 +21,10 @@ class RestApi {
 	}
 
 	public function process_admin_request() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['path'] ) ) {
 			global $wp;
-			$wp->set_query_var( 'rest_route', sanitize_text_field( $_GET['path'] ) );
+			$wp->set_query_var( 'rest_route', sanitize_text_field( wp_unslash( $_GET['path'] ) ) );
 			rest_api_loaded();
 		}
 	}

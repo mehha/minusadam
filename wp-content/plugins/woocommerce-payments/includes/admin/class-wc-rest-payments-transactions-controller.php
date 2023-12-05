@@ -118,7 +118,7 @@ class WC_REST_Payments_Transactions_Controller extends WC_Payments_REST_Controll
 
 		$wcpay_request = List_Transactions::from_rest_request( $request );
 
-		return $wcpay_request->handle_rest_request( 'wcpay_list_transactions_request' );
+		return $wcpay_request->handle_rest_request();
 	}
 
 	/**
@@ -235,6 +235,8 @@ class WC_REST_Payments_Transactions_Controller extends WC_Payments_REST_Controll
 				'date_between'             => $date_between_filter,
 				'type_is'                  => $request->get_param( 'type_is' ),
 				'type_is_not'              => $request->get_param( 'type_is_not' ),
+				'source_device_is'         => $request->get_param( 'source_device_is' ),
+				'source_device_is_not'     => $request->get_param( 'source_device_is_not' ),
 				'store_currency_is'        => $request->get_param( 'store_currency_is' ),
 				'customer_currency_is'     => $request->get_param( 'customer_currency_is' ),
 				'customer_currency_is_not' => $request->get_param( 'customer_currency_is_not' ),

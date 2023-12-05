@@ -3,6 +3,7 @@
 namespace PaymentPlugins\WooCommerce\PPCP;
 
 use PaymentPlugins\PayPalSDK\Order;
+use PaymentPlugins\PayPalSDK\OrderApplicationContext;
 use PaymentPlugins\PayPalSDK\PayPalClient;
 use PaymentPlugins\WooCommerce\PPCP\Cache\CacheInterface;
 use PaymentPlugins\WooCommerce\PPCP\Payments\PaymentGateways;
@@ -29,8 +30,9 @@ class AjaxFrontendHandler {
 
 	public function process_update_order_review( $data ) {
 		parse_str( $data, $posted_data );
-		$payment_method = isset( $_POST['payment_method'] ) ? $_POST['payment_method'] : null;
-		$id             = isset( $posted_data['ppcp_paypal_order_id'] ) ? $posted_data['ppcp_paypal_order_id'] : null;
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		$payment_method = isset( $_POST['payment_method'] ) ? wc_clean( wp_unslash( $_POST['payment_method'] ) ) : null;
+		$id             = isset( $posted_data['ppcp_paypal_order_id'] ) ? wc_clean( wp_unslash( $posted_data['ppcp_paypal_order_id'] ) ) : null;
 		$data           = $this->get_update_data( $id, $payment_method );
 		foreach ( $data as $key => $value ) {
 			$_POST[ $key ] = $value;
@@ -38,8 +40,9 @@ class AjaxFrontendHandler {
 	}
 
 	public function add_checkout_data( $data ) {
-		$payment_method = isset( $data['payment_method'] ) ? $data['payment_method'] : null;
-		$id             = isset( $_POST['ppcp_paypal_order_id'] ) ? $_POST['ppcp_paypal_order_id'] : null;
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		$payment_method = isset( $data['payment_method'] ) ? wc_clean( wp_unslash( $data['payment_method'] ) ) : null;
+		$id             = isset( $_POST['ppcp_paypal_order_id'] ) ? wc_clean( wp_unslash( $_POST['ppcp_paypal_order_id'] ) ) : null;
 		if ( \is_array( $data ) ) {
 			return array_merge( $data, $this->get_update_data( $id, $payment_method, true ) );
 		}
@@ -49,7 +52,7 @@ class AjaxFrontendHandler {
 
 	private function get_update_data( $id, $payment_method, $processing_checkout = false ) {
 		$data = [];
-		if ( $this->can_update_data() && $id && $payment_method && $this->payment_gateways->has_gateway( $payment_method ) ) {
+		if ( $this->can_update_data( $id, $payment_method ) ) {
 			// add the address info in case it's missing.
 			$paypal_order = $this->retrieve_order( $id );
 			if ( ! is_wp_error( $paypal_order ) ) {
@@ -101,7 +104,6 @@ class AjaxFrontendHandler {
 					}
 				}
 			}
-			$this->cache->delete( Constants::CAN_UPDATE_ORDER_DATA );
 			$data = apply_filters( 'wc_ppcp_update_checkout_data', $data, $paypal_order, $processing_checkout );
 		}
 
@@ -125,8 +127,14 @@ class AjaxFrontendHandler {
 		return $order;
 	}
 
-	private function can_update_data() {
-		return $this->cache->get( Constants::CAN_UPDATE_ORDER_DATA ) === true;
+	private function can_update_data( $paypal_order_id, $payment_method_id = null ) {
+		// The PayPal order ID needs to exist in order for data to be extracted from it.
+		if ( $paypal_order_id && $payment_method_id && $this->payment_gateways->has_gateway( $payment_method_id ) ) {
+			// Only PayPal orders that have the GET_FROM_FILE
+			return $this->cache->get( Constants::SHIPPING_PREFERENCE ) === OrderApplicationContext::GET_FROM_FILE;
+		}
+
+		return false;
 	}
 
 }

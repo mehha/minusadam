@@ -4,8 +4,6 @@ namespace PaymentPlugins\PPCP\WooFunnels\Upsell\Rest\Routes;
 
 use PaymentPlugins\PayPalSDK\OrderApplicationContext;
 use PaymentPlugins\PayPalSDK\PayPalClient;
-use PaymentPlugins\WooCommerce\PPCP\Constants;
-use PaymentPlugins\WooCommerce\PPCP\Factories\CoreFactories;
 use PaymentPlugins\WooCommerce\PPCP\Logger;
 use PaymentPlugins\WooCommerce\PPCP\Rest\Routes\AbstractRoute;
 
@@ -42,7 +40,7 @@ class UpsellOrderRoute extends AbstractRoute {
 		$current_offer      = WFOCU_Core()->data->get( 'current_offer' );
 		$current_offer_meta = WFOCU_Core()->offers->get_offer_meta( $current_offer );
 		WFOCU_Core()->data->set( '_offer_result', true );
-		$posted_data = WFOCU_Core()->process_offer->parse_posted_data( $_POST );
+		WFOCU_Core()->process_offer->parse_posted_data( $request->get_json_params() );
 		WFOCU_Core()->process_offer->execute( $current_offer_meta );
 		// set the package so it can be referenced later
 		$order         = WFOCU_Core()->data->get_parent_order();

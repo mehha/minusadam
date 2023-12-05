@@ -26,6 +26,7 @@ class Utils {
 	}
 
 	public static function is_order_review() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		return ! empty( $_GET['_ppcp_order_review'] );
 	}
 
@@ -151,6 +152,29 @@ class Utils {
 		}
 
 		return null;
+	}
+
+	public static function get_queried_product_id() {
+		global $product;
+		if ( ! $product || \is_string( $product ) ) {
+			$object = get_queried_object();
+			if ( $object && $object instanceof \WP_Post ) {
+				if ( $object->post_type === 'page' ) {
+					$content = $object->post_content;
+					if ( $content && \has_shortcode( $content, 'product_page' ) ) {
+						// find the product ID
+						preg_match( '/(?<=\[product_page)\s+id=\"?([\d]+)\"?/', $content, $matches );
+						if ( $matches ) {
+							return $matches[1];
+						}
+					}
+				}
+
+				return $object->ID;
+			}
+		}
+
+		return $product;
 	}
 
 }

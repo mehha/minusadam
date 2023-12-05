@@ -86,9 +86,10 @@ class WooFunnelsIntegration implements PluginIntegrationType {
 	}
 
 	public function handle_return_request() {
-		$order_id  = isset( $_GET['order_id'] ) ? absint( $_GET['order_id'] ) : null;
-		$order_key = isset( $_GET['order_key'] ) ? $_GET['order_key'] : null;
-		$token     = isset( $_GET['token'] ) ? $_GET['token'] : null;
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		$order_id  = isset( $_GET['order_id'] ) ? absint( wc_clean( wp_unslash( $_GET['order_id'] ) ) ) : null;
+		$order_key = isset( $_GET['order_key'] ) ? wc_clean( wp_unslash( $_GET['order_key'] ) ) : null;
+		$token     = isset( $_GET['token'] ) ? wc_clean( wp_unslash( $_GET['token'] ) ) : null;
 		if ( $order_id && $order_key && $token ) {
 			$order = wc_get_order( $order_id );
 			if ( $order->key_is_valid( $order_key ) ) {
@@ -109,7 +110,7 @@ class WooFunnelsIntegration implements PluginIntegrationType {
 					}
 					$order->delete_meta_data( '_upsell_package' );
 					$order->save();
-					wp_redirect( $data['redirect_url'] );
+					wp_safe_redirect( $data['redirect_url'] );
 					exit;
 				}
 			}

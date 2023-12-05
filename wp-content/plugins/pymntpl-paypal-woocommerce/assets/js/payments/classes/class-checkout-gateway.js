@@ -18,6 +18,7 @@ class CheckoutGateway extends BaseGateway {
     constructor(cart, props) {
         super(props);
         this.cart = cart;
+        this.shippingAddressChanged = false;
         this.initialize();
     }
 
@@ -31,6 +32,7 @@ class CheckoutGateway extends BaseGateway {
         $(document.body).on(`checkout_place_order_${this.id}`, this.validateCheckoutFields.bind(this));
         $(document.body).on('click', '.wc-ppcp-cancel__payment', this.cancelPayment.bind(this));
         $(document.body).on('change', '[name="terms"]', this.handleTermsClick.bind(this));
+        $(document.body).on('change', '[type="checkbox"]', this.handleCheckboxChange.bind(this));
         window.addEventListener('hashchange', this.handleHashError.bind(this));
         this.handleOrderPay();
     }
@@ -97,7 +99,6 @@ class CheckoutGateway extends BaseGateway {
                     }
                 }
                 this.setVariable('readyToCheckout', true);
-                //this.readyToCheckout = true;
                 this.hidePaymentButton();
                 if (this.needsShipping() && $('[name="ship_to_different_address"]')?.length) {
                     const bool = !isEqual(this.getCartAddress('billing'), this.getCartAddress('shipping'))
@@ -111,11 +112,18 @@ class CheckoutGateway extends BaseGateway {
 
     createOrder(data, actions) {
         if (this.isPage('checkout')) {
-            const formData = {...this.convertFormToData(), ppcp_payment_type: this.getPaymentType()};
+            const formData = {...this.convertFormToData(), context: this.getPaymentType()};
             return this.cart.createOrder(formData);
         } else {
             return this.cart.doOrderPay(this.id);
         }
+    }
+
+    createBillingAgreement(data, actions, extraData = null) {
+        if (this.isPage('checkout')) {
+            extraData = {...this.convertFormToData(), context: this.getPaymentType()};
+        }
+        return super.createBillingAgreement(data, actions, extraData);
     }
 
     createButton() {
@@ -186,7 +194,10 @@ class CheckoutGateway extends BaseGateway {
     }
 
     submitError(error) {
-        submitErrorMessage(error, this.getForm(), 'checkout');
+        if (error?.code === 'validation_errors') {
+            return submitErrorMessage(error.data.messages, this.getForm(), 'checkout');
+        }
+        return submitErrorMessage(error, this.getForm(), 'checkout');
     }
 
     getShippingPrefix() {
@@ -226,16 +237,39 @@ class CheckoutGateway extends BaseGateway {
     }
 
     handleBillingToken(token, data) {
+        this.update_required = this.isCheckoutReviewRequired(token);
         super.handleBillingToken(token);
-        if (this.needsShipping()) {
-            this.update_required = true;
-        }
         this.maybeShipToDifferentAddress();
         this.processCheckout(data);
     }
 
+    isCheckoutReviewRequired(token) {
+        if (this.needsShipping() && !this.isPayPalAddressDisabled()) {
+            // if the address changed, then an update is required
+            if (!isEmpty(token.shipping_address)) {
+                if (!isEqual(
+                    {
+                        city: token.shipping_address.city,
+                        state: token.shipping_address.state,
+                        postal_code: token.shipping_address.postal_code,
+                        country_code: token.shipping_address.country_code
+                    },
+                    {
+                        city: getFieldValue('shipping_city'),
+                        state: getFieldValue('shipping_state'),
+                        postal_code: getFieldValue('shipping_postcode'),
+                        country_code: getFieldValue('shipping_country')
+                    }
+                )) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     populateCheckoutFields(response) {
-        if (!isEmpty(response?.payer?.address)) {
+        if (!this.isAddressPopulationDisabled() && !isEmpty(response?.payer?.address)) {
             let address = convertPayPalAddressToCart(response.payer.address);
             if (isValidAddress(address, ['first_name', 'last_name']) && !isEqual(this.getCartAddress('billing'), address)) {
                 this.populateBillingAddressFields(address);
@@ -257,7 +291,7 @@ class CheckoutGateway extends BaseGateway {
             }
         }
         // update the shipping address if one is included
-        if (this.needsShipping()) {
+        if (!this.isAddressPopulationDisabled() && this.needsShipping()) {
             if (!isEmpty(response?.purchase_units?.[0]?.shipping?.address)) {
                 let address = convertPayPalAddressToCart(response.purchase_units[0].shipping.address);
                 let name = '';
@@ -330,6 +364,10 @@ class CheckoutGateway extends BaseGateway {
         }
     }
 
+    handleCheckboxChange() {
+        setTimeout(this.handleTermsClick.bind(this), 250);
+    }
+
     onInit(source, data, actions) {
         super.onInit(source, data, actions);
         this.handleTermsClick();
@@ -352,6 +390,17 @@ class CheckoutGateway extends BaseGateway {
                     el.prop('checked', true);
                 }
             }
+        }
+        if (data.shipping_address) {
+            this.shippingAddressChanged = !isEqual(
+                convertPayPalAddressToCart(data.shipping_address, true),
+                {
+                    city: getFieldValue('shipping_city'),
+                    state: getFieldValue('shipping_state'),
+                    postcode: getFieldValue('shipping_postcode'),
+                    country: getFieldValue('shipping_country')
+                }
+            );
         }
         this.cart.trigger('checkout_on_shipping_change', data, shippingMethod, this);
         return super.onShippingChange(data, actions, this.convertFormToData());
@@ -418,6 +467,18 @@ class CheckoutGateway extends BaseGateway {
 
     getPaymentType() {
         return 'checkout';
+    }
+
+    isPayPalAddressDisabled() {
+        return this.settings.paypalAddressDisabled;
+    }
+
+    isValidationEnabled() {
+        return this.settings.checkoutValidationEnabled;
+    }
+
+    isAddressPopulationDisabled() {
+        return this.isPayPalAddressDisabled() || !this.shippingAddressChanged;
     }
 }
 

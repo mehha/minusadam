@@ -5,3 +5,9 @@
 /wp-content/cache/
 config-local.php
 config-staging.php
+/assets/
+cookie.txt
+.dockerignore
+.env
+docker-compose.yml
+Dockerfile

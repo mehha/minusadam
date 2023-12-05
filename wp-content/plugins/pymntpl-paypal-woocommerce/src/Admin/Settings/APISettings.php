@@ -235,6 +235,7 @@ class APISettings extends AbstractSettings {
 	}
 
 	public function admin_options() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( ! empty( $_GET['_connect'] ) && $_GET['_connect'] === 'success' ) {
 			\WC_Admin_Settings::add_message( __( 'Your PayPal account has been connected.', 'pymntpl-paypal-woocommerce' ) );
 		}
@@ -275,7 +276,6 @@ class APISettings extends AbstractSettings {
 		$client       = Main::container()->get( PayPalClient::class );
 		$sellar_nonce = Utils::random_string();
 		$tracking_id  = Utils::random_string( 32 );
-		$result       = [];
 		$args         = [
 			'environment' => $environment,
 			'request'     => [
@@ -298,7 +298,8 @@ class APISettings extends AbstractSettings {
 								'first_party_details' => [
 									'features'     => [
 										'PAYMENT',
-										'REFUND'
+										'REFUND',
+										'TRACKING_SHIPMENT_READWRITE'
 									],
 									'seller_nonce' => $sellar_nonce
 								],
@@ -360,6 +361,11 @@ class APISettings extends AbstractSettings {
 		);
 		if ( ! $this->is_connected( $data['environment'] ) ) {
 			$connect_url = $this->generate_connect_link( $data['environment'] );
+			if ( is_wp_error( $connect_url ) ) {
+				$data['disabled']    = true;
+				$connect_url         = '';
+				$data['description'] = __( 'The PayPal connect feature is not available at this time. Please manually enter your client ID and secret key.', 'pymntpl-paypal-woocommerce' );
+			}
 		}
 		ob_start();
 		include $this->assets->config->get_path( 'src/Admin/Views/html-paypal-button.php' );
@@ -387,7 +393,7 @@ class APISettings extends AbstractSettings {
 		?>
         <tr valign="top">
             <th scope="row" class="titledesc"><label
-                        for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // WPCS: XSS ok. ?></label>
+                        for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
             </th>
             <td class="forminp">
                 <fieldset>
@@ -396,9 +402,9 @@ class APISettings extends AbstractSettings {
                     </legend>
                     <label for="<?php echo esc_attr( $field_key ); ?>">
                         <button <?php disabled( $data['disabled'], true ); ?> target="_blank" class="<?php echo esc_attr( $data['class'] ); ?> wc-ppcp__button" id="<?php echo esc_attr( $field_key ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>"
-                                                                              value="<?php echo $field_key; ?>" <?php echo $this->get_custom_attribute_html( $data ); // WPCS: XSS ok. ?>><?php echo wp_kses_post( $data['label'] ); ?></button>
+                                                                              value="<?php echo esc_attr($field_key); ?>" <?php echo $this->get_custom_attribute_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo wp_kses_post( $data['label'] ); ?></button>
                     </label><br/>
-					<?php echo $this->get_description_html( $data ); // WPCS: XSS ok. ?>
+					<?php echo $this->get_description_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 </fieldset>
             </td>
         </tr>

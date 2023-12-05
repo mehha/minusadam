@@ -56,16 +56,6 @@ class WooPay_Order_Status_Sync {
 	}
 
 	/**
-	 * Return the webhook delivery URL.
-	 *
-	 * @return string
-	 */
-	private static function get_webhook_delivery_url() {
-		$woopay_host = defined( 'PLATFORM_CHECKOUT_HOST' ) ? PLATFORM_CHECKOUT_HOST : 'https://pay.woo.com';
-		return $woopay_host . '/wp-json/platform-checkout/v1/merchant-notification';
-	}
-
-	/**
 	 * Maybe create the WooPay webhook under certain conditions.
 	 */
 	public function maybe_create_woopay_order_webhook() {
@@ -110,11 +100,11 @@ class WooPay_Order_Status_Sync {
 	 */
 	private function register_webhook() {
 		$webhook = new \WC_Webhook();
-		$webhook->set_name( $this->get_webhook_name() );
+		$webhook->set_name( self::get_webhook_name() );
 		$webhook->set_user_id( get_current_user_id() );
 		$webhook->set_topic( 'order.status_changed' );
 		$webhook->set_secret( wp_generate_password( 50, false ) );
-		$webhook->set_delivery_url( $this->get_webhook_delivery_url() );
+		$webhook->set_delivery_url( WooPay_Utilities::get_woopay_rest_url( 'merchant-notification' ) );
 		$webhook->set_status( 'active' );
 		$webhook->save();
 
@@ -145,6 +135,12 @@ class WooPay_Order_Status_Sync {
 	 * @param integer $id          ID of the webhook.
 	 */
 	public static function create_payload( $payload, $resource, $resource_id, $id ) {
+		$webhook = wc_get_webhook( $id );
+		if ( 0 !== strpos( $webhook->get_delivery_url(), WooPay_Utilities::get_woopay_rest_url( 'merchant-notification' ) ) ) {
+			// This is not a WooPay webhook, so we don't need to modify the payload.
+			return $payload;
+		}
+
 		return [
 			'blog_id'      => \Jetpack_Options::get_option( 'id' ),
 			'order_id'     => $resource_id,

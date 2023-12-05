@@ -214,6 +214,9 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 
 				return $result->get_failure_response();
 			} else {
+				if ( $result->needs_approval() ) {
+					return $result->get_approval_response();
+				}
 				WC()->cart->empty_cart();
 
 				return $result->get_success_response();
@@ -263,6 +266,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 	protected function render_html_data( $context = 'checkout' ) {
 		$data = wp_json_encode( apply_filters( 'wc_ppcp_get_payment_method_data', [], $context, $this ) );
 		$data = function_exists( 'wc_esc_json' ) ? wc_esc_json( $data ) : _wp_specialchars( $data, ENT_QUOTES, 'UTF-8', true );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		printf( '<input type="hidden" class="wc-ppcp-payment-method-data" data-payment-method-data="%s"/>', $data );
 	}
 
@@ -281,6 +285,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 	}
 
 	public function get_billing_token_from_request() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		return isset( $_POST["{$this->id}_billing_token"] ) ? sanitize_text_field( wp_unslash( $_POST["{$this->id}_billing_token"] ) ) : null;
 	}
 
@@ -291,6 +296,10 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 		}
 
 		return parent::get_transaction_url( $order );
+	}
+
+	public function is_place_order_button() {
+		return true;
 	}
 
 }

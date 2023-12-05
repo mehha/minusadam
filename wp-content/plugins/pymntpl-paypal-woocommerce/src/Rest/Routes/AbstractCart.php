@@ -88,6 +88,7 @@ class AbstractCart extends AbstractRoute {
 		/**
 		 * Some 3rd party plugins depend on the $_POST array being populated
 		 */
+		//phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$_POST = array_merge( $_POST, $request->get_json_params() );
 	}
 

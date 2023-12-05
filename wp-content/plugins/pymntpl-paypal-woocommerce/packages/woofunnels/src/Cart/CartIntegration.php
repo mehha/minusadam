@@ -31,6 +31,14 @@ class CartIntegration {
 
 	private function render() {
 		$this->btn_ctrl->render_minicart_buttons();
+		?>
+        <style>
+            .wc-ppcp-minicart-ppcp {
+                display: block;
+                margin-top: 10px;
+            }
+        </style>
+		<?php
 	}
 
 }

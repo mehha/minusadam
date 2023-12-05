@@ -9,6 +9,7 @@ use PaymentPlugins\WooCommerce\PPCP\Assets\AssetsApi;
 use PaymentPlugins\WooCommerce\PPCP\ContextHandler;
 use PaymentPlugins\WooCommerce\PPCP\Main;
 use PaymentPlugins\WooCommerce\PPCP\ProductSettings;
+use PaymentPlugins\WooCommerce\PPCP\Utils;
 
 class PayLaterMessageSettings extends AbstractSettings {
 
@@ -716,9 +717,10 @@ class PayLaterMessageSettings extends AbstractSettings {
 				$currency = $order->get_currency();
 			}
 		}
-		if ( wc_string_to_bool( $this->get_option( "{$context}_enabled" ) ) ) {
-			$data = [
-				'enabled'          => \in_array( $currency, $this->supported_currencies ),
+		if ( $context_handler->is_product() ) {
+			$settings = new ProductSettings( Utils::get_queried_product_id() );
+			$data     = [
+				'enabled'          => \in_array( $currency, $this->supported_currencies ) && wc_string_to_bool( $settings->get_option( 'paylater_message_enabled' ) ),
 				'checkout'         => $this->get_context_options( 'checkout' ),
 				'cart'             => $this->get_context_options( 'cart' ),
 				'product'          => $this->get_context_options( 'product' ),
@@ -726,6 +728,18 @@ class PayLaterMessageSettings extends AbstractSettings {
 				'checkoutLocation' => $this->get_option( 'checkout_location' ),
 				'cartLocation'     => $this->get_option( 'cart_location' )
 			];
+		} else {
+			if ( wc_string_to_bool( $this->get_option( "{$context}_enabled" ) ) ) {
+				$data = [
+					'enabled'          => \in_array( $currency, $this->supported_currencies ),
+					'checkout'         => $this->get_context_options( 'checkout' ),
+					'cart'             => $this->get_context_options( 'cart' ),
+					'product'          => $this->get_context_options( 'product' ),
+					'shop'             => $this->get_context_options( 'shop' ),
+					'checkoutLocation' => $this->get_option( 'checkout_location' ),
+					'cartLocation'     => $this->get_option( 'cart_location' )
+				];
+			}
 		}
 		if ( wc_string_to_bool( $this->get_option( 'minicart_enabled' ) ) ) {
 			$data['minicart']         = $this->get_context_options( 'minicart' );
@@ -815,7 +829,7 @@ class PayLaterMessageSettings extends AbstractSettings {
 		$payment_methods = WC()->payment_gateways()->payment_gateways();
 		$payment_method  = isset( $payment_methods['ppcp'] ) ? $payment_methods['ppcp'] : null;
 		if ( $product && $payment_method ) {
-			$setting = new ProductSettings( $product, $payment_method );
+			$setting = new ProductSettings( $product );
 			if ( wc_string_to_bool( $setting->get_option( 'paylater_message_enabled' ) ) ) {
 				?>
                 <div class="wc-ppcp-paylater-msg__container" style="display: none">
@@ -881,8 +895,7 @@ class PayLaterMessageSettings extends AbstractSettings {
 	}
 
 	protected function is_product_section_enabled() {
-		global $product;
-		$settings = new ProductSettings( $product );
+		$settings = new ProductSettings( Utils::get_queried_product_id() );
 
 		return wc_string_to_bool( $settings->get_option( 'paylater_message_enabled' ) );
 	}
@@ -911,11 +924,13 @@ class PayLaterMessageSettings extends AbstractSettings {
 		if ( $product && $this->is_shop_section_enabled() ) {
 			$location = $this->get_option( 'shop_location' );
 			$content  = '<div class="wc-ppcp-paylater-msg-shop-container" id="wc-ppcp-paylater-msg-' . $product->get_id() . '" style="display: none"></div>';
-			if ( doing_action( 'woocommerce_after_shop_loop_item_title' ) && $location === 'below_price' ) {
+			//phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+            if ( doing_action( 'woocommerce_after_shop_loop_item_title' ) && $location === 'below_price' ) {
 				echo $content;
 			} elseif ( doing_action( 'woocommerce_after_shop_loop_item' ) && $location === 'below_add_to_cart' ) {
 				echo $content;
 			}
+			//phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 

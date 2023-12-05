@@ -41,6 +41,12 @@ class PaymentResult {
 	 * @param string                                    $error_message
 	 */
 	public function __construct( $paypal_order, \WC_Order $order, AbstractGateway $payment_method = null, $error_message = '' ) {
+		$this->order          = $order;
+		$this->payment_method = $payment_method;
+		$this->initialize( $paypal_order, $error_message );
+	}
+
+	public function initialize( $paypal_order, $error_message = '' ) {
 		if ( is_wp_error( $paypal_order ) ) {
 			$this->success       = false;
 			$this->error_message = $paypal_order->get_error_message();
@@ -49,12 +55,12 @@ class PaymentResult {
 			$this->success       = false;
 			$this->error_message = $error_message;
 		} else {
-			$this->success         = true;
-			$this->paypal_order    = $paypal_order;
-			$this->paypal_order_id = $paypal_order->getId();
+			$this->success      = true;
+			$this->paypal_order = $paypal_order;
+			if ( $paypal_order ) {
+				$this->paypal_order_id = $paypal_order->getId();
+			}
 		}
-		$this->order          = $order;
-		$this->payment_method = $payment_method;
 	}
 
 	public function success() {
@@ -123,6 +129,15 @@ class PaymentResult {
 		return apply_filters( 'wc_ppcp_process_payment_error_response', $data, $this->order, $this->payment_method );
 	}
 
+	public function get_approval_response() {
+		$data = [
+			'result'   => 'success',
+			'redirect' => $this->get_approval_url()
+		];
+
+		return apply_filters( 'wc_ppcp_process_payment_approval_response', $data, $this->order, $this->payment_method );
+	}
+
 	public function get_success_response() {
 		return apply_filters( 'wc_ppcp_process_payment_success_response', [
 			'result'   => 'success',
@@ -136,9 +151,29 @@ class PaymentResult {
 	 * @return void
 	 */
 	public function needs_approval() {
+		if ( $this->success && $this->paypal_order && $this->paypal_order->isCreated() ) {
+			return true;
+		}
+
 		return ! $this->success()
 		       && ( $this->error_code === 'PAYER_ACTION_REQUIRED'
 		            || $this->error_code === 'ORDER_NOT_APPROVED' );
+	}
+
+	/**
+	 * @since 1.0.34
+	 * @return bool
+	 */
+	public function already_captured() {
+		return ! $this->success() && $this->error_code === 'ORDER_ALREADY_CAPTURED';
+	}
+
+	/**
+	 * @since 1.0.34
+	 * @return bool
+	 */
+	public function already_authorized() {
+		return ! $this->success() && $this->error_code === 'ORDER_ALREADY_AUTHORIZED';
 	}
 
 	private function get_approval_url() {

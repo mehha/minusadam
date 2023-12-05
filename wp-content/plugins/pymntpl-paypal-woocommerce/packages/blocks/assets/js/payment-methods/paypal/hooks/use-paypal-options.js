@@ -28,27 +28,12 @@ export const usePayPalOptions = (
         currentShippingData.current = shippingData;
         currentBilling.current = billing;
         currentData.current = {...currentData.current, onClick, onClose};
-        const {needsShipping, shippingAddress} = shippingData;
-        const billingAddress = billing.billingData;
-        // if address fields not valid, disable the buttons
-        if (!isAddressValid(billingAddress) || (needsShipping && !isAddressValid(shippingAddress))) {
-            disableButtons()
-        } else {
-            enableButtons();
-        }
     });
 
     const disableButtons = useCallback(() => {
         Object.keys(currentData.current.actions).forEach(key => {
             currentData.current.actions[key].disable();
             currentData.current.buttonState = false;
-        });
-    }, []);
-
-    const enableButtons = useCallback(() => {
-        Object.keys(currentData.current.actions).forEach(key => {
-            currentData.current.actions[key].enable();
-            currentData.current.buttonState = true;
         });
     }, []);
 
@@ -79,11 +64,7 @@ export const usePayPalOptions = (
         }
         options.onInit = (data, actions) => {
             if (!isExpress) {
-                currentData.current.buttonState = true;
                 currentData.current.actions[fundingSource] = actions;
-                if (!isAddressValid(billingAddress) || (needsShipping && !isAddressValid(shippingAddress))) {
-                    disableButtons();
-                }
             }
         }
         if (isCheckoutFlow()) {
@@ -135,21 +116,25 @@ export const usePayPalOptions = (
 
     const onApprove = useCallback(async (data, actions) => {
         const paymentData = {
+            order: {},
             orderId: data.orderID,
             billingToken: data.billingToken || '',
+            billingTokenData: null
         }
         if (data.billingToken) {
             try {
                 paymentData.billingTokenData = await handleBillingToken(data.billingToken);
+                setPaymentData(paymentData);
             } catch (error) {
                 setError(error);
             }
+        } else {
+            actions.order.get().then(response => {
+                setPaymentData({...paymentData, order: response});
+            }).catch(error => {
+                setError(error);
+            });
         }
-        actions.order.get().then(response => {
-            setPaymentData({...paymentData, order: response});
-        }).catch(error => {
-            setError(error);
-        });
     }, [setError, handleBillingToken]);
 
     const onShippingChange = useCallback((data, actions) => {
@@ -185,16 +170,49 @@ export const usePayPalOptions = (
         if (error?.message?.indexOf('Window is closed') > -1) {
             return;
         }
-        setError(error);
+        if (error?.code === 'validation_errors') {
+            setError(error.data.errors[0]);
+        } else {
+            setError(error);
+        }
     }, [setError]);
 
     const createOrder = useCallback(async (data, actions) => {
-        const {needsShipping} = currentShippingData.current;
+        const {needsShipping, shippingAddress} = currentShippingData.current;
+        const {billingAddress, email} = currentBilling.current;
         try {
             const response = await apiFetch({
                 method: 'POST',
                 url: getRestPath('wc-ppcp/v1/cart/order'),
-                data: {payment_method: 'ppcp', address_provided: !isExpress && needsShipping}
+                data: {
+                    payment_method: 'ppcp',
+                    address_provided: !isExpress && needsShipping,
+                    checkout_blocks: true,
+                    context: !isExpress ? 'checkout' : null,
+                    ...(needsShipping ? {
+                        shipping_first_name: shippingAddress.first_name,
+                        shipping_last_name: shippingAddress.last_name,
+                        shipping_address_1: shippingAddress.address_1,
+                        shipping_address_2: shippingAddress.address_2,
+                        shipping_postcode: shippingAddress.postcode,
+                        shipping_city: shippingAddress.city,
+                        shipping_state: shippingAddress.state,
+                        shipping_country: shippingAddress.country
+                    } : null),
+                    ...{
+                        billing_first_name: billingAddress.first_name,
+                        billing_last_name: billingAddress.last_name,
+                        billing_address_1: billingAddress.address_1,
+                        billing_address_2: billingAddress.address_2,
+                        billing_postcode: billingAddress.postcode,
+                        billing_city: billingAddress.city,
+                        billing_state: billingAddress.state,
+                        billing_country: billingAddress.country,
+                        billing_email: billingAddress.email,
+                        billing_phone: billingAddress.phone,
+                        billing_company: billingAddress.company
+                    }
+                }
             });
             return response;
         } catch (error) {
@@ -208,12 +226,13 @@ export const usePayPalOptions = (
             method: 'POST',
             url: getRestPath('/wc-ppcp/v1/billing-agreement/token'),
             data: {
-                context: 'checkout'
+                context: !isExpress ? 'checkout' : null,
+                payment_method: 'ppcp',
             }
         }).then(token => {
             return token;
         }).catch(error => setError(error));
-    }, [setError]);
+    }, [isExpress, setError]);
 
     const handleBillingToken = useCallback(async (billingToken) => {
         try {

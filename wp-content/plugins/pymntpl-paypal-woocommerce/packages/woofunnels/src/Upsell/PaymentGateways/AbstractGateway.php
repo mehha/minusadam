@@ -164,8 +164,9 @@ class AbstractGateway extends \WFOCU_Gateway {
 	 * @return bool|void
 	 */
 	public function process_refund_offer( $order ) {
-		$transaction_id = isset( $_POST['txn_id'] ) ? $_POST['txn_id'] : false;
-		$amount         = isset( $_POST['amt'] ) ? round( $_POST['amt'], 2 ) : false;
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		$transaction_id = isset( $_POST['txn_id'] ) ? wc_clean( wp_unslash( $_POST['txn_id'] ) ) : false;
+		$amount         = isset( $_POST['amt'] ) ? round( wc_clean( wp_unslash( $_POST['amt'] ) ), 2 ) : false;
 		if ( ! $transaction_id || ! $amount ) {
 			return;
 		}

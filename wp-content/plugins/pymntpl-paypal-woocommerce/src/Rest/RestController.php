@@ -68,7 +68,9 @@ class RestController {
 				$this->container->get( Logger::class ) ),
 			'billing-agreement/token' => new BillingAgreementToken(
 				$this->container->get( PayPalClient::class ),
-				$this->container->get( Logger::class )
+				$this->container->get( Logger::class ),
+				$this->container->get( AdvancedSettings::class ),
+				$this->container->get( CoreFactories::class )
 			),
 			'billing-agreement'       => new BillingAgreementRoute( $this->container->get( PayPalClient::class ) ),
 			'webhook'                 => new WebhookRoute(
@@ -126,9 +128,10 @@ class RestController {
 	}
 
 	public function handle_ajax_request() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['path'] ) ) {
 			global $wp;
-			$wp->set_query_var( 'rest_route', sanitize_text_field( $_GET['path'] ) );
+			$wp->set_query_var( 'rest_route', sanitize_text_field( wp_unslash( $_GET['path'] ) ) );
 			\rest_api_loaded();
 		}
 	}

@@ -2,9 +2,9 @@
 Contributors: mr.clayton
 Tags: paypal, paylater, venmo, credit cards
 Requires at least: 4.7
-Tested up to: 6.2
+Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 1.0.31
+Stable tag: 1.0.40
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,45 @@ Our documentation has a step-by-step guide on how to connect the plugin to your 
 Payment Plugins is the team behind several of the highest reviewed and installed Payment integrations for WooCommerce.
 
 == Changelog ==
+= 1.0.40 - 11/23/23 =
+* Added - German translation file added. [Support thread](https://wordpress.org/support/topic/german-translation-168/)
+* Updated - Performance improvements on checkout page when processing a payment.
+* Fixed - Prevent duplicate Pay Later message on checkout page.
+* Fixed - Unsupported regular expression for older versions of Safari.
+* Fixed - FunnelKit upsell order issue introduced in recent version of FunnelKit
+= 1.0.39 - 10/3/23 =
+* Added - When validate required fields option is enabled, validate Germanized checkboxes.
+* Added - Ensure PayPal button is disabled on product page if variation isn't selected.
+* Added - Support for [WooCommerce Product Add-ons](https://woocommerce.com/products/product-add-ons/) plugin. Product addons are now accounted for on the product page when using PayPal as an express payment option.
+= 1.0.38 - 9/17/23 =
+* Added - New feature where the Place Order button on checkout page can be used for PayPal rather than the PayPal buttons. This is a good option
+for those that want the best page load speed or for German based merchants that have requirements around button location and text.
+* Added - Support for automatic tracking updates in PayPal via WooCommerce - ShipStation Integration plugin. When Shipstation
+updates the tracking number on the order, the PayPal plugin will send that info to PayPal.
+* Fixed - Add company field to list of validated fields when Validate Checkout Fields option is enabled
+* Updated - Improved support for formal locales like de_DE_formal etc
+* Updated - If address validation is enabled in Advanced Settings page, display all required fields that failed validation on checkout page rather than the first failed validation.
+= 1.0.37 - 8/30/23 =
+* Added - Advanced Settings option where merchants can enable/disable the PayPal change shipping address option. If enabled, the customer cannot change
+the shipping address in the PayPal popup.
+* Updated - Improved logic for rendering express buttons on product pages rendered by the product_page shortcode
+= 1.0.36 - 8/4/23 =
+* Added - Filter wc_ppcp_checkout_field_validation_label so the validation text can be modified
+* Added - Filter wc_ppcp_is_product_section_disabled so display of payment buttons on product page can be conditionally controlled.
+* Added - Filter wc_ppcp_get_shipping_carriers
+= 1.0.35 - 7/20/23 =
+* Added - Scope TRACKING_SHIPMENT_READWRITE to connection parameters so tracking API can be used. Merchants will need to re-connect via the API settings page if they want this feature.
+* Added - Support for WooCommerce Extra Product Options plugin. Extra product options are now accounted for on the product page when using PayPal as an express payment option.
+= 1.0.34 - 6/22/23 =
+* Fixed - Show correct error message when PayPal account doesn't have reference transactions enabled.
+* Updated - Handle scenario where payment already captured.
+= 1.0.33 - 6/6/23 =
+* Updated - Germanized plugin no longer triggers change event when terms checkbox is changed. Had to adjust code to account for this scenario
+and any other plugins that alter the standard WooCommerce checkbox behavior.
+= 1.0.32 - 6/2/23 =
+* Updated - Added margin-top to PayPal button in FunnelKit Cart
+* Fixed - Null exception when processing a subscription with a free trial.
+* Fixed - Don't update customer address info on cart page if PayPal button clicked to ensure the shipping option remains the same
 = 1.0.31 - 5/23/23 =
 * Fixed - Handle case where the order requires additional approval before it can be processed
 * Fixed - Add Billing Agreement and Payer ID to subscriptions created via FunnelKit Upsell

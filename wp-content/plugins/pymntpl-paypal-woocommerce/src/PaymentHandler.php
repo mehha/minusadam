@@ -6,11 +6,13 @@ namespace PaymentPlugins\WooCommerce\PPCP;
 
 use PaymentPlugins\PayPalSDK\Capture;
 use PaymentPlugins\PayPalSDK\Order;
+use PaymentPlugins\PayPalSDK\OrderApplicationContext;
 use PaymentPlugins\PayPalSDK\PatchRequest;
 use PaymentPlugins\PayPalSDK\PurchaseUnit;
 use PaymentPlugins\PayPalSDK\ShippingAddress;
 use PaymentPlugins\WooCommerce\PPCP\Admin\Settings\AdvancedSettings;
 use PaymentPlugins\WooCommerce\PPCP\Cache\CacheInterface;
+use PaymentPlugins\WooCommerce\PPCP\Exception\RetryException;
 use PaymentPlugins\WooCommerce\PPCP\Factories\CoreFactories;
 use PaymentPlugins\WooCommerce\PPCP\Payments\Gateways\AbstractGateway;
 use PaymentPlugins\WooCommerce\PPCP\Utilities\NumberUtil;
@@ -52,52 +54,76 @@ class PaymentHandler {
 	public function process_payment( \WC_Order $order ) {
 		$this->set_processing( 'payment' );
 		$this->factories->initialize( $order );
+		$paypal_order = null;
+		$needs_update = false;
 		try {
 			if ( $this->use_billing_agreement ) {
-				$paypal_order = $this->client->orderMode( $order )->orders->create(
-					apply_filters( 'wc_ppcp_create_order_params', $this->get_create_order_params( $order ), $order, $this )
-				);
+				$paypal_order = $this->client->orderMode( $order )->orders->create( $this->get_create_order_params( $order ) );
 			} else {
 				$paypal_order_id = $this->get_paypal_order_id_from_request();
 				if ( ! $paypal_order_id ) {
 					$paypal_order_id = $this->cache->get( Constants::PAYPAL_ORDER_ID );
+					// If there isn't an existing PayPal order ID or this payment method is using the Place Order
+					// button, create a PayPal order.
+					if ( ! $paypal_order_id || $this->payment_method->is_place_order_button() ) {
+						$paypal_order = $this->client->orderMode( $order )->orders->create( $this->get_create_order_params( $order ) );
+					}
 				}
-				$paypal_order = $this->client->orderMode( $order )->orders->retrieve( $paypal_order_id );
+				if ( ! $paypal_order ) {
+					$needs_update = true;
+					$paypal_order = $this->client->orderMode( $order )->orders->retrieve( $paypal_order_id );
+					$this->validate_paypal_order( $paypal_order, $order );
+				}
 			}
 			if ( is_wp_error( $paypal_order ) ) {
 				throw new \Exception( $paypal_order->get_error_message() );
 			}
 			$paypal_order_id = $paypal_order->getId();
 			if ( ! $paypal_order->isComplete() ) {
-				if ( ! $this->use_billing_agreement ) {
+				if ( ! $this->use_billing_agreement && $needs_update ) {
 					// update the order, so it has the most recent order data.
 					$response = $this->client->orders->update( $paypal_order->getId(), $this->get_update_order_params( $order, $paypal_order ) );
 					if ( is_wp_error( $response ) ) {
 						throw new \Exception( $response->get_error_message() );
 					}
 				}
-
-				if ( Order::CAPTURE === $paypal_order->intent ) {
-					OrderLock::set_order_lock( $order );
-					$paypal_order = $this->client->orders->capture( $paypal_order->getId(), $this->get_payment_source( $order ) );
-				} else {
-					$paypal_order = $this->client->orders->authorize( $paypal_order->getId(), $this->get_payment_source( $order ) );
+				// only try to process payment if this order is the result of a billing agreement (subscription, pre-order etc)
+				// or the order has been approved.
+				if ( ( $this->use_billing_agreement && $paypal_order->isCreated() ) || $paypal_order->getStatus() === Order::APPROVED ) {
+					if ( Order::CAPTURE === $paypal_order->intent ) {
+						OrderLock::set_order_lock( $order );
+						$paypal_order = $this->client->orders->capture( $paypal_order->getId(), $this->get_payment_source( $order ) );
+					} else {
+						$paypal_order = $this->client->orders->authorize( $paypal_order->getId(), $this->get_payment_source( $order ) );
+					}
 				}
 			}
 			$result = new PaymentResult( $paypal_order, $order, $this->payment_method );
 			$result->set_paypal_order_id( $paypal_order_id );
 			$result->set_environment( $this->client->getEnvironment() );
 
-			if ( $result->success() ) {
-				$this->payment_complete( $order, $result );
-			} else {
-				$order->update_status( 'failed' );
-				$order->add_order_note( sprintf( __( 'Error processing payment. Reason: %s', 'pymntpl-paypal-woocommerce' ),
-					$result->get_error_message() ) );
+			// If the order doesn't need approval, then we can proceed with processing it.
+			if ( ! $result->needs_approval() ) {
+				if ( $result->success() ) {
+					$this->payment_complete( $order, $result );
+				} else {
+					if ( $result->already_captured() || $result->already_authorized() ) {
+						$paypal_order = $this->client->orders->retrieve( $paypal_order_id );
+						$result->initialize( $paypal_order );
+						$this->payment_complete( $order, $result );
+					} else {
+						$order->update_status( 'failed' );
+						$order->add_order_note( sprintf( __( 'Error processing payment. Reason: %s', 'pymntpl-paypal-woocommerce' ),
+							$result->get_error_message() ) );
+					}
+				}
 			}
+
 			OrderLock::release_order_lock( $order );
 
 			return $result;
+		} catch ( RetryException $e ) {
+			return $this->process_payment( $order );
 		} catch ( \Exception $e ) {
 			return new PaymentResult( false, $order, $this->payment_method, $e->getMessage() );
 		}
@@ -119,7 +145,7 @@ class PaymentHandler {
 	 */
 	public function payment_complete( \WC_Order $order, PaymentResult $result ) {
 		if ( $result->is_captured() ) {
-			PayPalFee::add_fee_to_order( $order, $result->get_capture()->seller_receivable_breakdown, false );
+			PayPalFee::add_fee_to_order( $order, $result->get_capture()->getSellerReceivableBreakdown(), false );
 			$capture = $result->get_capture();
 			if ( $capture->getStatus() === Capture::PENDING ) {
 				$order->set_transaction_id( $capture->getId() );
@@ -158,7 +184,10 @@ class PaymentHandler {
 	}
 
 	public function get_paypal_order_id_from_request() {
-		return isset( $_POST[ $this->payment_method->id . '_paypal_order_id' ] ) ? sanitize_text_field( $_POST[ $this->payment_method->id . '_paypal_order_id' ] ) : null;
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		return isset( $_POST[ $this->payment_method->id . '_paypal_order_id' ] )
+			? sanitize_text_field( wp_unslash( $_POST[ $this->payment_method->id . '_paypal_order_id' ] ) )
+			: null;
 	}
 
 	/**
@@ -179,7 +208,7 @@ class PaymentHandler {
 			unset( $purchase_unit->items );
 		}
 
-		return $paypal_order;
+		return apply_filters( 'wc_ppcp_create_order_params', $paypal_order, $order, $this );
 	}
 
 	protected function get_update_order_params( \WC_Order $order, Order $paypal_order ) {
@@ -223,12 +252,6 @@ class PaymentHandler {
 	 * @param string    $reason
 	 */
 	public function process_refund( \WC_Order $order, $amount, $reason = '' ) {
-		// make sure the order can be refunded.
-		$paypal_order = $this->client->orderMode( $order )->orders->retrieve( $order->get_meta( Constants::ORDER_ID ) );
-		if ( is_wp_error( $paypal_order ) ) {
-			return $paypal_order;
-		}
-
 		$id = $order->get_transaction_id();
 		if ( empty( $id ) ) {
 			// transaction is empty so check if there is an authorization ID.
@@ -390,6 +413,38 @@ class PaymentHandler {
 		$token->initialize_from_payer( $order->payer );
 
 		return $token;
+	}
+
+	public function get_cache() {
+		return $this->cache;
+	}
+
+	/**
+	 * @param \WP_Error|Order $paypal_order
+	 * @param \WC_Order       $order
+	 *
+	 * @return void
+	 */
+	private function validate_paypal_order( $paypal_order, $order ) {
+		// Only validate orders with a CREATED status because that means they haven't been approved yet.
+		// An order with an APPROVED status means the customer clicked complete payment in the PayPal popup
+		if ( $paypal_order instanceof Order && $paypal_order->isCreated() ) {
+			$this->factories->initialize( $order );
+			$new_order           = $this->factories->order->from_order( $this->payment_method->get_option( 'intent' ) );
+			$shipping_preference = $this->cache->get( Constants::SHIPPING_PREFERENCE );
+			/**
+			 * If the shipping preference is GET_FROM_FILE then we know the PayPal order was created using the PayPal buttons.
+			 * But if the PayPal order created from the WC_Order has shipping preference SET_PROVIDED_ADDRESS, then a new order
+			 * should be created. This ensures the shipping address can't be edited on the PayPal redirect based payment page.
+			 */
+			if ( $shipping_preference === OrderApplicationContext::GET_FROM_FILE ) {
+				if ( $new_order->getApplicationContext()->getShippingPreference() === OrderApplicationContext::SET_PROVIDED_ADDRESS ) {
+					$this->cache->delete( Constants::PAYPAL_ORDER_ID );
+					$this->cache->delete( Constants::SHIPPING_PREFERENCE );
+					throw new RetryException( 'Create new order' );
+				}
+			}
+		}
 	}
 
 }

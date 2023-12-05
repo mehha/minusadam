@@ -7,7 +7,7 @@ use PaymentPlugins\PayPalSDK\V1\Tracker;
 class ShippingUtil {
 
 	public static function get_carriers() {
-		return [
+		return apply_filters( 'wc_ppcp_get_shipping_carriers', [
 			Tracker::ARAMEX               => __( 'Aramex', 'pymntpl-paypal-woocommerce' ),
 			Tracker::B_TWO_C_EUROPE       => __( 'B2C Europe', 'pymntpl-paypal-woocommerce' ),
 			Tracker::CJ_LOGISTICS         => __( 'CJ Logistics', 'pymntpl-paypal-woocommerce' ),
@@ -45,7 +45,7 @@ class ShippingUtil {
 			Tracker::UPS                  => __( 'UPS', 'pymntpl-paypal-woocommerce' ),
 			Tracker::UPS_MI               => __( 'UPS Mail Innovations', 'pymntpl-paypal-woocommerce' ),
 			Tracker::WEBINTERPRET         => __( 'WebInterpret', 'pymntpl-paypal-woocommerce' )
-		];
+		] );
 	}
 
 	public static function get_shipping_statuses() {

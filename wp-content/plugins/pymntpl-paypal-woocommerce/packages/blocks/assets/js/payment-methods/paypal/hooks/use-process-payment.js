@@ -36,7 +36,7 @@ export const useProcessPayment = (
         }
     }, [paymentData, onSubmit]);
 
-    const convertBillingData = useCallback((order) => {
+    const convertOrderDataToAddress = useCallback((order) => {
         const {needsShipping} = currentShippingData.current;
         let address = {};
         if (!isEmpty(order?.payer?.address?.address_line_1)) {
@@ -53,6 +53,33 @@ export const useProcessPayment = (
         }
         if (order?.payer?.phone?.phone_number?.national_number) {
             address = {...address, phone: order.payer.phone.phone_number.national_number};
+        }
+        return address;
+    }, []);
+
+    const convertBillingTokenToAddress = useCallback((data, type = 'billing') => {
+        let address = {};
+        const {needsShipping} = currentShippingData.current;
+        if (type === 'billing') {
+            if (data?.payer_info?.billing_address) {
+                address = convertPayPalAddressToCart(data.payer_info.billing_address);
+            }
+        } else {
+            if (needsShipping && data.shipping_address) {
+                address = convertPayPalAddressToCart(data.shipping_address);
+            }
+        }
+        if (data?.payer_info?.first_name) {
+            address = {...address, first_name: data.payer_info.first_name};
+        }
+        if (data?.payer_info?.last_name) {
+            address = {...address, last_name: data.payer_info.last_name};
+        }
+        if (data?.payer_info?.email) {
+            address = {...address, email: data.payer_info.email};
+        }
+        if (data?.payer_info?.phone) {
+            address = {...address, phone: data.payer_info.phone};
         }
         return address;
     }, []);
@@ -86,25 +113,27 @@ export const useProcessPayment = (
                 const billingData = currentBillingData.current;
                 const shippingData = currentShippingData.current;
                 const {shippingAddress, needsShipping} = shippingData;
-                const paymentData = currentPaymentData.current;
+                const {orderId, billingToken, billingTokenData = null, order = {}} = currentPaymentData.current;
                 const response = {
                     meta: {
                         paymentMethodData: {
-                            ppcp_paypal_order_id: paymentData.orderId,
-                            ppcp_billing_token: paymentData.billingToken
+                            ppcp_paypal_order_id: orderId,
+                            ppcp_billing_token: billingToken
                         },
                         ...(isOlderVersion &&
                             {
                                 billingData: {
                                     ...DEFAULT_BILLING_ADDRESS,
                                     ...billingData,
-                                    ...convertBillingData(paymentData.order)
+                                    ...convertOrderDataToAddress(order),
+                                    ...(billingTokenData && convertBillingTokenToAddress(billingTokenData))
                                 }
                             }),
                         billingAddress: {
                             ...DEFAULT_BILLING_ADDRESS,
                             ...billingData,
-                            ...convertBillingData(paymentData.order)
+                            ...convertOrderDataToAddress(order),
+                            ...(billingTokenData && convertBillingTokenToAddress(billingTokenData))
                         }
                     }
                 }
@@ -112,14 +141,17 @@ export const useProcessPayment = (
                     if (isOlderVersion) {
                         response.meta.shippingData = {
                             address: {
-                                ...shippingAddress, ...convertShippingAddress(paymentData.order)
+                                ...shippingAddress,
+                                ...convertShippingAddress(order),
+                                ...(billingTokenData && convertBillingTokenToAddress(billingTokenData, 'shipping'))
                             }
                         }
                     } else {
                         response.meta.shippingAddress = {
                             ...DEFAULT_SHIPPING_ADDRESS,
                             ...shippingAddress,
-                            ...convertShippingAddress(paymentData.order)
+                            ...convertShippingAddress(order),
+                            ...(billingTokenData && convertBillingTokenToAddress(billingTokenData, 'shipping'))
                         }
                     }
                 }

@@ -180,7 +180,7 @@ class ProductPayLaterMessageWidget extends AbstractWidget {
 
             if (!window.paypal) {
                 var script = document.createElement('script');
-                script.src = '<?php echo $this->get_paypal_editor_script()?>';
+                script.src = '<?php echo esc_url( $this->get_paypal_editor_script() )?>';
                 script.onload = renderMessage;
                 document.body.appendChild(script);
             } else {

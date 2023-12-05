@@ -52,7 +52,8 @@ class SettingsApi {
 		$screen    = get_current_screen();
 		$screen_id = $screen ? $screen->id : '';
 		if ( strpos( $screen_id, 'wc-settings' ) !== false ) {
-			$section = isset( $_REQUEST['section'] ) ? wc_clean( $_REQUEST['section'] ) : '';
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$section = isset( $_REQUEST['section'] ) ? wc_clean( wp_unslash( $_REQUEST['section'] ) ) : '';
 			if ( strpos( $section, 'ppcp' ) !== false ) {
 				$handles = apply_filters( 'wc_ppcp_admin_script_dependencies', [], $section );
 				$this->assets->enqueue_script( 'wc-ppcp-admin-commons', 'build/js/admin-commons.js', $handles );

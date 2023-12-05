@@ -97,18 +97,18 @@ class Order {
                                                     <input id="ppcp_tracking" type="text" value="{{data.tracker.tracking_number}}"/>
                                                 </div>
                                                 <!--<div class="wc-ppcp-action-item">
-                                                    <label><?php /*esc_html_e( 'Tracking Type', 'pymntpl-paypal-woocommerce' ) */?></label>
+                                                    <label><?php /*esc_html_e( 'Tracking Type', 'pymntpl-paypal-woocommerce' ) */ ?></label>
                                                     <select id="ppcp_tracking_type" class="wc-enhanced-select">
-														<?php /*foreach ( ShippingUtil::get_tracking_types() as $key => $value ): */?>
-                                                            <option value="<?php /*echo $key */?>" <#if(data.tracker.tracking_number_type === "<?php /*echo $key */?>"){#>selected<#}#>><?php /*echo $value */?></option>
-														<?php /*endforeach; */?>
+														<?php /*foreach ( ShippingUtil::get_tracking_types() as $key => $value ): */ ?>
+                                                            <option value="<?php /*echo $key */ ?>" <#if(data.tracker.tracking_number_type === "<?php /*echo $key */ ?>"){#>selected<#}#>><?php /*echo $value */ ?></option>
+														<?php /*endforeach; */ ?>
                                                     </select>
                                                 </div>-->
                                                 <div class="wc-ppcp-action-item">
                                                     <label><?php esc_html_e( 'Shipping Status', 'pymntpl-paypal-woocommerce' ) ?></label>
                                                     <select id="ppcp_shipping_status" class="wc-enhanced-select" style="width: 100%">
 														<?php foreach ( ShippingUtil::get_shipping_statuses() as $key => $status ): ?>
-                                                            <option value="<?php echo $key ?>" <#if(data.tracker.status === "<?php echo $key ?>" ){#>selected<#}#>><?php echo $status ?></option>
+                                                            <option value="<?php echo esc_attr( $key ) ?>" <#if(data.tracker.status === "<?php echo esc_attr( $key ) ?>" ){#>selected<#}#>><?php echo esc_html( $status ) ?></option>
 														<?php endforeach; ?>
                                                     </select>
                                                 </div>
@@ -116,12 +116,12 @@ class Order {
                                                     <label><?php esc_html_e( 'Carrier', 'pymntpl-paypal-woocommerce' ) ?></label>
                                                     <select id="ppcp_carrier" class="wc-enhanced-select" style="width: 100%">
 														<?php foreach ( ShippingUtil::get_carriers() as $key => $value ): ?>
-                                                            <option value="<?php echo $key ?>" <#if(data.tracker.carrier === "<?php echo $key ?>" ){#>selected<#}#>><?php echo $value ?></option>
+                                                            <option value="<?php echo esc_attr( $key ) ?>" <#if(data.tracker.carrier === "<?php echo esc_attr( $key ) ?>" ){#>selected<#}#>><?php echo esc_html( $value ) ?></option>
 														<?php endforeach; ?>
                                                     </select>
                                                 </div>
-                                                <div class="wc-ppcp-action-item carrier-other" data-show-if="<?php echo Tracker::OTHER ?>"
-                                                <#if(data.tracker.carrier !== "<?php echo Tracker::OTHER ?>"){#>style="display: none"<#}#>>
+                                                <div class="wc-ppcp-action-item carrier-other" data-show-if="<?php echo esc_html( Tracker::OTHER ) ?>"
+                                                <#if(data.tracker.carrier !== "<?php echo esc_html( Tracker::OTHER ) ?>"){#>style="display: none"<#}#>>
                                                 <label><?php esc_html_e( 'Carrier Name', 'pymntpl-paypal-woocommerce' ) ?></label>
                                                 <input id="ppcp_carrier_other" type="text" value="{{data.tracker.carrier_name_other}}"/>
                                             </div>
@@ -170,12 +170,12 @@ class Order {
                 <tr class="wc-ppcp-fee-row">
                     <td class="label wc-ppcp-fee"><?php esc_html_e( 'PayPal Fee', 'pymntpl-paypal-woocommerce' ) ?>:</td>
                     <td width="1%"></td>
-                    <td><?php echo $fee ?></td>
+                    <td><?php echo $fee //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?></td>
                 </tr>
                 <tr class="wc-ppcp-net-row">
                     <td class="label wc-ppcp-net"><?php esc_html_e( 'Net payout', 'pymntpl-paypal-woocommerce' ) ?></td>
                     <td width="1%"></td>
-                    <td class="total"><?php echo $net ?></td>
+                    <td class="total"><?php echo $net //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?></td>
                 </tr>
 				<?php
 			}

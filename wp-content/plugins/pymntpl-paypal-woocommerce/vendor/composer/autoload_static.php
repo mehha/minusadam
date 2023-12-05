@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a
+class ComposerStaticInitd6aa985415b057d85bc5a1a99863499e
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -12,6 +12,10 @@ class ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a
             'PaymentPlugins\\WooCommerce\\PPCP\\' => 32,
             'PaymentPlugins\\PayPalSDK\\' => 25,
             'PaymentPlugins\\PPCP\\WooFunnels\\' => 31,
+            'PaymentPlugins\\PPCP\\WooCommerceShipStation\\' => 43,
+            'PaymentPlugins\\PPCP\\WooCommerceProductAddons\\' => 45,
+            'PaymentPlugins\\PPCP\\WooCommerceGermanized\\' => 42,
+            'PaymentPlugins\\PPCP\\WooCommerceExtraProductOptions\\' => 51,
             'PaymentPlugins\\PPCP\\Stripe\\' => 27,
             'PaymentPlugins\\PPCP\\MondialRelay\\' => 33,
             'PaymentPlugins\\PPCP\\Elementor\\' => 30,
@@ -32,6 +36,22 @@ class ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a
         'PaymentPlugins\\PPCP\\WooFunnels\\' => 
         array (
             0 => __DIR__ . '/../..' . '/packages/woofunnels/src',
+        ),
+        'PaymentPlugins\\PPCP\\WooCommerceShipStation\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/woocommerce-shipstation/src',
+        ),
+        'PaymentPlugins\\PPCP\\WooCommerceProductAddons\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/woocommerce-product-addons/src',
+        ),
+        'PaymentPlugins\\PPCP\\WooCommerceGermanized\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/woocommerce-germanized/src',
+        ),
+        'PaymentPlugins\\PPCP\\WooCommerceExtraProductOptions\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/woocommerce-tm-extra-product-options/src',
         ),
         'PaymentPlugins\\PPCP\\Stripe\\' => 
         array (
@@ -136,9 +156,9 @@ class ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7fc0ca36c89b9d3c8255d80d1fff115a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd6aa985415b057d85bc5a1a99863499e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd6aa985415b057d85bc5a1a99863499e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd6aa985415b057d85bc5a1a99863499e::$classMap;
 
         }, null, ClassLoader::class);
     }

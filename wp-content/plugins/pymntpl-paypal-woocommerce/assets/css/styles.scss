@@ -1,5 +1,9 @@
 .wc-ppcp-hide-button {
   display: none !important;
+
+  &#place_order {
+    display: none !important;
+  }
 }
 
 .wc-ppcp-cart-payments__container {
@@ -58,6 +62,12 @@
         opacity: 0.4;
       }
     }
+  }
+}
+
+.wc-ppcp-product-button-container {
+  &.disabled {
+    opacity: 0.4;
   }
 }
 

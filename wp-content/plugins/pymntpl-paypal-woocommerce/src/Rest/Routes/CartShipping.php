@@ -53,13 +53,13 @@ class CartShipping extends AbstractCart {
 
 		$this->populate_post_data( $request );
 
+		$this->add_shipping_hooks();
+
 		$this->calculate_totals();
 
 		// check if there are any shipping rates available.
 		if ( ! $this->validate_shipping_methods( WC()->shipping()->get_packages() ) ) {
-			if ( empty( $packages ) ) {
-				throw new \Exception( __( 'There are no shipping options available for the provided address.', 'pymntpl-paypal-woocommerce' ), 200 );
-			}
+			throw new \Exception( __( 'There are no shipping options available for the provided address.', 'pymntpl-paypal-woocommerce' ), 200 );
 		}
 
 		// fetch the paypal order
@@ -130,6 +130,10 @@ class CartShipping extends AbstractCart {
 		}
 
 		return false;
+	}
+
+	private function add_shipping_hooks() {
+		add_filter( 'woocommerce_cart_ready_to_calc_shipping', '__return_true', 1000 );
 	}
 
 }

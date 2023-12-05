@@ -4,16 +4,19 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf36f02ef207296b8a97c2d2241090747
+class ComposerStaticInit95d672ebb995c8245e0659d2e4d7db3d
 {
     public static $files = array (
         '3773ef3f09c37da5478d578e32b03a4b' => __DIR__ . '/..' . '/automattic/jetpack-assets/actions.php',
+        'e25fc356bc58b4090924d1aac798cacd' => __DIR__ . '/../..' . '/src/wcpay-get-container.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
+            'WCPay\\Vendor\\' => 13,
             'WCPay\\MultiCurrency\\' => 20,
+            'WCPay\\' => 6,
         ),
         'C' => 
         array (
@@ -26,9 +29,17 @@ class ComposerStaticInitf36f02ef207296b8a97c2d2241090747
     );
 
     public static $prefixDirsPsr4 = array (
+        'WCPay\\Vendor\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/lib/packages',
+        ),
         'WCPay\\MultiCurrency\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes/multi-currency',
+        ),
+        'WCPay\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Composer\\Installers\\' => 
         array (
@@ -253,6 +264,47 @@ class ComposerStaticInitf36f02ef207296b8a97c2d2241090747
         'Jetpack_Tracks_Client' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class-jetpack-tracks-client.php',
         'Jetpack_Tracks_Event' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class-jetpack-tracks-event.php',
         'Jetpack_XMLRPC_Server' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class-jetpack-xmlrpc-server.php',
+        'WCPay\\Container' => __DIR__ . '/../..' . '/src/Container.php',
+        'WCPay\\Internal\\DependencyManagement\\AbstractServiceProvider' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/AbstractServiceProvider.php',
+        'WCPay\\Internal\\DependencyManagement\\DelegateContainer\\LegacyContainer' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/DelegateContainer/LegacyContainer.php',
+        'WCPay\\Internal\\DependencyManagement\\DelegateContainer\\WooContainer' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/DelegateContainer/WooContainer.php',
+        'WCPay\\Internal\\DependencyManagement\\ExtendedContainer' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/ExtendedContainer.php',
+        'WCPay\\Internal\\DependencyManagement\\ServiceProvider\\GenericServiceProvider' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/ServiceProvider/GenericServiceProvider.php',
+        'WCPay\\Internal\\DependencyManagement\\ServiceProvider\\PaymentsServiceProvider' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/ServiceProvider/PaymentsServiceProvider.php',
+        'WCPay\\Internal\\DependencyManagement\\ServiceProvider\\ProxiesServiceProvider' => __DIR__ . '/../..' . '/src/Internal/DependencyManagement/ServiceProvider/ProxiesServiceProvider.php',
+        'WCPay\\Internal\\Logger' => __DIR__ . '/../..' . '/src/Internal/Logger.php',
+        'WCPay\\Internal\\Payment\\Change' => __DIR__ . '/../..' . '/src/Internal/Payment/Change.php',
+        'WCPay\\Internal\\Payment\\Exception\\StateTransitionException' => __DIR__ . '/../..' . '/src/Internal/Payment/Exception/StateTransitionException.php',
+        'WCPay\\Internal\\Payment\\Factor' => __DIR__ . '/../..' . '/src/Internal/Payment/Factor.php',
+        'WCPay\\Internal\\Payment\\PaymentContext' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentContext.php',
+        'WCPay\\Internal\\Payment\\PaymentMethod\\NewPaymentMethod' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentMethod/NewPaymentMethod.php',
+        'WCPay\\Internal\\Payment\\PaymentMethod\\PaymentMethodInterface' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentMethod/PaymentMethodInterface.php',
+        'WCPay\\Internal\\Payment\\PaymentMethod\\SavedPaymentMethod' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentMethod/SavedPaymentMethod.php',
+        'WCPay\\Internal\\Payment\\PaymentRequest' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentRequest.php',
+        'WCPay\\Internal\\Payment\\PaymentRequestException' => __DIR__ . '/../..' . '/src/Internal/Payment/PaymentRequestException.php',
+        'WCPay\\Internal\\Payment\\Router' => __DIR__ . '/../..' . '/src/Internal/Payment/Router.php',
+        'WCPay\\Internal\\Payment\\State\\AbstractPaymentState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/AbstractPaymentState.php',
+        'WCPay\\Internal\\Payment\\State\\AuthenticationRequiredState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/AuthenticationRequiredState.php',
+        'WCPay\\Internal\\Payment\\State\\CompletedState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/CompletedState.php',
+        'WCPay\\Internal\\Payment\\State\\DuplicateOrderDetectedState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/DuplicateOrderDetectedState.php',
+        'WCPay\\Internal\\Payment\\State\\InitialState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/InitialState.php',
+        'WCPay\\Internal\\Payment\\State\\PaymentErrorState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/PaymentErrorState.php',
+        'WCPay\\Internal\\Payment\\State\\ProcessedState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/ProcessedState.php',
+        'WCPay\\Internal\\Payment\\State\\StateFactory' => __DIR__ . '/../..' . '/src/Internal/Payment/State/StateFactory.php',
+        'WCPay\\Internal\\Payment\\State\\SystemErrorState' => __DIR__ . '/../..' . '/src/Internal/Payment/State/SystemErrorState.php',
+        'WCPay\\Internal\\Payment\\Transition' => __DIR__ . '/../..' . '/src/Internal/Payment/Transition.php',
+        'WCPay\\Internal\\Proxy\\HooksProxy' => __DIR__ . '/../..' . '/src/Internal/Proxy/HooksProxy.php',
+        'WCPay\\Internal\\Proxy\\LegacyProxy' => __DIR__ . '/../..' . '/src/Internal/Proxy/LegacyProxy.php',
+        'WCPay\\Internal\\Proxy\\ProxyException' => __DIR__ . '/../..' . '/src/Internal/Proxy/ProxyException.php',
+        'WCPay\\Internal\\Service\\DuplicatePaymentPreventionService' => __DIR__ . '/../..' . '/src/Internal/Service/DuplicatePaymentPreventionService.php',
+        'WCPay\\Internal\\Service\\ExampleService' => __DIR__ . '/../..' . '/src/Internal/Service/ExampleService.php',
+        'WCPay\\Internal\\Service\\ExampleServiceWithDependencies' => __DIR__ . '/../..' . '/src/Internal/Service/ExampleServiceWithDependencies.php',
+        'WCPay\\Internal\\Service\\Level3Service' => __DIR__ . '/../..' . '/src/Internal/Service/Level3Service.php',
+        'WCPay\\Internal\\Service\\OrderService' => __DIR__ . '/../..' . '/src/Internal/Service/OrderService.php',
+        'WCPay\\Internal\\Service\\PaymentContextLoggerService' => __DIR__ . '/../..' . '/src/Internal/Service/PaymentContextLoggerService.php',
+        'WCPay\\Internal\\Service\\PaymentProcessingService' => __DIR__ . '/../..' . '/src/Internal/Service/PaymentProcessingService.php',
+        'WCPay\\Internal\\Service\\PaymentRequestService' => __DIR__ . '/../..' . '/src/Internal/Service/PaymentRequestService.php',
+        'WCPay\\Internal\\Service\\SessionService' => __DIR__ . '/../..' . '/src/Internal/Service/SessionService.php',
         'WCPay\\MultiCurrency\\AdminNotices' => __DIR__ . '/../..' . '/includes/multi-currency/AdminNotices.php',
         'WCPay\\MultiCurrency\\Analytics' => __DIR__ . '/../..' . '/includes/multi-currency/Analytics.php',
         'WCPay\\MultiCurrency\\BackendCurrencies' => __DIR__ . '/../..' . '/includes/multi-currency/BackendCurrencies.php',
@@ -271,9 +323,12 @@ class ComposerStaticInitf36f02ef207296b8a97c2d2241090747
         'WCPay\\MultiCurrency\\Currency' => __DIR__ . '/../..' . '/includes/multi-currency/Currency.php',
         'WCPay\\MultiCurrency\\CurrencySwitcherBlock' => __DIR__ . '/../..' . '/includes/multi-currency/CurrencySwitcherBlock.php',
         'WCPay\\MultiCurrency\\CurrencySwitcherWidget' => __DIR__ . '/../..' . '/includes/multi-currency/CurrencySwitcherWidget.php',
+        'WCPay\\MultiCurrency\\Exceptions\\InvalidCurrencyException' => __DIR__ . '/../..' . '/includes/multi-currency/Exceptions/InvalidCurrencyException.php',
+        'WCPay\\MultiCurrency\\Exceptions\\InvalidCurrencyRateException' => __DIR__ . '/../..' . '/includes/multi-currency/Exceptions/InvalidCurrencyRateException.php',
         'WCPay\\MultiCurrency\\FrontendCurrencies' => __DIR__ . '/../..' . '/includes/multi-currency/FrontendCurrencies.php',
         'WCPay\\MultiCurrency\\FrontendPrices' => __DIR__ . '/../..' . '/includes/multi-currency/FrontendPrices.php',
         'WCPay\\MultiCurrency\\Geolocation' => __DIR__ . '/../..' . '/includes/multi-currency/Geolocation.php',
+        'WCPay\\MultiCurrency\\Helpers\\OrderMetaHelper' => __DIR__ . '/../..' . '/includes/multi-currency/Helpers/OrderMetaHelper.php',
         'WCPay\\MultiCurrency\\MultiCurrency' => __DIR__ . '/../..' . '/includes/multi-currency/MultiCurrency.php',
         'WCPay\\MultiCurrency\\Notes\\NoteMultiCurrencyAvailable' => __DIR__ . '/../..' . '/includes/multi-currency/Notes/NoteMultiCurrencyAvailable.php',
         'WCPay\\MultiCurrency\\PaymentMethodsCompatibility' => __DIR__ . '/../..' . '/includes/multi-currency/PaymentMethodsCompatibility.php',
@@ -284,14 +339,53 @@ class ComposerStaticInitf36f02ef207296b8a97c2d2241090747
         'WCPay\\MultiCurrency\\Tracking' => __DIR__ . '/../..' . '/includes/multi-currency/Tracking.php',
         'WCPay\\MultiCurrency\\UserSettings' => __DIR__ . '/../..' . '/includes/multi-currency/UserSettings.php',
         'WCPay\\MultiCurrency\\Utils' => __DIR__ . '/../..' . '/includes/multi-currency/Utils.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\ArgumentInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/ArgumentInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\ArgumentResolverInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/ArgumentResolverInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\ArgumentResolverTrait' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/ArgumentResolverTrait.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\DefaultValueArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/DefaultValueArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\DefaultValueInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/DefaultValueInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\LiteralArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/LiteralArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\LiteralArgumentInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/LiteralArgumentInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\ArrayArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/ArrayArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\BooleanArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/BooleanArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\CallableArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/CallableArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\FloatArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/FloatArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\IntegerArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/IntegerArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\ObjectArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/ObjectArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\Literal\\StringArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/Literal/StringArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\ResolvableArgument' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/ResolvableArgument.php',
+        'WCPay\\Vendor\\League\\Container\\Argument\\ResolvableArgumentInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Argument/ResolvableArgumentInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Container' => __DIR__ . '/../..' . '/lib/packages/League/Container/Container.php',
+        'WCPay\\Vendor\\League\\Container\\ContainerAwareInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/ContainerAwareInterface.php',
+        'WCPay\\Vendor\\League\\Container\\ContainerAwareTrait' => __DIR__ . '/../..' . '/lib/packages/League/Container/ContainerAwareTrait.php',
+        'WCPay\\Vendor\\League\\Container\\DefinitionContainerInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/DefinitionContainerInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Definition\\Definition' => __DIR__ . '/../..' . '/lib/packages/League/Container/Definition/Definition.php',
+        'WCPay\\Vendor\\League\\Container\\Definition\\DefinitionAggregate' => __DIR__ . '/../..' . '/lib/packages/League/Container/Definition/DefinitionAggregate.php',
+        'WCPay\\Vendor\\League\\Container\\Definition\\DefinitionAggregateInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Definition/DefinitionAggregateInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Definition\\DefinitionInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Definition/DefinitionInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Exception\\ContainerException' => __DIR__ . '/../..' . '/lib/packages/League/Container/Exception/ContainerException.php',
+        'WCPay\\Vendor\\League\\Container\\Exception\\NotFoundException' => __DIR__ . '/../..' . '/lib/packages/League/Container/Exception/NotFoundException.php',
+        'WCPay\\Vendor\\League\\Container\\Inflector\\Inflector' => __DIR__ . '/../..' . '/lib/packages/League/Container/Inflector/Inflector.php',
+        'WCPay\\Vendor\\League\\Container\\Inflector\\InflectorAggregate' => __DIR__ . '/../..' . '/lib/packages/League/Container/Inflector/InflectorAggregate.php',
+        'WCPay\\Vendor\\League\\Container\\Inflector\\InflectorAggregateInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Inflector/InflectorAggregateInterface.php',
+        'WCPay\\Vendor\\League\\Container\\Inflector\\InflectorInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/Inflector/InflectorInterface.php',
+        'WCPay\\Vendor\\League\\Container\\ReflectionContainer' => __DIR__ . '/../..' . '/lib/packages/League/Container/ReflectionContainer.php',
+        'WCPay\\Vendor\\League\\Container\\ServiceProvider\\AbstractServiceProvider' => __DIR__ . '/../..' . '/lib/packages/League/Container/ServiceProvider/AbstractServiceProvider.php',
+        'WCPay\\Vendor\\League\\Container\\ServiceProvider\\BootableServiceProviderInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/ServiceProvider/BootableServiceProviderInterface.php',
+        'WCPay\\Vendor\\League\\Container\\ServiceProvider\\ServiceProviderAggregate' => __DIR__ . '/../..' . '/lib/packages/League/Container/ServiceProvider/ServiceProviderAggregate.php',
+        'WCPay\\Vendor\\League\\Container\\ServiceProvider\\ServiceProviderAggregateInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/ServiceProvider/ServiceProviderAggregateInterface.php',
+        'WCPay\\Vendor\\League\\Container\\ServiceProvider\\ServiceProviderInterface' => __DIR__ . '/../..' . '/lib/packages/League/Container/ServiceProvider/ServiceProviderInterface.php',
+        'WCPay\\Vendor\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/../..' . '/lib/packages/Psr/Container/ContainerExceptionInterface.php',
+        'WCPay\\Vendor\\Psr\\Container\\ContainerInterface' => __DIR__ . '/../..' . '/lib/packages/Psr/Container/ContainerInterface.php',
+        'WCPay\\Vendor\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/../..' . '/lib/packages/Psr/Container/NotFoundExceptionInterface.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf36f02ef207296b8a97c2d2241090747::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf36f02ef207296b8a97c2d2241090747::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf36f02ef207296b8a97c2d2241090747::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit95d672ebb995c8245e0659d2e4d7db3d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit95d672ebb995c8245e0659d2e4d7db3d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit95d672ebb995c8245e0659d2e4d7db3d::$classMap;
 
         }, null, ClassLoader::class);
     }

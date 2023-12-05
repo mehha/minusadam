@@ -47,7 +47,7 @@ trait Settings {
 		?>
         <div class="wc-ppcp-settings-logo">
             <img class="paymentplugins-logo" src="<?php echo esc_url( $this->assets->assets_url( 'assets/img/paymentplugins.svg' ) ) ?>"/>
-            <span><?php _e( 'for', 'pymntpl-paypal-woocommerce' ) ?></span>
+            <span><?php esc_html_e( 'for', 'pymntpl-paypal-woocommerce' ) ?></span>
             <img class="paypal-logo" src="<?php echo esc_url( $this->assets->assets_url( 'assets/img/paypal_logo.svg' ) ) ?>"/>
         </div>
         <div class="wc-ppcp-settings-navigation nav-tab-wrapper">
@@ -96,7 +96,7 @@ trait Settings {
 		?>
         <tr valign="top">
             <th scope="row" class="titledesc">
-                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); ?></label>
+                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
             </th>
             <td class="forminp">
                 <fieldset>
@@ -104,8 +104,8 @@ trait Settings {
                         <span><?php echo wp_kses_post( $data['title'] ); ?></span>
                     </legend>
                     <label for="<?php echo esc_attr( $field_key ); ?>">
-						<?php echo $this->get_description_html( $data ); ?>
-                        <ul id="<?php echo esc_attr( $data['id'] ); ?>" <?php echo $this->get_custom_attribute_html( $data ); ?>></ul>
+						<?php echo $this->get_description_html( $data );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                        <ul id="<?php echo esc_attr( $data['id'] ); ?>" <?php echo $this->get_custom_attribute_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>></ul>
 						<?php foreach ( $value as $source ): ?>
                             <input type="hidden" name="woocommerce_ppcp_buttons_order[]" value="<?php echo esc_attr( $source ) ?>"/>
 						<?php endforeach; ?>
@@ -138,7 +138,7 @@ trait Settings {
 		?>
         <tr valign="top">
             <th scope="row" class="titledesc">
-                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // WPCS: XSS ok.?></label>
+                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?></label>
             </th>
             <td class="forminp">
                 <fieldset>
@@ -147,13 +147,12 @@ trait Settings {
                     </legend>
                     <div type="submit" class="wc-ppcp-slider <?php echo esc_attr( $data['class'] ); ?>"
                          style="<?php echo esc_attr( $data['css'] ); ?>"
-                         value="<?php echo $field_key; ?>" <?php echo $this->get_custom_attribute_html( $data ); // WPCS: XSS ok.?>>
+                         value="<?php echo $field_key; ?>" <?php echo $this->get_custom_attribute_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>>
                         <span class="wc-ppcp-slider-val"><?php echo esc_html( $value ) ?>px</span>
                     </div>
                     <input type="hidden" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>"
                            value="<?php echo esc_attr( $value ) ?>"/>
-					<?php echo $this->get_description_html( $data ); // WPCS: XSS ok.
-					?>
+					<?php echo $this->get_description_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
                 </fieldset>
             </td>
         </tr>
@@ -180,7 +179,7 @@ trait Settings {
 		?>
         <tr valign="top">
             <th scope="row" class="titledesc">
-                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // WPCS: XSS ok.
+                <label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?><?php echo $this->get_tooltip_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?></label>
             </th>
             <td class="forminp">
@@ -189,7 +188,7 @@ trait Settings {
                         <span><?php echo wp_kses_post( $data['title'] ); ?></span>
                     </legend>
                     <div class="wc-ppcp-clipboard-container"
-                         id="<?php echo esc_attr( $field_key ); ?>" <?php echo $this->get_custom_attribute_html( $data ); ?>>
+                         id="<?php echo esc_attr( $field_key ); ?>" <?php echo $this->get_custom_attribute_html( $data );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
                         <div data-clipboard="<?php echo esc_attr( $value ) ?>">
 							<?php echo esc_html( $value ) ?>
                             <span class="wc-ppcp-clipboard dashicons dashicons-clipboard"></span>

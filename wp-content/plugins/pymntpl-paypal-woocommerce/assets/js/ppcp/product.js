@@ -18,6 +18,10 @@ class Product extends Event {
         return this.data?.needsShipping;
     }
 
+    isVariationSelected() {
+        return !!this.variation;
+    }
+
     onQuantityChange(e) {
         if (e?.isTrigger) {
             //cause a short delay so this won't execute before foundVariation
@@ -70,14 +74,16 @@ class Product extends Event {
 
     getVariationData() {
         if (this.isVariableProduct()) {
-            const data = {};
+            const attributes = this.variation ? this.variation.attributes : {};
             const elements = document.querySelectorAll('.variations [name^="attribute_"]');
             if (elements) {
                 elements.forEach((element) => {
-                    data[element.name] = element.value;
+                    if (!(element.name in attributes)) {
+                        attributes[element.name] = element.value;
+                    }
                 });
             }
-            return data;
+            return attributes;
         }
         return null;
     }
@@ -87,6 +93,9 @@ class Product extends Event {
     }
 
     getVariationId() {
+        if (this.variation) {
+            return this.variation.variation_id;
+        }
         return $('[name="variation_id"]').val();
     }
 }

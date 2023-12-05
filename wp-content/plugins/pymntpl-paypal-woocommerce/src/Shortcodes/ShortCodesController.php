@@ -33,7 +33,10 @@ class ShortCodesController {
 					add_action( 'wc_ppcp_add_script_data', [ $instance, 'add_shortcode_script_data' ], 10, 2 );
 					$instance->set_attributes( new ShortcodeAttributes( $instance->parse_attributes( $attrs ) ) );
 					$instance->before_render();
+					\ob_start();
 					$instance->render();
+
+					return \ob_get_clean();
 				}
 			} );
 		}

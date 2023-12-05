@@ -118,10 +118,17 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 * @return bool
 	 */
 	public function is_account_creation_possible() {
+		$is_signup_from_checkout_allowed = 'yes' === get_option( 'woocommerce_enable_signup_and_login_from_checkout', 'no' );
+
+		// If a subscription is being purchased, check if account creation is allowed for subscriptions.
+		if ( ! $is_signup_from_checkout_allowed && $this->has_subscription_product() ) {
+			$is_signup_from_checkout_allowed = 'yes' === get_option( 'woocommerce_enable_signup_from_checkout_for_subscriptions', 'no' );
+		}
+
 		// If automatically generate username/password are disabled, the Payment Request API
 		// can't include any of those fields, so account creation is not possible.
 		return (
-			'yes' === get_option( 'woocommerce_enable_signup_and_login_from_checkout', 'no' ) &&
+			$is_signup_from_checkout_allowed &&
 			'yes' === get_option( 'woocommerce_registration_generate_username', 'yes' ) &&
 			'yes' === get_option( 'woocommerce_registration_generate_password', 'yes' )
 		);
@@ -381,8 +388,6 @@ class WC_Payments_Payment_Request_Button_Handler {
 		];
 
 		wp_localize_script( 'WCPAY_PAYMENT_REQUEST', 'wcpayPaymentRequestPayForOrderParams', $data );
-
-		$this->display_payment_request_button_html();
 	}
 
 	/**
@@ -472,7 +477,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 			'google_pay' => 'Google Pay',
 		];
 
-		$suffix = apply_filters( 'wcpay_payment_request_payment_method_title_suffix', 'WooCommerce Payments' );
+		$suffix = apply_filters( 'wcpay_payment_request_payment_method_title_suffix', 'WooPayments' );
 		if ( ! empty( $suffix ) ) {
 			$suffix = " ($suffix)";
 		}
@@ -531,6 +536,22 @@ class WC_Payments_Payment_Request_Button_Handler {
 			return false;
 		}
 
+		// Order total doesn't matter for Pay for Order page. Thus, this page should always display payment buttons.
+		if ( $this->is_pay_for_order_page() ) {
+			return true;
+		}
+
+		// Cart total is 0 or is on product page and product price is 0.
+		// Exclude pay-for-order pages from this check.
+		if (
+			( ! $this->is_product() && ! $this->is_pay_for_order_page() && 0.0 === (float) WC()->cart->get_total( 'edit' ) ) ||
+			( $this->is_product() && 0.0 === (float) $this->get_product()->get_price() )
+
+		) {
+			Logger::log( 'Order price is 0 ( Payment Request button disabled )' );
+			return false;
+		}
+
 		return true;
 	}
 
@@ -583,7 +604,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 
 		// We don't support multiple packages with Payment Request Buttons because we can't offer a good UX.
 		$packages = WC()->cart->get_shipping_packages();
-		if ( 1 < count( $packages ) ) {
+		if ( 1 < ( is_countable( $packages ) ? count( $packages ) : 0 ) ) {
 			return false;
 		}
 
@@ -606,11 +627,8 @@ class WC_Payments_Payment_Request_Button_Handler {
 				return true;
 			}
 		} elseif ( $this->is_checkout() || $this->is_cart() ) {
-			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-				$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-				if ( WC_Subscriptions_Product::is_subscription( $_product ) ) {
-					return true;
-				}
+			if ( WC_Subscriptions_Cart::cart_contains_subscription() ) {
+				return true;
 			}
 		}
 
@@ -669,6 +687,31 @@ class WC_Payments_Payment_Request_Button_Handler {
 	}
 
 	/**
+	 * Gets the context for where the button is being displayed.
+	 *
+	 * @return string
+	 */
+	public function get_button_context() {
+		if ( $this->is_product() ) {
+			return 'product';
+		}
+
+		if ( $this->is_cart() ) {
+			return 'cart';
+		}
+
+		if ( $this->is_checkout() ) {
+			return 'checkout';
+		}
+
+		if ( $this->is_pay_for_order_page() ) {
+			return 'pay_for_order';
+		}
+
+		return '';
+	}
+
+	/**
 	 * Get product from product page or product_page shortcode.
 	 *
 	 * @return WC_Product|false|null Product object.
@@ -686,7 +729,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 			}
 		}
 
-		return false;
+		return null;
 	}
 
 	/**
@@ -743,6 +786,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 			'button'             => $this->get_button_settings(),
 			'login_confirmation' => $this->get_login_confirmation_settings(),
 			'is_product_page'    => $this->is_product(),
+			'button_context'     => $this->get_button_context(),
 			'is_pay_for_order'   => $this->is_pay_for_order_page(),
 			'has_block'          => has_block( 'woocommerce/cart' ) || has_block( 'woocommerce/checkout' ),
 			'product'            => $this->get_product_data(),
@@ -750,6 +794,13 @@ class WC_Payments_Payment_Request_Button_Handler {
 		];
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_PAYMENT_REQUEST', 'dist/payment-request', [ 'jquery', 'stripe' ] );
+
+		WC_Payments_Utils::enqueue_style(
+			'WCPAY_PAYMENT_REQUEST',
+			plugins_url( 'dist/payment-request.css', WCPAY_PLUGIN_FILE ),
+			[],
+			WC_Payments::get_file_version( 'dist/payment-request.css' )
+		);
 
 		wp_localize_script( 'WCPAY_PAYMENT_REQUEST', 'wcpayPaymentRequestParams', $payment_request_params );
 
@@ -759,7 +810,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
 		if ( isset( $gateways['woocommerce_payments'] ) ) {
-			$gateways['woocommerce_payments']->register_scripts();
+			WC_Payments::get_wc_payments_checkout()->register_scripts();
 		}
 	}
 
@@ -773,10 +824,8 @@ class WC_Payments_Payment_Request_Button_Handler {
 		if ( WC()->session && Fraud_Prevention_Service::get_instance()->is_enabled() ) : ?>
 			<input type="hidden" name="wcpay-fraud-prevention-token" value="<?php echo esc_attr( Fraud_Prevention_Service::get_instance()->get_token() ); ?>">
 		<?php endif; ?>
-		<div id="wcpay-payment-request-wrapper" style="clear:both;padding-top:1.5em;display:none;">
-			<div id="wcpay-payment-request-button">
-				<!-- A Stripe Element will be inserted here. -->
-			</div>
+		<div id="wcpay-payment-request-button">
+			<!-- A Stripe Element will be inserted here. -->
 		</div>
 		<?php
 	}
@@ -790,32 +839,17 @@ class WC_Payments_Payment_Request_Button_Handler {
 		$product      = $this->get_product();
 		$is_supported = true;
 
-		if ( ! is_object( $product ) || ! in_array( $product->get_type(), $this->supported_product_types(), true ) ) {
+		if ( is_null( $product )
+			|| ! is_object( $product )
+			|| ! in_array( $product->get_type(), $this->supported_product_types(), true )
+			|| ( class_exists( 'WC_Subscriptions_Product' ) && $product->needs_shipping() && WC_Subscriptions_Product::get_trial_length( $product ) > 0 ) // Trial subscriptions with shipping are not supported.
+			|| ( class_exists( 'WC_Pre_Orders_Product' ) && WC_Pre_Orders_Product::product_is_charged_upon_release( $product ) ) // Pre Orders charge upon release not supported.
+			|| ( class_exists( 'WC_Composite_Products' ) && $product->is_type( 'composite' ) ) // Composite products are not supported on the product page.
+			|| ( class_exists( 'WC_Mix_and_Match' ) && $product->is_type( 'mix-and-match' ) ) // Mix and match products are not supported on the product page.
+		) {
 			$is_supported = false;
-		}
-
-		// Trial subscriptions with shipping are not supported.
-		if ( class_exists( 'WC_Subscriptions_Product' ) && $product->needs_shipping() && WC_Subscriptions_Product::get_trial_length( $product ) > 0 ) {
-			$is_supported = false;
-		}
-
-		// Pre Orders charge upon release not supported.
-		if ( class_exists( 'WC_Pre_Orders_Product' ) && WC_Pre_Orders_Product::product_is_charged_upon_release( $product ) ) {
-			$is_supported = false;
-		}
-
-		// Composite products are not supported on the product page.
-		if ( class_exists( 'WC_Composite_Products' ) && $product->is_type( 'composite' ) ) {
-			$is_supported = false;
-		}
-
-		// Mix and match products are not supported on the product page.
-		if ( class_exists( 'WC_Mix_and_Match' ) && $product->is_type( 'mix-and-match' ) ) {
-			$is_supported = false;
-		}
-
-		// File upload addon not supported.
-		if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
+		} elseif ( class_exists( 'WC_Product_Addons_Helper' ) ) {
+			// File upload addon not supported.
 			$product_addons = WC_Product_Addons_Helper::get_product_addons( $product->get_id() );
 			foreach ( $product_addons as $addon ) {
 				if ( 'file_upload' === $addon['type'] ) {
@@ -1076,7 +1110,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 			$data['displayItems'] = $items;
 			$data['total']        = [
 				'label'   => $this->get_total_label(),
-				'amount'  => WC_Payments_Utils::prepare_amount( $price + $total_tax, $currency ),
+				'amount'  => WC_Payments_Utils::prepare_amount( $total + $total_tax, $currency ),
 				'pending' => true,
 			];
 
@@ -1372,11 +1406,15 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 */
 	public function ajax_create_order() {
 		if ( WC()->cart->is_empty() ) {
-			wp_send_json_error( __( 'Empty cart', 'woocommerce-payments' ) );
+			wp_send_json_error( __( 'Empty cart', 'woocommerce-payments' ), 400 );
 		}
 
 		if ( ! defined( 'WOOCOMMERCE_CHECKOUT' ) ) {
 			define( 'WOOCOMMERCE_CHECKOUT', true );
+		}
+
+		if ( ! defined( 'WCPAY_PAYMENT_REQUEST_CHECKOUT' ) ) {
+			define( 'WCPAY_PAYMENT_REQUEST_CHECKOUT', true );
 		}
 
 		// In case the state is required, but is missing, add a more descriptive error notice.

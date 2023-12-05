@@ -46,12 +46,13 @@ class WebhookRoute extends AbstractRoute {
 			$this->validate_headers();
 			// get the webhook ID
 			$webhook_id = $this->api_settings->get_webhook_id( $environment );
-			$params     = [
-				'auth_algo'         => $_SERVER['HTTP_PAYPAL_AUTH_ALGO'],
-				'cert_url'          => $_SERVER['HTTP_PAYPAL_CERT_URL'],
-				'transmission_id'   => $_SERVER['HTTP_PAYPAL_TRANSMISSION_ID'],
-				'transmission_sig'  => $_SERVER['HTTP_PAYPAL_TRANSMISSION_SIG'],
-				'transmission_time' => $_SERVER['HTTP_PAYPAL_TRANSMISSION_TIME'],
+			// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$params = [
+				'auth_algo'         => isset( $_SERVER['HTTP_PAYPAL_AUTH_ALGO'] ) ? $_SERVER['HTTP_PAYPAL_AUTH_ALGO'] : '',
+				'cert_url'          => isset( $_SERVER['HTTP_PAYPAL_CERT_URL'] ) ? $_SERVER['HTTP_PAYPAL_CERT_URL'] : '',
+				'transmission_id'   => isset( $_SERVER['HTTP_PAYPAL_TRANSMISSION_ID'] ) ? $_SERVER['HTTP_PAYPAL_TRANSMISSION_ID'] : '',
+				'transmission_sig'  => isset( $_SERVER['HTTP_PAYPAL_TRANSMISSION_SIG'] ) ? $_SERVER['HTTP_PAYPAL_TRANSMISSION_SIG'] : '',
+				'transmission_time' => isset( $_SERVER['HTTP_PAYPAL_TRANSMISSION_TIME'] ) ? $_SERVER['HTTP_PAYPAL_TRANSMISSION_TIME'] : '',
 				'webhook_id'        => $webhook_id,
 				'webhook_event'     => $payload
 			];

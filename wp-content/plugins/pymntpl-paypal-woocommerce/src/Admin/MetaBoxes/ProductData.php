@@ -51,16 +51,19 @@ class ProductData {
 	public function save( \WC_Product $product ) {
 		foreach ( WC()->payment_gateways()->payment_gateways() as $payment_method ) {
 			if ( $payment_method instanceof AbstractGateway ) {
-				$setting    = new ProductSettings( $product, $payment_method );
+				$setting    = new ProductSettings( $product );
 				$change_key = "wc_{$setting->id}_options_change";
-				if ( isset( $change_key ) && 'yes' === $_POST[ $change_key ] && $setting->form_fields ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing
+				if ( isset( $_POST[ $change_key ] ) && 'yes' === $_POST[ $change_key ] && $setting->form_fields ) {
 					$setting->process_admin_options();
 				}
 			}
 		}
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( isset( $_POST['_ppcp_button_position'] ) ) {
-			$product->update_meta_data( '_ppcp_button_position', wc_clean( $_POST['_ppcp_button_position'] ) );
+			$product->update_meta_data( '_ppcp_button_position', wc_clean( wp_unslash( $_POST['_ppcp_button_position'] ) ) );
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 }

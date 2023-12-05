@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
-
 	#[AllowDynamicProperties]
 	class ACF_Admin_Field_Groups extends ACF_Admin_Internal_Post_Type_List {
 
@@ -41,8 +40,30 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 * @return  void
 		 */
 		public function __construct() {
+			add_action( 'admin_menu', array( $this, 'admin_menu' ), 7 );
 			add_action( 'load-edit.php', array( $this, 'handle_redirection' ) );
+			add_action( 'admin_footer', array( $this, 'include_pro_features' ) );
+
 			parent::__construct();
+		}
+
+		/**
+		 * Renders HTML for the ACF PRO features upgrade notice.
+		 *
+		 * @return void
+		 */
+		public function include_pro_features() {
+			// Bail if on PRO.
+			if ( acf_is_pro() && acf_pro_is_license_active() ) {
+				return;
+			}
+
+			// Bail if not the edit field groups screen.
+			if ( ! acf_is_screen( 'edit-acf-field-group' ) ) {
+				return;
+			}
+
+			acf_get_view( $this->post_type . '/pro-features' );
 		}
 
 		/**
@@ -364,10 +385,8 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 
 			return $text;
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin_Field_Groups' );
-
 endif; // Class exists check.

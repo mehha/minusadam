@@ -15,6 +15,7 @@ use PaymentPlugins\WooCommerce\PPCP\Payments\Gateways\AbstractGateway;
 use PaymentPlugins\WooCommerce\PPCP\Payments\Gateways\PayPal;
 use PaymentPlugins\WooCommerce\PPCP\Payments\Gateways\PayPalGateway;
 use PaymentPlugins\WooCommerce\PPCP\Container\Container;
+use PaymentPlugins\WooCommerce\PPCP\Utils;
 
 class PaymentGateways {
 
@@ -80,9 +81,7 @@ class PaymentGateways {
 	}
 
 	public function get_product_payment_gateways() {
-		global $product;
-
-		return $this->payment_method_registry->get_product_payment_gateways( $product );
+		return $this->payment_method_registry->get_product_payment_gateways( Utils::get_queried_product_id() );
 	}
 
 	public function get_express_payment_gateways() {
@@ -118,6 +117,10 @@ class PaymentGateways {
 		if ( $this->context_handler->has_context( [ 'checkout', 'add_payment_method', 'order_pay' ] ) || apply_filters( 'wc_ppcp_checkout_scripts', false ) ) {
 			$handles = $this->payment_method_registry->add_checkout_script_dependencies();
 			$handles = array_merge( $handles, $this->payment_method_registry->add_express_checkout_script_dependencies() );
+
+			if ( $this->payment_method_registry->get_active_integrations() ) {
+				$this->assets->enqueue_style( 'wc-ppcp-style', 'build/css/styles.css' );
+			}
 		} elseif ( $this->context_handler->is_cart() ) {
 			$this->payment_method_registry->initialize();
 			$handles = $this->payment_method_registry->add_cart_script_dependencies();

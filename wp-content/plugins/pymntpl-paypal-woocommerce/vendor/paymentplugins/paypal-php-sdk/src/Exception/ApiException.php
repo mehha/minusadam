@@ -7,11 +7,12 @@ use Throwable;
 
 /**
  * Class APIException
+ *
  * @package PaymentPlugins\PayPalSDK\Exception
  */
 class ApiException extends \Exception {
 
-	private $errorCode;
+	protected $errorCode;
 
 	private $errorData;
 
@@ -28,6 +29,18 @@ class ApiException extends \Exception {
 			$this->errorCode = $data['name'];
 		} elseif ( isset( $data['error'] ) ) {
 			$this->errorCode = $data['error'];
+		} else {
+			$this->errorCode = $this->getCode();
+		}
+
+		if ( isset( $data['details'] ) && \is_array( $data['details'] ) ) {
+			foreach ( $data['details'] as $error ) {
+				if ( isset( $error['issue'] ) ) {
+					$this->errorCode = $error['issue'];
+				} elseif ( isset( $error['name'] ) ) {
+					$this->errorCode = $error['name'];
+				}
+			}
 		}
 	}
 
@@ -48,4 +61,5 @@ class ApiException extends \Exception {
 	public function getData() {
 		return $this->errorData;
 	}
+
 }

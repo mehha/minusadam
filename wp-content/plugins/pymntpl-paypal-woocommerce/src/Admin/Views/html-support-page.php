@@ -24,7 +24,7 @@
                     <div class="wc-ppcp-main-card__content support">
                         <div class="icon-container support">
                             <!--<span class="dashicons dashicons-admin-users"></span>-->
-                            <img class="icon" src="<?php echo $assets->assets_url( 'assets/img/support.svg' ) ?>"/>
+                            <img class="icon" src="<?php echo esc_url( $assets->assets_url( 'assets/img/support.svg' ) ) ?>"/>
                         </div>
                         <div class="card-header">
                             <p>
@@ -34,7 +34,7 @@
 								<?php esc_html_e( 'Click the Create Ticket button and enter all the required information.', 'pymntpl-paypal-woocommerce' ) ?>
                                 <br/><br/>
                             </p>
-                            <button id="paypalSupportButton" class="wc-ppcp-card-button"><?php _e( 'Create Ticket', 'pymntpl-paypal-woocommerce' ) ?></button>
+                            <button id="paypalSupportButton" class="wc-ppcp-card-button"><?php esc_html_e( 'Create Ticket', 'pymntpl-paypal-woocommerce' ) ?></button>
                         </div>
                     </div>
                 </div>

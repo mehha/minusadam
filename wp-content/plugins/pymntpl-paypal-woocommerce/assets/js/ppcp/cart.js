@@ -77,7 +77,7 @@ class Cart extends Event {
         return apiFetch({
             method: 'POST',
             url: getRestRoute('cart/item'),
-            data
+            data: this.applyFilters('addToCartData', data, this)
         }).then(response => {
             return this.sanitizeResponse(response);
         }).catch(error => {
@@ -114,6 +114,10 @@ class Cart extends Event {
     sanitizeResponse(response) {
         if (typeof response === 'string') {
             response = response.replace(/<[^>]*>/g, '');
+        } else if (Array.isArray(response)) {
+            // some 3rd party plugins manipulate the WordPress REST API response
+            // and make it an array
+            response = this.sanitizeResponse(response[0]);
         }
         return response;
     }

@@ -57,13 +57,13 @@ class PaymentMethodRegistry extends Registry\BaseRegistry {
 		$gateways = [];
 		if ( $product ) {
 			foreach ( $this->get_registered_integrations() as $payment_method ) {
-				if ( $payment_method->is_product_section_enabled( $product ) ) {
+				if ( $payment_method->is_product_section_enabled( $product ) && ! apply_filters( 'wc_ppcp_is_product_section_disabled', false, $product ) ) {
 					$gateways[] = $payment_method;
 				}
 			}
 		}
 
-		return apply_filters( 'wc_ppcp_product_payment_gateways', $gateways );
+		return apply_filters( 'wc_ppcp_product_payment_gateways', $gateways, $product );
 	}
 
 	public function get_express_payment_gateways() {
@@ -105,10 +105,8 @@ class PaymentMethodRegistry extends Registry\BaseRegistry {
 
 	public function add_cart_script_dependencies() {
 		$handles = [];
-		foreach ( $this->get_active_integrations() as $payment_method ) {
-			if ( $payment_method->is_cart_section_enabled() ) {
-				$handles = array_merge( $handles, $payment_method->get_cart_script_handles() );
-			}
+		foreach ( $this->get_cart_payment_gateways() as $payment_method ) {
+			$handles = array_merge( $handles, $payment_method->get_cart_script_handles() );
 		}
 
 		return $handles;
@@ -116,11 +114,8 @@ class PaymentMethodRegistry extends Registry\BaseRegistry {
 
 	public function add_product_script_dependencies() {
 		$handles = [];
-		global $product;
-		foreach ( $this->get_active_integrations() as $payment_method ) {
-			if ( $payment_method->is_product_section_enabled( $product ) ) {
-				$handles = array_merge( $handles, $payment_method->get_product_script_handles() );
-			}
+		foreach ( $this->get_product_payment_gateways( Utils::get_queried_product_id() ) as $payment_method ) {
+			$handles = array_merge( $handles, $payment_method->get_product_script_handles() );
 		}
 
 		return $handles;
@@ -128,10 +123,8 @@ class PaymentMethodRegistry extends Registry\BaseRegistry {
 
 	public function add_express_checkout_script_dependencies() {
 		$handles = [];
-		foreach ( $this->get_active_integrations() as $payment_method ) {
-			if ( $payment_method->is_express_section_enabled() ) {
-				$handles = array_merge( $handles, $payment_method->get_express_checkout_script_handles() );
-			}
+		foreach ( $this->get_express_payment_gateways() as $payment_method ) {
+			$handles = array_merge( $handles, $payment_method->get_express_checkout_script_handles() );
 		}
 
 		return $handles;
@@ -139,13 +132,11 @@ class PaymentMethodRegistry extends Registry\BaseRegistry {
 
 	public function add_minicart_script_dependencies() {
 		$handles = [];
-		foreach ( $this->get_active_integrations() as $payment_method ) {
+		foreach ( $this->get_minicart_payment_gateways() as $payment_method ) {
 			/**
 			 * @var AbstractGateway $payment_method
 			 */
-			if ( $payment_method->is_minicart_section_enabled() ) {
-				$handles = array_merge( $handles, $payment_method->get_minicart_script_handles() );
-			}
+			$handles = array_merge( $handles, $payment_method->get_minicart_script_handles() );
 		}
 
 		return apply_filters( 'wc_ppcp_minicart_script_dependencies', $handles );
