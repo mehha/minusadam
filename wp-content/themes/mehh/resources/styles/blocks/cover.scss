@@ -20,6 +20,15 @@
       .wc-block-grid__product {
         font-size: 14px;
       }
+
+      .wc-block-grid__products,
+      .wc-block-grid__product-price {
+        margin: 0!important;
+      }
+
+      .wc-block-grid__product {
+        border: none!important;
+      }
     }
   }
 }
