@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - WooCommerce - Stable (latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "POT-Creation-Date: 2023-11-21T17:42:02+00:00\n"
-"PO-Revision-Date: 2023-12-05 16:36+0200\n"
+"PO-Revision-Date: 2023-12-05 16:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: et_EE\n"
@@ -59100,17 +59100,13 @@ msgstr "Mine maksma"
 #: packages/woocommerce-blocks/build/mini-cart-contents-block/footer-frontend.js:1
 #: packages/woocommerce-blocks/build/mini-cart-contents-block/footer-style.js:1
 #: packages/woocommerce-blocks/build/mini-cart-contents.js:13
-#, fuzzy
-#| msgid "Shipping options will be updated during checkout."
 msgid "Shipping, taxes, and discounts calculated at checkout."
 msgstr "Tarnevõimalusi uuendatakse kassas."
 
 #: packages/woocommerce-blocks/build/mini-cart-contents-block/shopping-button-frontend.js:1
 #: packages/woocommerce-blocks/build/mini-cart-contents.js:13
-#, fuzzy
-#| msgid "Total shipping"
 msgid "Start shopping"
-msgstr "Transport kokku"
+msgstr "Mine poodi"
 
 #. translators: %d is the count of items in the cart.
 #: packages/woocommerce-blocks/build/mini-cart-contents-block/title-frontend.js:2
