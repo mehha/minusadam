@@ -8,6 +8,7 @@ use PaymentPlugins\PayPalSDK\Order;
 use PaymentPlugins\PayPalSDK\PayPalClient;
 use PaymentPlugins\WooCommerce\PPCP\Constants;
 use PaymentPlugins\WooCommerce\PPCP\Factories\CoreFactories;
+use PaymentPlugins\WooCommerce\PPCP\Logger;
 use PaymentPlugins\WooCommerce\PPCP\Main;
 use PaymentPlugins\WooCommerce\PPCP\PaymentHandler;
 use PaymentPlugins\WooCommerce\PPCP\PaymentResult;
@@ -25,9 +26,12 @@ class WooCommercePreOrders implements PluginIntegrationType {
 
 	private $factories;
 
-	public function __construct( WPPayPalClient $client, CoreFactories $factories ) {
+	private $log;
+
+	public function __construct( WPPayPalClient $client, CoreFactories $factories, Logger $log ) {
 		$this->client    = $client;
 		$this->factories = $factories;
+		$this->log       = $log;
 	}
 
 	public function is_active() {

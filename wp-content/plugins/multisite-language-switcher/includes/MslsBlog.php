@@ -69,10 +69,14 @@ class MslsBlog {
 	/**
 	 * Gets a customized title for the blog
 	 *
+	 * @param string $icon_type
+	 *
 	 * @return string
 	 */
-	public function get_title(): string {
-		return sprintf( '%1$s (%2$s)', $this->obj->blogname, $this->get_description() );
+	public function get_title( string $icon_type = 'flag' ): string {
+		$icon = ( new MslsAdminIcon( null ) )->set_language( $this->language )->set_icon_type( $icon_type );
+
+		return sprintf( '%1$s %2$s', $this->obj->blogname, '<span class="msls-icon-wrapper flag">' . $icon->get_icon() . '</span>' );
 	}
 
 	/**
@@ -103,7 +107,7 @@ class MslsBlog {
 	 * @return string|null
 	 */
 	public function get_url( $options ) {
-		if ( $this->obj->userblog_id == MslsBlogCollection::instance()->get_current_blog_id() ) {
+		if ( $this->obj->userblog_id == msls_blog_collection()->get_current_blog_id() ) {
 			return $options->get_current_link();
 		}
 

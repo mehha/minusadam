@@ -89,9 +89,15 @@ class CartOrder extends AbstractCart {
 			$this->cache->set( Constants::PAYPAL_ORDER_ID, $result->id );
 			$this->cache->set( Constants::SHIPPING_PREFERENCE, $order->getApplicationContext()->getShippingPreference() );
 
+			$this->logger->info(
+				sprintf( 'PayPal order created via %s. Args: %s', __METHOD__, print_r( $result->toArray(), true ) ),
+				'payment'
+			);
+
+
 			return $result->id;
 		} catch ( \Exception $e ) {
-			$this->logger->error( sprintf( 'Error creating PayPal order. Msg:%s Params: %s', $e->getMessage(), print_r( $order->toArray(), true ) ) );
+			$this->logger->error( sprintf( 'Error creating PayPal order. Msg: %s Params: %s', $e->getMessage(), print_r( $order->toArray(), true ) ) );
 			throw new \Exception( $e->getMessage(), $e->getCode() > 0 ? $e->getCode() : 400 );
 		}
 	}

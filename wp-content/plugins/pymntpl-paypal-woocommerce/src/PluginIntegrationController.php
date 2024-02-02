@@ -34,7 +34,8 @@ class PluginIntegrationController {
 				function ( $container ) {
 					return new WooCommerceSubscriptions(
 						$container->get( PayPalClient::class ),
-						$container->get( CoreFactories::class )
+						$container->get( CoreFactories::class ),
+						$container->get( Logger::class )
 					);
 				}
 			],
@@ -43,7 +44,8 @@ class PluginIntegrationController {
 				function ( $container ) {
 					return new WooCommercePreOrders(
 						$container->get( PayPalClient::class ),
-						$container->get( CoreFactories::class )
+						$container->get( CoreFactories::class ),
+						$container->get( Logger::class )
 					);
 				}
 			]

@@ -1,15 +1,15 @@
-# Copyright (C) 2023 Payment Plugins, support@paymentplugins.com
+# Copyright (C) 2024 Payment Plugins, support@paymentplugins.com
 # This file is distributed under the same license as the Payment Plugins for PayPal WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Payment Plugins for PayPal WooCommerce 1.0.40\n"
+"Project-Id-Version: Payment Plugins for PayPal WooCommerce 1.0.42\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pymntpl-paypal-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-23T16:19:30+00:00\n"
+"POT-Creation-Date: 2024-01-11T17:53:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: pymntpl-paypal-woocommerce\n"
@@ -702,37 +702,53 @@ msgstr ""
 msgid "When enabled, valuable debugging information will be captured and stored in the WooCommerce logs."
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:185
-#: src/Admin/Settings/APISettings.php:191
+#: src/Admin/Settings/APISettings.php:179
+msgid "Debug Payment Process"
+msgstr ""
+
+#: src/Admin/Settings/APISettings.php:184
+msgid "When enabled, detailed debug data for payments will be added to the log."
+msgstr ""
+
+#: src/Admin/Settings/APISettings.php:190
+msgid "Debug Webhook"
+msgstr ""
+
+#: src/Admin/Settings/APISettings.php:195
+msgid "When enabled, detailed debug data for webhooks will be added to the log."
+msgstr ""
+
+#: src/Admin/Settings/APISettings.php:207
+#: src/Admin/Settings/APISettings.php:213
 msgid "Status"
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:185
+#: src/Admin/Settings/APISettings.php:207
 msgid "Connected"
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:187
-#: src/Admin/Settings/APISettings.php:227
+#: src/Admin/Settings/APISettings.php:209
+#: src/Admin/Settings/APISettings.php:249
 msgid "Delete Connection"
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:192
+#: src/Admin/Settings/APISettings.php:214
 msgid "Created"
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:226
+#: src/Admin/Settings/APISettings.php:248
 msgid "Configuring connection to PayPal..."
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:228
+#: src/Admin/Settings/APISettings.php:250
 msgid "Press OK to continue deleting your connection data."
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:240
+#: src/Admin/Settings/APISettings.php:262
 msgid "Your PayPal account has been connected."
 msgstr ""
 
-#: src/Admin/Settings/APISettings.php:367
+#: src/Admin/Settings/APISettings.php:397
 msgid "The PayPal connect feature is not available at this time. Please manually enter your client ID and secret key."
 msgstr ""
 
@@ -999,24 +1015,24 @@ msgstr ""
 msgid "Reconciliation"
 msgstr ""
 
-#: src/Integrations/WooCommercePreOrders.php:156
+#: src/Integrations/WooCommercePreOrders.php:160
 msgid "Payment for pre-order failed. Reason: %s"
 msgstr ""
 
-#: src/Integrations/WooCommercePreOrders.php:171
-#: src/Integrations/WooCommerceSubscriptions.php:310
+#: src/Integrations/WooCommercePreOrders.php:175
+#: src/Integrations/WooCommerceSubscriptions.php:320
 msgid "Please select a shipping method for your order."
 msgstr ""
 
-#: src/Integrations/WooCommerceSubscriptions.php:154
+#: src/Integrations/WooCommerceSubscriptions.php:164
 msgid "Error saving payment method for subscription. Reason: %s"
 msgstr ""
 
-#: src/Integrations/WooCommerceSubscriptions.php:243
+#: src/Integrations/WooCommerceSubscriptions.php:253
 msgid "Recurring payment failed. Reason: %s"
 msgstr ""
 
-#: src/Integrations/WooCommerceSubscriptions.php:256
+#: src/Integrations/WooCommerceSubscriptions.php:266
 msgid "Billing Agreement ID"
 msgstr ""
 
@@ -1036,52 +1052,52 @@ msgstr ""
 msgid "This merchant account is not permitted to create Merchant Initiated Billing Agreements. Please contact PayPal support and request reference transaction access."
 msgstr ""
 
-#: src/PaymentHandler.php:116
+#: src/PaymentHandler.php:131
 msgid "Error processing payment. Reason: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:153
+#: src/PaymentHandler.php:168
 msgid "PayPal capture status is pending. Reason: %1$s. Payment will complete when capture.completed webhook is received."
 msgstr ""
 
-#: src/PaymentHandler.php:168
+#: src/PaymentHandler.php:183
 msgid "PayPal order %s created. %s"
 msgstr ""
 
-#: src/PaymentHandler.php:169
+#: src/PaymentHandler.php:184
 msgid "Capture ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:169
+#: src/PaymentHandler.php:184
 msgid "Authorization ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:260
+#: src/PaymentHandler.php:275
 msgid "To process a refund, there must be a transaction id associated with the order."
 msgstr ""
 
-#: src/PaymentHandler.php:263
+#: src/PaymentHandler.php:278
 msgid "This payment has a status of Authorize. Only captured payments can be refunded."
 msgstr ""
 
-#: src/PaymentHandler.php:306
+#: src/PaymentHandler.php:312
 msgid "Error capturing payment. Reason: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:310
+#: src/PaymentHandler.php:316
 msgid "Payment captured in PayPal. Capture ID: %s Amount: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:342
+#: src/PaymentHandler.php:348
 msgid "A valid authorization ID is required to perform a void."
 msgstr ""
 
-#: src/PaymentHandler.php:356
-#: src/PaymentHandler.php:387
+#: src/PaymentHandler.php:362
+#: src/PaymentHandler.php:393
 msgid "PayPal authorization cancelled. Authorization ID: %s"
 msgstr ""
 
-#: src/PaymentHandler.php:380
+#: src/PaymentHandler.php:386
 msgid "Order cancellation"
 msgstr ""
 
@@ -1463,7 +1479,7 @@ msgstr ""
 msgid "Invalid order key provided."
 msgstr ""
 
-#: src/Rest/Routes/WebhookRoute.php:68
+#: src/Rest/Routes/WebhookRoute.php:73
 msgid "Verification of Webhook signature failed."
 msgstr ""
 
@@ -1693,9 +1709,9 @@ msgid "Your PayPal payment method is ready to be processed. Please review your o
 msgstr ""
 
 #: templates/checkout/paypal.php:29
-#: packages/blocks/assets/js/payment-methods/paypal/index.js:139
+#: packages/blocks/assets/js/payment-methods/paypal/index.js:142
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:713
+#: packages/blocks/build/blocks-commons.js:734
 msgid "Cancel"
 msgstr ""
 
@@ -1703,26 +1719,26 @@ msgstr ""
 msgid "Please connect your PayPal account before using PayPal."
 msgstr ""
 
-#: packages/blocks/assets/js/payment-methods/paypal/hooks/use-paypal-options.js:58
+#: packages/blocks/assets/js/payment-methods/paypal/hooks/use-paypal-options.js:57
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:217
+#: packages/blocks/build/blocks-commons.js:235
 msgid "Please fill out all billing and shipping fields before clicking PayPal."
 msgstr ""
 
-#: packages/blocks/assets/js/payment-methods/paypal/hooks/use-paypal-options.js:60
+#: packages/blocks/assets/js/payment-methods/paypal/hooks/use-paypal-options.js:59
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:219
+#: packages/blocks/build/blocks-commons.js:237
 msgid "Please fill out all billing fields before clicking PayPal."
 msgstr ""
 
 #: packages/blocks/assets/js/payment-methods/paypal/hooks/use-validate-checkout.js:16
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:844
+#: packages/blocks/build/blocks-commons.js:852
 msgid "Please click the PayPal button before placing your order."
 msgstr ""
 
-#: packages/blocks/assets/js/payment-methods/paypal/index.js:136
+#: packages/blocks/assets/js/payment-methods/paypal/index.js:139
 #: packages/blocks/build/blocks-commons.js:1
-#: packages/blocks/build/blocks-commons.js:710
+#: packages/blocks/build/blocks-commons.js:731
 msgid "Your PayPal payment method is ready to be processed. Please review your order details then click Place Order"
 msgstr ""

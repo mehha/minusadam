@@ -50,10 +50,18 @@ class CartItem extends AbstractCart {
 			$setting = new ProductSettings( $product_id );
 			$order   = $this->get_order_from_cart( $request );
 			$order->setIntent( $setting->get_option( 'intent' ) );
+
+			$this->logger->info(
+				sprintf( 'Creating PayPal order via %s. Args: %s', __METHOD__, print_r( $order->toArray(), true ) ),
+				'payment'
+			);
+
 			$result = $this->client->orders->create( $order );
 			if ( is_wp_error( $result ) ) {
 				throw new \Exception( $result->get_error_message() );
 			}
+
+			$this->logger->info( sprintf( 'PayPal order %s created via %s', $result->id, __METHOD__ ), 'payment' );
 
 			$this->cache->set( Constants::PAYPAL_ORDER_ID, $result->id );
 

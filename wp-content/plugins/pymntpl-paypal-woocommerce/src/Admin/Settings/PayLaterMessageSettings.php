@@ -88,7 +88,7 @@ class PayLaterMessageSettings extends AbstractSettings {
 					'grayscale'  => __( 'Grayscale', 'pymntpl-paypal-woocommerce' ),
 				],
 				'custom_attributes' => [
-					'data-show-if' => 'checkot_layout=text'
+					'data-show-if' => 'checkout_layout=text'
 				]
 			],
 			'checkout_text_size'     => [

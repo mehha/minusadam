@@ -11,13 +11,13 @@ class ComposerStaticInitd6aa985415b057d85bc5a1a99863499e
         array (
             'PaymentPlugins\\WooCommerce\\PPCP\\' => 32,
             'PaymentPlugins\\PayPalSDK\\' => 25,
-            'PaymentPlugins\\PPCP\\WooFunnels\\' => 31,
             'PaymentPlugins\\PPCP\\WooCommerceShipStation\\' => 43,
             'PaymentPlugins\\PPCP\\WooCommerceProductAddons\\' => 45,
             'PaymentPlugins\\PPCP\\WooCommerceGermanized\\' => 42,
             'PaymentPlugins\\PPCP\\WooCommerceExtraProductOptions\\' => 51,
             'PaymentPlugins\\PPCP\\Stripe\\' => 27,
             'PaymentPlugins\\PPCP\\MondialRelay\\' => 33,
+            'PaymentPlugins\\PPCP\\FunnelKit\\' => 30,
             'PaymentPlugins\\PPCP\\Elementor\\' => 30,
             'PaymentPlugins\\PPCP\\CheckoutWC\\' => 31,
             'PaymentPlugins\\PPCP\\Blocks\\' => 27,
@@ -32,10 +32,6 @@ class ComposerStaticInitd6aa985415b057d85bc5a1a99863499e
         'PaymentPlugins\\PayPalSDK\\' => 
         array (
             0 => __DIR__ . '/..' . '/paymentplugins/paypal-php-sdk/src',
-        ),
-        'PaymentPlugins\\PPCP\\WooFunnels\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/packages/woofunnels/src',
         ),
         'PaymentPlugins\\PPCP\\WooCommerceShipStation\\' => 
         array (
@@ -60,6 +56,10 @@ class ComposerStaticInitd6aa985415b057d85bc5a1a99863499e
         'PaymentPlugins\\PPCP\\MondialRelay\\' => 
         array (
             0 => __DIR__ . '/../..' . '/packages/mondial-relay/src',
+        ),
+        'PaymentPlugins\\PPCP\\FunnelKit\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/funnelkit/src',
         ),
         'PaymentPlugins\\PPCP\\Elementor\\' => 
         array (

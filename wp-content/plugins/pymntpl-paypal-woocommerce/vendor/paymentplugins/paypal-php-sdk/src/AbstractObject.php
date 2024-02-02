@@ -21,6 +21,7 @@ abstract class AbstractObject implements \JsonSerializable, \ArrayAccess, \Itera
 		$this->initProps( $props );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
 		return $this->_values;
 	}
@@ -95,38 +96,47 @@ abstract class AbstractObject implements \JsonSerializable, \ArrayAccess, \Itera
 		unset( $this->_values[ $name ] );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function offsetExists( $offset ) {
 		return isset( $this->{$offset} );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function offsetGet( $offset ) {
 		return $this->__get( $offset );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function offsetSet( $offset, $value ) {
 		$this->__set( $offset, $value );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function offsetUnset( $offset ) {
 		unset( $this->{$offset} );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function current() {
 		return \current( $this->_values );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function next() {
 		\next( $this->_values );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function key() {
 		return \key( $this->_values );
 	}
 
+	#[\ReturnTypeWillChange]
 	public function valid() {
 		return \key( $this->_values ) !== null;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function rewind() {
 		reset( $this->_values );
 	}

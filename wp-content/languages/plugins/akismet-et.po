@@ -7,11 +7,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.11\n"
+"X-Generator: GlotPress/4.0.0-beta.2\n"
 "Language: et_EE\n"
 "Project-Id-Version: Plugins - Akismet Anti-spam: Spam Protection - Stable (latest release)\n"
 
-#: class.akismet-admin.php:271 views/config.php:265
+#: class.akismet-admin.php:271 views/config.php:276
 msgid "Status"
 msgstr "Olek"
 
@@ -48,7 +48,7 @@ msgstr[0] "<strong>Akismet</strong> on püüdnud kinni <strong class=\"count\">%
 msgstr[1] "<strong>Akismet</strong> on püüdnud kinni <strong class=\"count\">%1$s rämpskommentaari</strong>"
 
 #: class.akismet-admin.php:107 class.akismet-admin.php:254
-#: class.akismet-admin.php:723 views/config.php:81
+#: class.akismet-admin.php:723 views/config.php:85
 msgid "Settings"
 msgstr "Seaded"
 
@@ -103,7 +103,7 @@ msgstr "Akismet lubas selle kommentaari automaatse järelkontrolli käigus."
 msgid "View comment history"
 msgstr "Vaata kommentaaride ajalugu"
 
-#: class.akismet-admin.php:87 class.akismet-admin.php:1271
+#: class.akismet-admin.php:87 class.akismet-admin.php:1293
 msgid "Akismet"
 msgstr "Akismet"
 

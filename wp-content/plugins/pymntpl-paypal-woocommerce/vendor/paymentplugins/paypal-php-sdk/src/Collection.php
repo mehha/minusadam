@@ -23,6 +23,7 @@ class Collection extends AbstractObject implements \Countable, \ArrayAccess {
 		}
 	}
 
+	#[\ReturnTypeWillChange]
 	public function count() {
 		return \count( $this->_values );
 	}

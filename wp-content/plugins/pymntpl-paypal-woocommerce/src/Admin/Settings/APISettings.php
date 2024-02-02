@@ -174,6 +174,28 @@ class APISettings extends AbstractSettings {
 				'value'       => 'yes',
 				'desc_tip'    => true,
 				'description' => __( 'When enabled, valuable debugging information will be captured and stored in the WooCommerce logs.', 'pymntpl-paypal-woocommerce' )
+			],
+			'debug_payment'             => [
+				'title'             => __( 'Debug Payment Process', 'pymntpl-paypal-woocommerce' ),
+				'type'              => 'checkbox',
+				'default'           => 'no',
+				'value'             => 'yes',
+				'desc_tip'          => true,
+				'description'       => __( 'When enabled, detailed debug data for payments will be added to the log.', 'pymntpl-paypal-woocommerce' ),
+				'custom_attributes' => [
+					'data-show-if' => 'debug=true'
+				],
+			],
+			'debug_webhook'             => [
+				'title'             => __( 'Debug Webhook', 'pymntpl-paypal-woocommerce' ),
+				'type'              => 'checkbox',
+				'default'           => 'no',
+				'value'             => 'yes',
+				'desc_tip'          => true,
+				'description'       => __( 'When enabled, detailed debug data for webhooks will be added to the log.', 'pymntpl-paypal-woocommerce' ),
+				'custom_attributes' => [
+					'data-show-if' => 'debug=true'
+				],
 			]
 		];
 		$environments      = [ 'production', 'sandbox' ];
@@ -267,6 +289,14 @@ class APISettings extends AbstractSettings {
 
 	public function set_webhook_id( $id, $environment ) {
 		$this->update_option( "webhook_id_{$environment}", $id );
+	}
+
+	public function debug_webhook_enabled() {
+		return \wc_string_to_bool( $this->get_option( 'debug_webhook' ) );
+	}
+
+	public function debug_payment_enabled() {
+		return \wc_string_to_bool( $this->get_option( 'debug_payment' ) );
 	}
 
 	private function generate_connect_link( $environment ) {
@@ -402,7 +432,7 @@ class APISettings extends AbstractSettings {
                     </legend>
                     <label for="<?php echo esc_attr( $field_key ); ?>">
                         <button <?php disabled( $data['disabled'], true ); ?> target="_blank" class="<?php echo esc_attr( $data['class'] ); ?> wc-ppcp__button" id="<?php echo esc_attr( $field_key ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>"
-                                                                              value="<?php echo esc_attr($field_key); ?>" <?php echo $this->get_custom_attribute_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo wp_kses_post( $data['label'] ); ?></button>
+                                                                              value="<?php echo esc_attr( $field_key ); ?>" <?php echo $this->get_custom_attribute_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo wp_kses_post( $data['label'] ); ?></button>
                     </label><br/>
 					<?php echo $this->get_description_html( $data ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 </fieldset>

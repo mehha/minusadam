@@ -14,7 +14,7 @@ export const useProcessPayment = (
         onSubmit,
         billingData,
         shippingData,
-        onPaymentProcessing,
+        onPaymentSetup,
         responseTypes,
         activePaymentMethod,
         paymentMethodId
@@ -109,7 +109,7 @@ export const useProcessPayment = (
 
     useEffect(() => {
         if (activePaymentMethod === paymentMethodId) {
-            const unsubscribe = onPaymentProcessing(() => {
+            const unsubscribe = onPaymentSetup(() => {
                 const billingData = currentBillingData.current;
                 const shippingData = currentShippingData.current;
                 const {shippingAddress, needsShipping} = shippingData;
@@ -160,7 +160,7 @@ export const useProcessPayment = (
 
             return () => unsubscribe();
         }
-    }, [onPaymentProcessing, activePaymentMethod]);
+    }, [onPaymentSetup, activePaymentMethod]);
 
     return {paymentData, setPaymentData};
 }

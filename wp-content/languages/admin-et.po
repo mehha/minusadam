@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.11\n"
+"X-Generator: GlotPress/4.0.0-beta.2\n"
 "Language: et_EE\n"
 "Project-Id-Version: WordPress - 6.4.x - Development - Administration\n"
 
@@ -617,12 +617,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentatsioon kohandaja kohta</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:381
+#: wp-admin/about.php:433
 msgid "https://wordpress.org/download/"
 msgstr "https://wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:378
+#: wp-admin/about.php:430
 msgid "This is the final release of WordPress %s"
 msgstr "See on WordPress %s lõppversioon"
 
@@ -958,17 +958,17 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "Et seda probleemi tulevikus mitte kohata, võta ühendust WordPressi arendajatega."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:375
+#: wp-admin/about.php:427
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versioon (%1$s) ei saa varsti enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:372
+#: wp-admin/about.php:424
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versiooni (%1$s) enam ei toetata ning see ei saa enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:246
+#: wp-admin/about.php:298
 msgid "Learn more about WordPress %s"
 msgstr "Lisateave WordPressi %s kohta"
 
@@ -1873,7 +1873,7 @@ msgstr "Lisa uus rakenduse parool"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Nõutav rakenduse parooli loomiseks, kuid mitte kasutajainfo uuendamiseks."
 
-#: wp-admin/about.php:316
+#: wp-admin/about.php:368
 msgid "Go to Updates"
 msgstr "Uuenduste lehele"
 
@@ -2181,7 +2181,7 @@ msgstr "Väärtus \"%1$s\" on väiksem kui \"%2$s\""
 msgid "Environment type"
 msgstr "Keskkonna tüüp"
 
-#: wp-admin/about.php:232
+#: wp-admin/about.php:284
 msgid "Accessibility"
 msgstr "Ligipääsetavus"
 
@@ -3813,7 +3813,7 @@ msgstr "https://make.wordpress.org/hosting/handbook/handbook/server-environment/
 msgid "The WordPress Hosting Team maintains a list of those modules, both recommended and required, in <a href=\"%1$s\" %2$s>the team handbook%3$s</a>."
 msgstr "WordPressi käsiraamat haldab nende moodulite nimekirja, mida soovitab (ja tegelikult nõuab) <a href=\"%1$s\" %2$s>käsiraamat%3$s</a>."
 
-#: wp-admin/about.php:222 wp-admin/includes/class-wp-site-health.php:259
+#: wp-admin/about.php:274 wp-admin/includes/class-wp-site-health.php:259
 #: wp-admin/includes/class-wp-site-health.php:737
 #: wp-admin/includes/class-wp-site-health.php:884
 #: wp-admin/includes/class-wp-site-health.php:1122
@@ -5081,7 +5081,7 @@ msgstr "<strong>Viga:</strong> See plugin <strong>vajab WordPressi uuemat versio
 msgid "<strong>Error:</strong> This plugin <strong>requires a newer version of PHP</strong>."
 msgstr "<strong>Viga:</strong> See plugin <strong>vajab PHP uuemat versiooni</strong>."
 
-#: wp-admin/includes/schema.php:1282
+#: wp-admin/includes/schema.php:1280
 msgid "My Network"
 msgstr "Minu võrgustik"
 
@@ -5108,7 +5108,7 @@ msgstr "See plugin ei tööta sinu praeguste WordPressi ja PHP versioonidega."
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:298 wp-admin/includes/update.php:323
+#: wp-admin/about.php:350 wp-admin/includes/update.php:323
 #: wp-admin/index.php:119 wp-admin/install.php:249 wp-admin/update-core.php:94
 #: wp-admin/upgrade.php:81
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
@@ -6714,8 +6714,8 @@ msgstr "Uus versioon on saadaval. <button class=\"button-link\" type=\"button\">
 msgid "Sorry, you are not allowed to update this site."
 msgstr "Vabandust, sul pole õigust seda veebisaiti uuendada."
 
-#: wp-admin/includes/ajax-actions.php:4329 wp-admin/update.php:207
-#: wp-admin/update.php:230
+#: wp-admin/includes/ajax-actions.php:4329 wp-admin/update.php:211
+#: wp-admin/update.php:234
 msgid "Sorry, you are not allowed to update themes for this site."
 msgstr "Vabandust, sul pole õigust selle veebisaidi teemasid uuendada."
 
@@ -6936,7 +6936,7 @@ msgid "No theme specified."
 msgstr "Ühtki teemat pole valitud."
 
 #: wp-admin/includes/ajax-actions.php:4202 wp-admin/theme-install.php:16
-#: wp-admin/update.php:258 wp-admin/update.php:300 wp-admin/update.php:334
+#: wp-admin/update.php:262 wp-admin/update.php:304 wp-admin/update.php:342
 msgid "Sorry, you are not allowed to install themes on this site."
 msgstr "Vabandust, sul pole õigust selle veebisaidi teemasid paigaldada."
 
@@ -7416,7 +7416,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Praegu: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:346
+#: wp-admin/about.php:398
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Versioon %s</strong> lahendas ühe turvaprobleemi."
 
@@ -7428,15 +7428,15 @@ msgstr "https://en.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profiili pilt"
 
-#: wp-admin/about.php:337
+#: wp-admin/about.php:389
 msgid "Maintenance Releases"
 msgstr "Hooldusväljalasked"
 
-#: wp-admin/about.php:340
+#: wp-admin/about.php:392
 msgid "Security Releases"
 msgstr "Turvaväljalasked"
 
-#: wp-admin/about.php:343
+#: wp-admin/about.php:48 wp-admin/about.php:395
 msgid "Maintenance and Security Releases"
 msgstr "Hooldus- ja turvaväljalasked"
 
@@ -10742,23 +10742,25 @@ msgid "Show Toolbar when viewing site"
 msgstr "Näita esilehel tööriistariba"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:53 wp-admin/about.php:351
+#: wp-admin/about.php:105 wp-admin/about.php:403
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas %2$s vea."
 msgstr[1] "<strong>Versioon %1$s</strong> parandas %2$s viga."
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:357
+#: wp-admin/about.php:79 wp-admin/about.php:409
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
 msgstr[1] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:363
+#: wp-admin/about.php:53 wp-admin/about.php:415
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s vea."
@@ -10766,7 +10768,8 @@ msgstr[1] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:65 wp-admin/about.php:369
+#: wp-admin/about.php:65 wp-admin/about.php:91 wp-admin/about.php:117
+#: wp-admin/about.php:421
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 
@@ -10775,20 +10778,20 @@ msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 msgid "What&#8217;s New"
 msgstr "Uued asjad"
 
-#: wp-admin/about.php:339
+#: wp-admin/about.php:391
 msgid "Security Release"
 msgstr "Turvaparanduste väljaanne"
 
-#: wp-admin/about.php:48 wp-admin/about.php:336
+#: wp-admin/about.php:388
 msgid "Maintenance Release"
 msgstr "Hooldusversioon"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:348
+#: wp-admin/about.php:400
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Versioon %s</strong> lahendas paar turvaprobleemi."
 
-#: wp-admin/about.php:342
+#: wp-admin/about.php:394
 msgid "Maintenance and Security Release"
 msgstr "Hooldus- ja turvauuendus"
 
@@ -11057,15 +11060,15 @@ msgid "Because this is a multisite installation, you may add accounts that alrea
 msgstr "Kuna WordPress on paigaldatud mitmiksaidina, võid juba võrgustikus olemasolevaid kasutajaid lisada lihtsalt kasutajanime või e-postiaadressi ja kasutajarolli määramisega. Täiendavate võimaluste (parooli määramine jne) kasutamiseks pead olema võrgustikuhaldur - sel juhul saad kasutajainfot redigeerida kasutajanime kohal asuva hõljukviite kaudu."
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:83
+#: wp-admin/about.php:135
 msgid "Welcome to WordPress %s"
 msgstr "Tere tulemast WordPressi versiooni %s"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:375
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Töölauale &rarr; Esileht"
 
-#: wp-admin/about.php:316
+#: wp-admin/about.php:368
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Töölaud &rarr; Uuendused"
 
@@ -11752,7 +11755,7 @@ msgstr "Teema uuendamine õnnestus."
 msgid "Update Plugin"
 msgstr "Uuenda pluginat"
 
-#: wp-admin/includes/class-theme-upgrader-skin.php:44 wp-admin/update.php:215
+#: wp-admin/includes/class-theme-upgrader-skin.php:44 wp-admin/update.php:219
 msgid "Update Theme"
 msgstr "Uuenda teemat"
 
@@ -12261,13 +12264,13 @@ msgstr "<strong>Mall</strong> &mdash;  Mõned teemad sisaldavad kohandatud malle
 msgid "All updates have been completed."
 msgstr "Kõik uuendused on tehtud."
 
-#: wp-admin/edit-tags.php:275
-msgid "When adding a new category on this screen, you&#8217;ll fill in the following fields:"
-msgstr "Uue rubriigi lisamiseks pead täitma järgmised väljad:"
-
 #: wp-admin/edit-tags.php:262
 msgid "What&#8217;s the difference between categories and tags? Normally, tags are ad-hoc keywords that identify important information in your post (names, subjects, etc) that may or may not recur in other posts, while categories are pre-determined sections. If you think of your site like a book, the categories are like the Table of Contents and the tags are like the terms in the index."
 msgstr "Mis vahe on rubriikidel ja siltidel? Tavaliselt on siltideks töö käigus leitud võtmesõnad, mis tõstavad esile postituses leiduvat põhiinfot (nimed, teemad jne), mis võib esineda teistes postitustes või mitte. Rubriigid seevastu on eelnevalt paikapandud alajaotised. Kui ajaveeb on raamat, siis rubriigid on otsekui sisukord, sildid aga on võtmesõnad nimeregistris."
+
+#: wp-admin/edit-tags.php:275
+msgid "When adding a new category on this screen, you&#8217;ll fill in the following fields:"
+msgstr "Uue rubriigi lisamiseks pead täitma järgmised väljad:"
 
 #: wp-admin/edit-tags.php:277
 msgid "When adding a new tag on this screen, you&#8217;ll fill in the following fields:"
@@ -12506,12 +12509,12 @@ msgid "No items."
 msgstr "Tühi."
 
 #. translators: %s: Asterisk symbol (*).
-#: wp-admin/includes/schema.php:1143
+#: wp-admin/includes/schema.php:1141
 msgid "To use a subdomain configuration, you must have a wildcard entry in your DNS. This usually means adding a %s hostname record pointing at your web server in your DNS configuration tool."
 msgstr "Alamdomeeni kasutamiseks peab vastav seadistus olema tehtud nimeserveris. See tähendab enamasti %s hostikirje lisamist enda serveri kohta."
 
 #. translators: %s: Host name.
-#: wp-admin/includes/schema.php:1132
+#: wp-admin/includes/schema.php:1130
 msgid "The installer attempted to contact a random hostname (%s) on your domain."
 msgstr "Paigaldus üritas võtta ühendust suvalise hostiga (%s) selles domeenis."
 
@@ -12715,28 +12718,28 @@ msgstr "Salvesta menüü"
 msgid "Updating Theme %1$s (%2$d/%3$d)"
 msgstr "Uuendan teemat %1$s (%2$d/%3$d)"
 
-#: wp-admin/includes/schema.php:995
+#: wp-admin/includes/schema.php:993
 msgid "You must provide a domain name."
 msgstr "Domeeninimi on vajalik."
 
-#: wp-admin/includes/schema.php:998
+#: wp-admin/includes/schema.php:996
 msgid "You must provide a name for your network of sites."
 msgstr "Pead oma veebivõrgustikule panema nime."
 
-#: wp-admin/includes/schema.php:1005 wp-admin/includes/schema.php:1011
+#: wp-admin/includes/schema.php:1003 wp-admin/includes/schema.php:1009
 msgid "The network already exists."
 msgstr "Võrgustik on juba olemas."
 
 #. translators: %s: Error message.
-#: wp-admin/includes/schema.php:1137
+#: wp-admin/includes/schema.php:1135
 msgid "This resulted in an error message: %s"
 msgstr "Saadi veateade: %s"
 
-#: wp-admin/includes/schema.php:1147
+#: wp-admin/includes/schema.php:1145
 msgid "You can still use your site but any subdomain you create may not be accessible. If you know your DNS is correct, ignore this message."
 msgstr "Sait on kasutatav, kuid loodavad alamdomeenid ei pruugi toimida. Kui oled kindel, et DNS töötab korrektselt, eira seda teadet."
 
-#: wp-admin/includes/schema.php:1016
+#: wp-admin/includes/schema.php:1014
 msgid "You must provide a valid email address."
 msgstr "Sisesta toimiv e-postiaadress."
 
@@ -12832,7 +12835,7 @@ msgstr[1] "Kohustuslikud <span class=\"count\">(%s)</span>"
 msgid "Inactive:"
 msgstr "Väljalülitatud:"
 
-#: wp-admin/about.php:323 wp-admin/includes/network.php:166
+#: wp-admin/about.php:375 wp-admin/includes/network.php:166
 msgid "Go to Dashboard"
 msgstr "Töölauale"
 
@@ -13733,7 +13736,7 @@ msgid "Update Themes"
 msgstr "Uuenda teemasid"
 
 #. translators: %s: Theme name and version.
-#: wp-admin/update.php:287
+#: wp-admin/update.php:291
 msgid "Installing Theme: %s"
 msgstr "Paigaldan teemat %s"
 
@@ -13867,7 +13870,7 @@ msgstr "Mitmiksaidi tugi ei ole sisse lülitatud."
 
 #. translators: %s: Site link.
 #. translators: First post content. %s: Site link.
-#: wp-admin/includes/schema.php:1295 wp-admin/includes/upgrade.php:196
+#: wp-admin/includes/schema.php:1293 wp-admin/includes/upgrade.php:196
 msgid "Welcome to %s. This is your first post. Edit or delete it, then start writing!"
 msgstr "Tere tulemast %s WordPressi! See on sinu esimene postitus. Muuda seda või kustuta ning alusta blogimist uue postitusega!"
 
@@ -13955,12 +13958,12 @@ msgid "Your WordPress database is already up to date!"
 msgstr "Sinu WordPressi andmebaas on juba ajakohastatud!"
 
 #. translators: %s: File name.
-#: wp-admin/update.php:315
+#: wp-admin/update.php:323
 msgid "Installing theme from uploaded file: %s"
 msgstr "Paigaldan teema failist %s"
 
 #. translators: %s: File name.
-#: wp-admin/update.php:167
+#: wp-admin/update.php:171
 msgid "Installing plugin from uploaded file: %s"
 msgstr "Paigaldan plugina failist %s"
 
@@ -14036,12 +14039,12 @@ msgid "You cannot delete the current user."
 msgstr "Aktiivset kasutajat ei saa kustutada."
 
 #: wp-admin/theme-install.php:60 wp-admin/theme-install.php:178
-#: wp-admin/theme-install.php:180 wp-admin/update.php:308
+#: wp-admin/theme-install.php:180 wp-admin/update.php:316
 msgid "Upload Theme"
 msgstr "Laadi teema üles"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:122
-#: wp-admin/plugin-install.php:150 wp-admin/update.php:160
+#: wp-admin/plugin-install.php:150 wp-admin/update.php:164
 msgid "Upload Plugin"
 msgstr "Laadi plugin üles"
 
@@ -14427,8 +14430,8 @@ msgid "Preview &#8220;%s&#8221;"
 msgstr "Eelvaatle &#8220;%s&#8221;"
 
 #: wp-admin/includes/class-file-upload-upgrader.php:57
-#: wp-admin/includes/class-file-upload-upgrader.php:96
-#: wp-admin/includes/class-file-upload-upgrader.php:112
+#: wp-admin/includes/class-file-upload-upgrader.php:120
+#: wp-admin/includes/class-file-upload-upgrader.php:136
 msgid "Please select a file"
 msgstr "Palun vali fail"
 
@@ -15265,7 +15268,7 @@ msgstr "Vali enda arvutist soovitav fail:"
 msgid "Maximum size: %s"
 msgstr "Maksimumsuurus: %s"
 
-#: wp-admin/update.php:280
+#: wp-admin/update.php:284
 msgid "Install Themes"
 msgstr "Paigalda teemad"
 
@@ -15281,6 +15284,7 @@ msgstr "Lülita ligipääsuvahendid välja"
 msgid "Invalid URL Provided."
 msgstr "Vigane veebiviide."
 
+#: wp-admin/includes/class-file-upload-upgrader.php:92
 #: wp-admin/includes/file.php:1666 wp-admin/includes/file.php:1864
 msgid "Incompatible Archive."
 msgstr "Sobimatu arhiiv."
@@ -15336,7 +15340,7 @@ msgstr "Järjekordne WordPressi veebileht"
 msgid "Just another %s site"
 msgstr "Järjekordne %s veebileht"
 
-#: wp-admin/includes/schema.php:1128
+#: wp-admin/includes/schema.php:1126
 msgid "Warning! Wildcard DNS may not be configured correctly!"
 msgstr "Hoiatus - nimeserver ei pruugi olla õigesti häälestatud!"
 

@@ -99,9 +99,13 @@ class BillingAgreementToken extends AbstractRoute {
 			$params = $this->factories->billingAgreement->from_cart( $request['payment_method'] );
 		}
 
+		$this->logger->info( sprintf( 'Creating billing agreement token via %s. Args: %s', __METHOD__, print_r( $params, true ) ), 'payment' );
+
 		$token = $this->client->billingAgreementTokens->create( $params );
 
 		if ( ! is_wp_error( $token ) ) {
+			$this->logger->info( sprintf( 'Billing agreement token %s created via %s.', $token->token_id, __METHOD__ ), 'payment' );
+
 			return $token->token_id;
 		} else {
 			return $token;

@@ -5,11 +5,11 @@ export const useValidateCheckout = (
     {
         isExpress,
         paymentData,
-        onCheckoutValidationBeforeProcessing
+        onCheckoutValidation
     }) => {
     useEffect(() => {
         if (!isExpress) {
-            const unsubscribe = onCheckoutValidationBeforeProcessing(() => {
+            const unsubscribe = onCheckoutValidation(() => {
                 // validate that the order has been created.
                 if (!paymentData?.orderId) {
                     return {

@@ -177,20 +177,12 @@ const isEmpty = (value) => {
     return true;
 }
 
-export const versionCompare = (ver1, ver2, compare) => {
-    switch (compare) {
-        case '<':
-            return ver1 < ver2;
-        case '>':
-            return ver1 > ver2;
-        case '<=':
-            return ver1 <= ver2;
-        case '>=':
-            return ver1 >= ver2;
-        case '=':
-            return ver1 == ver2;
-    }
-    return false;
+export const isCartPage = () => {
+    return getSetting('ppcpGeneralData').context === 'cart';
+}
+
+export const isCheckoutPage = () => {
+    return getSetting('ppcpGeneralData').context === 'checkout';
 }
 
 export const DEFAULT_SHIPPING_ADDRESS = {

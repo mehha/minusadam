@@ -6,6 +6,7 @@ namespace PaymentPlugins\WooCommerce\PPCP\Integrations;
 use PaymentPlugins\PayPalSDK\Order;
 use PaymentPlugins\WooCommerce\PPCP\Constants;
 use PaymentPlugins\WooCommerce\PPCP\Factories\CoreFactories;
+use PaymentPlugins\WooCommerce\PPCP\Logger;
 use PaymentPlugins\WooCommerce\PPCP\Main;
 use PaymentPlugins\WooCommerce\PPCP\PaymentHandler;
 use PaymentPlugins\WooCommerce\PPCP\PaymentResult;
@@ -29,9 +30,12 @@ class WooCommerceSubscriptions implements PluginIntegrationType {
 
 	private $factories;
 
-	public function __construct( WPPayPalClient $client, CoreFactories $factories ) {
+	private $log;
+
+	public function __construct( WPPayPalClient $client, CoreFactories $factories, Logger $log ) {
 		$this->client    = $client;
 		$this->factories = $factories;
+		$this->log       = $log;
 	}
 
 	public function is_active() {
@@ -75,10 +79,16 @@ class WooCommerceSubscriptions implements PluginIntegrationType {
 				];
 			}
 
+			$this->log->info( sprintf( 'Creating billing agreement via %s. Billing agreement token: %s. Order ID: %s', __METHOD__, $billing_token, $order->get_id() ), 'payment' );
+
+
 			$billing_agreement = $this->client->billingAgreements->create( [ 'token_id' => $billing_token ] );
 			if ( is_wp_error( $billing_agreement ) ) {
 				return $billing_agreement;
 			}
+
+			$this->log->info( sprintf( 'Billing agreement %s created via %s. Billing agreement token: %s. Order ID: %s', $billing_agreement->id, __METHOD__, $billing_token, $order->get_id() ), 'payment' );
+
 			$token = $payment_method->get_payment_method_token_instance();
 			$token->initialize_from_payer( $billing_agreement->payer->payer_info );
 			$order->set_payment_method_title( $token->get_payment_method_title() );

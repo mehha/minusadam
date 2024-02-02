@@ -4,7 +4,7 @@ Tags: paypal, paylater, venmo, credit cards
 Requires at least: 4.7
 Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 1.0.40
+Stable tag: 1.0.42
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,13 @@ Our documentation has a step-by-step guide on how to connect the plugin to your 
 Payment Plugins is the team behind several of the highest reviewed and installed Payment integrations for WooCommerce.
 
 == Changelog ==
+= 1.0.42 - 01/11/24
+* Updated - references to Woofunnels changed to Funnelkit
+* Fixed - PayLater message color option fixed for checkout page
+= 1.0.41 - 12/19/23 =
+* Added - Filter "wc_ppcp_refund_factory_from_order_refund" so refund object can be customized before its processed by PayPal API.
+* Added - Debug options so merchants can control the level of debugging that's enabled
+* Updated - Replaced deprecated filters used in Checkout and Cart block
 = 1.0.40 - 11/23/23 =
 * Added - German translation file added. [Support thread](https://wordpress.org/support/topic/german-translation-168/)
 * Updated - Performance improvements on checkout page when processing a payment.

@@ -57,13 +57,18 @@ class WebhookRoute extends AbstractRoute {
 				'webhook_event'     => $payload
 			];
 
-			$this->log->info( sprintf( 'Webhook received. Event: %s', $payload['event_type'] ) );
+			$this->log->info(
+				sprintf( 'Webhook received. Event: %s', $payload['event_type'] ),
+				sprintf( ' Payload: %s', print_r( $payload, true ) ),
+				'webhook'
+			);
 
 			if ( has_action( $this->get_action_name( $payload['event_type'] ) ) ) {
 				$result = $this->client->environment( $environment )->webhooks->verifySignature( $params );
-
-				if ( $result->verification_status === 'SUCCESS' ) {
-					return parent::handle_request( $request );
+				if ( ! is_wp_error( $result ) ) {
+					if ( $result->verification_status === 'SUCCESS' ) {
+						return parent::handle_request( $request );
+					}
 				}
 				throw new \Exception( __( 'Verification of Webhook signature failed.', 'pymntpl-paypal-woocommerce' ) );
 			} else {
@@ -81,7 +86,17 @@ class WebhookRoute extends AbstractRoute {
 			$payload = \json_decode( $request->get_body(), true );
 			$event   = new WebhookEvent( $payload );
 			try {
+				$this->log->info(
+					sprintf( 'Executing action %s', $this->get_action_name( $event->event_type ) ),
+					'webhook'
+				);
+
 				do_action( $this->get_action_name( $event->event_type ), $event->resource, $event, $request );
+
+				$this->log->info(
+					sprintf( 'Webhook executed successfully. Exiting...', $this->get_action_name( $event->event_type ) ),
+					'webhook'
+				);
 
 				return [];
 			} catch ( \Exception $e ) {

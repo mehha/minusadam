@@ -7,6 +7,7 @@ import {useBreakpointWidth, useLoadPayPalScript} from "../../hooks";
 import {usePayPalOptions, usePayPalFundingSources, useProcessPayment, useValidateCheckout} from "./hooks";
 import './styles.scss';
 import {useProcessPaymentFailure} from "../../hooks";
+import {isCartPage, isCheckoutPage} from "../../utils";
 
 const getData = (key) => {
     const data = getSetting(key);
@@ -31,9 +32,11 @@ const isExpressEnabled = () => {
     return false;
 }
 
-const ExpressPaymentMethod = (props) => {
+const isCartEnabled = () => data('paypalSections').includes('cart');
+
+const ExpressPaymentMethod = ({context = 'express_checkout', ...props}) => {
     return <PayPalPaymentMethod
-        context={'express_checkout'}
+        context={context}
         isExpress={true}
         paymentMethodId='paymentplugins_ppcp_express'
         {...props}/>;
@@ -60,9 +63,9 @@ const PayPalPaymentMethod = (
     const vault = queryParams.vault === 'true';
     const {billingData} = billing;
     const {
-        onPaymentProcessing,
-        onCheckoutAfterProcessingWithError,
-        onCheckoutValidationBeforeProcessing
+        onPaymentSetup,
+        onCheckoutFail,
+        onCheckoutValidation
     } = eventRegistration;
     const {responseTypes, noticeContexts} = emitResponse;
     const [buttonsContainer, setButtonsContainer] = useState();
@@ -83,24 +86,24 @@ const PayPalPaymentMethod = (
         onSubmit,
         billingData,
         shippingData,
-        onPaymentProcessing,
+        onPaymentSetup,
         responseTypes,
         activePaymentMethod,
         paymentMethodId
     });
 
     useProcessPaymentFailure({
-        event: onCheckoutAfterProcessingWithError,
+        event: onCheckoutFail,
         responseTypes,
-        messageContext: isExpress ? noticeContexts.EXPRESS_PAYMENTS : null,
+        messageContext: isExpress ? noticeContexts.EXPRESS_PAYMENTS : noticeContexts.PAYMENTS,
         setPaymentData
     });
 
     useValidateCheckout({
         isExpress,
-        onCheckoutValidationBeforeProcessing,
+        onCheckoutValidation,
         paymentData
-    })
+    });
 
     const paypal = useLoadPayPalScript(queryParams);
 
@@ -181,53 +184,59 @@ const ErrorMessage = ({msg}) => {
     return null;
 }
 
-if (isExpressEnabled()) {
+if ((isCartPage() && isCartEnabled()) || (isCheckoutPage() && isExpressEnabled())) {
+    let context = 'express_checkout';
+    if (isCartPage()) {
+        context = 'cart';
+    }
     registerExpressPaymentMethod({
         name: 'paymentplugins_ppcp_express',
         canMakePayment: () => true,
-        content: <ExpressPaymentMethod/>,
-        edit: <ExpressPaymentMethod/>,
+        content: <ExpressPaymentMethod context={context}/>,
+        edit: <ExpressPaymentMethod context={context}/>,
         supports: {
             features: data('features')
         }
     });
 }
 
-if (data('placeOrderButtonEnabled')) {
-    registerPaymentMethod({
-        name: 'ppcp',
-        label: <PaymentMethodLabel
-            id='ppcp'
-            title={data('title')}
-            icons={data('icons')}/>,
-        ariaLabel: 'PayPal',
-        canMakePayment: () => true,
-        content: <SimplePayPal data={data}/>,
-        edit: <SimplePayPal data={data}/>,
-        placeOrderButtonLabel: data('i18n').buttonLabel,
-        supports: {
-            showSavedCards: false,
-            showSaveOption: false,
-            features: data('features')
-        }
-    });
-} else {
-    registerPaymentMethod({
-        name: 'ppcp',
-        label: <PaymentMethodLabel
-            id='ppcp'
-            title={data('title')}
-            icons={data('icons')}/>,
-        ariaLabel: 'PayPal',
-        canMakePayment: () => true,
-        content: <PayPalPaymentMethod context={'checkout'} paymentMethodId={'ppcp'}/>,
-        edit: <PayPalPaymentMethod context={'checkout'} paymentMethodId={'ppcp'}/>,
-        supports: {
-            showSavedCards: false,
-            showSaveOption: false,
-            features: data('features')
-        }
-    });
+if (isCheckoutPage()) {
+    if (data('placeOrderButtonEnabled')) {
+        registerPaymentMethod({
+            name: 'ppcp',
+            label: <PaymentMethodLabel
+                id='ppcp'
+                title={data('title')}
+                icons={data('icons')}/>,
+            ariaLabel: 'PayPal',
+            canMakePayment: () => true,
+            content: <SimplePayPal data={data}/>,
+            edit: <SimplePayPal data={data}/>,
+            placeOrderButtonLabel: data('i18n').buttonLabel,
+            supports: {
+                showSavedCards: false,
+                showSaveOption: false,
+                features: data('features')
+            }
+        });
+    } else {
+        registerPaymentMethod({
+            name: 'ppcp',
+            label: <PaymentMethodLabel
+                id='ppcp'
+                title={data('title')}
+                icons={data('icons')}/>,
+            ariaLabel: 'PayPal',
+            canMakePayment: () => true,
+            content: <PayPalPaymentMethod context={'checkout'} paymentMethodId={'ppcp'}/>,
+            edit: <PayPalPaymentMethod context={'checkout'} paymentMethodId={'ppcp'}/>,
+            supports: {
+                showSavedCards: false,
+                showSaveOption: false,
+                features: data('features')
+            }
+        });
+    }
 }
 
 

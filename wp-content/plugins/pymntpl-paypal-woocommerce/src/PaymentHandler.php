@@ -10,7 +10,6 @@ use PaymentPlugins\PayPalSDK\OrderApplicationContext;
 use PaymentPlugins\PayPalSDK\PatchRequest;
 use PaymentPlugins\PayPalSDK\PurchaseUnit;
 use PaymentPlugins\PayPalSDK\ShippingAddress;
-use PaymentPlugins\WooCommerce\PPCP\Admin\Settings\AdvancedSettings;
 use PaymentPlugins\WooCommerce\PPCP\Cache\CacheInterface;
 use PaymentPlugins\WooCommerce\PPCP\Exception\RetryException;
 use PaymentPlugins\WooCommerce\PPCP\Factories\CoreFactories;
@@ -58,7 +57,13 @@ class PaymentHandler {
 		$needs_update = false;
 		try {
 			if ( $this->use_billing_agreement ) {
-				$paypal_order = $this->client->orderMode( $order )->orders->create( $this->get_create_order_params( $order ) );
+				$args = $this->get_create_order_params( $order );
+				$this->payment_method->logger->info(
+					sprintf( 'Creating PayPal order with billing agreement via %s. Order ID: %s. Args: %s', __METHOD__, $order->get_id(), print_r( $args->toArray(), true ) ),
+					'payment'
+				);
+
+				$paypal_order = $this->client->orderMode( $order )->orders->create( $args );
 			} else {
 				$paypal_order_id = $this->get_paypal_order_id_from_request();
 				if ( ! $paypal_order_id ) {
@@ -66,7 +71,14 @@ class PaymentHandler {
 					// If there isn't an existing PayPal order ID or this payment method is using the Place Order
 					// button, create a PayPal order.
 					if ( ! $paypal_order_id || $this->payment_method->is_place_order_button() ) {
-						$paypal_order = $this->client->orderMode( $order )->orders->create( $this->get_create_order_params( $order ) );
+						$args = $this->get_create_order_params( $order );
+
+						$this->payment_method->logger->info(
+							sprintf( 'Creating PayPal order via %s. Order ID: %s. Args: %s', __METHOD__, $order->get_id(), print_r( $args->toArray(), true ) ),
+							'payment'
+						);
+
+						$paypal_order = $this->client->orderMode( $order )->orders->create( $args );
 					}
 				}
 				if ( ! $paypal_order ) {
@@ -91,9 +103,12 @@ class PaymentHandler {
 				// or the order has been approved.
 				if ( ( $this->use_billing_agreement && $paypal_order->isCreated() ) || $paypal_order->getStatus() === Order::APPROVED ) {
 					if ( Order::CAPTURE === $paypal_order->intent ) {
+						$this->payment_method->logger->info( sprintf( 'Capturing payment for PayPal order %s via %s. Order ID: %s', $paypal_order->getId(), __METHOD__, $order->get_id() ), 'payment' );
 						OrderLock::set_order_lock( $order );
 						$paypal_order = $this->client->orders->capture( $paypal_order->getId(), $this->get_payment_source( $order ) );
 					} else {
+						$this->payment_method->logger->info( sprintf( 'Authorizing payment for PayPal order %s via %s. Order ID: %s', $paypal_order->getId(), __METHOD__, $order->get_id() ), 'payment' );
+
 						$paypal_order = $this->client->orders->authorize( $paypal_order->getId(), $this->get_payment_source( $order ) );
 					}
 				}
@@ -275,16 +290,7 @@ class PaymentHandler {
 			} );
 		}
 
-		$settings = Main::container()->get( AdvancedSettings::class );
-
-		return $this->client->orderMode( $order )->captures->refund( $id, [
-			'amount'        => [
-				'value'         => NumberUtil::round_incl_currency( $amount, $order->get_currency() ),
-				'currency_code' => $order->get_currency()
-			],
-			'invoice_id'    => trim( $settings->get_option( 'order_prefix' ) . $refunds[0]->get_id() ),
-			'note_to_payer' => ! $reason ? null : $reason
-		] );
+		return $this->client->orderMode( $order )->captures->refund( $id, $this->factories->refunds->from_refund( $refunds[0], $amount, $reason ) );
 	}
 
 	public function process_capture( \WC_Order $order, $amount = '' ) {

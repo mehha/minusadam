@@ -5,7 +5,6 @@ import {convertPayPalAddressToCart, extractShippingMethod} from "@ppcp/utils";
 import {
     extractShippingRateParams,
     getRestPath,
-    isAddressValid
 } from '../../../utils';
 
 export const usePayPalOptions = (

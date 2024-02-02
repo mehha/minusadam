@@ -334,8 +334,8 @@ class Main {
 		$this->container->register( \PaymentPlugins\PPCP\Stripe\Package::class, function ( $container ) {
 			return new \PaymentPlugins\PPCP\Stripe\Package( $container, $this->version );
 		} );
-		$this->container->register( \PaymentPlugins\PPCP\WooFunnels\Package::class, function ( $container ) {
-			return new \PaymentPlugins\PPCP\WooFunnels\Package( $container, $this->version );
+		$this->container->register( \PaymentPlugins\PPCP\FunnelKit\Package::class, function ( $container ) {
+			return new \PaymentPlugins\PPCP\FunnelKit\Package( $container, $this->version );
 		} );
 		$this->container->register( \PaymentPlugins\PPCP\MondialRelay\Package::class, function ( $container ) {
 			return new \PaymentPlugins\PPCP\MondialRelay\Package( $container, $this->version );
@@ -366,7 +366,7 @@ class Main {
 				\PaymentPlugins\PPCP\Blocks\Package::class,
 				\PaymentPlugins\PPCP\CheckoutWC\Package::class,
 				\PaymentPlugins\PPCP\Stripe\Package::class,
-				\PaymentPlugins\PPCP\WooFunnels\Package::class,
+				\PaymentPlugins\PPCP\FunnelKit\Package::class,
 				\PaymentPlugins\PPCP\MondialRelay\Package::class,
 				\PaymentPlugins\PPCP\Elementor\Package::class,
 				\PaymentPlugins\PPCP\WooCommerceExtraProductOptions\Package::class,
@@ -380,6 +380,7 @@ class Main {
 	}
 
 	public function do_plugins_loaded() {
+		include_once __DIR__ . '/wc-ppcp-functions.php';
 		$this->load_text_domain();
 		$this->declare_features();
 	}

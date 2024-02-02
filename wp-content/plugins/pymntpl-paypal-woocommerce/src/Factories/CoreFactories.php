@@ -18,6 +18,7 @@ use PaymentPlugins\WooCommerce\PPCP\Main;
  * @property \PaymentPlugins\WooCommerce\PPCP\Factories\NameFactory                  $name
  * @property \PaymentPlugins\WooCommerce\PPCP\Factories\PaymentSourceFactory         $paymentSource
  * @property \PaymentPlugins\WooCommerce\PPCP\Factories\BillingAgreementTokenFactory $billingAgreement
+ * @property \PaymentPlugins\WooCommerce\PPCP\Factories\RefundFactory                $refunds
  */
 class CoreFactories {
 
@@ -47,7 +48,8 @@ class CoreFactories {
 			'purchaseUnit'       => new PurchaseUnitFactory( $container->get( AdvancedSettings::class ), $this ),
 			'name'               => new NameFactory( $this ),
 			'paymentSource'      => new PaymentSourceFactory( $this ),
-			'billingAgreement'   => new BillingAgreementTokenFactory( $this )
+			'billingAgreement'   => new BillingAgreementTokenFactory( $this ),
+			'refunds'            => new RefundFactory( $container->get( AdvancedSettings::class ), $this )
 		];
 	}
 

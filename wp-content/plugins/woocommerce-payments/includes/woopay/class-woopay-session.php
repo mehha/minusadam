@@ -61,6 +61,8 @@ class WooPay_Session {
 		add_action( 'woopay_restore_order_customer_id', [ __CLASS__, 'restore_order_customer_id_from_requests_with_verified_email' ] );
 
 		register_deactivation_hook( WCPAY_PLUGIN_FILE, [ __CLASS__, 'run_and_remove_woopay_restore_order_customer_id_schedules' ] );
+
+		add_filter( 'automatewoo/referrals/referred_order_advocate', [ __CLASS__, 'automatewoo_refer_a_friend_referral_from_parameter' ] );
 	}
 
 	/**
@@ -257,6 +259,28 @@ class WooPay_Session {
 	}
 
 	/**
+	 * Fix for AutomateWoo - Refer A Friend Add-on
+	 * plugin when using link referrals.
+	 */
+	public static function automatewoo_refer_a_friend_referral_from_parameter( $advocate_id ) {
+		if ( ! self::is_request_from_woopay() || ! self::is_store_api_request() ) {
+			return $advocate_id;
+		}
+
+		if ( ! self::is_woopay_enabled() ) {
+			return $advocate_id;
+		}
+
+		if ( empty( $_GET['automatewoo_referral_id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			return false;
+		}
+
+		$automatewoo_referral = (int) wc_clean( wp_unslash( $_GET['automatewoo_referral_id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
+
+		return $automatewoo_referral;
+	}
+
+	/**
 	 * Returns the payload from a cart token.
 	 *
 	 * @return object|null The cart token payload if it's valid.
@@ -438,6 +462,7 @@ class WooPay_Session {
 			WC()->customer->set_billing_email( $email );
 			WC()->customer->save();
 
+			$woopay_adapted_extensions->init();
 			$request['adapted_extensions'] = $woopay_adapted_extensions->get_adapted_extensions_data( $email );
 
 			if ( ! is_user_logged_in() && count( $request['adapted_extensions'] ) > 0 ) {
