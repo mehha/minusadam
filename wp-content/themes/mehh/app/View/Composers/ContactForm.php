@@ -75,7 +75,7 @@ class ContactForm extends Composer
             // VERIFY CAPTCHA
             $url = 'https://www.google.com/recaptcha/api/siteverify';
             $fields = array(
-                'secret' => '6LcBqCokAAAAABmLojSAO8UDJKZI76xxZ123FNkE',
+                'secret' => '6LdsiGspAAAAAGaZANe0dcejxzgmmY8nMKbindWP',
                 'response' => $_POST['g-recaptcha-response'],
                 'remoteip' => $_SERVER['REMOTE_ADDR']
             );
