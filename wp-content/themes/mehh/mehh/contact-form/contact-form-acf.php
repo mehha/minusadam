@@ -66,6 +66,25 @@ if( function_exists('acf_add_options_page') ):
                 'append' => '',
                 'maxlength' => '',
             ),
+            array (
+                'key' => 'field_5be3a3asassddft6',
+                'label' => 'Captcha secret',
+                'name' => 'captcha_secret',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array (
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
 
         ),
         'location' => array (
