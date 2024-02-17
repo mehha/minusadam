@@ -1,4 +1,4 @@
-<script async defer src='https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit&hl={{$recaptcha_lang}}'></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{get_field('captcha_key', 'options')}}"></script>
 
 @if($success_message)
   <div class="alert alert-success mb-4" role="alert">
@@ -9,7 +9,7 @@
 @endif
 
 <form id="contact-form" class="form contact-form needs-validation" action="<?php echo esc_url( get_permalink() ); ?>"
-      method="post" novalidate>
+      method="post" novalidate data-sitekey="{{get_field('captcha_key', 'options')}}" data-baseurl={!! get_bloginfo('url') !!}>
 
   <input type="hidden" name="contact_form">
 
@@ -29,12 +29,6 @@
   </div>
 
   <input type="hidden" name="form-type" value="contact-form"/>
-
-  @if(get_field('captcha_key', 'options'))
-    <div class="col-12 recaptcha-container mb-4">
-      <div id="g-recaptcha" class="g-recaptcha" data-sitekey="{{get_field('captcha_key', 'options')}}"></div>
-    </div>
-  @endif
 
   @if(get_field('privacy_disclaimer', 'options'))
     <div class="col-12">

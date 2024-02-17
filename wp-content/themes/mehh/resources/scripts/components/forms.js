@@ -4,48 +4,44 @@ export function handleForms() {
 
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
-    let startTime = performance.now();
-
     form.addEventListener('submit', event => {
-      // Recaptcha
+      let siteKey = form.dataset.sitekey
+      let baseUrl = form.dataset.baseurl
       let reCaptcha;
-      let FormCaptcha = document.querySelector('#g-recaptcha');
-      const endTime = performance.now();
-      const timeElapsed = endTime - startTime;
-
-      if (event.target.classList.contains('needs-validation') && FormCaptcha) {
-        // eslint-disable-next-line no-undef
-        if ( grecaptcha.getResponse(renderForm) === '' ) {
-          reCaptcha = false;
-          event.target.querySelector('#g-recaptcha').classList.add('captcha-error');
-        } else {
-          reCaptcha = true;
-        }
-      } else {
-        reCaptcha = true;
-      }
-
-      if (!form.checkValidity() || !reCaptcha || timeElapsed < 6000) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
+      event.preventDefault()
+      event.stopPropagation()
       form.classList.add('was-validated')
+
+      grecaptcha.ready(function () {
+        grecaptcha.execute(siteKey, {action: 'submit'}).then(function (token) {
+          fetch(baseUrl + '/wp-json/wp/v2/verify-recaptcha', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'recaptcha_token=' + token,
+          })
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(function (data) {
+              if (data.success && form.checkValidity()) {
+                localStorage.setItem('form-submitted', 'true')
+                form.submit()
+              } else {
+                localStorage.removeItem('form-submitted');
+                console.log("reCAPTCHA verification failed or data validation failed", data)
+              }
+            })
+            .catch(function (error) {
+              localStorage.removeItem('form-submitted');
+              console.error('There was a problem with the fetch operation:', error);
+            })
+        });
+      });
     }, false)
   })
-
-  // Recaptcha callback
-  let renderForm;
-  let FormCaptcha = document.querySelector('#g-recaptcha');
-  window.CaptchaCallback = function() {
-    if ( FormCaptcha ) {
-      // eslint-disable-next-line no-undef
-      renderForm = grecaptcha.render('g-recaptcha', {'sitekey' : FormCaptcha.dataset.sitekey, 'callback' : correctCaptcha});
-    }
-  };
-
-  let correctCaptcha = function(response) {
-    if ( response !== '')
-      FormCaptcha.classList.remove('captcha-error');
-  };
 }
