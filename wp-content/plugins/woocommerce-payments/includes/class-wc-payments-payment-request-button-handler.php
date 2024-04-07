@@ -23,6 +23,8 @@ use WCPay\Payment_Information;
  * WC_Payments_Payment_Request_Button_Handler class.
  */
 class WC_Payments_Payment_Request_Button_Handler {
+	const BUTTON_LOCATIONS = 'payment_request_button_locations';
+
 	/**
 	 * WC_Payments_Account instance to get information about the account
 	 *
@@ -154,7 +156,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 		// Don't set session cookies on product pages to allow for caching when payment request
 		// buttons are disabled. But keep cookies if there is already an active WC session in place.
 		if (
-			! ( $this->is_product() && $this->should_show_payment_request_button() )
+			! ( $this->express_checkout_helper->is_product() && $this->should_show_payment_request_button() )
 			|| ( isset( WC()->session ) && WC()->session->has_session() )
 		) {
 			return;
@@ -182,38 +184,59 @@ class WC_Payments_Payment_Request_Button_Handler {
 	}
 
 	/**
-	 * Gets the button height.
+	 * The settings for the `button` attribute - they depend on the "grouped settings" flag value.
 	 *
-	 * @return string
+	 * @return array
 	 */
-	public function get_button_height() {
-		$height = $this->gateway->get_option( 'payment_request_button_size' );
-		if ( 'medium' === $height ) {
-			return '48';
-		}
+	public function get_button_settings() {
+		$button_type                     = $this->gateway->get_option( 'payment_request_button_type' );
+		$common_settings                 = $this->express_checkout_helper->get_common_button_settings();
+		$payment_request_button_settings = [
+			// Default format is en_US.
+			'locale'       => apply_filters( 'wcpay_payment_request_button_locale', substr( get_locale(), 0, 2 ) ),
+			'branded_type' => 'default' === $button_type ? 'short' : 'long',
+		];
 
-		if ( 'large' === $height ) {
-			return '56';
-		}
-
-		// for the "default"/"small" and "catch-all" scenarios.
-		return '40';
+		return array_merge( $common_settings, $payment_request_button_settings );
 	}
 
 	/**
 	 * Gets the product total price.
 	 *
 	 * @param object $product WC_Product_* object.
+	 * @param bool   $is_deposit Whether customer is paying a deposit.
+	 * @param int    $deposit_plan_id The ID of the deposit plan.
 	 * @return mixed Total price.
 	 *
 	 * @throws Invalid_Price_Exception Whenever a product has no price.
 	 */
-	public function get_product_price( $product ) {
+	public function get_product_price( $product, ?bool $is_deposit = null, int $deposit_plan_id = 0 ) {
 		// If prices should include tax, using tax inclusive price.
 		if ( $this->express_checkout_helper->cart_prices_include_tax() ) {
 			$base_price = wc_get_price_including_tax( $product );
 		} else {
 			$base_price = wc_get_price_excluding_tax( $product );
+		}
+
+		// If WooCommerce Deposits is active, we need to get the correct price for the product.
+		if ( class_exists( 'WC_Deposits_Product_Manager' ) && WC_Deposits_Product_Manager::deposits_enabled( $product->get_id() ) ) {
+			// If is_deposit is null, we use the default deposit type for the product.
+			if ( is_null( $is_deposit ) ) {
+				$is_deposit = 'deposit' === WC_Deposits_Product_Manager::get_deposit_selected_type( $product->get_id() );
+			}
+			if ( $is_deposit ) {
+				$deposit_type       = WC_Deposits_Product_Manager::get_deposit_type( $product->get_id() );
+				$available_plan_ids = WC_Deposits_Plans_Manager::get_plan_ids_for_product( $product->get_id() );
+				// Default to first (default) plan if no plan is specified.
+				if ( 'plan' === $deposit_type && 0 === $deposit_plan_id && ! empty( $available_plan_ids ) ) {
+					$deposit_plan_id = $available_plan_ids[0];
+				}
+
+				// Ensure the selected plan is available for the product.
+				if ( 0 === $deposit_plan_id || in_array( $deposit_plan_id, $available_plan_ids, true ) ) {
+					$base_price = WC_Deposits_Product_Manager::get_deposit_amount( $product, $deposit_plan_id, 'display', $base_price );
+				}
+			}
 		}
 
 		// Add subscription sign-up fees to product price.
@@ -246,12 +269,12 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 * @return mixed Returns false if not on a product page, the product information otherwise.
 	 */
 	public function get_product_data() {
-		if ( ! $this->is_product() ) {
+		if ( ! $this->express_checkout_helper->is_product() ) {
 			return false;
 		}
 
 		/** @var WC_Product_Variable $product */ // phpcs:ignore
-		$product  = $this->get_product();
+		$product  = $this->express_checkout_helper->get_product();
 		$currency = get_woocommerce_currency();
 
 		if ( 'variable' === $product->get_type() || 'variable-subscription' === $product->get_type() ) {
@@ -395,7 +418,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 * @return mixed Returns false if on a product page, the product information otherwise.
 	 */
 	public function get_cart_data() {
-		if ( $this->is_product() ) {
+		if ( $this->express_checkout_helper->is_product() ) {
 			return false;
 		}
 
@@ -409,13 +432,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 * @param string $id    Gateway ID.
 	 */
 	public function filter_gateway_title( $title, $id ) {
-		global $post;
-
-		if ( ! is_object( $post ) ) {
-			return $title;
-		}
-
-		$order        = wc_get_order( $post->ID );
+		$order        = $this->get_current_order();
 		$method_title = is_object( $order ) ? $order->get_payment_method_title() : '';
 
 		if ( 'woocommerce_payments' === $id && ! empty( $method_title ) ) {
@@ -429,6 +446,26 @@ class WC_Payments_Payment_Request_Button_Handler {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Used to get the order in admin edit page.
+	 *
+	 * @return WC_Order|WC_Order_Refund|bool
+	 */
+	private function get_current_order() {
+		global $theorder;
+		global $post;
+
+		if ( is_object( $theorder ) ) {
+			return $theorder;
+		}
+
+		if ( is_object( $post ) ) {
+			return wc_get_order( $post->ID );
+		}
+
+		return false;
 	}
 
 	/**
@@ -500,51 +537,52 @@ class WC_Payments_Payment_Request_Button_Handler {
 		// If no SSL, bail.
 		if ( ! WC_Payments::mode()->is_test() && ! is_ssl() ) {
 			Logger::log( 'Stripe Payment Request live mode requires SSL.' );
+
 			return false;
 		}
 
 		// Page not supported.
-		if ( ! $this->is_product() && ! $this->is_cart() && ! $this->is_checkout() ) {
+		if ( ! $this->express_checkout_helper->is_product() && ! $this->express_checkout_helper->is_cart() && ! $this->express_checkout_helper->is_checkout() ) {
 			return false;
 		}
 
 		// Product page, but not available in settings.
-		if ( $this->is_product() && ! $this->is_available_at( 'product' ) ) {
+		if ( $this->express_checkout_helper->is_product() && ! $this->express_checkout_helper->is_available_at( 'product', self::BUTTON_LOCATIONS ) ) {
 			return false;
 		}
 
 		// Checkout page, but not available in settings.
-		if ( $this->is_checkout() && ! $this->is_available_at( 'checkout' ) ) {
+		if ( $this->express_checkout_helper->is_checkout() && ! $this->express_checkout_helper->is_available_at( 'checkout', self::BUTTON_LOCATIONS ) ) {
 			return false;
 		}
 
 		// Cart page, but not available in settings.
-		if ( $this->is_cart() && ! $this->is_available_at( 'cart' ) ) {
+		if ( $this->express_checkout_helper->is_cart() && ! $this->express_checkout_helper->is_available_at( 'cart', self::BUTTON_LOCATIONS ) ) {
 			return false;
 		}
 
 		// Product page, but has unsupported product type.
-		if ( $this->is_product() && ! $this->is_product_supported() ) {
+		if ( $this->express_checkout_helper->is_product() && ! $this->is_product_supported() ) {
 			Logger::log( 'Product page has unsupported product type ( Payment Request button disabled )' );
 			return false;
 		}
 
 		// Cart has unsupported product type.
-		if ( ( $this->is_checkout() || $this->is_cart() ) && ! $this->has_allowed_items_in_cart() ) {
+		if ( ( $this->express_checkout_helper->is_checkout() || $this->express_checkout_helper->is_cart() ) && ! $this->has_allowed_items_in_cart() ) {
 			Logger::log( 'Items in the cart have unsupported product type ( Payment Request button disabled )' );
 			return false;
 		}
 
 		// Order total doesn't matter for Pay for Order page. Thus, this page should always display payment buttons.
-		if ( $this->is_pay_for_order_page() ) {
+		if ( $this->express_checkout_helper->is_pay_for_order_page() ) {
 			return true;
 		}
 
 		// Cart total is 0 or is on product page and product price is 0.
 		// Exclude pay-for-order pages from this check.
 		if (
-			( ! $this->is_product() && ! $this->is_pay_for_order_page() && 0.0 === (float) WC()->cart->get_total( 'edit' ) ) ||
-			( $this->is_product() && 0.0 === (float) $this->get_product()->get_price() )
+			( ! $this->express_checkout_helper->is_product() && ! $this->express_checkout_helper->is_pay_for_order_page() && 0.0 === (float) WC()->cart->get_total( 'edit' ) ) ||
+			( $this->express_checkout_helper->is_product() && 0.0 === (float) $this->express_checkout_helper->get_product()->get_price() )
 
 		) {
 			Logger::log( 'Order price is 0 ( Payment Request button disabled )' );
@@ -632,115 +670,18 @@ class WC_Payments_Payment_Request_Button_Handler {
 			return false;
 		}
 
-		if ( $this->is_product() ) {
-			$product = $this->get_product();
+		if ( $this->express_checkout_helper->is_product() ) {
+			$product = $this->express_checkout_helper->get_product();
 			if ( WC_Subscriptions_Product::is_subscription( $product ) ) {
 				return true;
 			}
-		} elseif ( $this->is_checkout() || $this->is_cart() ) {
+		} elseif ( $this->express_checkout_helper->is_checkout() || $this->express_checkout_helper->is_cart() ) {
 			if ( WC_Subscriptions_Cart::cart_contains_subscription() ) {
 				return true;
 			}
 		}
 
 		return false;
-	}
-
-	/**
-	 * Checks if this is a product page or content contains a product_page shortcode.
-	 *
-	 * @return boolean
-	 */
-	public function is_product() {
-		return is_product() || wc_post_content_has_shortcode( 'product_page' );
-	}
-
-	/**
-	 * Checks if this is the Pay for Order page.
-	 *
-	 * @return boolean
-	 */
-	public function is_pay_for_order_page() {
-		return is_checkout() && isset( $_GET['pay_for_order'] ); // phpcs:ignore WordPress.Security.NonceVerification
-	}
-
-	/**
-	 * Checks if this is the cart page or content contains a cart block.
-	 *
-	 * @return boolean
-	 */
-	public function is_cart() {
-		return is_cart() || has_block( 'woocommerce/cart' );
-	}
-
-	/**
-	 * Checks if this is the checkout page or content contains a cart block.
-	 *
-	 * @return boolean
-	 */
-	public function is_checkout() {
-		return is_checkout() || has_block( 'woocommerce/checkout' );
-	}
-
-	/**
-	 * Checks if payment request is available at a given location.
-	 *
-	 * @param string $location Location.
-	 * @return boolean
-	 */
-	public function is_available_at( $location ) {
-		$available_locations = $this->gateway->get_option( 'payment_request_button_locations' );
-		if ( $available_locations && is_array( $available_locations ) ) {
-			return in_array( $location, $available_locations, true );
-		}
-
-		return false;
-	}
-
-	/**
-	 * Gets the context for where the button is being displayed.
-	 *
-	 * @return string
-	 */
-	public function get_button_context() {
-		if ( $this->is_product() ) {
-			return 'product';
-		}
-
-		if ( $this->is_cart() ) {
-			return 'cart';
-		}
-
-		if ( $this->is_checkout() ) {
-			return 'checkout';
-		}
-
-		if ( $this->is_pay_for_order_page() ) {
-			return 'pay_for_order';
-		}
-
-		return '';
-	}
-
-	/**
-	 * Get product from product page or product_page shortcode.
-	 *
-	 * @return WC_Product|false|null Product object.
-	 */
-	public function get_product() {
-		global $post;
-
-		if ( is_product() ) {
-			return wc_get_product( $post->ID );
-		} elseif ( wc_post_content_has_shortcode( 'product_page' ) ) {
-			// Get id from product_page shortcode.
-			preg_match( '/\[product_page id="(?<id>\d+)"\]/', $post->post_content, $shortcode_match );
-			if ( isset( $shortcode_match['id'] ) ) {
-				return wc_get_product( $shortcode_match['id'] );
-			}
-		}
-
-		return null;
 	}
 
 	/**
@@ -783,6 +724,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 				'update_shipping'           => wp_create_nonce( 'wcpay-update-shipping-method' ),
 				'checkout'                  => wp_create_nonce( 'woocommerce-process_checkout' ),
 				'add_to_cart'               => wp_create_nonce( 'wcpay-add-to-cart' ),
+				'empty_cart'                => wp_create_nonce( 'wcpay-empty-cart' ),
 				'get_selected_product_data' => wp_create_nonce( 'wcpay-get-selected-product-data' ),
 				'platform_tracker'          => wp_create_nonce( 'platform_tracks_nonce' ),
 				'pay_for_order'             => wp_create_nonce( 'pay_for_order' ),
@@ -796,12 +738,13 @@ class WC_Payments_Payment_Request_Button_Handler {
 			],
 			'button'             => $this->get_button_settings(),
 			'login_confirmation' => $this->get_login_confirmation_settings(),
-			'is_product_page'    => $this->is_product(),
-			'button_context'     => $this->get_button_context(),
-			'is_pay_for_order'   => $this->is_pay_for_order_page(),
+			'is_product_page'    => $this->express_checkout_helper->is_product(),
+			'button_context'     => $this->express_checkout_helper->get_button_context(),
+			'is_pay_for_order'   => $this->express_checkout_helper->is_pay_for_order_page(),
 			'has_block'          => has_block( 'woocommerce/cart' ) || has_block( 'woocommerce/checkout' ),
 			'product'            => $this->get_product_data(),
 			'total_label'        => $this->express_checkout_helper->get_total_label(),
+			'is_checkout_page'   => $this->express_checkout_helper->is_checkout(),
 		];
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_PAYMENT_REQUEST', 'dist/payment-request', [ 'jquery', 'stripe' ] );
@@ -819,6 +762,8 @@ class WC_Payments_Payment_Request_Button_Handler {
 
 		wp_enqueue_script( 'WCPAY_PAYMENT_REQUEST' );
 
+		Fraud_Prevention_Service::maybe_append_fraud_prevention_token();
+
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
 		if ( isset( $gateways['woocommerce_payments'] ) ) {
 			WC_Payments::get_wc_payments_checkout()->register_scripts();
@@ -832,9 +777,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 		if ( ! $this->should_show_payment_request_button() ) {
 			return;
 		}
-		if ( WC()->session && Fraud_Prevention_Service::get_instance()->is_enabled() ) : ?>
-			<input type="hidden" name="wcpay-fraud-prevention-token" value="<?php echo esc_attr( Fraud_Prevention_Service::get_instance()->get_token() ); ?>">
-		<?php endif; ?>
+		?>
 		<div id="wcpay-payment-request-button">
 			<!-- A Stripe Element will be inserted here. -->
 		</div>
@@ -847,7 +790,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 	 * @return boolean
 	 */
 	private function is_product_supported() {
-		$product      = $this->get_product();
+		$product      = $this->express_checkout_helper->get_product();
 		$is_supported = true;
 
 		if ( is_null( $product )
@@ -1060,12 +1003,14 @@ class WC_Payments_Payment_Request_Button_Handler {
 		check_ajax_referer( 'wcpay-get-selected-product-data', 'security' );
 
 		try {
-			$product_id   = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : false;
-			$qty          = ! isset( $_POST['qty'] ) ? 1 : apply_filters( 'woocommerce_add_to_cart_quantity', absint( $_POST['qty'] ), $product_id );
-			$addon_value  = isset( $_POST['addon_value'] ) ? max( (float) $_POST['addon_value'], 0 ) : 0;
-			$product      = wc_get_product( $product_id );
-			$variation_id = null;
-			$currency     = get_woocommerce_currency();
+			$product_id      = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : false;
+			$qty             = ! isset( $_POST['qty'] ) ? 1 : apply_filters( 'woocommerce_add_to_cart_quantity', absint( $_POST['qty'] ), $product_id );
+			$addon_value     = isset( $_POST['addon_value'] ) ? max( (float) $_POST['addon_value'], 0 ) : 0;
+			$product         = wc_get_product( $product_id );
+			$variation_id    = null;
+			$currency        = get_woocommerce_currency();
+			$is_deposit      = isset( $_POST['wc_deposit_option'] ) ? 'yes' === sanitize_text_field( wp_unslash( $_POST['wc_deposit_option'] ) ) : null;
+			$deposit_plan_id = isset( $_POST['wc_deposit_payment_plan'] ) ? absint( $_POST['wc_deposit_payment_plan'] ) : 0;
 
 			if ( ! is_a( $product, 'WC_Product' ) ) {
 				/* translators: product ID */
@@ -1093,7 +1038,7 @@ class WC_Payments_Payment_Request_Button_Handler {
 				throw new Exception( sprintf( __( 'You cannot add that amount of "%1$s"; to the cart because there is not enough stock (%2$s remaining).', 'woocommerce-payments' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity(), $product ) ) );
 			}
 
-			$price = $this->get_product_price( $product );
+			$price = $this->get_product_price( $product, $is_deposit, $deposit_plan_id );
 			$total = $qty * $price + $addon_value;
 
 			$quantity_label = 1 < $qty ? ' (x' . $qty . ')' : '';
@@ -1512,23 +1457,6 @@ class WC_Payments_Payment_Request_Button_Handler {
 		}
 
 		return $value;
-	}
-
-	/**
-	 * The settings for the `button` attribute - they depend on the "grouped settings" flag value.
-	 *
-	 * @return array
-	 */
-	public function get_button_settings() {
-		$button_type = $this->gateway->get_option( 'payment_request_button_type' );
-		return [
-			'type'         => $button_type,
-			'theme'        => $this->gateway->get_option( 'payment_request_button_theme' ),
-			'height'       => $this->get_button_height(),
-			// Default format is en_US.
-			'locale'       => apply_filters( 'wcpay_payment_request_button_locale', substr( get_locale(), 0, 2 ) ),
-			'branded_type' => 'default' === $button_type ? 'short' : 'long',
-		];
 	}
 
 	/**
