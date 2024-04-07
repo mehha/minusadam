@@ -54,7 +54,7 @@ class ContactForm extends Composer
        		}
 
             // Check for honeypot field
-            if ( isset( $_POST['honeypot'] ) && ! empty( $_POST['honeypot'] ) ) {
+            if ( isset( $_POST['mehh_field'] ) && ! empty( $_POST['mehh_field'] ) ) {
                 $validation_messages[] = esc_html__( 'Error in contact form (honeypot).', 'sage' );
             }
 

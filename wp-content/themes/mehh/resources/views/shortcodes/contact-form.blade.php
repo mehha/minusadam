@@ -45,10 +45,7 @@
     </div>
   @endif
 
-  <!-- Honeypot field -->
-  <div class="visually-hidden">
-      <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
-  </div>
+  <input class="mehh-field" type="text" name="mehh_field" tabindex="-1" autocomplete="off">
 
   <input class="btn btn-primary mt-4" type="submit" id="contact-form-submit" value="{{__('Submit', 'sage')}}">
   <input type="hidden" name="time" value="{{time()}}"/>
