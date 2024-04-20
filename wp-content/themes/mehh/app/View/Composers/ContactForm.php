@@ -31,6 +31,13 @@ class ContactForm extends Composer
         $validation_messages = [];
        	$success_message = '';
 
+        $atts = $this->data->getAttributes();
+        $form_recipient_atts = '';
+
+        if($atts && isset($atts['recipient'])) {
+            $form_recipient_atts = $atts['recipient'];
+        }
+
        	if ( isset( $_POST['contact_form'] ) ) {
 
        		//Sanitize the data
@@ -75,7 +82,7 @@ class ContactForm extends Composer
        		//Send an email to the WordPress administrator if there are no validation errors
        		if ( empty( $validation_messages ) ) {
 
-       			$mail    = get_field('contact_form_recipient', 'options') ? get_field('contact_form_recipient', 'options') : get_option( 'admin_email' );
+       			$mail    = $form_recipient_atts ?: get_field('contact_form_recipient', 'options');
                 $emailArray = preg_split('/\s*,\s*/', $mail, -1, PREG_SPLIT_NO_EMPTY);
 
        			$subject = 'Uus sõnum Minusadam kodulehelt';

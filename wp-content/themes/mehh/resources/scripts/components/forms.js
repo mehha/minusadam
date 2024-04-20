@@ -4,13 +4,17 @@ export function handleForms() {
 
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
+    let startTime = performance.now();
+
     form.addEventListener('submit', event => {
       let siteKey = form.dataset.sitekey
       let baseUrl = form.dataset.baseurl
-      let reCaptcha;
       event.preventDefault()
-      event.stopPropagation()
       form.classList.add('was-validated')
+      const endTime = performance.now();
+      const timeElapsed = endTime - startTime;
+
+      if (!form.checkValidity() || timeElapsed < 6000) return
 
       grecaptcha.ready(function () {
         grecaptcha.execute(siteKey, {action: 'submit'}).then(function (token) {
@@ -28,16 +32,13 @@ export function handleForms() {
               return response.json();
             })
             .then(function (data) {
-              if (data.success && form.checkValidity()) {
-                localStorage.setItem('form-submitted', 'true')
+              if (data.success) {
                 form.submit()
               } else {
-                localStorage.removeItem('form-submitted');
                 console.log("reCAPTCHA verification failed or data validation failed", data)
               }
             })
             .catch(function (error) {
-              localStorage.removeItem('form-submitted');
               console.error('There was a problem with the fetch operation:', error);
             })
         });
