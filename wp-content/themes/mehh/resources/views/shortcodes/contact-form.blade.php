@@ -25,7 +25,7 @@
 
   <div class="col-12 mb-4">
     <label class="form-label fw-bold" for="message">{{__('Message', 'sage')}}*</label>
-    <textarea id="message" class="form-control" name="message" rows="3" required></textarea>
+    <textarea id="message" class="form-control" name="message" rows="8" required></textarea>
   </div>
 
   <input type="hidden" name="form-type" value="contact-form"/>
