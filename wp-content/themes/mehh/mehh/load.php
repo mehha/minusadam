@@ -2,7 +2,6 @@
 
 $acf_fields = array(
     'page/page.php',
-    'seo/seo.php',
     'contact-form/contact-form.php',
 );
 
