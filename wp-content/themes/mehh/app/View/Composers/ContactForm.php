@@ -38,7 +38,9 @@ class ContactForm extends Composer
             $form_recipient_atts = $atts['recipient'];
         }
 
-       	if ( isset( $_POST['contact_form'] ) ) {
+        session_start();
+
+       	if ( isset( $_POST['contact_form'] ) && !isset($_SESSION['form_submitted']) ) {
 
        		//Sanitize the data
        		$full_name = isset( $_POST['full_name'] ) ? sanitize_text_field( $_POST['full_name'] ) : '';
@@ -96,6 +98,8 @@ class ContactForm extends Composer
        			$success_message = esc_html__( 'Your message has been successfully sent.', 'sage' );
 
        		}
+
+            $_SESSION['form_submitted'] = true;
 
        	}
 
