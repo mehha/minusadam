@@ -45,7 +45,7 @@ export function handleFullCalendar() {
       locale: etLocale,
       displayEventTime: false,
       eventDisplay: 'block',
-      // contentHeight: 300,
+      contentHeight: 420,
       headerToolbar: {
         left: 'prev,next today',
         center: '',
