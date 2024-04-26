@@ -28,7 +28,7 @@ if( function_exists('acf_add_options_page') ):
        			'min' => 0,
        			'max' => 0,
        			'collapsed' => '',
-       			'button_label' => 'Add Row',
+       			'button_label' => 'Add booking',
        			'rows_per_page' => 20,
        			'sub_fields' => array(
        				array(
