@@ -15,6 +15,7 @@ export function handleFullCalendar() {
 
     data.map((single) => {
       modifiedData.push({
+        title: single.label,
         start: single.begin,
         end: single.end,
       })
@@ -28,7 +29,7 @@ export function handleFullCalendar() {
     fetch(baseUrl+'/wp-json/wp/v2/bookings').then(res => {
       return res.json();
     }).then(data => {
-      // console.log('data', data)
+      console.log('data', data)
       handleData(data)
       initCalendar(handleData(data))
     });
@@ -51,8 +52,9 @@ export function handleFullCalendar() {
         center: '',
         right: 'title',
       },
-      eventContent: function () {
-        let titleHtml = '<div class="fc-event-title fc-sticky">Broneeritud</div>';
+      eventContent: function (info) {
+        console.log('info', info)
+        let titleHtml = '<div class="fc-event-title fc-sticky">' + info.event.title + '</div>';
         return {html: titleHtml}
       },
     });
