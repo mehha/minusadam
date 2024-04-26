@@ -30,3 +30,7 @@
     </div>
   </nav>
 </header>
+
+<script type="text/javascript">
+  let baseUrl = '{{get_bloginfo("url")}}';
+</script>
