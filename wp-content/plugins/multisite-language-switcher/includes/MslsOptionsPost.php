@@ -27,7 +27,9 @@ class MslsOptionsPost extends MslsOptions {
 
 	/**
 	 * Get postlink
+	 *
 	 * @param string $language
+	 *
 	 * @return string
 	 */
 	public function get_postlink( $language ) {
@@ -57,9 +59,10 @@ class MslsOptionsPost extends MslsOptions {
 
 	/**
 	 * Get current link
+	 *
 	 * @return string
 	 */
-	public function get_current_link() {
+	public function get_current_link(): string {
 		return (string) get_permalink( $this->get_arg( 0, 0 ) );
 	}
 

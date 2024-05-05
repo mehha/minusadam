@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-26 09:40:44+0000\n"
+"PO-Revision-Date: 2024-05-01 11:24:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2123,6 +2123,35 @@ msgstr "Rotação de ficheiros:"
 msgid "Viewing log file %s"
 msgstr "Ver ficheiro de registo %s"
 
+#: src/Internal/Admin/Logging/PageController.php:323
+msgid "Delete this log file permanently?"
+msgstr "Eliminar este ficheiro de registo permanentemente?"
+
+#: src/Internal/Admin/Logging/PageController.php:295
+msgid "Return to the file list."
+msgstr "Regresse à lista de ficheiros."
+
+#: src/Internal/Admin/Logging/PageController.php:257
+msgid "Browse log files"
+msgstr "Navegue pelos ficheiros de registo"
+
+#. translators: 1. a date, 2. a slug-style name for a file.
+#: src/Internal/Admin/Logging/FileV2/FileListTable.php:244
+msgid "Select the %1$s log file for %2$s"
+msgstr "Seleccione o ficheiro de registo %1$s para %2$s"
+
+#: src/Internal/Admin/Logging/FileV2/FileListTable.php:200
+msgid "Date modified"
+msgstr "Data de modificação"
+
+#: src/Internal/Admin/Logging/FileV2/FileListTable.php:107
+msgid "Filter by log source"
+msgstr "Filtrar por fonte de registo"
+
+#: src/Internal/Admin/Logging/FileV2/FileListTable.php:60
+msgid "No log files found."
+msgstr "Não foram encontrados ficheiros de registo."
+
 #: includes/shipping/free-shipping/class-wc-shipping-free-shipping.php:132
 msgid "A minimum order amount AND coupon"
 msgstr "Um montante mínimo de encomenda E um cupão"
@@ -2142,6 +2171,42 @@ msgstr "O envio gratuito requer"
 #: includes/shipping/free-shipping/class-wc-shipping-free-shipping.php:119
 msgid "e.g. Free shipping"
 msgstr "por exemplo, envio gratuito"
+
+#: includes/shipping/free-shipping/class-wc-shipping-free-shipping.php:103
+#: includes/shipping/local-pickup/class-wc-shipping-local-pickup.php:99
+msgid "Please enter a valid number"
+msgstr "Introduza um número válido"
+
+#. translators: %s: URL for link
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:52
+msgid "These costs can optionally be added based on the <a target=\"_blank\" href=\"%s\">product shipping class</a>. Learn more about <a target=\"_blank\" href=\"https://woocommerce.com/document/flat-rate-shipping/#shipping-classes\">setting shipping class costs</a>."
+msgstr "Estes custos podem, opcionalmente, ser adicionados com base na <a target=\"_blank\" href=\"%s\">classe de envio do produto</a>. Saiba mais sobre a <a target=\"_blank\" href=\"https://woocommerce.com/document/flat-rate-shipping/#shipping-classes\">definição dos custos da classe de envio</a>."
+
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:19
+msgid "e.g. Standard national"
+msgstr "p.e., nacional padrão"
+
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:17
+#: includes/shipping/free-shipping/class-wc-shipping-free-shipping.php:117
+#: includes/shipping/local-pickup/class-wc-shipping-local-pickup.php:113
+msgid "Your customers will see the name of this shipping method during checkout."
+msgstr "Os seus clientes verão o nome deste método de envio durante a finalização da encomenda."
+
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:11
+msgid "advanced costs"
+msgstr "custos avançados"
+
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:11
+msgid "Charge a flat rate per item, or enter a cost formula to charge a percentage based cost or a minimum fee. Learn more about"
+msgstr "Cobre uma taxa fixa por item ou introduza uma fórmula de custo para cobrar um valor baseado em percentagem ou uma taxa mínima. Saiba mais sobre"
+
+#: includes/rest-api/Controllers/Version3/class-wc-rest-product-variations-controller.php:1062
+msgid "Attribute terms."
+msgstr "Termos de atributo."
+
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-v2-controller.php:154
+msgid "WooCommerce Store Identifier."
+msgstr "Identificador de loja WooCommerce."
 
 #. translators: %s: Product title
 #: includes/class-wc-product-simple.php:73
@@ -2264,6 +2329,19 @@ msgstr "Ocorreu um erro ao desligar a sua subscrição. Por favor, tente novamen
 msgid "Your subscription has been disconnected."
 msgstr "A sua subscrição foi desligada."
 
+#: includes/admin/helper/class-wc-helper-subscriptions-api.php:171
+msgid "There was an error connecting your subscription. Please try again."
+msgstr "Ocorreu um erro ao ligar a sua subscrição. Por favor, tente novamente."
+
+#: includes/admin/helper/class-wc-helper-subscriptions-api.php:165
+msgid "Your subscription has been connected."
+msgstr "A sua subscrição foi ligada."
+
+#. translators: %1$s Coupon codes, %2$s Reason
+#: src/StoreApi/Utilities/OrderController.php:233
+msgid "\"%1$s\" was removed from the cart. %2$s"
+msgstr "\"%1$s\" foi removido do carrinho. %2$s"
+
 #: assets/client/blocks/page-content-wrapper/block.json
 msgctxt "block description"
 msgid "Displays WooCommerce page content."
@@ -2304,6 +2382,156 @@ msgctxt "block description"
 msgid "A block that adds product filters to the product collection."
 msgstr "Um bloco que adiciona filtros de produtos à colecção de produtos."
 
+#: assets/client/blocks/order-confirmation-billing-address/block.json
+msgctxt "block description"
+msgid "Display the order confirmation billing address."
+msgstr "Apresenta o endereço de facturação da confirmação da encomenda."
+
+#: assets/client/blocks/order-confirmation-additional-information/block.json
+msgctxt "block description"
+msgid "Displays additional information provided by third-party extensions for the current order."
+msgstr "Apresenta informações adicionais fornecidas por extensões de terceiros para a encomenda actual."
+
+#: assets/client/blocks/order-confirmation-additional-information/block.json
+msgctxt "block title"
+msgid "Additional Information"
+msgstr "Informação adicional"
+
+#: assets/client/blocks/product-filter/block.json
+msgctxt "block keyword"
+msgid "Filters"
+msgstr "Filtros"
+
+#: assets/client/blocks/classic-shortcode/block.json
+msgctxt "block description"
+msgid "Renders classic WooCommerce shortcodes."
+msgstr "Processa os shortcodes clássicos do WooCommerce."
+
+#: assets/client/blocks/classic-shortcode/block.json
+msgctxt "block title"
+msgid "Classic Shortcode"
+msgstr "Shortcode clássico"
+
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+msgctxt "block keyword"
+msgid "downloads"
+msgstr "descarregamentos"
+
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+msgctxt "block title"
+msgid "Product downloads"
+msgstr "Descarregamento de produtos"
+
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+msgctxt "block description"
+msgid "The product downloads."
+msgstr "Os descarregamentos de produtos"
+
+#: assets/client/admin/product-editor/blocks/generic/product-text-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/text/block.json
+msgctxt "block keyword"
+msgid "text"
+msgstr "texto"
+
+#: assets/client/admin/product-editor/blocks/generic/product-text-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/text/block.json
+msgctxt "block description"
+msgid "A text field for use in the product editor."
+msgstr "Um campo de texto para utilizar no editor de produtos."
+
+#: assets/client/admin/product-editor/blocks/generic/product-text-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/text/block.json
+msgctxt "block title"
+msgid "Product text field"
+msgstr "Campo de texto do produto"
+
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+msgctxt "block keyword"
+msgid "number"
+msgstr "número"
+
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+msgctxt "block description"
+msgid "A reusable number field for the product editor."
+msgstr "Um campo numérico reutilizável para o editor de produtos."
+
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+msgctxt "block title"
+msgid "Product number control"
+msgstr "Controlo do número do produto"
+
+#: assets/client/blocks/page-content-wrapper/block.json
+msgctxt "block title"
+msgid "WooCommerce Page"
+msgstr "Página WooCommerce"
+
+#: assets/client/blocks/order-confirmation-totals/block.json
+msgctxt "block title"
+msgid "Order Totals"
+msgstr "Totais de encomendas"
+
+#: assets/client/blocks/order-confirmation-status/block.json
+msgctxt "block title"
+msgid "Order Status"
+msgstr "Estado da encomenda"
+
+#: assets/client/blocks/order-confirmation-shipping-wrapper/block.json
+msgctxt "block description"
+msgid "Display the order confirmation shipping section."
+msgstr "Mostrar a secção de envio da confirmação da encomenda."
+
+#: assets/client/blocks/order-confirmation-shipping-wrapper/block.json
+msgctxt "block title"
+msgid "Shipping Address Section"
+msgstr "Secção do endereço de envio"
+
+#: assets/client/blocks/order-confirmation-shipping-address/block.json
+msgctxt "block description"
+msgid "Display the order confirmation shipping address."
+msgstr "Apresenta o endereço de envio da confirmação da encomenda."
+
+#: assets/client/blocks/order-confirmation-downloads/block.json
+msgctxt "block description"
+msgid "Display links to purchased downloads."
+msgstr "Apresenta ligações para os descarregamentos comprados."
+
+#: assets/client/blocks/order-confirmation-downloads/block.json
+msgctxt "block title"
+msgid "Order Downloads"
+msgstr "Descarregamentos comprados"
+
+#: assets/client/blocks/order-confirmation-downloads-wrapper/block.json
+msgctxt "block description"
+msgid "Display the downloadable products section."
+msgstr "Apresenta a secção de produtos descarregáveis."
+
+#: assets/client/blocks/order-confirmation-downloads-wrapper/block.json
+msgctxt "block title"
+msgid "Downloads Section"
+msgstr "Secção de descarregamentos"
+
+#: assets/client/blocks/order-confirmation-billing-wrapper/block.json
+msgctxt "block description"
+msgid "Display the order confirmation billing section."
+msgstr "Apresenta a secção de facturação da confirmação da encomenda."
+
+#: assets/client/blocks/order-confirmation-billing-wrapper/block.json
+msgctxt "block title"
+msgid "Billing Address Section"
+msgstr "Secção de endereço de facturação"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+msgctxt "block description"
+msgid "A reusable checkbox for the product editor."
+msgstr "Uma caixa de verificação reutilizável para o editor de produtos."
+
 #: src/Internal/Admin/Logging/Settings.php:240
 #: assets/client/admin/product-editor/index.js:2
 msgid "days"
@@ -2319,11 +2547,161 @@ msgstr "Ver todas"
 msgid "Search results"
 msgstr "Resultados da pesquisa"
 
+#. translators: %d: number of pending orders.
+#: src/Internal/DataStores/Orders/CustomOrdersTableController.php:565
+msgid "Sync %s pending order"
+msgid_plural "Sync %s pending orders"
+msgstr[0] "Sincronizar %s encomenda pendente"
+msgstr[1] "Sincronizar %s encomendas pendentes"
+
+#: src/Internal/DataStores/Orders/CustomOrdersTableController.php:525
+msgid "Background sync is enabled."
+msgstr "A sincronização em segundo plano está activada."
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:1064
+msgid "Add and manage attributes used for product options, such as size and color."
+msgstr "Adicione e faça a gestão dos atributos utilizados para as opções de produtos, como o tamanho e a cor."
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:1011
+msgid "This product requires shipping or pickup"
+msgstr "Este produto requer envio ou recolha"
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:459
+msgid "This variation requires shipping or pickup"
+msgstr "Esta variação requer envio ou recolha"
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:716
+msgid "Same as main product"
+msgstr "Igual ao produto principal"
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:130
+msgid "Variation details"
+msgstr "Detalhes da variação"
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:117
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:206
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:326
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:436
+msgid "<strong>You’re editing details specific to this variation.</strong> Some information, like description and images, will be inherited from the main product, <noticeLink><parentProductName/></noticeLink>."
+msgstr "<strong>Está a editar detalhes específicos desta variação.</strong> Algumas informações, como a descrição e as imagens, serão herdadas do produto principal, <noticeLink><parentProductName/></noticeLink>."
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:61
+msgid "Template for the product variation form"
+msgstr "Modelo para o formulário de variação de produto"
+
+#: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:54
+msgid "Product Variation Template"
+msgstr "Modelo de variação de produto"
+
+#: src/Admin/Features/OnboardingTasks/Tasks/Tax.php:75
+msgid "Good news! WooCommerce Tax can automate your sales tax calculations for you."
+msgstr "Boas notícias! O WooCommerce Tax pode automatizar os seus cálculos de imposto sobre vendas para si."
+
 #: src/Blocks/BlockTypes/OrderConfirmation/Status.php:109
 #: assets/client/admin/chunks/marketplace.js:1
 #: assets/client/admin/product-editor/index.js:2
 msgid "Try again"
 msgstr "Tente novamente"
+
+#: src/Blocks/Templates/OrderConfirmationTemplate.php:42
+msgid "The Order Confirmation template serves as a receipt and confirmation of a successful purchase. It includes a summary of the ordered items, shipping, billing, and totals."
+msgstr "O modelo de confirmação de encomenda serve como recibo e confirmação de uma compra bem sucedida. Inclui um resumo dos itens encomendados, expedição, facturação e totais."
+
+#. translators: 1: opening a link tag 2: closing a link tag
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:183
+msgid "Have an account with us? %1$sLog in here%2$s to view your order."
+msgstr "Tem uma conta connosco? %1$sInicie sessão aqui%2$s para ver a sua encomenda."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:180
+msgid "Great news! Your order has been received, and a confirmation will be sent to your email address."
+msgstr "Boas notícias! A sua encomenda foi recebida e será enviada uma confirmação para o seu endereço de correio electrónico."
+
+#. translators: 1: opening a link tag 2: closing a link tag
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:158
+msgid "Have an account with us? %1$sLog in here to view your order details%2$s."
+msgstr "Tem uma conta connosco? %1$sInicie sessão aqui para ver os detalhes da sua encomenda%2$s."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:153
+msgid "If you've just placed an order, give your email a quick check for the confirmation."
+msgstr "Se acabou de efectuar uma encomenda, verifique rapidamente a confirmação no seu email."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:142
+msgid "Please check your email for the order confirmation."
+msgstr "Verifique o seu correio electrónico para obter a confirmação da encomenda."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:108
+msgid "Your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again."
+msgstr "A sua encomenda não pode ser processada porque o banco/comerciante de origem recusou a sua transacção. Por favor, tente efectuar a sua compra novamente."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:101
+msgid "Thank you. Your order has been fulfilled."
+msgstr "Obrigado. A sua encomenda foi recebida."
+
+#. translators: %s: date and time of the order refund.
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:89
+msgid "Your order was refunded %s."
+msgstr "A sua encomenda foi reembolsada %s."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:77
+msgid "Your order has been cancelled."
+msgstr "A sua encomenda foi cancelada."
+
+#: src/Blocks/BlockPatterns.php:346 src/StoreApi/Routes/V1/AI/Middleware.php:38
+#: src/StoreApi/Routes/V1/AI/Products.php:85
+msgid "AI content generation is not allowed on this store. Update your store settings if you wish to enable this feature."
+msgstr "A geração de conteúdos de IA não é permitida nesta loja. Actualize as definições da sua loja se pretender activar esta funcionalidade."
+
+#: src/Blocks/AI/Connection.php:156
+msgid "Failed to retrieve the JWT token: Try again later."
+msgstr "Falha ao recuperar o token JWT: Tente novamente mais tarde."
+
+#: src/Blocks/AI/Connection.php:152
+msgid "Failed to generate the JWT token"
+msgstr "Falha ao gerar o token JWT"
+
+#: src/Blocks/AI/Connection.php:122
+msgid "Failed to fetch the site ID: The site is not registered."
+msgstr "Falha ao obter o ID do site: O site não está registado."
+
+#: src/Blocks/AI/Connection.php:116
+msgid "Failed to fetch the site ID: try again later."
+msgstr "Não foi possível obter o ID do site: tente novamente mais tarde."
+
+#: src/Blocks/AI/Connection.php:51 src/Blocks/AI/Connection.php:100
+msgid "Failed to connect with the AI endpoint: try again later."
+msgstr "Falha na ligação com endpoint de IA: tente novamente mais tarde."
+
+#. Translators: %s Page contents.
+#: includes/admin/settings/class-wc-settings-advanced.php:86
+msgid "Page where shoppers go to finalize their purchase"
+msgstr "Página onde os compradores se dirigem para finalizar a compra"
+
+#. Translators: %s Page contents.
+#: includes/admin/settings/class-wc-settings-advanced.php:66
+msgid "Page where shoppers review their shopping cart"
+msgstr "Página onde os compradores revêem o seu carrinho de compras"
+
+#: includes/admin/class-wc-admin-webhooks-table-list.php:211
+msgid "Legacy"
+msgstr "Herdado"
+
+#. translators: Placeholders are URLs.
+#: includes/admin/class-wc-admin-notices.php:205
+msgid "The WooCommerce Legacy REST API will be removed in WooCommerce 9.0, and this will cause <a href=\"%1$s\">webhooks on this site that are configured to use the Legacy REST API</a> to stop working. <a target=\"_blank\" href=\"%2$s\">A separate WooCommerce extension is available</a> to allow these webhooks to keep using the Legacy REST API without interruption. You can also edit these webhooks to use the current REST API version to generate the payload instead. <b><a target=\"_blank\" href=\"%3$s\">Learn more about this change.</a></b>"
+msgstr "A API REST herdada do WooCommerce será removida no WooCommerce 9.0, e isso fará com que <a href=\"%1$s\">os webhooks neste site que estão configurados para usar a API REST herdada</a> parem de funcionar. <a target=\"_blank\" href=\"%2$s\">Uma extensão separada do WooCommerce está disponível</a> para permitir que esses webhooks continuem a usar a API REST herdada sem interrupção. Você também pode editar esses webhooks para usar a versão actual da API REST para gerar a carga útil. <b><a target=\"_blank\" href=\"%3$s\">Saiba mais sobre esta alteração.</a></b>"
+
+#: includes/admin/class-wc-admin-notices.php:201
+msgid "WooCommerce webhooks that use the Legacy REST API will be unsupported soon"
+msgstr "Os webhooks do WooCommerce que utilizam a API REST herdada deixarão de ser suportados em breve"
+
+#. translators: Placeholders are URLs.
+#: includes/admin/class-wc-admin-notices.php:185
+msgid "The WooCommerce Legacy REST API, <a href=\"%1$s\">currently enabled in this site</a>, will be removed in WooCommerce 9.0. <a target=\"_blank\" href=\"%2$s\">A separate WooCommerce extension is available</a> to keep it enabled. <b><a target=\"_blank\" href=\"%3$s\">Learn more about this change.</a></b>"
+msgstr "A API REST herdada do WooCommerce, <a href=\"%1$s\">actualmente activada neste site</a>, será removida no WooCommerce 9.0. <a target=\"_blank\" href=\"%2$s\">Uma extensão separada do WooCommerce está disponível</a> para mantê-la ativada. <b><a target=\"_blank\" href=\"%3$s\">Saiba mais sobre esta alteração.</a></b>"
+
+#: includes/admin/class-wc-admin-notices.php:181
+msgid "The WooCommerce Legacy REST API will be removed soon"
+msgstr "A API REST herdada do WooCommerce será removida em breve"
 
 #: assets/client/admin/product-editor/blocks/generic/product-taxonomy-field/block.json
 #: assets/client/admin/product-editor/blocks/generic/taxonomy/block.json
@@ -2347,6 +2725,32 @@ msgstr "Etiqueta do produto"
 msgctxt "block title"
 msgid "Product Collection (Beta)"
 msgstr "Colecção de produtos (Beta)"
+
+#: assets/client/blocks/product-gallery-pager/block.json
+msgctxt "block description"
+msgid "Display the gallery pager."
+msgstr "Apresena o paginador da galeria."
+
+#: assets/client/blocks/product-gallery-pager/block.json
+msgctxt "block title"
+msgid "Pager"
+msgstr "Paginador"
+
+#: assets/client/blocks/product-gallery-large-image-next-previous/block.json
+msgctxt "block description"
+msgid "Display next and previous buttons."
+msgstr "Apresenta os botões seguinte e anterior."
+
+#: assets/client/blocks/product-gallery-large-image-next-previous/block.json
+msgctxt "block title"
+msgid "Next/Previous Buttons"
+msgstr "Botões seguinte/anterior"
+
+#: assets/client/admin/product-editor/blocks/generic/product-taxonomy-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/taxonomy/block.json
+msgctxt "block description"
+msgid "A block that displays a taxonomy field, allowing searching, selection, and creation of new items"
+msgstr "Um bloco que apresenta um campo de taxonomia, permitindo a pesquisa, selecção e criação de novos itens"
 
 #: src/Internal/DataStores/Orders/CustomOrdersTableController.php:476
 msgid "High-performance order storage (recommended)"
@@ -10559,6 +10963,10 @@ msgstr "Não tem permissão para revogar esta chave de API"
 msgid "You do not have permission to edit this API Key"
 msgstr "Não tem permissão para editar esta chave de API"
 
+#: includes/emails/class-wc-email-customer-invoice.php:68
+msgid "Details for order #{order_number}"
+msgstr "Detalhes da encomenda #{order_number}"
+
 #. translators: %1$s: Order ID. %2$s: Order date
 #: templates/emails/plain/email-order-details.php:23
 msgid "[Order #%1$s] (%2$s)"
@@ -11554,6 +11962,10 @@ msgstr "Descarregamentos de clientes WooCommerce"
 #: src/StoreApi/Routes/V1/Products.php:152
 msgid "Limit response to resources created after a given ISO8601 compliant date."
 msgstr "Limitar resposta a recursos publicados depois de uma data especifica no formato ISO8601."
+
+#: includes/emails/class-wc-email-customer-invoice.php:57
+msgid "Details for order #{order_number} on {site_title}"
+msgstr "Detalhes da encomenda #{order_number} em {site_title}"
 
 #. translators: %s: theme name
 #: includes/admin/views/html-notice-template-check.php:19
@@ -14308,6 +14720,10 @@ msgstr "Ordenar por:"
 #: includes/admin/helper/views/html-main.php:25
 msgid "Below is a list of extensions available on your WooCommerce.com account. To receive extension updates please make sure the extension is installed, and its subscription activated and connected to your WooCommerce.com account. Extensions can be activated from the <a href=\"%s\">Plugins</a> screen."
 msgstr "Abaixo está uma lista de extensões disponíveis na sua conta de WooCommerce.com. Para receber a actualização das extensões, verifique se a extensão está instalada, e se sua a assinatura está activa e ligada à sua conta no WooCommerce.com. As extensões podem ser activadas a partir da página dos <a href=\"%s\">plugins</a>."
+
+#: includes/admin/meta-boxes/class-wc-meta-box-order-actions.php:202
+msgid "Send order details to customer"
+msgstr "Enviar detalhes da encomenda ao cliente"
 
 #: includes/admin/helper/class-wc-helper.php:390
 #: assets/client/admin/chunks/marketplace.js:1
@@ -25061,6 +25477,10 @@ msgstr "Isto controla o título que o utilizador vê ao finalizar de compras."
 msgid "Customer \"new account\" emails are sent to the customer when a customer signs up via checkout or account pages."
 msgstr "Emails de \"Nova conta\" de cliente são enviados aos clientes quando criam uma conta ao finalizar compras ou na página de conta."
 
+#: includes/emails/class-wc-email-customer-invoice.php:35
+msgid "Order detail emails can be sent to customers containing their order information and payment links."
+msgstr "Os emails de detalhes das encomendas são enviados aos clientes contendo a informação da encomenda e ligações para pagamento."
+
 #: includes/legacy/api/v2/class-wc-api-products.php:2199
 msgid "Invalid product SKU"
 msgstr "REF de produto inválida"
@@ -31539,6 +31959,10 @@ msgstr "Encomendas"
 #: includes/class-wc-countries.php:1388 includes/class-wc-countries.php:1594
 msgid "Postcode"
 msgstr "Código postal"
+
+#: includes/admin/list-tables/class-wc-admin-list-table-products.php:674
+msgid "Sample"
+msgstr "Amostra"
 
 #: includes/admin/class-wc-admin-api-keys-table-list.php:48
 #: includes/admin/importers/class-wc-product-csv-importer-controller.php:519

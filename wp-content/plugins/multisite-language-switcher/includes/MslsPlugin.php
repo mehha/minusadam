@@ -58,12 +58,12 @@ class MslsPlugin {
 			}
 
 			add_action( 'init', [ $obj, 'admin_bar_init' ] );
+			add_action( 'admin_enqueue_scripts', [ $obj, 'custom_enqueue' ] );
+			add_action( 'wp_enqueue_scripts', [ $obj, 'custom_enqueue' ] );
 
 			\lloc\Msls\ContentImport\Service::instance()->register();
 
 			if ( is_admin() ) {
-				add_action( 'admin_enqueue_scripts', [ $obj, 'custom_enqueue' ] );
-
 				add_action( 'admin_menu', [ MslsAdmin::class, 'init' ] );
 				add_action( 'load-post.php', [ MslsMetaBox::class, 'init' ] );
 				add_action( 'load-post-new.php', [ MslsMetaBox::class, 'init' ] );
@@ -92,7 +92,9 @@ class MslsPlugin {
 		} else {
 			add_action( 'admin_notices', function () {
 				$href = 'https://wordpress.org/support/article/create-a-network/';
-				$msg  = sprintf( __( 'The Multisite Language Switcher needs the activation of the multisite-feature for working properly. Please read <a onclick="window.open(this.href); return false;" href="%s">this post</a> if you don\'t know the meaning.', 'multisite-language-switcher' ), $href );
+				$msg  = sprintf( __( 'The Multisite Language Switcher needs the activation of the multisite-feature for working properly. Please read <a onclick="window.open(this.href); return false;" href="%s">this post</a> if you don\'t know the meaning.',
+					'multisite-language-switcher' ),
+					$href );
 
 				self::message_handler( $msg );
 			} );
@@ -221,15 +223,18 @@ class MslsPlugin {
 
 			global $pagenow;
 
-            $toLoad = [ 'wp-blocks', 'wp-element', 'wp-components' ];
-            if ( $pagenow === 'widgets.php' ) $toLoad[] = 'wp-edit-widgets';
-            else $toLoad[] = 'wp-editor';
+			$toLoad = [ 'wp-blocks', 'wp-element', 'wp-components' ];
+			if ( $pagenow === 'widgets.php' ) {
+				$toLoad[] = 'wp-edit-widgets';
+			} else {
+				$toLoad[] = 'wp-editor';
+			}
 
-            wp_register_script(
-                $handle,
-                self::plugins_url( 'js/msls-widget-block.js' ),
-                $toLoad
-            );
+			wp_register_script(
+				$handle,
+				self::plugins_url( 'js/msls-widget-block.js' ),
+				$toLoad
+			);
 
 			register_block_type( 'lloc/msls-widget-block', [
 				'attributes'      => [ 'title' => [ 'type' => 'string' ] ],
@@ -261,11 +266,15 @@ class MslsPlugin {
 	/**
 	 * Loads styles and some js if needed
 	 *
-	 * The method returns true if JS is loaded or false if not
+	 * The method returns true if the autocomplete-option is activated, false otherwise.
 	 *
 	 * @return boolean
 	 */
 	public function custom_enqueue() {
+		if ( ! is_admin_bar_showing() ) {
+			return false;
+		}
+
 		$ver     = defined( 'MSLS_PLUGIN_VERSION' ) ? constant( 'MSLS_PLUGIN_VERSION' ) : false;
 		$postfix = defined( 'SCRIPT_DEBUG' ) && constant( 'SCRIPT_DEBUG' ) ? '' : '.min';
 
@@ -273,7 +282,10 @@ class MslsPlugin {
 		wp_enqueue_style( 'msls-flags', self::plugins_url( 'css-flags/css/flag-icon.min.css' ), [], $ver );
 
 		if ( $this->options->activate_autocomplete ) {
-			wp_enqueue_script( 'msls-autocomplete', self::plugins_url( "js/msls{$postfix}.js" ), [ 'jquery-ui-autocomplete' ], $ver );
+			wp_enqueue_script( 'msls-autocomplete',
+				self::plugins_url( "js/msls{$postfix}.js" ),
+				[ 'jquery-ui-autocomplete' ],
+				$ver );
 
 			return true;
 		}

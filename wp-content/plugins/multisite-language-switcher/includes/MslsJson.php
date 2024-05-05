@@ -18,13 +18,13 @@ class MslsJson {
 	 * Container
 	 * @var array
 	 */
-	protected $arr = [];
+	protected array $arr = [];
 
-	/**
+	/** MslsLanguageArray
 	 * Adds a value label pair to the internal class container
 	 *
-	 * @param int $value
-	 * @param string $label
+	 * @param mixed $value
+	 * @param mixed $label
 	 *
 	 * @return MslsJson
 	 */

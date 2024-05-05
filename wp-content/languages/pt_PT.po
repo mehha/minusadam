@@ -2121,7 +2121,7 @@ msgstr "A sua implementação de cache de objectos não tem suporte para a regen
 
 #. translators: Custom template title in the Site Editor, referencing a deleted
 #. author. %s: Author nicename.
-#: wp-includes/block-template-utils.php:818
+#: wp-includes/block-template-utils.php:859
 msgid "Deleted author: %s"
 msgstr "Autor eliminado: %s"
 
@@ -2131,7 +2131,7 @@ msgstr "Autor eliminado: %s"
 #. name.
 #: wp-includes/block-template-utils.php:623
 #: wp-includes/block-template-utils.php:699
-#: wp-includes/block-template-utils.php:832
+#: wp-includes/block-template-utils.php:873
 msgid "Template for %s"
 msgstr "Modelo para %s"
 
@@ -3441,11 +3441,11 @@ msgstr "Ligação do formato de artigo"
 msgid "The calendar block is hidden because there are no published posts."
 msgstr "O bloco calendário está escondido porque não há artigos publicados."
 
-#: wp-includes/block-template-utils.php:1258
+#: wp-includes/block-template-utils.php:1299
 msgid "Unable to open export file (archive) for writing."
 msgstr "Não é possível abrir o ficheiro de exportação (arquivo Zip) para escrita."
 
-#: wp-includes/block-template-utils.php:1249
+#: wp-includes/block-template-utils.php:1290
 msgid "Zip Export not supported."
 msgstr "Exportação em formato zip não suportada."
 
@@ -4805,7 +4805,8 @@ msgstr "Nenhum modelo correspondente encontrado."
 msgid "Empty template: %s"
 msgstr "Modelo vazio: %s"
 
-#: wp-includes/block-template-utils.php:752
+#: wp-includes/block-template-utils.php:742
+#: wp-includes/block-template-utils.php:810
 msgid "No theme is defined for this template."
 msgstr "Nenhum tema está definido para este modelo."
 
@@ -5785,17 +5786,6 @@ msgstr "Comentário"
 msgid "Crop"
 msgstr "Cortar"
 
-#. translators: Theme and Directory Patterns tab title in the block inserter.
-#: wp-includes/js/dist/block-editor.js:42603
-#: wp-includes/js/dist/block-editor.js:43800
-#: wp-includes/js/dist/block-editor.js:49059
-#: wp-includes/js/dist/block-library.js:58090
-#: wp-includes/js/dist/core-commands.js:155
-#: wp-includes/js/dist/edit-site.js:13738
-#: wp-includes/js/dist/edit-site.js:17877 wp-admin/menu.php:209
-msgid "Patterns"
-msgstr "Padrões"
-
 #: wp-includes/script-loader.php:1010 wp-includes/js/media-views.js:3531
 #: wp-admin/js/media.js:237 wp-admin/js/post.js:1317
 msgid "The file URL has been copied to your clipboard"
@@ -6066,7 +6056,7 @@ msgstr "A palavra-chave \"type\" de Schema para %1$s apenas pode conter os tipos
 #. translators: 1: Theme name. 2: Theme slug.
 #: wp-includes/block-template-utils.php:637
 #: wp-includes/block-template-utils.php:716
-#: wp-includes/block-template-utils.php:848 wp-includes/rest-api.php:730
+#: wp-includes/block-template-utils.php:889 wp-includes/rest-api.php:730
 #: wp-includes/js/dist/block-library.js:32487
 #: wp-includes/js/dist/edit-site.js:12537
 #: wp-includes/js/dist/edit-site.js:14265
@@ -14143,7 +14133,7 @@ msgid "F j, Y"
 msgstr "j \\d\\e F, Y"
 
 #. translators: Custom template title in the Site Editor. %s: Author name.
-#: wp-includes/block-template-utils.php:826
+#: wp-includes/block-template-utils.php:867
 msgid "Author: %s"
 msgstr "Autor: %s"
 

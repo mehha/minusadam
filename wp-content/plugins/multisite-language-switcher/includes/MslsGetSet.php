@@ -40,6 +40,7 @@ class MslsGetSet extends MslsRegistryInstance {
 	 * Overloads the get method.
 	 *
 	 * @param string $key
+	 *
 	 * @return mixed
 	 */
 	public function __get( $key ) {
@@ -50,6 +51,7 @@ class MslsGetSet extends MslsRegistryInstance {
 	 * Overloads the isset method.
 	 *
 	 * @param string $key
+	 *
 	 * @return bool
 	 */
 	public function __isset( $key ) {
@@ -79,10 +81,10 @@ class MslsGetSet extends MslsRegistryInstance {
 	}
 
 	/**
-	 * Checks if the array has an non empty item with the specified key name.
+	 * Checks if the array has a non-empty item with the specified key name.
 	 *
 	 * This is method is similar to the overloaded __isset-method since
-	 * __set cleans empty properties but I use for example
+	 * __set cleans empty properties, but I use for example
 	 *
 	 *     $obj->has_value( $temp )
 	 *
@@ -93,6 +95,7 @@ class MslsGetSet extends MslsRegistryInstance {
 	 * which is the same but in my opinion a little bit ugly.
 	 *
 	 * @param string $key
+	 *
 	 * @return bool
 	 */
 	public function has_value( $key ) {
