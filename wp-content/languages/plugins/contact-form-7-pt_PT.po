@@ -2,14 +2,73 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-05-19 15:17:51+0000\n"
+"PO-Revision-Date: 2024-05-08 12:07:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0\n"
+"X-Generator: GlotPress/4.0.1\n"
 "Language: pt\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: modules/constant-contact/service.php:371
+msgid "This feature is deprecated. You are not recommended to use it."
+msgstr "Esta funcionalidade está obsoleta. Não é recomendada a sua utilização."
+
+#: modules/constant-contact/service.php:370
+msgid "https://contactform7.com/2024/02/02/we-end-the-constant-contact-integration/"
+msgstr "https://contactform7.com/2024/02/02/we-end-the-constant-contact-integration/"
+
+#: modules/constant-contact/service.php:368
+msgid "Warning:"
+msgstr "Aviso:"
+
+#: modules/checkbox.php:285 modules/select.php:217
+msgid "Undefined value was submitted through this field."
+msgstr "Foi submetido um valor indefinido através deste campo."
+
+#: admin/admin.php:693
+msgid "The Constant Contact integration is deprecated. It is not recommended to continue using the feature."
+msgstr "A integração do Constant Contact está obsoleta. Não é recomendada a utilização desta funcionalidade."
+
+#: modules/sendinblue/contact-form-properties.php:99
+#: modules/sendinblue/service.php:154
+msgid "Brevo integration"
+msgstr "Integração do Brevo"
+
+#. translators: 1: blog name, 2: blog URL
+#: includes/contact-form-template.php:111
+msgid "This email is a receipt for your contact form submission on our website (%1$s %2$s) in which your email address was used. If that was not you, please ignore this message."
+msgstr "Este email é um recibo de submissão do seu formulário de contacto no nosso site (%1$s %2$s), no qual foi utilizado o seu endereço de email. Se não foi o caso, ignore esta mensagem."
+
+#. translators: 1: blog name, 2: blog URL
+#: includes/contact-form-template.php:77
+msgid "This is a notification that a contact form was submitted on your website (%1$s %2$s)."
+msgstr "Isto é uma notificação de que foi submetido um formulário de contacto no seu site (%1$s %2$s)."
+
+#: includes/config-validator/mail.php:234
+#: includes/config-validator/mail.php:324
+msgid "Unsafe email config is used without sufficient protection."
+msgstr "Utilizada configuração de email insegura, sem protecção suficiente."
+
+#: includes/config-validator/validator.php:229
+msgid "Configuration error is detected."
+msgstr "Erro de configuração detectado."
+
+#: modules/sendinblue/service.php:161
+msgid "Brevo is active on this site."
+msgstr "O Brevo está activo neste site."
+
+#: admin/includes/welcome-panel.php:153
+#: modules/sendinblue/contact-form-properties.php:107
+#: modules/sendinblue/contact-form-properties.php:295
+#: modules/sendinblue/service.php:30
+msgid "Brevo"
+msgstr "Brevo"
+
+#: admin/admin.php:675
+msgid "The next major release of Contact Form 7 will discontinue support for outdated PHP versions. If you don't upgrade PHP, you will not be able to upgrade the plugin."
+msgstr "A próxima versão do Contact Form 7 deixará de suportar de versões de PHP descontinuadas. Se não actualizar o PHP, não conseguirá actualizar o plugin."
 
 #: includes/contact-form-functions.php:264
 msgid "Contact form not found."
@@ -177,9 +236,17 @@ msgstr ""
 msgid "Opt-in confirmation from %s"
 msgstr "Confirmação de permissão para %s"
 
+#: modules/constant-contact/contact-form-properties.php:162
+msgid "You can set up the Constant Contact integration here. For details, see %s."
+msgstr "Aqui poderá configurar a integração do Constant Contact. Para mais detalhes, consulte o artigo %s."
+
 #: modules/stripe/stripe.php:320
 msgid "Complete payment"
 msgstr "Concluir pagamento"
+
+#: modules/stripe/stripe.php:305
+msgid "Proceed to checkout"
+msgstr "Finalizar compra"
 
 #: modules/stripe/stripe.php:189
 msgid "Payment is required. Please pay by credit card."
@@ -193,13 +260,31 @@ msgstr "Pagamentos"
 msgid "Publishable Key"
 msgstr "Chave publicável"
 
+#: modules/stripe/service.php:188
+msgid "Stripe is not available on this site. It requires an HTTPS-enabled site."
+msgstr "O Stripe não está disponível neste site. Requer um site com HTTPS activado."
+
+#: modules/stripe/service.php:173
+msgid "Stripe is active on this site."
+msgstr "O Stripe está activo neste site."
+
 #: modules/stripe/service.php:166
 msgid "Stripe integration"
 msgstr "Integração com Stripe"
 
+#. translators: 1: first name, 2: last name
+#: modules/sendinblue/sendinblue.php:114
+msgctxt "personal name"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
 #: includes/rest-api.php:513
 msgid "Unique identifier for the contact form."
 msgstr "Identificador único para o formulário de contacto."
+
+#: admin/includes/welcome-panel.php:299
+msgid "Show welcome panel"
+msgstr "Mostrar painel de boas-vindas"
 
 #: admin/includes/welcome-panel.php:296
 msgid "Welcome panel"
@@ -221,6 +306,11 @@ msgstr "Integração com API externas"
 msgid "https://contactform7.com/integration-with-external-apis/"
 msgstr "https://contactform7.com/integration-with-external-apis/"
 
+#. translators: %s: link labeled 'Integration with external APIs'
+#: admin/admin.php:491
+msgid "You can expand the possibilities of your contact forms by integrating them with external services. For details, see %s."
+msgstr "Poderá aumentar as possibilidades de seus formulários de contacto integrando-os com serviços externos. Para mais detalhes, consulte o artigo %s."
+
 #: admin/admin.php:65 admin/admin.php:486
 msgid "Integration with External API"
 msgstr "Integração com API externa"
@@ -232,6 +322,10 @@ msgstr "Faça a gestão dos seus modelos de email"
 #: modules/sendinblue/contact-form-properties.php:265
 msgid "You have no active email template yet."
 msgstr "Ainda não tem nenhum modelo de email activo"
+
+#: modules/sendinblue/contact-form-properties.php:247
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Seleccione &mdash;"
 
 #: modules/sendinblue/contact-form-properties.php:236
 msgid "Select an email template:"
@@ -262,12 +356,26 @@ msgstr "Gerir as suas listas de contactos"
 msgid "You have no contact list yet."
 msgstr "Ainda não tem nenhuma lista de contactos."
 
+#: modules/constant-contact/contact-form-properties.php:219
+#: modules/sendinblue/contact-form-properties.php:153
+msgid "Select lists to which contacts are added:"
+msgstr "Seleccione as listas às quais os contactos serão adicionados:"
+
+#: modules/constant-contact/contact-form-properties.php:202
+#: modules/sendinblue/contact-form-properties.php:136
+msgid "Add form submitters to your contact lists"
+msgstr "Adicione remetentes de formulário às suas listas de contactos"
+
 #: modules/constant-contact/contact-form-properties.php:184
 #: modules/constant-contact/contact-form-properties.php:193
 #: modules/sendinblue/contact-form-properties.php:118
 #: modules/sendinblue/contact-form-properties.php:127
 msgid "Contact lists"
 msgstr "Listas de contactos"
+
+#: modules/sendinblue/contact-form-properties.php:95
+msgid "You can set up the Brevo integration here. For details, see %s."
+msgstr "Aqui poderá configurar a integração do Brevo. Para mais detalhes, consulte o artigo %s."
 
 #: modules/sendinblue/service.php:210
 msgid "Save changes"
@@ -432,6 +540,10 @@ msgstr "Resposta HTTP: %1$s %2$s %3$s de %4$s"
 msgid "Save Changes"
 msgstr "Guardar alterações"
 
+#: modules/recaptcha/service.php:270
+msgid "reCAPTCHA protects you against spam and other types of automated abuse. With Contact Form 7&#8217;s reCAPTCHA integration module, you can block abusive form submissions by spam bots."
+msgstr "O reCAPTCHA protege contra spam e outros tipos de mensagens sem consentimento. Com o módulo de integração reCAPTCHA do Contact Form 7, pode bloquear envios por bots de spam de formulários sem consentimento."
+
 #: modules/recaptcha/recaptcha.php:261 modules/recaptcha/service.php:277
 msgid "reCAPTCHA (v3)"
 msgstr "reCAPTCHA (v3)"
@@ -479,6 +591,10 @@ msgstr "Integração de Constant Contact"
 #: modules/constant-contact/service.php:383
 msgid "https://contactform7.com/constant-contact-integration/"
 msgstr "https://contactform7.com/constant-contact-integration/"
+
+#: modules/constant-contact/service.php:377
+msgid "The Constant Contact integration module allows you to send contact data collected through your contact forms to the Constant Contact API. You can create reliable email subscription services in a few easy steps."
+msgstr "O módulo de integração do Constant Contact permite que envie dados de contacto recolhidos por meio dos seus formulários de contacto para a API do Constant Contact. Pode criar serviços de subscrição de email fiáveis com facilidade e em poucos passos."
 
 #: modules/constant-contact/contact-form-properties.php:173
 #: modules/constant-contact/contact-form-properties.php:271
@@ -1616,7 +1732,7 @@ msgstr "https://contactform7.com/support/"
 
 #: admin/edit-contact-form.php:192 admin/includes/help-tabs.php:99
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Perguntas frequentes"
 
 #: admin/edit-contact-form.php:191 admin/includes/help-tabs.php:99
 msgid "https://contactform7.com/faq/"
@@ -1675,6 +1791,10 @@ msgstr "Não tem permissão para editar este formulário de contacto."
 #: admin/includes/welcome-panel.php:125
 msgid "https://contactform7.com/save-submitted-messages-with-flamingo/"
 msgstr "https://contactform7.com/save-submitted-messages-with-flamingo/"
+
+#: modules/akismet/service.php:58
+msgid "Spam filtering with Akismet"
+msgstr "Filtragem de spam com Akismet"
 
 #: admin/includes/welcome-panel.php:60 modules/akismet/service.php:57
 msgid "https://contactform7.com/spam-filtering-with-akismet/"

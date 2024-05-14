@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-01 11:24:33+0000\n"
+"PO-Revision-Date: 2024-05-09 18:13:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2651,6 +2651,74 @@ msgstr "A sua encomenda foi cancelada."
 msgid "AI content generation is not allowed on this store. Update your store settings if you wish to enable this feature."
 msgstr "A geração de conteúdos de IA não é permitida nesta loja. Actualize as definições da sua loja se pretender activar esta funcionalidade."
 
+#: src/Blocks/Templates/CheckoutTemplate.php:35
+msgctxt "Template name"
+msgid "Page: Checkout"
+msgstr "Página: Finalizar encomenda"
+
+#: src/Blocks/Templates/CartTemplate.php:35
+msgctxt "Template name"
+msgid "Page: Cart"
+msgstr "Página: Carrinho"
+
+#: src/StoreApi/Schemas/V1/ItemSchema.php:23
+msgid "The item type."
+msgstr "O tipo de item."
+
+#: src/StoreApi/Routes/V1/AI/Middleware.php:24
+msgid "You are not allowed to make this request. Please make sure you are logged in."
+msgstr "Não tem autorização para efectuar este pedido. Certifique-se de que tem sessão iniciada."
+
+#: src/StoreApi/Routes/V1/AI/BusinessDescription.php:49
+#: src/StoreApi/Routes/V1/AI/Images.php:49
+#: src/StoreApi/Routes/V1/AI/Patterns.php:53
+#: src/StoreApi/Routes/V1/AI/Products.php:51
+#: src/StoreApi/Routes/V1/AI/StoreTitle.php:64
+msgid "The business description for a given store."
+msgstr "A descrição comercial de uma determinada loja."
+
+#: src/Blocks/AIContent/UpdateProducts.php:122
+msgid "Failed to fetch dummy products."
+msgstr "Falha na obtenção de produtos de amostra."
+
+#: src/Blocks/AIContent/ContentProcessor.php:28
+#: src/Blocks/AIContent/UpdateProducts.php:76
+msgid "No business description provided for generating AI content."
+msgstr "Não foi fornecida qualquer descrição da actividade para gerar conteúdos de IA."
+
+#: src/Blocks/AIContent/UpdatePatterns.php:71
+msgid "Failed to update patterns content."
+msgstr "Falha ao actualizar o conteúdo dos padrões."
+
+#: src/Blocks/AIContent/UpdatePatterns.php:59
+msgid "Failed to set the pattern content."
+msgstr "Falha ao definir o conteúdo do padrão."
+
+#: src/Blocks/AIContent/UpdatePatterns.php:53
+msgid "Failed to set the pattern images."
+msgstr "Falha ao definir as imagens do padrão."
+
+#: src/Blocks/AIContent/PatternsHelper.php:100
+#: src/Blocks/AIContent/UpdatePatterns.php:408
+msgid "The patterns dictionary is missing."
+msgstr "O dicionário de padrões está em falta."
+
+#: src/Blocks/Images/Pexels.php:127 src/Blocks/Images/Pexels.php:131
+msgid "The search term definition failed."
+msgstr "A definição do termo de pesquisa falhou."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:226
+msgid "Confirm email and view order"
+msgstr "Confirme o correio electrónico e veja a encomenda"
+
+#: src/Blocks/Domain/Services/OnboardingTasks/ReviewCheckoutTask.php:53
+msgid "Make sure cart and checkout flows are configured correctly for your shoppers."
+msgstr "Certifique-se de que os fluxos do carrinho e de finalizar a encomenda estão correctamente configurados para os seus clientes."
+
+#: src/Blocks/BlockTypes/OrderConfirmation/Status.php:189
+msgid "Alternatively, confirm the email address linked to the order below."
+msgstr "Em alternativa, confirme o endereço de correio electrónico associado à encomenda abaixo."
+
 #: src/Blocks/AI/Connection.php:156
 msgid "Failed to retrieve the JWT token: Try again later."
 msgstr "Falha ao recuperar o token JWT: Tente novamente mais tarde."
@@ -2916,6 +2984,11 @@ msgstr "Comprar tudo"
 msgid "Shop Now"
 msgstr "Comprar agora"
 
+#: packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:939
+msgctxt "database error"
+msgid "unknown"
+msgstr "desconhecido"
+
 #: assets/client/blocks/customer-account/block.json
 msgctxt "block keyword"
 msgid "My Account"
@@ -2945,9 +3018,24 @@ msgctxt "block description"
 msgid "The product subsection."
 msgstr "A subsecção do produto."
 
+#: assets/client/blocks/product-rating-stars/block.json
+msgctxt "block description"
+msgid "Display the average rating of a product with stars"
+msgstr "Apresentar a classificação média de um produto com estrelas"
+
+#: assets/client/blocks/product-rating-stars/block.json
+msgctxt "block title"
+msgid "Product Rating Stars"
+msgstr "Estrelas de classificação do produto"
+
 #: src/Internal/DataStores/Orders/CustomOrdersTableController.php:425
 msgid "High-Performance order storage"
 msgstr "Armazenamento de encomendas de alto desempenho"
+
+#: src/Blocks/Templates/OrderConfirmationTemplate.php:33
+msgctxt "Template name"
+msgid "Order Confirmation"
+msgstr "Confirmação da encomenda"
 
 #: assets/client/blocks/product-top-rated/block.json
 msgctxt "block description"
@@ -2958,6 +3046,57 @@ msgstr "Mostra uma grelha dos produtos com as melhores avaliações."
 msgctxt "block title"
 msgid "Top Rated Products"
 msgstr "Produtos com melhores avaliações"
+
+#: assets/client/blocks/product-template/block.json
+msgctxt "block description"
+msgid "Contains the block elements used to render a product."
+msgstr "Contém os elementos de bloco usados para renderizar um produto."
+
+#: assets/client/blocks/product-template/block.json
+msgctxt "block title"
+msgid "Product Template"
+msgstr "Modelo de produto"
+
+#: assets/client/blocks/product-new/block.json
+msgctxt "block description"
+msgid "Display a grid of your newest products."
+msgstr "Apresentar uma grelha dos seus produtos mais recentes."
+
+#: assets/client/blocks/product-new/block.json
+msgctxt "block title"
+msgid "Newest Products"
+msgstr "Produtos mais recentes"
+
+#: assets/client/blocks/product-collection/block.json
+msgctxt "block description"
+msgid "Display a collection of products from your store."
+msgstr "Apresenta uma colecção de produtos de sua loja."
+
+#: assets/client/admin/product-editor/blocks/generic/product-subsection/block.json
+#: assets/client/admin/product-editor/blocks/generic/subsection/block.json
+msgctxt "block title"
+msgid "Product subsection"
+msgstr "Subseção do produto"
+
+#: assets/client/blocks/product-rating/block.json
+msgctxt "block description"
+msgid "Display the average rating of a product."
+msgstr "Apresenta a avaliação média de um produto."
+
+#: assets/client/blocks/product-rating/block.json
+msgctxt "block title"
+msgid "Product Rating"
+msgstr "Avaliação do produto"
+
+#: packages/action-scheduler/classes/abstracts/ActionScheduler_Abstract_ListTable.php:704
+msgctxt "status labels"
+msgid "Past-due"
+msgstr "Vencida"
+
+#: packages/action-scheduler/classes/abstracts/ActionScheduler_Abstract_ListTable.php:703
+msgctxt "status labels"
+msgid "All"
+msgstr "Tudo"
 
 #: i18n/states.php:1089
 msgid "Saint Kitts"
@@ -3007,9 +3146,155 @@ msgctxt "block title"
 msgid "Add to Cart with Options"
 msgstr "Adicionar ao carrinho com opções"
 
+#: assets/client/blocks/product-details/block.json
+msgctxt "block description"
+msgid "Display a product's description, attributes, and reviews."
+msgstr "Apresenta a descrição, os atributos e as avaliações de um produto."
+
+#: assets/client/admin/product-editor/blocks/generic/product-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/toggle/block.json
+msgctxt "block description"
+msgid "The product toggle."
+msgstr "O botão de alternar o produto."
+
+#: assets/client/admin/product-editor/blocks/generic/product-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/toggle/block.json
+msgctxt "block title"
+msgid "Product toggle control"
+msgstr "Controlo de alternar produtos"
+
+#: assets/client/admin/product-editor/blocks/product-fields/product-sale-price-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/sale-price/block.json
+msgctxt "block title"
+msgid "Product sale price"
+msgstr "Preço de promoção do produto"
+
+#: assets/client/admin/product-editor/blocks/product-fields/product-regular-price-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/regular-price/block.json
+msgctxt "block title"
+msgid "Product regular price"
+msgstr "Preço normal do produto"
+
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-quantity/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-inventory-quantity-field/block.json
+msgctxt "block keyword"
+msgid "quantity"
+msgstr "quantidade"
+
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-quantity/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-inventory-quantity-field/block.json
+msgctxt "block description"
+msgid "The product available quantity."
+msgstr "A quantidade disponível do produto."
+
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-quantity/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-inventory-quantity-field/block.json
+msgctxt "block title"
+msgid "Product inventory quantity available"
+msgstr "Quantidade disponível no stock do produto"
+
+#: assets/client/admin/product-editor/blocks/generic/product-section-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-subsection-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/section-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/subsection-description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-description-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-details-section-description/block.json
+msgctxt "block keyword"
+msgid "description"
+msgstr "descrição"
+
+#: assets/client/admin/product-editor/blocks/product-fields/description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-description-field/block.json
+msgctxt "block description"
+msgid "The product description."
+msgstr "A descrição do produto."
+
+#: assets/client/admin/product-editor/blocks/product-fields/description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-description-field/block.json
+msgctxt "block title"
+msgid "Product description"
+msgstr "Descrição do produto"
+
+#: assets/client/admin/product-editor/blocks/product-fields/product-tag-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/tag/block.json
+msgctxt "block description"
+msgid "A field to select product tags."
+msgstr "Um campo para seleccionar etiquetas de produtos."
+
+#: assets/client/admin/product-editor/blocks/product-fields/attributes/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-attributes-field/block.json
+msgctxt "block keyword"
+msgid "attributes"
+msgstr "atributos"
+
+#: assets/client/admin/product-editor/blocks/product-fields/attributes/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-attributes-field/block.json
+msgctxt "block description"
+msgid "The product attributes."
+msgstr "Os atributos do produto."
+
+#: assets/client/admin/product-editor/blocks/product-fields/attributes/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-attributes-field/block.json
+msgctxt "block title"
+msgid "Product attributes"
+msgstr "Atributos do produto"
+
+#. translators: %1$s is a time in minutes, %2$s is a list of products and
+#. quantities.
+#: src/Checkout/Helpers/ReserveStock.php:160
+msgctxt "held stock note"
+msgid "Stock hold of %1$s minutes applied to: %2$s"
+msgstr "Retenção de stock de %1$s minutos aplicada a: %2$s"
+
+#. translators: %d is the remaining order items count.
+#: src/Checkout/Helpers/ReserveStock.php:152
+msgctxt "held stock note"
+msgid "- ...and %d more item."
+msgid_plural "- ... and %d more items."
+msgstr[0] "- ... e mais %d Item."
+msgstr[1] "- … e mais %d Itens."
+
+#. translators: %1$s is a product's formatted name, %2$d: is the quantity of
+#. said product to which the stock hold applied.
+#: src/Checkout/Helpers/ReserveStock.php:132
+msgctxt "held stock note"
+msgid "- %1$s &times; %2$d"
+msgstr "- %1$s &times; %2$d"
+
 #: includes/wc-account-functions.php:105
 msgid "Log out"
 msgstr "Terminar sessão"
+
+#: includes/wc-core-functions.php:1543
+msgctxt "Name of credit card"
+msgid "JCB"
+msgstr "JCB"
+
+#: includes/wc-core-functions.php:1542
+msgctxt "Name of credit card"
+msgid "Diners"
+msgstr "Diners"
+
+#: includes/wc-core-functions.php:1541
+msgctxt "Name of credit card"
+msgid "American Express"
+msgstr "American Express"
+
+#: includes/wc-core-functions.php:1540
+msgctxt "Name of credit card"
+msgid "Discover"
+msgstr "Discover"
+
+#: includes/wc-core-functions.php:1539
+msgctxt "Name of credit card"
+msgid "Visa"
+msgstr "Visa"
+
+#: includes/wc-core-functions.php:1538
+msgctxt "Name of credit card"
+msgid "MasterCard"
+msgstr "MasterCard"
 
 #: assets/client/blocks/single-product/block.json
 msgctxt "block description"
@@ -3362,6 +3647,128 @@ msgctxt "block title"
 msgid "Product radio control"
 msgstr "Controlo do botão de opção do produto"
 
+#: assets/client/admin/product-editor/blocks/product-fields/product-schedule-sale-fields/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/schedule-sale/block.json
+msgctxt "block keyword"
+msgid "sale"
+msgstr "promoção"
+
+#: assets/client/admin/product-editor/blocks/generic/product-radio-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/radio/block.json
+#: assets/client/admin/product-editor/blocks/generic/toggle/block.json
+msgctxt "block keyword"
+msgid "radio"
+msgstr "botão de rádio"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-radio-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/radio/block.json
+#: assets/client/admin/product-editor/blocks/generic/toggle/block.json
+msgctxt "block keyword"
+msgid "input"
+msgstr "entrada"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+msgctxt "block keyword"
+msgid "checkbox"
+msgstr "caixa de seleção"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/linked-product-list/block.json
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/pricing/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-linked-list-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-pricing-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-radio-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-section-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-section/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-select-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-subsection-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-subsection/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-tab/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-text-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/generic/radio/block.json
+#: assets/client/admin/product-editor/blocks/generic/section-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/section/block.json
+#: assets/client/admin/product-editor/blocks/generic/select/block.json
+#: assets/client/admin/product-editor/blocks/generic/subsection-description/block.json
+#: assets/client/admin/product-editor/blocks/generic/subsection/block.json
+#: assets/client/admin/product-editor/blocks/generic/tab/block.json
+#: assets/client/admin/product-editor/blocks/generic/text/block.json
+#: assets/client/admin/product-editor/blocks/generic/toggle/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/attributes/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/catalog-visibility/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/custom-fields-toggle/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/custom-fields/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/images/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-email/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-quantity/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/inventory-sku/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/name/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/notice-edit-single-variation/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/notice-has-variations/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/password/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-attributes-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-catalog-visibility-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-custom-fields-toggle-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-custom-fields/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-description-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-details-section-description/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-has-variations-notice/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-images-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-inventory-email-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-inventory-quantity-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-list-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-list/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-name-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-password-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-regular-price-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-sale-price-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-schedule-sale-fields/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-shipping-class-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-shipping-dimensions-fields/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-single-variation-notice/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-sku-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-summary-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-tag-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-variation-items-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-variations-options-field/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/regular-price/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/sale-price/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/schedule-sale/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/shipping-class/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/shipping-dimensions/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/summary/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/tag/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/variation-items/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/variation-options/block.json
+msgctxt "block keyword"
+msgid "products"
+msgstr "produtos"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+msgctxt "block title"
+msgid "Product checkbox control"
+msgstr "Controlo da caixa de selecção do produto"
+
+#: assets/client/admin/product-editor/blocks/generic/conditional/block.json
+msgctxt "block title"
+msgid "Conditional"
+msgstr "Condicional"
+
 #: templates/block-notices/error.php:36
 msgid "The following problems were found:"
 msgstr "Foram encontrados os seguintes problemas:"
@@ -3399,14 +3806,53 @@ msgstr "Blocos de Carrinho e Finalização de compras"
 msgid "Shop"
 msgstr "Loja"
 
+#: patterns/no-products-found.php:11
+msgctxt "Message explaining that there are no products returned from a search"
+msgid "No products were found matching your selection."
+msgstr "Nenhum produto foi encontrado correspondente à sua selecção."
+
 #: assets/client/blocks/store-notices/block.json
 msgctxt "block title"
 msgid "Store Notices"
 msgstr "Avisos na loja"
 
+#: assets/client/blocks/product-results-count/block.json
+msgctxt "block title"
+msgid "Product Results Count"
+msgstr "Contagem de resultados de produtos"
+
+#: assets/client/blocks/catalog-sorting/block.json
+msgctxt "block title"
+msgid "Catalog Sorting"
+msgstr "Ordenação do catálogo"
+
+#: assets/client/blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Store Breadcrumbs"
+msgstr "Breadcrumbs da loja"
+
+#: assets/client/blocks/product-image-gallery/block.json
+msgctxt "block title"
+msgid "Product Image Gallery"
+msgstr "Imagem da galeria de produto"
+
 #: src/Admin/Features/ShippingPartnerSuggestions/DefaultShippingPartners.php:68
 msgid "Shop for the best rates, in real-time"
 msgstr "Comprar aos melhores preços, em tempo real"
+
+#. translators: 1. A formatted number; 2. A label for a dimensions unit of
+#. measure. E.g. 3.14 cm.
+#: includes/wc-formatting-functions.php:1372
+msgctxt "formatted dimensions"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#. translators: 1. A formatted number; 2. A label for a weight unit of measure.
+#. E.g. 2.72 kg.
+#: includes/wc-formatting-functions.php:1346
+msgctxt "formatted weight"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
 
 #: assets/client/blocks/customer-account/block.json
 msgctxt "block title"
@@ -3438,6 +3884,27 @@ msgstr "Mostrar opções de recolha local."
 msgid "My Account"
 msgstr "A minha conta"
 
+#: src/StoreApi/Utilities/CartController.php:868
+msgctxt "shipping packages"
+msgid "Shipment 1"
+msgstr "Envio 1"
+
+#. translators: %d: shipping package number
+#: src/StoreApi/Utilities/CartController.php:865
+msgctxt "shipping packages"
+msgid "Shipment %d"
+msgstr "Envio %d"
+
+#: includes/class-wc-countries.php:464
+msgctxt "shipping country prefix"
+msgid "to"
+msgstr "para"
+
+#: includes/class-wc-countries.php:464
+msgctxt "shipping country prefix"
+msgid "to the"
+msgstr "para o"
+
 #: src/Blocks/BlockTypes/ProductFilterStockStatus.php:162
 #: assets/client/blocks/product-filter-stock-status.js:2
 #: assets/client/blocks/stock-filter-frontend.js:14
@@ -3445,6 +3912,11 @@ msgstr "A minha conta"
 #: assets/client/blocks/stock-filter.js:8
 msgid "Select stock status"
 msgstr "Seleccionar estado de stock"
+
+#: assets/client/blocks/active-filters/block.json
+msgctxt "block title"
+msgid "Active Filters Controls"
+msgstr "Controlos de filtros activos"
 
 #: templates/emails/customer-on-hold-order.php:27
 #: templates/emails/plain/customer-on-hold-order.php:26
@@ -4013,6 +4485,15 @@ msgctxt "Template name"
 msgid "Mini-Cart"
 msgstr "Minicarrinho"
 
+#. translators: %s: Order date
+#: includes/class-wc-order-refund.php:83
+#: includes/data-stores/abstract-wc-order-data-store-cpt.php:383
+#: includes/data-stores/class-wc-order-refund-data-store-cpt.php:120
+#: src/Internal/DataStores/Orders/OrdersTableRefundDataStore.php:199
+msgctxt "Order date parsed by DateTime::format"
+msgid "M d, Y @ h:i A"
+msgstr "M d, Y @ h:i A"
+
 #: assets/client/blocks/products-by-attribute/block.json
 msgctxt "block title"
 msgid "Products by Attribute"
@@ -4245,6 +4726,16 @@ msgstr "Todas as datas"
 #: src/Internal/Admin/ProductReviews/Reviews.php:607
 msgid "Search Reviews"
 msgstr "Pesquisar avaliações"
+
+#: src/Internal/Admin/ProductReviews/ReviewsListTable.php:686
+msgctxt "review"
+msgid "Not spam"
+msgstr "Não é spam"
+
+#: src/Internal/Admin/ProductReviews/ReviewsListTable.php:680
+msgctxt "review"
+msgid "Mark as spam"
+msgstr "Marcar como spam"
 
 #: assets/client/blocks/featured-product/block.json
 msgctxt "block title"
@@ -5608,6 +6099,21 @@ msgctxt "block title"
 msgid "Actions"
 msgstr "Acções"
 
+#: assets/client/blocks/inner-blocks/checkout-totals-block/block.json
+msgctxt "block title"
+msgid "Checkout Totals"
+msgstr "Totais na finalização de compra"
+
+#: assets/client/blocks/inner-blocks/checkout-order-note-block/block.json
+msgctxt "block title"
+msgid "Order Note"
+msgstr "Nota de encomenda"
+
+#: assets/client/blocks/inner-blocks/checkout-fields-block/block.json
+msgctxt "block title"
+msgid "Checkout Fields"
+msgstr "Campos de finalização de compra"
+
 #: assets/client/blocks/inner-blocks/empty-cart-block/block.json
 msgctxt "block title"
 msgid "Empty Cart"
@@ -5634,6 +6140,11 @@ msgstr "Finalização de compras rápida"
 msgctxt "block title"
 msgid "Order Summary"
 msgstr "Resumo da encomenda"
+
+#: assets/client/blocks/inner-blocks/cart-line-items-block/block.json
+msgctxt "block title"
+msgid "Cart Line Items"
+msgstr "Linha de itens no carrinho"
 
 #: includes/admin/class-wc-admin-addons.php:857
 #: assets/client/admin/app/index.js:2
@@ -7639,6 +8150,18 @@ msgstr "Suporte da comunidade"
 #: includes/class-wc-install.php:2152
 msgid "Visit community forums"
 msgstr "Visite os fóruns da comunidade"
+
+#. translators: %s: taxonomy label
+#: includes/class-wc-post-types.php:545
+msgctxt "taxonomy term messages"
+msgid "%s not updated"
+msgstr "%s não actualizado"
+
+#. translators: %s: taxonomy label
+#: includes/class-wc-post-types.php:539 includes/class-wc-post-types.php:547
+msgctxt "taxonomy term messages"
+msgid "%s deleted"
+msgstr "%s eliminado"
 
 #: src/StoreApi/Schemas/V1/ProductSchema.php:236
 msgid "Tag name"
