@@ -39,9 +39,9 @@ body {
 }
 
 main {
-  padding-top: 112px;
+  padding-top: 141px;
   @include media-breakpoint-up(xl) {
-    padding-top: 139px;
+    padding-top: 144px;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
