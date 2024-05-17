@@ -34,6 +34,16 @@ header.banner {
   }
 }
 
+.widget_mslswidget {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  a {
+    width: 20px;
+  }
+}
+
 .admin-bar {
   header.banner {
     top: 46px;
