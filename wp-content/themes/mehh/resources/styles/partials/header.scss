@@ -46,6 +46,10 @@ header.banner {
       width: 100%;
     }
   }
+
+  &:not(:has(a)) {
+    display: none;
+  }
 }
 
 .admin-bar {
