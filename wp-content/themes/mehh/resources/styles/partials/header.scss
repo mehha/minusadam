@@ -40,10 +40,12 @@ header.banner {
   gap: 4px;
 
   a {
-    width: 20px;
-
     img {
-      width: 100%;
+      display: none;
+    }
+
+    svg {
+      width: 24px;
     }
   }
 

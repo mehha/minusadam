@@ -37,10 +37,9 @@ class MslsAdmin extends MslsMain {
 	 */
 	public static function init() {
 		if ( ! ( $obj = MslsRegistry::get_object( __CLASS__ ) ) ) {
-			$options    = MslsOptions::instance();
 			$collection = msls_blog_collection();
 
-			$obj = new static( $options, $collection );
+			$obj = new static( msls_options(), $collection );
 
 			MslsRegistry::set_object( __CLASS__, $obj );
 
@@ -96,7 +95,7 @@ class MslsAdmin extends MslsMain {
 	public function __call( $method, $args ) {
 		$parts = explode( '_', $method, 2 );
 
-		if ( 'rewrite' === $parts[0] ) {
+		if ( is_array( $parts ) && 'rewrite' === $parts[0] ) {
 			return $this->render_rewrite( $parts[1] );
 		}
 

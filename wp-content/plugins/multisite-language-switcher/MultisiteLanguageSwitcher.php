@@ -7,7 +7,7 @@
  * @wordpress-plugin
  *
  * Plugin Name: Multisite Language Switcher
- * Version: 2.6.4
+ * Version: 2.7.0
  * Plugin URI: http://msls.co/
  * Description: A simple but powerful plugin that will help you to manage the relations of your contents in a multilingual multisite-installation.
  * Author: Dennis Ploetner
@@ -40,11 +40,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  * @author Dennis Ploetner <re@lloc.de>
  */
 if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
-	define( 'MSLS_PLUGIN_VERSION', '2.6.4' );
+	define( 'MSLS_PLUGIN_VERSION', '2.7.0' );
 	define( 'MSLS_PLUGIN_PATH', plugin_basename( __FILE__ ) );
 	define( 'MSLS_PLUGIN__FILE__', __FILE__ );
-
-	lloc\Msls\MslsPlugin::init();
 
 	/**
 	 * Get the output for using the links to the translations in your code
@@ -56,7 +54,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 * @return string
 	 */
 	function get_the_msls( $attr ): string {
-		$arr = is_array( $attr ) ? $attr : [];
+		$arr = is_array( $attr ) ? $attr : array();
 		$obj = apply_filters( 'msls_get_output', null );
 
 		return ! is_null( $obj ) ? strval( $obj->set_tags( $arr ) ) : '';
@@ -79,7 +77,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 *
 	 * @param string[] $arr
 	 */
-	function the_msls( array $arr = [] ): void {
+	function the_msls( array $arr = array() ): void {
 		echo get_the_msls( $arr );
 	}
 
@@ -91,7 +89,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 * @return string
 	 */
 	function get_msls_flag_url( string $locale ): string {
-		return ( new \lloc\Msls\MslsOptions )->get_flag_url( $locale );
+		return ( new \lloc\Msls\MslsOptions() )->get_flag_url( $locale );
 	}
 
 	/**
@@ -128,7 +126,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	}
 
 	/**
-	 * Gets a blog by locale
+	 * Looks for the MslsBlog instance for a specific locale
 	 *
 	 * @param string $locale
 	 *
@@ -147,4 +145,14 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 		return \lloc\Msls\MslsBlogCollection::instance();
 	}
 
+	/**
+	 * Gets the MslsOptions instance
+	 *
+	 * @return \lloc\Msls\MslsOptions
+	 */
+	function msls_options(): \lloc\Msls\MslsOptions {
+		return \lloc\Msls\MslsOptions::instance();
+	}
+
+	lloc\Msls\MslsPlugin::init();
 }
