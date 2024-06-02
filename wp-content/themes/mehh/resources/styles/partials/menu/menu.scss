@@ -8,6 +8,49 @@
       > .nav-link {
         text-transform: uppercase;
       }
+
+      &.with-icon {
+        > a {
+          position: relative;
+          padding-left: 2.5rem;
+
+          &::before {
+            content: "";
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 2rem;
+            height: 2rem;
+            display:inline-block;
+            position: absolute;
+            left: 0;
+            top: 2px;
+          }
+        }
+      }
+
+      &.getaway {
+        > a {
+          &::before {
+            background-image: url("../images/getaway.svg");
+          }
+        }
+      }
+
+      &.savistuudio {
+        > a {
+          &::before {
+            background-image: url("../images/savistuudio.svg");
+          }
+        }
+      }
+
+      &.epood {
+        > a {
+          &::before {
+            background-image: url("../images/epood.svg");
+          }
+        }
+      }
     }
   }
 
