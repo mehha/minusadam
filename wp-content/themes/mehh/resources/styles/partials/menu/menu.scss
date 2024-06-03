@@ -31,7 +31,9 @@
       &.getaway {
         > a {
           &::before {
-            background-image: url("../images/getaway.svg");
+            background-image: url("../images/getaway-no-text.svg");
+            background-color: #fff;
+            border-radius: 50%;
           }
         }
       }
@@ -40,6 +42,8 @@
         > a {
           &::before {
             background-image: url("../images/savistuudio.svg");
+            background-color: #fff;
+            border-radius: 50%;
           }
         }
       }
