@@ -36,10 +36,9 @@ class MslsAdmin extends MslsMain {
 	 * @return MslsAdmin
 	 */
 	public static function init() {
-		if ( ! ( $obj = MslsRegistry::get_object( __CLASS__ ) ) ) {
-			$collection = msls_blog_collection();
-
-			$obj = new static( msls_options(), $collection );
+		$obj = MslsRegistry::get_object( __CLASS__ );
+		if ( ! $obj ) {
+			$obj = new static( msls_options(), msls_blog_collection() );
 
 			MslsRegistry::set_object( __CLASS__, $obj );
 
@@ -116,12 +115,10 @@ class MslsAdmin extends MslsMain {
 		);
 
 		if ( isset( $checkboxes[ $method ] ) ) {
-			echo ( new Group() )->add( new Checkbox( $method, $this->options->$method ) )->add(
-				new Label(
-					$method,
-					$checkboxes[ $method ]
-				)
-			)->render();
+			echo ( new Group() )
+				->add( new Checkbox( $method, $this->options->$method ) )
+				->add( new Label( $method, $checkboxes[ $method ] ) )
+				->render();
 		} else {
 			$value = ! empty( $this->options->$method ) ? $this->options->$method : '';
 			echo ( new Text( $method, $value ) )->render();
@@ -137,21 +134,21 @@ class MslsAdmin extends MslsMain {
 		$message = '';
 
 		if ( $this->options->is_empty() ) {
-			$message = sprintf(
-				__(
-					'Multisite Language Switcher is almost ready. You must <a href="%s">complete the configuration process</a>.',
-					'multisite-language-switcher'
-				),
-				esc_url( admin_url( $this->get_options_page_link() ) )
+			/* translators: %s: URL to the options page */
+			$format  = __(
+				'Multisite Language Switcher is almost ready. You must <a href="%s">complete the configuration process</a>.',
+				'multisite-language-switcher'
 			);
+			$message = sprintf( $format, esc_url( admin_url( $this->get_options_page_link() ) ) );
 		} elseif ( 1 == count( $this->options->get_available_languages() ) ) {
+			/* translators: %1$s: URL to a page at WordPress.orgs */
+			$format  = __(
+				'No language files are currently installed. Learn how to install various languages in WordPress by <a href="%1$s">reading more here</a>.',
+				'multisite-language-switcher'
+			);
 			$message = sprintf(
-				__(
-					'There are no language files installed. You can <a href="%1$s">manually install some language files</a> or you could use a <a href="%2$s">plugin</a> to download these files automatically.',
-					'multisite-language-switcher'
-				),
-				esc_url( 'http://codex.wordpress.org/Installing_WordPress_in_Your_Language#Manually_Installing_Language_Files' ),
-				esc_url( 'http://wordpress.org/plugins/wp-native-dashboard/' )
+				$format,
+				esc_url( 'https://developer.wordpress.org/advanced-administration/before-install/in-your-language/#Manually_Installing_Language_Files' )
 			);
 		}
 
@@ -262,18 +259,18 @@ class MslsAdmin extends MslsMain {
 	 */
 	public function main_section(): int {
 		$map = array(
-			'display'               => __( 'Display', 'multisite-language-switcher' ),
-			'admin_display'         => __( 'Admin Display', 'multisite-language-switcher' ),
-			'sort_by_description'   => __( 'Sort languages', 'multisite-language-switcher' ),
-			'output_current_blog'   => __( 'Current language link', 'multisite-language-switcher' ),
-			'only_with_translation' => __( 'Translation links', 'multisite-language-switcher' ),
-			'description'           => __( 'Description', 'multisite-language-switcher' ),
-			'before_output'         => __( 'Text/HTML before the list', 'multisite-language-switcher' ),
-			'after_output'          => __( 'Text/HTML after the list', 'multisite-language-switcher' ),
-			'before_item'           => __( 'Text/HTML before each item', 'multisite-language-switcher' ),
-			'after_item'            => __( 'Text/HTML after each item', 'multisite-language-switcher' ),
-			'content_filter'        => __( 'Available translations hint', 'multisite-language-switcher' ),
-			'content_priority'      => __( 'Hint priority', 'multisite-language-switcher' ),
+			'display'               => esc_html__( 'Display', 'multisite-language-switcher' ),
+			'admin_display'         => esc_html__( 'Admin Display', 'multisite-language-switcher' ),
+			'sort_by_description'   => esc_html__( 'Sort languages', 'multisite-language-switcher' ),
+			'output_current_blog'   => esc_html__( 'Current language link', 'multisite-language-switcher' ),
+			'only_with_translation' => esc_html__( 'Translation links', 'multisite-language-switcher' ),
+			'description'           => esc_html__( 'Description', 'multisite-language-switcher' ),
+			'before_output'         => esc_html__( 'Text/HTML before the list', 'multisite-language-switcher' ),
+			'after_output'          => esc_html__( 'Text/HTML after the list', 'multisite-language-switcher' ),
+			'before_item'           => esc_html__( 'Text/HTML before each item', 'multisite-language-switcher' ),
+			'after_item'            => esc_html__( 'Text/HTML after each item', 'multisite-language-switcher' ),
+			'content_filter'        => esc_html__( 'Available translations hint', 'multisite-language-switcher' ),
+			'content_priority'      => esc_html__( 'Hint priority', 'multisite-language-switcher' ),
 		);
 
 		return $this->add_settings_fields( $map, 'main_section' );
@@ -288,11 +285,11 @@ class MslsAdmin extends MslsMain {
 	 */
 	public function advanced_section(): int {
 		$map = array(
-			'activate_autocomplete'   => __( 'Autocomplete', 'multisite-language-switcher' ),
-			'image_url'               => __( 'Custom URL for flag-images', 'multisite-language-switcher' ),
-			'reference_user'          => __( 'Reference user', 'multisite-language-switcher' ),
-			'exclude_current_blog'    => __( 'Exclude blog', 'multisite-language-switcher' ),
-			'activate_content_import' => __( 'Content import', 'multisite-language-switcher' ),
+			'activate_autocomplete'   => esc_html__( 'Autocomplete', 'multisite-language-switcher' ),
+			'image_url'               => esc_html__( 'Custom URL for flag-images', 'multisite-language-switcher' ),
+			'reference_user'          => esc_html__( 'Reference user', 'multisite-language-switcher' ),
+			'exclude_current_blog'    => esc_html__( 'Exclude blog', 'multisite-language-switcher' ),
+			'activate_content_import' => esc_html__( 'Content import', 'multisite-language-switcher' ),
 		);
 
 		return $this->add_settings_fields( $map, 'advanced_section' );
@@ -308,7 +305,10 @@ class MslsAdmin extends MslsMain {
 	public function rewrites_section(): int {
 		$map = array();
 		foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $key => $object ) {
-			$map[ "rewrite_{$key}" ] = sprintf( __( '%s Slug', 'multisite-language-switcher' ), $object->label );
+			/* translators: %s: post type label */
+			$format = __( '%s Slug', 'multisite-language-switcher' );
+
+			$map[ "rewrite_{$key}" ] = sprintf( $format, $object->label );
 		}
 
 		return $this->add_settings_fields( $map, 'rewrites_section' );
@@ -382,14 +382,13 @@ class MslsAdmin extends MslsMain {
 		if ( count( $users ) > self::MAX_REFERENCE_USERS ) {
 			$users = array_slice( $users, 0, self::MAX_REFERENCE_USERS, true );
 
-			$message = sprintf(
-				__(
-					'Multisite Language Switcher: Collection for reference user has been truncated because it exceeded the maximum of %s users. Please, use the hook "msls_reference_users" to filter the result before!',
-					'multisite-language-switcher'
-				),
-				self::MAX_REFERENCE_USERS
+			/* translators: %s: maximum number of users */
+			$format = __(
+				'Multisite Language Switcher: Collection for reference user has been truncated because it exceeded the maximum of %s users. Please, use the hook "msls_reference_users" to filter the result before!',
+				'multisite-language-switcher'
 			);
-			trigger_error( $message );
+
+			trigger_error( sprintf( $format, self::MAX_REFERENCE_USERS ) );
 		}
 
 		echo ( new Select( 'reference_user', $users, $this->options->reference_user ) )->render();

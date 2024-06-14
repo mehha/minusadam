@@ -7,15 +7,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-beta.2\n"
+"X-Generator: GlotPress/4.0.1\n"
 "Language: et_EE\n"
 "Project-Id-Version: Plugins - Akismet Anti-spam: Spam Protection - Stable (latest release)\n"
 
-#: class.akismet-admin.php:271 views/config.php:276
+#: class.akismet-admin.php:271 views/config.php:268
 msgid "Status"
 msgstr "Olek"
 
-#: views/notice.php:200
+#: views/notice.php:196
 msgid "The key you entered is invalid. Please double-check it."
 msgstr "Sisestatud võti on vigane. Palun kontrolli seda."
 
@@ -48,7 +48,7 @@ msgstr[0] "<strong>Akismet</strong> on püüdnud kinni <strong class=\"count\">%
 msgstr[1] "<strong>Akismet</strong> on püüdnud kinni <strong class=\"count\">%1$s rämpskommentaari</strong>"
 
 #: class.akismet-admin.php:107 class.akismet-admin.php:254
-#: class.akismet-admin.php:723 views/config.php:85
+#: class.akismet-admin.php:735 views/config.php:77
 msgid "Settings"
 msgstr "Seaded"
 
@@ -91,7 +91,7 @@ msgstr "Akismet märkis selle kommentaari automaatse järelkontrolli käigus rä
 
 #. translators: The placeholder is a short string (like 'spam' or 'approved')
 #. denoting the new comment status.
-#: class.akismet-admin.php:676
+#: class.akismet-admin.php:688
 msgid "Comment status was changed to %s"
 msgstr "Kommentaari olek muudetud: %s"
 
@@ -103,7 +103,7 @@ msgstr "Akismet lubas selle kommentaari automaatse järelkontrolli käigus."
 msgid "View comment history"
 msgstr "Vaata kommentaaride ajalugu"
 
-#: class.akismet-admin.php:87 class.akismet-admin.php:1293
+#: class.akismet-admin.php:87 class.akismet-admin.php:1308
 msgid "Akismet"
 msgstr "Akismet"
 
@@ -138,7 +138,7 @@ msgstr "Rämpsukontroll"
 
 #. translators: The placeholder is an amount of time, like "7 seconds" or "3
 #. days" returned by the function human_time_diff().
-#: class.akismet-admin.php:696
+#: class.akismet-admin.php:708
 msgid "%s ago"
 msgstr "%s tagasi"
 

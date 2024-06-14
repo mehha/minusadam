@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-26 22:21:14+0000\n"
+"PO-Revision-Date: 2024-06-09 10:01:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,15 +16,30 @@ msgctxt "block description"
 msgid "Displays WooCommerce page content."
 msgstr "Kuvab WooCommerce'i lehe sisu."
 
+#: assets/client/blocks/page-content-wrapper/block.json
+msgctxt "block title"
+msgid "WooCommerce Page"
+msgstr "WooCommerce leht"
+
 #: assets/client/blocks/order-confirmation-totals/block.json
 msgctxt "block title"
 msgid "Order Totals"
 msgstr "Tellimuse kogusumma"
 
+#: assets/client/blocks/order-confirmation-totals-wrapper/block.json
+msgctxt "block title"
+msgid "Order Totals Section"
+msgstr "Tellimuse kogusummade jagu"
+
 #: assets/client/blocks/order-confirmation-status/block.json
 msgctxt "block title"
 msgid "Order Status"
 msgstr "Tellimuse staatus"
+
+#: assets/client/blocks/order-confirmation-shipping-wrapper/block.json
+msgctxt "block title"
+msgid "Shipping Address Section"
+msgstr "Tarneaadressi osa"
 
 #: assets/client/blocks/order-confirmation-additional-information/block.json
 msgctxt "block title"
@@ -35,6 +50,24 @@ msgstr "Lisainfo"
 msgctxt "block keyword"
 msgid "Filters"
 msgstr "Filtrid"
+
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+msgctxt "block keyword"
+msgid "downloads"
+msgstr "allalaadimised"
+
+#: assets/client/admin/product-editor/blocks/product-fields/downloads/block.json
+#: assets/client/admin/product-editor/blocks/product-fields/product-downloads-field/block.json
+msgctxt "block description"
+msgid "The product downloads."
+msgstr "Toote allalaadimised."
+
+#: assets/client/admin/product-editor/blocks/generic/number/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-number-field/block.json
+msgctxt "block keyword"
+msgid "number"
+msgstr "number"
 
 #: assets/client/blocks/product-new/block.json
 msgctxt "block title"
@@ -166,6 +199,16 @@ msgstr "Heakskiidetud allalaadimiskaustad"
 msgid "Synchronize approved download directories"
 msgstr "Sünkroniseerimine heakskiidetud allalaadimiskaustad"
 
+#: assets/client/blocks/inner-blocks/cart-accepted-payment-methods-block/block.json
+msgctxt "block description"
+msgid "Display accepted payment methods."
+msgstr "Kuva aktsepteeritud makseviisid."
+
+#: assets/client/blocks/inner-blocks/cart-accepted-payment-methods-block/block.json
+msgctxt "block title"
+msgid "Accepted Payment Methods"
+msgstr "Aktsepteeritud makseviisid"
+
 #: includes/admin/meta-boxes/views/html-product-data-variations.php:77
 msgid "Add manually"
 msgstr "Lisa käsitsi"
@@ -224,9 +267,23 @@ msgstr "Sinu e-posti aadressiga on konto juba registreeritud. Palun logi jätkam
 msgid "Back"
 msgstr "Tagasi"
 
+#: src/Internal/Admin/CustomerEffortScoreTracks.php:352
+msgid "How easy was it to add a product?"
+msgstr "Kui lihtne oli toodet lisada?"
+
+#: src/Internal/Admin/CustomerEffortScoreTracks.php:527
+msgid "How easy was it to import products?"
+msgstr "Kui lihtne oli toodet importida?"
+
 #: includes/class-wc-post-types.php:511
 msgid "Categories deleted."
 msgstr "Kategooriad kustutatud."
+
+#: includes/admin/class-wc-admin-addons.php:547
+#: src/Internal/Admin/RemoteFreeExtensions/DefaultFreeExtensions.php:393
+#: assets/client/admin/chunks/shipping-recommendations.js:1
+msgid "WooCommerce Shipping"
+msgstr "WooCommerce tarne"
 
 #: templates/emails/customer-new-account-blocks.php:27
 #: templates/emails/customer-new-account.php:28

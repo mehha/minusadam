@@ -3,8 +3,7 @@
  * CryptX option page "How to"-Tab
  */
 function rw_cryptx_settings_tab_content_howto() {
-	global $cryptX_var, $rw_cryptx_active_tab;
-	if ( 'howto' != $rw_cryptx_active_tab )
+	if ( 'howto' != rw_cryptx_getActiveTab() )
 		return;
 	?>
 

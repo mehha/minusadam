@@ -97,7 +97,7 @@ msgid "Your WordPress version is %1$s, however the new plugin version requires %
 msgstr "Sinu WordPressi versioon on %1$s, kuid uus plugina versioon vajab %2$s."
 
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:66 wp-admin/about.php:91
+#: wp-admin/about.php:66 wp-admin/about.php:91 wp-admin/about.php:116
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -709,12 +709,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentatsioon kohandaja kohta</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:419
+#: wp-admin/about.php:444
 msgid "https://wordpress.org/download/"
 msgstr "https://wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:416
+#: wp-admin/about.php:441
 msgid "This is the final release of WordPress %s"
 msgstr "See on WordPress %s lõppversioon"
 
@@ -1050,21 +1050,21 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "Et seda probleemi tulevikus mitte kohata, võta ühendust WordPressi arendajatega."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:413
+#: wp-admin/about.php:438
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versioon (%1$s) ei saa varsti enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:410
+#: wp-admin/about.php:435
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versiooni (%1$s) enam ei toetata ning see ei saa enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
-#: wp-admin/about.php:315
+#: wp-admin/about.php:340
 msgid "https://make.wordpress.org/core/wordpress-6-5-field-guide/"
 msgstr "https://make.wordpress.org/core/wordpress-6-5-field-guide/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:284
+#: wp-admin/about.php:309
 msgid "Learn more about WordPress %s"
 msgstr "Lisateave WordPressi %s kohta"
 
@@ -1857,7 +1857,7 @@ msgstr "Kataloogi nimekirja kuvamine ebaõnnestus."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:105
 #: wp-admin/includes/class-wp-theme-install-list-table.php:60
-#: wp-admin/includes/file.php:33 wp-admin/js/updates.js:3043
+#: wp-admin/includes/file.php:33 wp-admin/js/updates.js:2991
 msgid "Search Results"
 msgstr "Otsingutulemused"
 
@@ -1982,7 +1982,7 @@ msgstr "Lisa uus rakenduse parool"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Nõutav rakenduse parooli loomiseks, kuid mitte kasutajainfo uuendamiseks."
 
-#: wp-admin/about.php:354
+#: wp-admin/about.php:379
 msgid "Go to Updates"
 msgstr "Uuenduste lehele"
 
@@ -2288,7 +2288,7 @@ msgstr "Isikuandmete ekspordifaili genereerimine ebaõnnestus, kuna ZipArchive p
 #. translators: %s: Search query.
 #: wp-admin/edit-comments.php:282 wp-admin/edit-tags.php:342
 #: wp-admin/edit.php:429 wp-admin/link-manager.php:111 wp-admin/plugins.php:765
-#: wp-admin/upload.php:429 wp-admin/users.php:795 wp-admin/js/updates.js:3133
+#: wp-admin/upload.php:429 wp-admin/users.php:795 wp-admin/js/updates.js:3081
 #: wp-admin/network/sites.php:389 wp-admin/network/themes.php:374
 #: wp-admin/network/users.php:300
 msgid "Search results for: %s"
@@ -2477,7 +2477,7 @@ msgstr "See plugin on juba paigaldatud."
 #. translators: %s: Plugin name and version.
 #. translators: %s: Plugin name.
 #: wp-admin/includes/plugin-install.php:992 wp-admin/includes/update.php:568
-#: wp-admin/js/updates.js:2562
+#: wp-admin/js/updates.js:2535
 msgctxt "plugin"
 msgid "Update %s now"
 msgstr "Uuenda %s"
@@ -2486,8 +2486,8 @@ msgstr "Uuenda %s"
 #. translators: %s: Plugin name and version.
 #. translators: %s: Plugin name.
 #: wp-admin/import.php:165 wp-admin/includes/plugin-install.php:955
-#: wp-admin/includes/plugin-install.php:970 wp-admin/js/updates.js:1326
-#: wp-admin/js/updates.js:2571 wp-admin/js/updates.js:2732
+#: wp-admin/includes/plugin-install.php:970 wp-admin/js/updates.js:1299
+#: wp-admin/js/updates.js:2544 wp-admin/js/updates.js:2680
 msgctxt "plugin"
 msgid "Install %s now"
 msgstr "Paigalda %s"
@@ -2793,7 +2793,7 @@ msgid "Schedule"
 msgstr "Pane ootele"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:305
-#: wp-admin/js/updates.js:3152
+#: wp-admin/js/updates.js:3100
 msgid "No plugins found. Try a different search."
 msgstr "Pluginaid ei leitud. Proovi teist otsingut."
 
@@ -2860,13 +2860,13 @@ msgid "Updating the theme&#8230;"
 msgstr "Uuendan teemat&#8230;"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:1319
-#: wp-admin/themes.php:781 wp-admin/js/updates.js:3473
+#: wp-admin/themes.php:781 wp-admin/js/updates.js:3416
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:812
 msgid "Enable auto-updates"
 msgstr "Lülita automaatuuendus sisse"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:1315
-#: wp-admin/themes.php:777 wp-admin/js/updates.js:3462
+#: wp-admin/themes.php:777 wp-admin/js/updates.js:3405
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:808
 msgid "Disable auto-updates"
 msgstr "Lülita automaatuuendus välja"
@@ -2905,7 +2905,7 @@ msgid "Automatic Updates"
 msgstr "Automaatuuendus"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:428
-#: wp-admin/plugin-editor.php:34 wp-admin/js/updates.js:1475
+#: wp-admin/plugin-editor.php:34 wp-admin/js/updates.js:1448
 msgid "No plugins are currently available."
 msgstr "Pluginad pole hetkel saadaval."
 
@@ -3028,7 +3028,7 @@ msgstr "Automaatuuendus"
 #: wp-admin/includes/class-wp-debug-data.php:1055
 #: wp-admin/includes/class-wp-debug-data.php:1370
 #: wp-admin/includes/class-wp-plugins-list-table.php:1306
-#: wp-admin/themes.php:772 wp-admin/js/updates.js:3475
+#: wp-admin/themes.php:772 wp-admin/js/updates.js:3418
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:799
 msgid "Auto-updates disabled"
 msgstr "Automaatuuendus väljas"
@@ -3036,7 +3036,7 @@ msgstr "Automaatuuendus väljas"
 #: wp-admin/includes/class-wp-debug-data.php:1053
 #: wp-admin/includes/class-wp-debug-data.php:1368
 #: wp-admin/includes/class-wp-plugins-list-table.php:1304
-#: wp-admin/themes.php:774 wp-admin/js/updates.js:3464
+#: wp-admin/themes.php:774 wp-admin/js/updates.js:3407
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:797
 msgid "Auto-updates enabled"
 msgstr "Automaatuuendus sees"
@@ -5233,7 +5233,7 @@ msgstr "See plugin ei tööta sinu praeguste WordPressi ja PHP versioonidega."
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:336 wp-admin/includes/update.php:323
+#: wp-admin/about.php:361 wp-admin/includes/update.php:323
 #: wp-admin/index.php:119 wp-admin/install.php:249 wp-admin/update-core.php:94
 #: wp-admin/upgrade.php:81
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
@@ -6480,7 +6480,7 @@ msgstr "Kitsenda peamenüüd"
 #: wp-admin/includes/class-theme-installer-skin.php:141
 #: wp-admin/includes/class-theme-upgrader-skin.php:113
 #: wp-admin/includes/class-wp-themes-list-table.php:215
-#: wp-admin/js/updates.js:1833
+#: wp-admin/js/updates.js:1806
 msgctxt "theme"
 msgid "Activate"
 msgstr "Aktiveeri"
@@ -6503,12 +6503,12 @@ msgstr "Lülita %s sisse"
 msgid "No media files found."
 msgstr "Meediafaile ei leitud."
 
-#: wp-admin/import.php:139 wp-admin/import.php:188 wp-admin/js/updates.js:1279
+#: wp-admin/import.php:139 wp-admin/import.php:188 wp-admin/js/updates.js:1252
 msgid "Run Importer"
 msgstr "Käivita importija"
 
 #. translators: %s: Importer name.
-#: wp-admin/import.php:138 wp-admin/import.php:187 wp-admin/js/updates.js:1275
+#: wp-admin/import.php:138 wp-admin/import.php:187 wp-admin/js/updates.js:1248
 msgid "Run %s"
 msgstr "Käivita %s"
 
@@ -7036,8 +7036,8 @@ msgstr "Vabandust, sul ei ole õigust selle veebisaidi viiteid muuta."
 msgid "(Private post)"
 msgstr "(Privaatpostitus)"
 
-#: wp-admin/includes/plugin-install.php:1010 wp-admin/js/updates.js:1179
-#: wp-admin/js/updates.js:1188
+#: wp-admin/includes/plugin-install.php:1010 wp-admin/js/updates.js:1146
+#: wp-admin/js/updates.js:1154
 msgctxt "plugin"
 msgid "Active"
 msgstr "Sisse lülitatud"
@@ -7529,7 +7529,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Praegu: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:384
+#: wp-admin/about.php:409
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Versioon %s</strong> lahendas ühe turvaprobleemi."
 
@@ -7541,15 +7541,15 @@ msgstr "https://en.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profiili pilt"
 
-#: wp-admin/about.php:375
+#: wp-admin/about.php:400
 msgid "Maintenance Releases"
 msgstr "Hooldusväljalasked"
 
-#: wp-admin/about.php:378
+#: wp-admin/about.php:403
 msgid "Security Releases"
 msgstr "Turvaväljalasked"
 
-#: wp-admin/about.php:381
+#: wp-admin/about.php:406
 msgid "Maintenance and Security Releases"
 msgstr "Hooldus- ja turvaväljalasked"
 
@@ -10879,7 +10879,7 @@ msgid "Show Toolbar when viewing site"
 msgstr "Näita esilehel tööriistariba"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:51 wp-admin/about.php:389
+#: wp-admin/about.php:51 wp-admin/about.php:76 wp-admin/about.php:414
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas %2$s vea."
@@ -10888,7 +10888,7 @@ msgstr[1] "<strong>Versioon %1$s</strong> parandas %2$s viga."
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:76 wp-admin/about.php:395
+#: wp-admin/about.php:101 wp-admin/about.php:420
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
@@ -10896,7 +10896,7 @@ msgstr[1] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:401
+#: wp-admin/about.php:426
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s vea."
@@ -10904,7 +10904,8 @@ msgstr[1] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:63 wp-admin/about.php:88 wp-admin/about.php:407
+#: wp-admin/about.php:63 wp-admin/about.php:88 wp-admin/about.php:113
+#: wp-admin/about.php:432
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 
@@ -10913,20 +10914,20 @@ msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 msgid "What&#8217;s New"
 msgstr "Uued asjad"
 
-#: wp-admin/about.php:377
+#: wp-admin/about.php:402
 msgid "Security Release"
 msgstr "Turvaparanduste väljaanne"
 
-#: wp-admin/about.php:374
+#: wp-admin/about.php:399
 msgid "Maintenance Release"
 msgstr "Hooldusversioon"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:386
+#: wp-admin/about.php:411
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Versioon %s</strong> lahendas paar turvaprobleemi."
 
-#: wp-admin/about.php:46 wp-admin/about.php:380
+#: wp-admin/about.php:46 wp-admin/about.php:405
 msgid "Maintenance and Security Release"
 msgstr "Hooldus- ja turvauuendus"
 
@@ -11195,15 +11196,15 @@ msgid "Because this is a multisite installation, you may add accounts that alrea
 msgstr "Kuna WordPress on paigaldatud mitmiksaidina, võid juba võrgustikus olemasolevaid kasutajaid lisada lihtsalt kasutajanime või e-postiaadressi ja kasutajarolli määramisega. Täiendavate võimaluste (parooli määramine jne) kasutamiseks pead olema võrgustikuhaldur - sel juhul saad kasutajainfot redigeerida kasutajanime kohal asuva hõljukviite kaudu."
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:106
+#: wp-admin/about.php:131
 msgid "Welcome to WordPress %s"
 msgstr "Tere tulemast WordPressi versiooni %s"
 
-#: wp-admin/about.php:361
+#: wp-admin/about.php:386
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Töölauale &rarr; Esileht"
 
-#: wp-admin/about.php:354
+#: wp-admin/about.php:379
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Töölaud &rarr; Uuendused"
 
@@ -11819,7 +11820,7 @@ msgid "This is a file in your current parent theme."
 msgstr "See fail kuulub sinu algsesse teemasse."
 
 #: wp-admin/includes/class-theme-installer-skin.php:150
-#: wp-admin/js/updates.js:1822
+#: wp-admin/js/updates.js:1795
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:467
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:589
 msgid "Network Enable"
@@ -12968,7 +12969,7 @@ msgstr[1] "Kohustuslikud <span class=\"count\">(%s)</span>"
 msgid "Inactive:"
 msgstr "Väljalülitatud:"
 
-#: wp-admin/about.php:361 wp-admin/includes/network.php:166
+#: wp-admin/about.php:386 wp-admin/includes/network.php:166
 msgid "Go to Dashboard"
 msgstr "Töölauale"
 
@@ -14093,7 +14094,7 @@ msgstr "Paigaldan plugina failist %s"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:482
 #: wp-admin/update-core.php:913 wp-admin/js/updates.js:854
-#: wp-admin/js/updates.js:1909
+#: wp-admin/js/updates.js:1882
 msgid "Installation failed."
 msgstr "Paigaldamine ebaõnnestus."
 

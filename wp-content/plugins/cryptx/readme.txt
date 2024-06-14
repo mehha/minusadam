@@ -1,19 +1,17 @@
 === CryptX ===
 Contributors: d3395
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4026696
-Tags: encode, antispam, email, spam, spider, unicode, mailto, filter, spambot, decrypt, encrypt, mail, javascript, post, page, widget, image, comment, excerpt, custom fields
-Requires at least: 4.6
-Tested up to: 5.7
-Stable tag: 3.3.3.2
-Requires PHP: 5.6
+Tags: antispam, email, mail
+Requires at least: 6.0
+Tested up to: 6.5
+Stable tag: 3.4.3
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-No more SPAM by spiders scanning you site for email adresses. With CryptX you can hide all your email adresses,
-with and without a mailto-link, by converting them using javascript or UNICODE. Although you can choose to add
-a mailto-link to all unlinked email adresses with only one klick at the settings. That's great, isn't it?
+No more SPAM by spiders scanning you site for email addresses. With CryptX you can hide all your email addresses, with and without a mailto-link, by converting them using javascript or UNICODE.
 
 [Plugin Homepage](http://weber-nrw.de/wordpress/cryptx/ "Plugin Homepage")
 
@@ -23,6 +21,17 @@ a mailto-link to all unlinked email adresses with only one klick at the settings
 2. Template functions
 
 == Changelog ==
+= 3.4.3 =
+* fixed a bug in the cryptx shortcode handler. (special thx to: <a href="https://wordpress.org/support/users/jamminjames/">jamminjames</a>,<a href="https://wordpress.org/support/users/basicweb/">basicweb</a>)
+= 3.4.2 =
+* changed WordPress required version in the plugin meta data
+= 3.4.1 =
+* changed some method declarations to be compatible with older PHP versions
+= 3.4 =
+* main code rewritten as class to prevent problems with WordPress or other plugin functions.
+* added documentation blocks to class methods for better readability.
+* renamed methods for better readability.
+* fixed some bugs
 = 3.3.3.2 =
 * fixed the "Double Slashes in cryptx-asset-URL" issue
 = 3.3.3.1 =
