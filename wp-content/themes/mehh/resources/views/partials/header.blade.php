@@ -32,5 +32,5 @@
 </header>
 
 <script type="text/javascript">
-  let baseUrl = '{{get_bloginfo("url")}}';
+  let baseUrl = '{{parse_url(home_url())['scheme']. '://' . parse_url(home_url())['host']. '/et'}}';
 </script>
