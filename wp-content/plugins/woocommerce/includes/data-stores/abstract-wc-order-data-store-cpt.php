@@ -6,6 +6,7 @@
  */
 
 use Automattic\Jetpack\Constants;
+use Automattic\WooCommerce\Enums\OrderStatus;
 use Automattic\WooCommerce\Proxies\LegacyProxy;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -319,7 +320,7 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 			}
 
 			wp_trash_post( $id );
-			$order->set_status( 'trash' );
+			$order->set_status( OrderStatus::TRASH );
 
 			if ( $do_filters ) {
 				/**
@@ -360,7 +361,7 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 			 *
 			 * @since 3.7.0
 			 */
-			$order_status = apply_filters( 'woocommerce_default_order_status', 'pending' );
+			$order_status = apply_filters( 'woocommerce_default_order_status', OrderStatus::PENDING );
 		}
 
 		$post_status    = $order_status;
@@ -370,7 +371,7 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 		// In the future this should only happen based on `wc_is_order_status`, but in order to
 		// preserve back-compatibility this happens to all statuses except a select few. A doing_it_wrong
 		// Notice will be needed here, followed by future removal.
-		if ( ! in_array( $post_status, array( 'auto-draft', 'draft', 'trash' ), true ) && in_array( 'wc-' . $post_status, $valid_statuses, true ) ) {
+		if ( ! in_array( $post_status, array( OrderStatus::AUTO_DRAFT, OrderStatus::DRAFT, OrderStatus::TRASH ), true ) && in_array( 'wc-' . $post_status, $valid_statuses, true ) ) {
 			$post_status = 'wc-' . $post_status;
 		}
 
@@ -636,13 +637,15 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 	 */
 	public function delete_items( $order, $type = null ) {
 		global $wpdb;
+
 		if ( ! empty( $type ) ) {
-			$wpdb->query( $wpdb->prepare( "DELETE FROM itemmeta USING {$wpdb->prefix}woocommerce_order_itemmeta itemmeta INNER JOIN {$wpdb->prefix}woocommerce_order_items items WHERE itemmeta.order_item_id = items.order_item_id AND items.order_id = %d AND items.order_item_type = %s", $order->get_id(), $type ) );
+			$wpdb->query( $wpdb->prepare( "DELETE itemmeta FROM {$wpdb->prefix}woocommerce_order_itemmeta as itemmeta INNER JOIN {$wpdb->prefix}woocommerce_order_items as items WHERE itemmeta.order_item_id = items.order_item_id AND items.order_id = %d AND items.order_item_type = %s", $order->get_id(), $type ) );
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}woocommerce_order_items WHERE order_id = %d AND order_item_type = %s", $order->get_id(), $type ) );
 		} else {
-			$wpdb->query( $wpdb->prepare( "DELETE FROM itemmeta USING {$wpdb->prefix}woocommerce_order_itemmeta itemmeta INNER JOIN {$wpdb->prefix}woocommerce_order_items items WHERE itemmeta.order_item_id = items.order_item_id and items.order_id = %d", $order->get_id() ) );
+			$wpdb->query( $wpdb->prepare( "DELETE itemmeta FROM {$wpdb->prefix}woocommerce_order_itemmeta as itemmeta INNER JOIN {$wpdb->prefix}woocommerce_order_items as items WHERE itemmeta.order_item_id = items.order_item_id and items.order_id = %d", $order->get_id() ) );
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}woocommerce_order_items WHERE order_id = %d", $order->get_id() ) );
 		}
+
 		$this->clear_caches( $order );
 	}
 

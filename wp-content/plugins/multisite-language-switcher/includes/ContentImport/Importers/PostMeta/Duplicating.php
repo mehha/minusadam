@@ -2,6 +2,7 @@
 
 namespace lloc\Msls\ContentImport\Importers\PostMeta;
 
+use lloc\Msls\ContentImport\ImportCoordinates;
 use lloc\Msls\ContentImport\Importers\BaseImporter;
 
 class Duplicating extends BaseImporter {
@@ -14,13 +15,18 @@ class Duplicating extends BaseImporter {
 	 * @return \stdClass
 	 */
 	public static function info() {
-		return (object) [
-			'slug' => static::TYPE,
-			'name' => __( 'Duplicating', 'multisite-language-switcher' ),
-			'description' => __( 'Copies the source post meta to the destination.', 'multisite-language-switcher' )
-		];
+		return (object) array(
+			'slug'        => static::TYPE,
+			'name'        => __( 'Duplicating', 'multisite-language-switcher' ),
+			'description' => __( 'Copies the source post meta to the destination.', 'multisite-language-switcher' ),
+		);
 	}
 
+	/**
+	 * @param array<string, mixed> $data
+	 *
+	 * @return array<string, mixed>
+	 */
 	public function import( array $data ) {
 		$source_blog_id = $this->import_coordinates->source_blog_id;
 		$source_post_id = $this->import_coordinates->source_post_id;
@@ -49,6 +55,13 @@ class Duplicating extends BaseImporter {
 		return $data;
 	}
 
+	/**
+	 * Filters the post meta that should not be imported.
+	 *
+	 * @param array $meta
+	 *
+	 * @return array
+	 */
 	public function filter_post_meta( array $meta ) {
 		$blacklist = array( '_edit_last', '_thumbnail_id', '_edit_lock' );
 
@@ -59,10 +72,12 @@ class Duplicating extends BaseImporter {
 		 * @param array $meta
 		 * @param ImportCoordinates $import_coordinates
 		 */
-		$blacklist = apply_filters( 'msls_content_import_post_meta_blacklist',
+		$blacklist = apply_filters(
+			'msls_content_import_post_meta_blacklist',
 			$blacklist,
 			$meta,
-			$this->import_coordinates );
+			$this->import_coordinates
+		);
 
 		return array_diff_key( $meta, array_combine( $blacklist, $blacklist ) );
 	}

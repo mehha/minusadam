@@ -2,6 +2,8 @@
 
 namespace lloc\Msls;
 
+use lloc\Msls\Component\Component;
+
 /**
  * Handling of existing/not existing translations in the backend listings of
  * various post types
@@ -10,57 +12,50 @@ namespace lloc\Msls;
  */
 class MslsCustomColumn extends MslsMain {
 
-	/**
-	 * Factory
-	 *
-	 * @codeCoverageIgnore
-	 *
-	 * @return MslsCustomColumn
-	 */
-	public static function init() {
+	public static function init(): void {
 		$options    = msls_options();
 		$collection = msls_blog_collection();
-		$obj        = new static( $options, $collection );
 
-		if ( ! $options->is_excluded() ) {
-			$post_type = MslsPostType::instance()->get_request();
+		( new static( $options, $collection ) )->add_hooks();
+	}
 
-			if ( ! empty( $post_type ) ) {
-				add_filter( "manage_{$post_type}_posts_columns", array( $obj, 'th' ) );
-				add_action( "manage_{$post_type}_posts_custom_column", array( $obj, 'td' ), 10, 2 );
-				add_action( 'trashed_post', array( $obj, 'delete' ) );
-			}
+	protected function add_hooks(): void {
+		if ( $this->options->is_excluded() ) {
+			return;
 		}
 
-		return $obj;
+		$post_type = msls_post_type()->get_request();
+
+		if ( ! empty( $post_type ) ) {
+			add_filter( "manage_{$post_type}_posts_columns", array( $this, 'th' ) );
+			add_action( "manage_{$post_type}_posts_custom_column", array( $this, 'td' ), 10, 2 );
+			add_action( 'trashed_post', array( $this, 'delete' ) );
+		}
 	}
 
 	/**
 	 * Table header
 	 *
-	 * @param array $columns
+	 * @param string[] $columns
 	 *
-	 * @return array
+	 * @return string[]
 	 */
-	public function th( $columns ) {
+	public function th( array $columns ) {
 		$blogs = $this->collection->get();
 		if ( $blogs ) {
 			$html = '';
 			foreach ( $blogs as $blog ) {
-				$language = $blog->get_language();
+				$language  = $blog->get_language();
+				$icon_type = $this->options->get_icon_type();
 
-				$icon_type = $this->options->admin_display === 'label' ? 'label' : 'flag';
-
-				$icon = new MslsAdminIcon( null );
-				$icon->set_language( $language );
-				$icon->set_icon_type( $icon_type );
+				$icon = ( new MslsAdminIcon() )->set_language( $language )->set_icon_type( $icon_type );
 
 				if ( $post_id = get_the_ID() ) {
 					$icon->set_id( $post_id );
 					$icon->set_origin_language( 'it_IT' );
 				}
 
-				$html .= '<span class="msls-icon-wrapper ' . esc_attr( $this->options->admin_display ) . '">';
+				$html .= '<span class="msls-icon-wrapper ' . esc_attr( $icon_type ) . '">';
 				$html .= $icon->get_icon();
 				$html .= '</span>';
 			}
@@ -75,10 +70,8 @@ class MslsCustomColumn extends MslsMain {
 	 *
 	 * @param string $column_name
 	 * @param int    $item_id
-	 *
-	 * @codeCoverageIgnore
 	 */
-	public function td( $column_name, $item_id ) {
+	public function td( $column_name, $item_id ): void {
 		if ( 'mslscol' == $column_name ) {
 			$blogs           = $this->collection->get();
 			$origin_language = MslsBlogCollection::get_blog_language();
@@ -100,9 +93,14 @@ class MslsCustomColumn extends MslsMain {
 						$icon->set_href( (int) $mydata->$language );
 					}
 
-					echo '<span class="msls-icon-wrapper ' . esc_attr( $this->options->admin_display ) . '">';
-					echo $icon->get_a();
-					echo '</span>';
+					echo wp_kses(
+						sprintf(
+							'<span class="msls-icon-wrapper %1$s">%2$s</span>',
+							esc_attr( $this->options->get_icon_type() ),
+							$icon->get_a()
+						),
+						Component::get_allowed_html()
+					);
 
 					restore_current_blog();
 				}

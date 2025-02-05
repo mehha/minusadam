@@ -1,0 +1,130 @@
+# Translation of Plugins - Enable Media Replace - Stable (latest release) in Finnish
+# This file is distributed under the same license as the Plugins - Enable Media Replace - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-30 05:31:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
+"Language: fi\n"
+"Project-Id-Version: Plugins - Enable Media Replace - Stable (latest release)\n"
+
+#: classes/emr-plugin.php:479
+msgid "Thumbnails were not generated"
+msgstr "Pienoiskuvia ei luotu"
+
+#: classes/emr-plugin.php:438
+msgid "Replaced Thumbnails Preview"
+msgstr "Korvattujen tiedostojen pienoiskuvien esikatselu"
+
+#: views/screen.php:72
+msgid "Maximum file size: <strong>%s</strong>"
+msgstr "Suurin sallittu tiedostokoko: <strong>%s</strong>"
+
+#: views/do-replace-background.php:85
+msgid "File successfully replaced"
+msgstr "Tiedosto korvattu onnistuneesti"
+
+#: views/screen.php:73
+msgid "%s f %s exceeds the maximum upload size for this site."
+msgstr "%s f %s ylittää suurimman sallitun tiedostokoon."
+
+#: build/shortpixel/log/src/DebugItem.php:35
+msgid "[Data]"
+msgstr "[Data]"
+
+#: views/screen.php:188
+msgid "When replacing the media, do you want to:"
+msgstr "Kun vaihdat mediatiedoston, haluatko:"
+
+#. Author of the plugin
+msgid "ShortPixel"
+msgstr "ShortPixel"
+
+#: views/screen.php:192
+msgid "Set a Custom Date"
+msgstr "Aseta oma päivämäärä"
+
+#: views/screen.php:131
+msgid "Replacement Options"
+msgstr "Asetukset"
+
+#: views/screen.php:62
+msgid "NOTE: You are about to replace the media file \"%s\". There is no undo. Think about it!"
+msgstr "HUOM: Olet aikeissa korvata tiedoston \"%s\". Tätä toimintoa ei voi perua."
+
+#: classes/emr-plugin.php:606
+msgid "M j, Y @ H:i"
+msgstr "j.n.Y, klo H:i"
+
+#: views/screen.php:191
+msgid "Keep the date %s(%s)%s"
+msgstr "Pidä päivämäärä samana %s(%s)%s"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/enable-media-replace/"
+msgstr "https://wordpress.org/plugins/enable-media-replace/"
+
+#. Author URI of the plugin
+msgid "https://shortpixel.com"
+msgstr "https://shortpixel.com"
+
+#: views/screen.php:196
+msgid "Custom Date"
+msgstr "Oma päivämäärä"
+
+#: views/prepare-remove-background.php:122 views/screen.php:243
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: classes/emr-plugin.php:453 classes/emr-plugin.php:524
+msgid "Upload a new file"
+msgstr "Siirrä uusi tiedosto"
+
+#: classes/emr-plugin.php:170 classes/emr-plugin.php:522
+#: classes/emr-plugin.php:576
+msgid "Replace media"
+msgstr "Korvaa tiedosto"
+
+#: views/screen.php:28
+msgid "You do not have permission to upload files."
+msgstr "Sinulla ei ole oikeuksia siirtää tiedostoja."
+
+#: views/screen.php:242
+msgid "Upload"
+msgstr "Lataa"
+
+#: classes/emr-plugin.php:609
+msgid "Revised"
+msgstr "Korvattu."
+
+#: views/screen.php:43
+msgid "Replace Media Upload"
+msgstr "Replace Media Upload"
+
+#: views/screen.php:142
+msgid "Just replace the file"
+msgstr "Korvaa vain tiedosto"
+
+#. Plugin Name of the plugin
+#: views/error.php:15 views/success.php:15
+msgid "Enable Media Replace"
+msgstr "Enable Media Replace"
+
+#: build/shortpixel/replacer/src/Replacer.php:90
+msgid "Fail Safe :: Source Location seems to be a directory."
+msgstr "Virhe :: Lähde näyttäisi olevan kansio."
+
+#: build/shortpixel/replacer/src/Replacer.php:97
+msgid "Fail Safe :: Source Location returned empty string. Not replacing content"
+msgstr "Virhe :: Lähde ei palauttanut mitään (empty string). Kuvan korvaamista ei tehdä."
+
+#: classes/emr-plugin.php:489 views/screen.php:208
+msgid "Original"
+msgstr "Alkuperäinen"
+
+#: build/shortpixel/replacer/src/Replacer.php:174
+msgid "There was an issue with updating your image URLS: Search and replace have different amount of values. Aborting updating thumbnails"
+msgstr "Ongelmia kuvien URLien päivittämisessä. Hae ja korvaa -toiminnon arvojen määrä ei täsmää. Keskeytetään pienoiskuvien päivittäminen."

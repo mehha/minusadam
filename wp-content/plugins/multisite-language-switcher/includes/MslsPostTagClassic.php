@@ -2,6 +2,8 @@
 
 namespace lloc\Msls;
 
+use lloc\Msls\Component\Component;
+
 /**
  * Post Tag Classic
  *
@@ -9,12 +11,19 @@ namespace lloc\Msls;
  */
 class MslsPostTagClassic extends MslsPostTag {
 
+	const EDIT_ACTION = 'msls_post_tag_classic_edit_input';
+	const ADD_ACTION  = 'msls_post_tag_classic_add_input';
+
 	/**
 	 * Add the input fields to the add-screen of the taxonomies
 	 *
 	 * @param string $taxonomy
 	 */
 	public function add_input( string $taxonomy ): void {
+		if ( did_action( self::ADD_ACTION ) ) {
+			return;
+		}
+
 		$title_format = '<h3>%s</h3>';
 
 		$item_format = '<label for="msls_input_%1$s">%2$s</label>
@@ -26,6 +35,8 @@ class MslsPostTagClassic extends MslsPostTag {
 		echo '<div class="form-field">';
 		$this->the_input( null, $title_format, $item_format );
 		echo '</div>';
+
+		do_action( self::ADD_ACTION, $taxonomy );
 	}
 
 	/**
@@ -35,6 +46,10 @@ class MslsPostTagClassic extends MslsPostTag {
 	 * @param string   $taxonomy
 	 */
 	public function edit_input( \WP_Term $tag, string $taxonomy ): void {
+		if ( did_action( self::EDIT_ACTION ) ) {
+			return;
+		}
+
 		$title_format = '<tr>
 			<th colspan="2">
 			<strong>%s</strong>
@@ -52,11 +67,13 @@ class MslsPostTagClassic extends MslsPostTag {
 			</tr>';
 
 		$this->the_input( $tag, $title_format, $item_format );
+
+		do_action( self::EDIT_ACTION, $tag, $taxonomy );
 	}
 
 	/**
 	 * Print the input fields
-	 * Returns true if the blogcollection is not empty
+	 * Returns true if the blog-collection is not empty
 	 *
 	 * @param ?\WP_Term $tag
 	 * @param string    $title_format
@@ -65,23 +82,18 @@ class MslsPostTagClassic extends MslsPostTag {
 	 * @return boolean
 	 */
 	public function the_input( ?\WP_Term $tag, string $title_format, string $item_format ): bool {
-		static $count = 0;
-
-		if ( $count > 0 ) {
-			return false;
-		}
-
-		++$count;
-
 		$blogs = $this->collection->get();
 		if ( ! empty( $blogs ) ) {
 			$term_id = $tag->term_id ?? 0;
 			$mydata  = MslsOptionsTax::create( $term_id );
-			$type    = MslsContentTypes::create()->get_request();
+			$type    = msls_content_types()->get_request();
 
 			$this->maybe_set_linked_term( $mydata );
 
-			printf( $title_format, $this->get_select_title() );
+			echo wp_kses(
+				sprintf( $title_format, esc_html( $this->get_select_title() ), esc_attr( $type ) ),
+				Component::get_allowed_html()
+			);
 
 			foreach ( $blogs as $blog ) {
 				$this->print_option( $blog, $type, $mydata, $item_format );
@@ -96,7 +108,7 @@ class MslsPostTagClassic extends MslsPostTag {
 	/**
 	 * Prints options inputs
 	 *
-	 * @param MslsBlog  _GET $blog
+	 * @param MslsBlog       $blog
 	 * @param string         $type
 	 * @param MslsOptionsTax $mydata
 	 * @param string         $item_format
@@ -119,18 +131,22 @@ class MslsPostTagClassic extends MslsPostTag {
 				'hide_empty' => false,
 			)
 		);
-		if ( ! empty( $terms ) ) {
+
+		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term ) {
 				$options .= sprintf(
-					'<option value="%s" %s>%s</option>',
+					'<option value="%d" %s>%s</option>',
 					$term->term_id,
 					selected( $term->term_id, $mydata->$language, false ),
-					$term->name
+					esc_html( $term->name )
 				);
 			}
 		}
 
-		printf( $item_format, $language, $icon, $options );
+		echo wp_kses(
+			sprintf( $item_format, esc_attr( $language ), $icon, $options ),
+			Component::get_allowed_html()
+		);
 
 		restore_current_blog();
 	}

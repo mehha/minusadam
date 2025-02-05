@@ -14,19 +14,17 @@ abstract class MslsContentTypes extends MslsRegistryInstance {
 	 *
 	 * @var string
 	 */
-	protected $request;
+	protected string $request;
 
 	/**
 	 * Types
 	 *
-	 * @var array
+	 * @var string[]
 	 */
-	protected $types = array();
+	protected array $types = array();
 
 	/**
 	 * Factory method
-	 *
-	 * @codeCoverageIgnoreMslsContentTypes
 	 *
 	 * @return MslsContentTypes
 	 */
@@ -69,7 +67,7 @@ abstract class MslsContentTypes extends MslsRegistryInstance {
 	/**
 	 * Getter
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	abstract public static function get(): array;
 

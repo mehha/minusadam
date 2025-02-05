@@ -29,18 +29,14 @@ class MslsPlugin {
 	}
 
 	/**
-	 * Factory
-	 *
 	 * @codeCoverageIgnore
-	 *
-	 * @return MslsPlugin
 	 */
-	public static function init() {
+	public static function init(): void {
 		$obj = new self( msls_options() );
 
 		add_action( 'plugins_loaded', array( $obj, 'init_i18n_support' ) );
 
-		register_activation_hook( self::file(), array( $obj, 'activate' ) );
+		register_activation_hook( self::file(), array( __CLASS__, 'activate' ) );
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			add_action( 'admin_enqueue_scripts', array( $obj, 'custom_enqueue' ) );
@@ -53,7 +49,7 @@ class MslsPlugin {
 			add_action( 'widgets_init', array( MslsWidget::class, 'init' ) );
 			add_action( 'wp_head', array( __CLASS__, 'print_alternate_links' ) );
 
-			add_filter( 'msls_get_output', array( __CLASS__, 'get_output' ) );
+			add_filter( 'msls_get_output', 'msls_output' );
 
 			\lloc\Msls\ContentImport\Service::instance()->register();
 
@@ -69,14 +65,16 @@ class MslsPlugin {
 				add_action( 'load-term.php', array( MslsPostTag::class, 'init' ) );
 
 				if ( MslsRequest::has_var( MslsFields::FIELD_ACTION ) ) {
-					$action = MslsRequest::has_var( MslsFields::FIELD_ACTION );
-
-					if ( 'add-tag' === $action ) {
-						add_action( 'admin_init', array( MslsPostTag::class, 'init' ) );
-					} elseif ( 'inline-save' === $action ) {
-						add_action( 'admin_init', array( MslsCustomColumn::class, 'init' ) );
-					} elseif ( 'inline-save-tax' === $action ) {
-						add_action( 'admin_init', array( MslsCustomColumnTaxonomy::class, 'init' ) );
+					switch ( MslsRequest::get_var( MslsFields::FIELD_ACTION ) ) {
+						case 'add-tag':
+							add_action( 'admin_init', array( MslsPostTag::class, 'init' ) );
+							break;
+						case 'inline-save':
+							add_action( 'admin_init', array( MslsCustomColumn::class, 'init' ) );
+							break;
+						case 'inline-save-tax':
+							add_action( 'admin_init', array( MslsCustomColumnTaxonomy::class, 'init' ) );
+							break;
 					}
 				}
 
@@ -101,42 +99,18 @@ class MslsPlugin {
 				}
 			);
 		}
-
-		return $obj;
 	}
 
-	/**
-	 * Gets MslsOutput object
-	 *
-	 * @return MslsOutput
-	 */
-	public static function get_output() {
-		static $obj = null;
-
-		if ( is_null( $obj ) ) {
-			$obj = MslsOutput::init();
-		}
-
-		return $obj;
-	}
-
-	/**
-	 * Callback for action wp_head
-	 */
-	public static function print_alternate_links() {
-		echo self::get_output()->get_alternate_links(), PHP_EOL;
+	public static function print_alternate_links(): void {
+		echo msls_output()->get_alternate_links(), PHP_EOL; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
 	 * Loads styles and some js if needed
-	 *
-	 * The method returns true if the autocomplete-option is activated, false otherwise.
-	 *
-	 * @return boolean
 	 */
-	public function custom_enqueue() {
+	public function custom_enqueue(): void {
 		if ( ! is_admin_bar_showing() ) {
-			return false;
+			return;
 		}
 
 		$ver    = defined( 'MSLS_PLUGIN_VERSION' ) ? constant( 'MSLS_PLUGIN_VERSION' ) : false;
@@ -147,11 +121,7 @@ class MslsPlugin {
 
 		if ( $this->options->activate_autocomplete ) {
 			wp_enqueue_script( 'msls-autocomplete', self::plugins_url( "$folder/msls.js" ), array( 'jquery-ui-autocomplete' ), $ver, array( 'in_footer' => true ) );
-
-			return true;
 		}
-
-		return false;
 	}
 
 	/**
@@ -202,13 +172,10 @@ class MslsPlugin {
 	/**
 	 * Load textdomain
 	 *
-	 * The method should be executed always on init because we have some
-	 * translatable string in the frontend too.
-	 *
-	 * @return boolean
+	 * The method should be executed always on init because we have some translatable string in the frontend too.
 	 */
-	public function init_i18n_support() {
-		return load_plugin_textdomain( 'multisite-language-switcher', false, self::dirname( '/languages/' ) );
+	public function init_i18n_support(): void {
+		load_plugin_textdomain( 'multisite-language-switcher', false, self::dirname( '/languages/' ) );
 	}
 
 	/**
@@ -223,7 +190,13 @@ class MslsPlugin {
 	 */
 	public static function message_handler( $message, $css_class = 'error' ) {
 		if ( ! empty( $message ) ) {
-			printf( '<div id="msls-warning" class="%s"><p>%s</p></div>', $css_class, $message );
+			echo wp_kses_post(
+				sprintf(
+					'<div id="msls-warning" class="%s"><p>%s</p></div>',
+					esc_attr( $css_class ),
+					$message
+				)
+			);
 
 			return true;
 		}
@@ -234,7 +207,7 @@ class MslsPlugin {
 	/**
 	 * Activate plugin
 	 */
-	public static function activate() {
+	public static function activate(): void {
 		register_uninstall_hook( self::file(), array( __CLASS__, 'uninstall' ) );
 	}
 
@@ -254,10 +227,10 @@ class MslsPlugin {
 		 */
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			$sql_cache = MslsSqlCacher::create( __CLASS__, __METHOD__ );
-			$blogs     = ( new BlogsInNetworkQuery( $sql_cache ) )();
+			$blog_ids  = ( new BlogsInNetworkQuery( $sql_cache ) )();
 
-			foreach ( $blogs as $blog ) {
-				switch_to_blog( $blog->blog_id );
+			foreach ( $blog_ids as $new_blog_id ) {
+				switch_to_blog( $new_blog_id );
 				self::cleanup();
 				restore_current_blog();
 			}

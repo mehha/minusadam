@@ -9,26 +9,21 @@ use Automattic\WooCommerce\Caches\OrderCacheController;
 use Automattic\WooCommerce\Database\Migrations\CustomOrderTable\PostsToOrdersMigrationController;
 use Automattic\WooCommerce\Internal\Admin\Orders\EditLock;
 use Automattic\WooCommerce\Internal\BatchProcessing\{ BatchProcessingController, BatchProcessorInterface };
-use Automattic\WooCommerce\Internal\Features\FeaturesController;
-use Automattic\WooCommerce\Internal\Traits\AccessiblePrivateMethods;
 use Automattic\WooCommerce\Internal\Utilities\DatabaseUtil;
 use Automattic\WooCommerce\Proxies\LegacyProxy;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * This class handles the database structure creation and the data synchronization for the custom orders tables. Its responsibilites are:
+ * This class handles the database structure creation and the data synchronization for the custom orders tables. Its responsibilities are:
  *
  * - Providing entry points for creating and deleting the required database tables.
  * - Synchronizing changes between the custom orders tables and the posts table whenever changes in orders happen.
  */
 class DataSynchronizer implements BatchProcessorInterface {
 
-	use AccessiblePrivateMethods;
-
-	public const ORDERS_DATA_SYNC_ENABLED_OPTION           = 'woocommerce_custom_orders_table_data_sync_enabled';
-	private const INITIAL_ORDERS_PENDING_SYNC_COUNT_OPTION = 'woocommerce_initial_orders_pending_sync_count';
-	public const PLACEHOLDER_ORDER_POST_TYPE               = 'shop_order_placehold';
+	public const ORDERS_DATA_SYNC_ENABLED_OPTION = 'woocommerce_custom_orders_table_data_sync_enabled';
+	public const PLACEHOLDER_ORDER_POST_TYPE     = 'shop_order_placehold';
 
 	public const DELETED_RECORD_META_KEY        = '_deleted_from';
 	public const DELETED_FROM_POSTS_META_VALUE  = 'posts_table';
@@ -105,22 +100,20 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		self::add_filter( 'pre_delete_post', array( $this, 'maybe_prevent_deletion_of_post' ), 10, 2 );
-		self::add_action( 'deleted_post', array( $this, 'handle_deleted_post' ), 10, 2 );
-		self::add_action( 'woocommerce_new_order', array( $this, 'handle_updated_order' ), 100 );
-		self::add_action( 'woocommerce_refund_created', array( $this, 'handle_updated_order' ), 100 );
-		self::add_action( 'woocommerce_update_order', array( $this, 'handle_updated_order' ), 100 );
-		self::add_action( 'wp_scheduled_auto_draft_delete', array( $this, 'delete_auto_draft_orders' ), 9 );
-		self::add_action( 'wp_scheduled_delete', array( $this, 'delete_trashed_orders' ), 9 );
-		self::add_filter( 'updated_option', array( $this, 'process_updated_option' ), 999, 3 );
-		self::add_filter( 'added_option', array( $this, 'process_added_option' ), 999, 2 );
-		self::add_filter( 'deleted_option', array( $this, 'process_deleted_option' ), 999 );
-		self::add_action( self::BACKGROUND_SYNC_EVENT_HOOK, array( $this, 'handle_interval_background_sync' ) );
+		add_filter( 'pre_delete_post', array( $this, 'maybe_prevent_deletion_of_post' ), 10, 2 );
+		add_action( 'deleted_post', array( $this, 'handle_deleted_post' ), 10, 2 );
+		add_action( 'woocommerce_new_order', array( $this, 'handle_updated_order' ), 100 );
+		add_action( 'woocommerce_refund_created', array( $this, 'handle_updated_order' ), 100 );
+		add_action( 'woocommerce_update_order', array( $this, 'handle_updated_order' ), 100 );
+		add_action( 'wp_scheduled_auto_draft_delete', array( $this, 'delete_auto_draft_orders' ), 9 );
+		add_action( 'wp_scheduled_delete', array( $this, 'delete_trashed_orders' ), 9 );
+		add_filter( 'updated_option', array( $this, 'process_updated_option' ), 999, 3 );
+		add_filter( 'added_option', array( $this, 'process_added_option' ), 999, 2 );
+		add_filter( 'deleted_option', array( $this, 'process_deleted_option' ), 999 );
+		add_action( self::BACKGROUND_SYNC_EVENT_HOOK, array( $this, 'handle_interval_background_sync' ) );
 		if ( self::BACKGROUND_SYNC_MODE_CONTINUOUS === $this->get_background_sync_mode() ) {
-			self::add_action( 'shutdown', array( $this, 'handle_continuous_background_sync' ) );
+			add_action( 'shutdown', array( $this, 'handle_continuous_background_sync' ) );
 		}
-
-		self::add_filter( 'woocommerce_feature_description_tip', array( $this, 'handle_feature_description_tip' ), 10, 3 );
 	}
 
 	/**
@@ -209,6 +202,9 @@ class DataSynchronizer implements BatchProcessorInterface {
 		foreach ( $table_names as $table_name ) {
 			$this->database_util->drop_database_table( $table_name );
 		}
+		if ( is_callable( array( $this->data_store, 'clear_all_cached_data' ) ) ) {
+			$this->data_store->clear_all_cached_data();
+		}
 		delete_option( self::ORDERS_TABLE_CREATED );
 	}
 
@@ -252,8 +248,10 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * @param string $new_value  The new value.
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function process_updated_option( $option_key, $old_value, $new_value ) {
+	public function process_updated_option( $option_key, $old_value, $new_value ) {
 		$sync_option_keys = array( self::ORDERS_DATA_SYNC_ENABLED_OPTION, self::BACKGROUND_SYNC_MODE_OPTION );
 		if ( ! in_array( $option_key, $sync_option_keys, true ) || $new_value === $old_value ) {
 			return;
@@ -297,8 +295,10 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * @param string $value      The new value.
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function process_added_option( $option_key, $value ) {
+	public function process_added_option( $option_key, $value ) {
 		$this->process_updated_option( $option_key, false, $value );
 	}
 
@@ -308,8 +308,10 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * @param string $option_key The option key.
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function process_deleted_option( $option_key ) {
+	public function process_deleted_option( $option_key ) {
 		if ( self::BACKGROUND_SYNC_MODE_OPTION !== $option_key ) {
 			return;
 		}
@@ -396,8 +398,10 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * Callback to check for pending syncs and enqueue the background data sync processor when in interval mode.
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function handle_interval_background_sync() {
+	public function handle_interval_background_sync() {
 		if ( self::BACKGROUND_SYNC_MODE_INTERVAL !== $this->get_background_sync_mode() ) {
 			$this->unschedule_background_sync();
 			return;
@@ -413,8 +417,10 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * Callback to keep the background data sync processor enqueued when in continuous mode.
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function handle_continuous_background_sync() {
+	public function handle_continuous_background_sync() {
 		if ( self::BACKGROUND_SYNC_MODE_CONTINUOUS !== $this->get_background_sync_mode() ) {
 			$this->batch_processing_controller->remove_processor( self::class );
 			return;
@@ -429,10 +435,18 @@ class DataSynchronizer implements BatchProcessorInterface {
 	 * The information is meaningful only if pending_data_sync_is_in_progress return true.
 	 *
 	 * @return array
+	 *
+	 * @deprecated 9.0.0
 	 */
 	public function get_sync_status() {
+		wc_deprecated_function(
+			__METHOD__,
+			'9.0.0',
+			'get_current_orders_pending_sync_count()'
+		);
+
 		return array(
-			'initial_pending_count' => (int) get_option( self::INITIAL_ORDERS_PENDING_SYNC_COUNT_OPTION, 0 ),
+			'initial_pending_count' => (int) 0,
 			'current_pending_count' => $this->get_total_pending_count(),
 		);
 	}
@@ -459,7 +473,7 @@ class DataSynchronizer implements BatchProcessorInterface {
 		global $wpdb;
 
 		if ( $use_cache ) {
-			$pending_count = wp_cache_get( 'woocommerce_hpos_pending_sync_count' );
+			$pending_count = wp_cache_get( 'woocommerce_hpos_pending_sync_count', 'counts' );
 			if ( false !== $pending_count ) {
 				return (int) $pending_count;
 			}
@@ -551,7 +565,7 @@ SELECT(
 		);
 		$pending_count += $deleted_count;
 
-		wp_cache_set( 'woocommerce_hpos_pending_sync_count', $pending_count );
+		wp_cache_set( 'woocommerce_hpos_pending_sync_count', $pending_count, 'counts' );
 		return $pending_count;
 	}
 
@@ -688,7 +702,7 @@ ORDER BY orders.id ASC
 	 * or because there's nothing left to synchronize.
 	 */
 	public function cleanup_synchronization_state() {
-		delete_option( self::INITIAL_ORDERS_PENDING_SYNC_COUNT_OPTION );
+		delete_option( 'woocommerce_initial_orders_pending_sync_count' );
 	}
 
 	/**
@@ -908,8 +922,10 @@ ORDER BY orders.id ASC
 	 * @param WP_Post|false|null $delete Whether to go forward with deletion.
 	 * @param WP_Post            $post   Post object.
 	 * @return WP_Post|false|null
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function maybe_prevent_deletion_of_post( $delete, $post ) {
+	public function maybe_prevent_deletion_of_post( $delete, $post ) {
 		if ( self::PLACEHOLDER_ORDER_POST_TYPE !== $post->post_type && $this->custom_orders_table_is_authoritative() && $this->data_store->order_exists( $post->ID ) ) {
 			$delete = false;
 		}
@@ -924,8 +940,10 @@ ORDER BY orders.id ASC
 	 *
 	 * @param int     $postid The post id.
 	 * @param WP_Post $post The deleted post.
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function handle_deleted_post( $postid, $post ): void {
+	public function handle_deleted_post( $postid, $post ): void {
 		global $wpdb;
 
 		$order_post_types = wc_get_order_types( 'cot-migration' );
@@ -973,8 +991,10 @@ ORDER BY orders.id ASC
 	 * When posts is authoritative and sync is enabled, updating a post triggers a corresponding change in the COT table.
 	 *
 	 * @param int $order_id The order id.
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function handle_updated_order( $order_id ): void {
+	public function handle_updated_order( $order_id ): void {
 		if ( ! $this->custom_orders_table_is_authoritative() && $this->data_sync_is_enabled() ) {
 			$this->posts_to_cot_migrator->migrate_orders( array( $order_id ) );
 		}
@@ -986,8 +1006,10 @@ ORDER BY orders.id ASC
 	 * @since 7.7.0
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function delete_auto_draft_orders() {
+	public function delete_auto_draft_orders() {
 		if ( ! $this->custom_orders_table_is_authoritative() ) {
 			return;
 		}
@@ -1025,8 +1047,10 @@ ORDER BY orders.id ASC
 	 * @since 8.5.0
 	 *
 	 * @return void
+	 *
+	 * @internal For exclusive usage of WooCommerce core, backwards compatibility not guaranteed.
 	 */
-	private function delete_trashed_orders() {
+	public function delete_trashed_orders() {
 		if ( ! $this->custom_orders_table_is_authoritative() ) {
 			return;
 		}
@@ -1052,70 +1076,5 @@ ORDER BY orders.id ASC
 			}
 			$order->delete( true );
 		}
-	}
-
-	/**
-	 * Handle the 'woocommerce_feature_description_tip' filter.
-	 *
-	 * When the COT feature is enabled and there are orders pending sync (in either direction),
-	 * show a "you should ync before disabling" warning under the feature in the features page.
-	 * Skip this if the UI prevents changing the feature enable status.
-	 *
-	 * @param string $desc_tip The original description tip for the feature.
-	 * @param string $feature_id The feature id.
-	 * @param bool   $ui_disabled True if the UI doesn't allow to enable or disable the feature.
-	 * @return string The new description tip for the feature.
-	 */
-	private function handle_feature_description_tip( $desc_tip, $feature_id, $ui_disabled ): string {
-		if ( 'custom_order_tables' !== $feature_id || $ui_disabled ) {
-			return $desc_tip;
-		}
-
-		$features_controller = wc_get_container()->get( FeaturesController::class );
-		$feature_is_enabled  = $features_controller->feature_is_enabled( 'custom_order_tables' );
-		if ( ! $feature_is_enabled ) {
-			return $desc_tip;
-		}
-
-		$pending_sync_count = $this->get_current_orders_pending_sync_count();
-		if ( ! $pending_sync_count ) {
-			return $desc_tip;
-		}
-
-		if ( $this->custom_orders_table_is_authoritative() ) {
-			$extra_tip = sprintf(
-				_n(
-					"⚠ There's one order pending sync from the orders table to the posts table. The feature shouldn't be disabled until this order is synchronized.",
-					"⚠ There are %1\$d orders pending sync from the orders table to the posts table. The feature shouldn't be disabled until these orders are synchronized.",
-					$pending_sync_count,
-					'woocommerce'
-				),
-				$pending_sync_count
-			);
-		} else {
-			$extra_tip = sprintf(
-				_n(
-					"⚠ There's one order pending sync from the posts table to the orders table. The feature shouldn't be disabled until this order is synchronized.",
-					"⚠ There are %1\$d orders pending sync from the posts table to the orders table. The feature shouldn't be disabled until these orders are synchronized.",
-					$pending_sync_count,
-					'woocommerce'
-				),
-				$pending_sync_count
-			);
-		}
-
-		$cot_settings_url = add_query_arg(
-			array(
-				'page'    => 'wc-settings',
-				'tab'     => 'advanced',
-				'section' => 'custom_data_stores',
-			),
-			admin_url( 'admin.php' )
-		);
-
-		/* translators: %s = URL of the custom data stores settings page */
-		$manage_cot_settings_link = sprintf( __( "<a href='%s'>Manage orders synchronization</a>", 'woocommerce' ), $cot_settings_url );
-
-		return $desc_tip ? "{$desc_tip}<br/>{$extra_tip} {$manage_cot_settings_link}" : "{$extra_tip} {$manage_cot_settings_link}";
 	}
 }

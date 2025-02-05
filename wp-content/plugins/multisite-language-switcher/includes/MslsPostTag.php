@@ -8,6 +8,8 @@
 
 namespace lloc\Msls;
 
+use lloc\Msls\Component\Component;
+
 /**
  * Post Tag
  *
@@ -15,13 +17,16 @@ namespace lloc\Msls;
  */
 class MslsPostTag extends MslsMain {
 
+	const EDIT_ACTION = 'msls_post_tag_edit_input';
+	const ADD_ACTION  = 'msls_post_tag_add_input';
+
 	/**
 	 * Suggest
 	 *
 	 * Echo a JSON-ified array of posts of the given post-type and
 	 * the requested search-term and then die silently
 	 */
-	public static function suggest() {
+	public static function suggest(): void {
 		$json = new MslsJson();
 
 		if ( MslsRequest::has_var( MslsFields::FIELD_BLOG_ID ) ) {
@@ -29,7 +34,9 @@ class MslsPostTag extends MslsMain {
 				MslsRequest::get_var( MslsFields::FIELD_BLOG_ID )
 			);
 
-			$args = array(
+			$post_type = MslsRequest::get( MslsFields::FIELD_POST_TYPE, '' );
+			$args      = array(
+				'taxonomy'   => sanitize_text_field( $post_type ),
 				'orderby'    => 'name',
 				'order'      => 'ASC',
 				'number'     => 10,
@@ -49,50 +56,40 @@ class MslsPostTag extends MslsMain {
 			 *
 			 * @since 0.9.9
 			 */
-			$args      = (array) apply_filters( 'msls_post_tag_suggest_args', $args );
-			$post_type = MslsRequest::get( MslsFields::FIELD_POST_TYPE, '' );
-			foreach ( get_terms( sanitize_text_field( $post_type ), $args ) as $term ) {
+			$args = (array) apply_filters( 'msls_post_tag_suggest_args', $args );
+			foreach ( get_terms( $args ) as $term ) {
 				/**
 				 * Manipulates the term object before using it
 				 *
-				 * @param \StdClass $term
+				 * @param int|string|\WP_Term $term
 				 *
 				 * @since 0.9.9
 				 */
 				$term = apply_filters( 'msls_post_tag_suggest_term', $term );
 
-				if ( is_object( $term ) ) {
+				if ( $term instanceof \WP_Term ) {
 					$json->add( $term->term_id, $term->name );
 				}
 			}
 			restore_current_blog();
 		}
 
-		wp_die( $json->encode() );
+		wp_die( $json->encode() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
-	/**
-	 * Init
-	 *
-	 * @codeCoverageIgnore
-	 *
-	 * @return MslsPostTag
-	 */
-	public static function init() {
+	public static function init(): void {
 		$options    = msls_options();
 		$collection = msls_blog_collection();
 		$class      = $options->activate_autocomplete ? self::class : MslsPostTagClassic::class;
 		$obj        = new $class( $options, $collection );
 
-		$taxonomy = MslsContentTypes::create()->acl_request();
+		$taxonomy = msls_content_types()->acl_request();
 		if ( '' != $taxonomy ) {
 			add_action( "{$taxonomy}_add_form_fields", array( $obj, 'add_input' ) );
 			add_action( "{$taxonomy}_edit_form_fields", array( $obj, 'edit_input' ), 10, 2 );
 			add_action( "edited_{$taxonomy}", array( $obj, 'set' ) );
 			add_action( "create_{$taxonomy}", array( $obj, 'set' ) );
 		}
-
-		return $obj;
 	}
 
 	/**
@@ -101,17 +98,23 @@ class MslsPostTag extends MslsMain {
 	 * @param string $taxonomy
 	 */
 	public function add_input( string $taxonomy ): void {
+		if ( did_action( self::ADD_ACTION ) ) {
+			return;
+		}
+
 		$title_format = '<h3>%s</h3>
 			<input type="hidden" name="msls_post_type" id="msls_post_type" value="%s"/>
 			<input type="hidden" name="msls_action" id="msls_action" value="suggest_terms"/>';
 
-		$item_format = '<label for="msls_title_%1$s">%2$s</label>
-			<input type="hidden" id="msls_id_%1$s" name="msls_input_%3$s" value="%4$s"/>
-			<input class="msls_title" id="msls_title_%1$s" name="msls_title_%1$s" type="text" value="%5$s"/>';
+		$item_format = '<label for="msls_title_%1$d">%2$s</label>
+			<input type="hidden" id="msls_id_%1$d" name="msls_input_%3$s" value="%4$s"/>
+			<input class="msls_title" id="msls_title_%1$d" name="msls_title_%1$d" type="text" value="%5$s"/>';
 
 		echo '<div class="form-field">';
 		$this->the_input( null, $title_format, $item_format );
 		echo '</div>';
+
+		do_action( self::ADD_ACTION, $taxonomy );
 	}
 
 	/**
@@ -121,6 +124,10 @@ class MslsPostTag extends MslsMain {
 	 * @param string   $taxonomy
 	 */
 	public function edit_input( \WP_Term $tag, string $taxonomy ): void {
+		if ( did_action( self::EDIT_ACTION ) ) {
+			return;
+		}
+
 		$title_format = '<tr>
 			<th colspan="2">
 			<strong>%s</strong>
@@ -131,15 +138,17 @@ class MslsPostTag extends MslsMain {
 
 		$item_format = '<tr class="form-field">
 			<th scope="row">
-			<label for="msls_title_%1$s">%2$s</label>
+			<label for="msls_title_%1$d">%2$s</label>
 			</th>
 			<td>
-			<input type="hidden" id="msls_id_%1$s" name="msls_input_%3$s" value="%4$s"/>
-			<input class="msls_title" id="msls_title_%1$s" name="msls_title_%1$s" type="text" value="%5$s"/>
+			<input type="hidden" id="msls_id_%1$d" name="msls_input_%3$s" value="%4$s"/>
+			<input class="msls_title" id="msls_title_%1$d" name="msls_title_%1$d" type="text" value="%5$s"/>
 			</td>
 			</tr>';
 
 		$this->the_input( $tag, $title_format, $item_format );
+
+		do_action( self::EDIT_ACTION, $tag, $taxonomy );
 	}
 
 	/**
@@ -154,23 +163,20 @@ class MslsPostTag extends MslsMain {
 	 * @return boolean
 	 */
 	public function the_input( ?\WP_Term $tag, string $title_format, string $item_format ): bool {
-		static $count = 0;
-
-		if ( $count > 0 ) {
-			return false;
-		}
-
-		++$count;
-
 		$blogs = $this->collection->get();
 		if ( $blogs ) {
 			$term_id = $tag->term_id ?? 0;
 			$mydata  = MslsOptionsTax::create( $term_id );
-			$type    = MslsContentTypes::create()->get_request();
+			$type    = msls_content_types()->get_request();
 
 			$this->maybe_set_linked_term( $mydata );
 
-			printf( $title_format, $this->get_select_title(), $type );
+			$allowed_html = Component::get_allowed_html();
+
+			echo wp_kses(
+				sprintf( $title_format, esc_html( $this->get_select_title() ), esc_attr( $type ) ),
+				$allowed_html
+			);
 
 			foreach ( $blogs as $blog ) {
 				switch_to_blog( $blog->userblog_id );
@@ -189,7 +195,16 @@ class MslsPostTag extends MslsMain {
 					}
 				}
 
-				printf( $item_format, $blog->userblog_id, $icon, $language, $value, $title );
+				$content = sprintf(
+					$item_format,
+					$blog->userblog_id,
+					$icon,
+					esc_attr( $language ),
+					esc_attr( $value ),
+					esc_attr( $title )
+				);
+
+				echo wp_kses( $content, $allowed_html );
 
 				restore_current_blog();
 			}
@@ -204,11 +219,9 @@ class MslsPostTag extends MslsMain {
 	 * Set calls the save method if taxonomy is set
 	 *
 	 * @param int $term_id
-	 *
-	 * @codeCoverageIgnore
 	 */
-	public function set( $term_id ) {
-		if ( MslsContentTypes::create()->acl_request() ) {
+	public function set( $term_id ): void {
+		if ( msls_content_types()->acl_request() ) {
 			$this->save( $term_id, MslsOptionsTax::class );
 		}
 	}

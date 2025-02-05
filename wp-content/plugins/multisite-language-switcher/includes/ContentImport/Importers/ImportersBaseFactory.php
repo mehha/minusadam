@@ -13,10 +13,10 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 	const TYPE = 'none';
 
 	/**
-	 * @var array An array defining the slug and Importer class relationships in
+	 * @var array<string, string> An array defining the slug and Importer class relationships in
 	 *            the shape [ <slug> => <importer-class> ]
 	 */
-	protected $importers_map = [];
+	protected array $importers_map = array();
 
 	/**
 	 * @return Importer
@@ -34,7 +34,7 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 		 *
 		 * Returning an Importer instance here will force the class to return that.
 		 *
-		 * @param                   $importer Importer
+		 * @param ?Importer         $importer
 		 * @param ImportCoordinates $import_coordinates
 		 */
 		$importer = apply_filters( "msls_content_import_{$type}_importer", null, $import_coordinates );
@@ -49,7 +49,6 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 		 * @param ImportCoordinates $import_coordinates
 		 *
 		 * @since TBD
-		 *
 		 */
 		$map = apply_filters( "msls_content_import_{$type}_importers_map", $this->importers_map, $import_coordinates );
 
@@ -57,9 +56,7 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 		$slug  = $import_coordinates->get_importer_for( $type ) ?: $first;
 
 		// if there is some incoherence return the null-doing base importer
-		$class = ! empty( $slug ) && isset( $map[ $slug ] )
-			? $map[ $slug ]
-			: BaseImporter::class;
+		$class = ! empty( $slug ) && isset( $map[ $slug ] ) ? $map[ $slug ] : BaseImporter::class;
 
 		return new $class( $import_coordinates );
 	}
@@ -70,10 +67,10 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 	 * @return \stdClass
 	 */
 	public function details() {
-		return (object) [
+		return (object) array(
 			'name'      => 'Base Factory',
-			'importers' => [],
-		];
+			'importers' => array(),
+		);
 	}
 
 	/**
@@ -82,29 +79,33 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 	 * @return string
 	 */
 	public function selected() {
-		$selected = array_keys( $this->importers_map )[0];
 		$slug     = static::TYPE;
+		$selected = array_keys( $this->importers_map )[0];
+		$instance = $this;
 
 		/**
 		 * Filters the selected importer that among the available ones.
 		 *
 		 * @param string $selected The selected importer slug.
-		 * @param ImportersFactory $this
-		 *
-		 * @since TBD
-		 *
+		 * @param ImportersFactory $instance
 		 */
-		$selected = apply_filters( "msls_content_import_{$slug}_selected", $selected, $this );
+		$selected = apply_filters( "msls_content_import_{$slug}_selected", $selected, $instance );
 
 		return $selected;
 	}
 
-	protected function importers_info() {
+	/**
+	 * @return array<string, \stdClass>
+	 */
+	protected function importers_info(): array {
 		return array_combine(
 			array_keys( $this->importers_map ),
-			array_map( function ( $importer_class ) {
-				return $importer_class::info();
-			}, $this->importers_map )
+			array_map(
+				function ( $importer_class ) {
+					return $importer_class::info();
+				},
+				$this->importers_map
+			)
 		);
 	}
 }

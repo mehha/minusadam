@@ -3,7 +3,7 @@
  * Plugin Name: CryptX
  * Plugin URI: http://weber-nrw.de/wordpress/cryptx/
  * Description: No more SPAM by spiders scanning you site for email addresses. With CryptX you can hide all your email addresses, with and without a mailto-link, by converting them using javascript or UNICODE.
- * Version: 3.4.3
+ * Version: 3.4.5.3
  * Requires at least: 6.0
  * Author: Ralf Weber
  * Author URI: http://weber-nrw.de/
@@ -34,13 +34,14 @@ $CryptX_instance = Cryptx\CryptX::getInstance();
 $CryptX_instance->startCryptX();
 
 /**
- * Encrypts the given content using the Cryptx shortcode.
+ * Encrypts the given content using the CryptX WordPress plugin.
  *
- * @param string $content The content to be encrypted.
- * @param string $args (optional) Additional arguments is deprecated and are not used anymore.
+ * @param string|null $content The content to encrypt.
+ * @param array|null $args The optional arguments for the encryption. Default is an empty array.
  *
- * @return string The encrypted content wrapped in the Cryptx shortcode.
+ * @return string The encrypted content wrapped in the '[cryptx]' shortcode.
  */
-function encryptx( string $content, string $args = "" ): string {
-	return do_shortcode( '[cryptx]' . $content . '[/cryptx]' );
+function encryptx( ?string $content, ?array $args = [] ): string {
+	$CryptX_instance = Cryptx\CryptX::getInstance();
+	return do_shortcode( '[cryptx'. $CryptX_instance->convertArrayToArgumentString( $args ).']' . $content . '[/cryptx]' );
 }

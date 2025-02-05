@@ -60,8 +60,6 @@ class ShippingController {
 				}
 			);
 		}
-
-		$this->asset_data_registry->add( 'collectableMethodIds', array( 'Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils', 'get_local_pickup_method_ids' ) );
 		$this->asset_data_registry->add( 'shippingCostRequiresAddress', get_option( 'woocommerce_shipping_cost_requires_address', false ) === 'yes' );
 		add_action( 'rest_api_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
@@ -459,7 +457,7 @@ class ShippingController {
 
 		$data = array(
 			'local_pickup_enabled'     => 'yes' === $settings['enabled'] ? true : false,
-			'title'                    => __( 'Local Pickup', 'woocommerce' ) === $settings['title'],
+			'title'                    => __( 'Pickup', 'woocommerce' ) === $settings['title'],
 			'price'                    => '' === $settings['cost'] ? true : false,
 			'cost'                     => '' === $settings['cost'] ? 0 : $settings['cost'],
 			'taxes'                    => $settings['tax_status'],

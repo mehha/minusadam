@@ -2,6 +2,7 @@
 
 namespace lloc\Msls;
 
+use lloc\Msls\Component\Component;
 use lloc\Msls\Component\Icon\IconSvg;
 use lloc\Msls\Component\Icon\IconLabel;
 
@@ -68,8 +69,9 @@ class MslsAdminIcon {
 	 *
 	 * @param string $type
 	 */
-	public function __construct( ?string $type ) {
-		$this->type = esc_attr( $type );
+	public function __construct( ?string $type = null ) {
+		$this->type = $type;
+
 		$this->set_path();
 	}
 
@@ -81,14 +83,12 @@ class MslsAdminIcon {
 	}
 
 	/**
-	 * @codeCoverageIgnore
-	 *
 	 * @param ?string $type
 	 *
 	 * @return MslsAdminIcon|MslsAdminIconTaxonomy
 	 */
 	public static function create( ?string $type = null ) {
-		$obj = MslsContentTypes::create();
+		$obj = msls_content_types();
 
 		if ( ! $type ) {
 			$type = $obj->get_request();
@@ -100,11 +100,11 @@ class MslsAdminIcon {
 	/**
 	 * Set the icon path
 	 *
-	 * @param $icon_type
+	 * @param string $icon_type
 	 *
 	 * @return MslsAdminIcon
 	 */
-	public function set_icon_type( $icon_type ): MslsAdminIcon {
+	public function set_icon_type( string $icon_type ): MslsAdminIcon {
 		$this->icon_type = $icon_type;
 
 		return $this;
@@ -216,7 +216,7 @@ class MslsAdminIcon {
 
 		$title = sprintf( $format, $this->language );
 
-		return sprintf( '<a title="%1$s" href="%2$s">%3$s</a>&nbsp;', $title, $href, $this->get_icon() );
+		return sprintf( '<a title="%1$s" href="%2$s">%3$s</a>&nbsp;', esc_attr( $title ), esc_url( $href ), $this->get_icon() );
 	}
 
 	/**
@@ -243,15 +243,16 @@ class MslsAdminIcon {
 				$icon = sprintf(
 					'<span class="language-badge %s">%s</span>',
 					esc_attr( $this->language ),
-					wp_kses( $text, array( 'span' => array() ) )
+					$text
 				);
+
 				break;
 			default:
 				$class = empty( $this->href ) ? 'dashicons-plus' : 'dashicons-edit';
 				$icon  = sprintf( '<span class="dashicons %s"></span>', esc_attr( $class ) );
 		}
 
-		return $icon;
+		return wp_kses( $icon, Component::get_allowed_html() );
 	}
 
 	/**

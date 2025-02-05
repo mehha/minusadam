@@ -9,35 +9,21 @@ namespace lloc\Msls;
  */
 class MslsOptionsTax extends MslsOptions {
 
-	/**
-	 * Separator
-	 *
-	 * @var string
-	 */
-	protected $sep = '_term_';
+	public const SEPARATOR = '_term_';
+
+	protected bool $autoload = false;
 
 	/**
-	 * Autoload
-	 *
-	 * @var string
-	 */
-	protected $autoload = 'no';
-
-	/**
-	 * Factory method
-	 *
-	 * @codeCoverageIgnore
-	 *
 	 * @param int $id
 	 *
 	 * @return MslsOptionsTax
 	 */
-	public static function create( $id = 0 ) {
-		$id  = ! empty( $id ) ? (int) $id : get_queried_object_id();
-		$req = '';
+	public static function create( $id = 0 ): MslsOptionsTax {
+		$id = ! empty( $id ) ? (int) $id : get_queried_object_id();
 
+		$req = '';
 		if ( is_admin() ) {
-			$req = MslsContentTypes::create()->acl_request();
+			$req = msls_content_types()->acl_request();
 		} elseif ( is_category() ) {
 			$req = 'category';
 		} elseif ( is_tag( $id ) ) {
@@ -55,7 +41,7 @@ class MslsOptionsTax extends MslsOptions {
 				$options = new MslsOptionsTax( $id );
 		}
 
-		if ( $req ) {
+		if ( method_exists( $options, 'check_base' ) ) {
 			add_filter( 'msls_get_postlink', array( $options, 'check_base' ), 9, 2 );
 		} else {
 			global $wp_rewrite;

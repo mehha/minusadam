@@ -11,25 +11,27 @@ use lloc\Msls\Map\HrefLang;
  */
 class MslsOutput extends MslsMain {
 
+	public static function init(): object {
+		_deprecated_function( __METHOD__, '2.9.2', 'MslsOutput::create' );
+
+		return self::create();
+	}
+
 	/**
 	 * Holds the format for the output
 	 *
-	 * @var array $tags
+	 * @var array<string, string>
 	 */
-	protected $tags;
+	protected array $tags;
 
 	/**
-	 * Creates and gets the output as an array
-	 *
-	 * @param int  $display
+	 * @param ?int $display
 	 * @param bool $filter
 	 * @param bool $exists
 	 *
-	 * @return array
-	 * @uses MslsLink
-	 * @uses MslsOptions
+	 * @return string[]
 	 */
-	public function get( $display, $filter = false, $exists = false ) {
+	public function get( ?int $display, bool $filter = false, $exists = false ): array {
 		$arr = array();
 
 		$blogs = $this->collection->get_filtered( $filter );
@@ -93,9 +95,9 @@ class MslsOutput extends MslsMain {
 	 * @return string
 	 */
 	public function get_alternate_links() {
-		$blogs    = msls_blog_collection();
-		$hreflang = new HrefLang( $blogs );
-		$options  = MslsOptions::create();
+		$blogs   = msls_blog_collection();
+		$hlObj   = new HrefLang( $blogs );
+		$options = MslsOptions::create();
 
 		$arr     = array();
 		$default = '';
@@ -108,13 +110,14 @@ class MslsOutput extends MslsMain {
 			}
 
 			$description = $blog->get_description();
+			$hreflang    = $hlObj->get( $blog->get_language() );
 
 			$format = '<link rel="alternate" hreflang="%s" href="%s" title="%s" />';
 			if ( '' === $default ) {
-				$default = sprintf( $format, 'x-default', $url, esc_attr( $description ) );
+				$default = sprintf( $format, 'x-default', esc_url( $url ), esc_attr( $description ) );
 			}
 
-			$arr[] = sprintf( $format, $hreflang->get( $blog->get_language() ), $url, esc_attr( $description ) );
+			$arr[] = sprintf( $format, esc_attr( $hreflang ), esc_url( $url ), esc_attr( $description ) );
 		}
 
 		if ( 1 === count( $arr ) ) {
@@ -147,9 +150,9 @@ class MslsOutput extends MslsMain {
 	/**
 	 * Gets tags for the output
 	 *
-	 * @return array
+	 * @return array<string, string>
 	 */
-	public function get_tags() {
+	public function get_tags(): array {
 		if ( empty( $this->tags ) ) {
 			$this->tags = array(
 				'before_item'   => $this->options->before_item,
@@ -178,7 +181,7 @@ class MslsOutput extends MslsMain {
 	 *
 	 * @return MslsOutput
 	 */
-	public function set_tags( array $arr = array() ) {
+	public function set_tags( array $arr = array() ): MslsOutput {
 		$this->tags = wp_parse_args( $this->get_tags(), $arr );
 
 		return $this;

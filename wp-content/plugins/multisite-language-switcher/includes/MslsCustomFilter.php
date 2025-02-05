@@ -10,35 +10,29 @@ use lloc\Msls\Query\TranslatedPostIdQuery;
  *
  * @package Msls
  */
-class MslsCustomFilter extends MslsMain {
+final class MslsCustomFilter extends MslsMain {
 
 	/**
-	 * Init
-	 *
 	 * @codeCoverageIgnore
-	 *
-	 * @return MslsCustomFilter
 	 */
-	public static function init() {
+	public static function init(): void {
 		$options    = msls_options();
 		$collection = msls_blog_collection();
-		$obj        = new static( $options, $collection );
+		$obj        = new self( $options, $collection );
 
 		if ( ! $options->is_excluded() ) {
-			$post_type = MslsPostType::instance()->get_request();
+			$post_type = msls_post_type()->get_request();
 			if ( ! empty( $post_type ) ) {
 				add_action( 'restrict_manage_posts', array( $obj, 'add_filter' ) );
 				add_filter( 'parse_query', array( $obj, 'execute_filter' ) );
 				add_filter(
-					'msls_input_select_name',
+					Select::RENDER_FILTER,
 					function () {
 						return MslsFields::FIELD_MSLS_FILTER;
 					}
 				);
 			}
 		}
-
-		return $obj;
 	}
 
 	/**
@@ -59,6 +53,7 @@ class MslsCustomFilter extends MslsMain {
 
 			$id = MslsRequest::get( MslsFields::FIELD_MSLS_FILTER, 0 );
 
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo ( new Select( MslsFields::FIELD_MSLS_FILTER, $options, $id ) )->render();
 		}
 	}

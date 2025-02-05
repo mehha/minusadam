@@ -11,34 +11,30 @@ use lloc\Msls\Component\Input\Select;
 /**
  * Administration of the options
  *
- * @method activate_autocomplete(): void
- * @method sort_by_description(): void
- * @method exclude_current_blog(): void
- * @method only_with_translation(): void
- * @method output_current_blog(): void
- * @method before_output(): void
- * @method after_output(): void
- * @method before_item(): void
- * @method after_item(): void
- * @method content_filter(): void
+ * @method void activate_autocomplete()
+ * @method void sort_by_description()
+ * @method void exclude_current_blog()
+ * @method void only_with_translation()
+ * @method void output_current_blog()
+ * @method void before_output()
+ * @method void after_output()
+ * @method void before_item()
+ * @method void after_item()
+ * @method void content_filter()
  *
  * @package Msls
  */
-class MslsAdmin extends MslsMain {
+final class MslsAdmin extends MslsMain {
 
 	public const MAX_REFERENCE_USERS = 100;
 
 	/**
-	 * Factory
-	 *
 	 * @codeCoverageIgnore
-	 *
-	 * @return MslsAdmin
 	 */
-	public static function init() {
+	public static function init(): void {
 		$obj = MslsRegistry::get_object( __CLASS__ );
 		if ( ! $obj ) {
-			$obj = new static( msls_options(), msls_blog_collection() );
+			$obj = new self( msls_options(), msls_blog_collection() );
 
 			MslsRegistry::set_object( __CLASS__, $obj );
 
@@ -60,8 +56,6 @@ class MslsAdmin extends MslsMain {
 				add_filter( 'msls_admin_validate', array( $obj, 'set_blog_language' ) );
 			}
 		}
-
-		return $obj;
 	}
 
 	/**
@@ -69,16 +63,16 @@ class MslsAdmin extends MslsMain {
 	 *
 	 * @return string
 	 */
-	public function get_menu_slug() {
+	public function get_menu_slug(): string {
 		return 'MslsAdmin';
 	}
 
 	/**
-	 * Get's the link for the switcher-settings in the wp-admin
+	 * Gets the link for the switcher-settings in the wp-admin
 	 *
 	 * @return string
 	 */
-	public function get_options_page_link() {
+	public function get_options_page_link(): string {
 		return sprintf( '/options-general.php?page=%s', $this->get_menu_slug() );
 	}
 
@@ -115,22 +109,24 @@ class MslsAdmin extends MslsMain {
 		);
 
 		if ( isset( $checkboxes[ $method ] ) ) {
-			echo ( new Group() )
+			$group = ( new Group() )
 				->add( new Checkbox( $method, $this->options->$method ) )
-				->add( new Label( $method, $checkboxes[ $method ] ) )
-				->render();
+				->add( new Label( $method, $checkboxes[ $method ] ) );
+
+			echo $group->render(); // phpcs:ignore WordPress.Security.EscapeOutput
 		} else {
-			$value = ! empty( $this->options->$method ) ? $this->options->$method : '';
-			echo ( new Text( $method, $value ) )->render();
+			$text = new Text( $method, ! empty( $this->options->$method ) ? $this->options->$method : '' );
+
+			echo $text->render(); // // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 	}
 
 	/**
 	 * There is something wrong? Here comes the message...
 	 *
-	 * @return bool
+	 * @return void
 	 */
-	public function has_problems(): bool {
+	public function has_problems(): void {
 		$message = '';
 
 		if ( $this->options->is_empty() ) {
@@ -152,7 +148,7 @@ class MslsAdmin extends MslsMain {
 			);
 		}
 
-		return MslsPlugin::message_handler( $message, 'updated fade' );
+		MslsPlugin::message_handler( $message, 'updated fade' );
 	}
 
 	/**
@@ -161,9 +157,9 @@ class MslsAdmin extends MslsMain {
 	public function render(): void {
 		printf(
 			'<div class="wrap"><div class="icon32" id="icon-options-general"><br/></div><h1>%s</h1>%s<br class="clear"/><form action="options.php" method="post"><p>%s</p>',
-			__( 'Multisite Language Switcher Options', 'multisite-language-switcher' ),
-			$this->subsubsub(),
-			__(
+			esc_html__( 'Multisite Language Switcher Options', 'multisite-language-switcher' ),
+			$this->subsubsub(), // phpcs:ignore WordPress.Security.EscapeOutput
+			esc_html__(
 				'To achieve maximum flexibility, you have to configure each blog separately.',
 				'multisite-language-switcher'
 			)
@@ -172,12 +168,11 @@ class MslsAdmin extends MslsMain {
 		settings_fields( 'msls' );
 		do_settings_sections( __CLASS__ );
 
+		$value = $this->options->is_empty() ? __( 'Configure', 'multisite-language-switcher' ) : __( 'Update', 'multisite-language-switcher' );
+
 		printf(
 			'<p class="submit"><input name="Submit" type="submit" class="button button-primary" value="%s" /></p></form></div>',
-			( $this->options->is_empty() ? __( 'Configure', 'multisite-language-switcher' ) : __(
-				'Update',
-				'multisite-language-switcher'
-			) )
+			esc_html( $value )
 		);
 	}
 
@@ -187,7 +182,7 @@ class MslsAdmin extends MslsMain {
 	 *
 	 * @return string
 	 */
-	public function subsubsub() {
+	public function subsubsub(): string {
 		$icon_type = $this->options->get_icon_type();
 
 		$arr = array();
@@ -206,10 +201,8 @@ class MslsAdmin extends MslsMain {
 
 	/**
 	 * Register the form-elements
-	 *
-	 * @codeCoverageIgnore
 	 */
-	public function register() {
+	public function register(): void {
 		register_setting( 'msls', 'msls', array( $this, 'validate' ) );
 
 		$sections = array(
@@ -315,8 +308,8 @@ class MslsAdmin extends MslsMain {
 	}
 
 	/**
-	 * @param array  $map
-	 * @param string $section
+	 * @param array<string, string> $map
+	 * @param string                $section
 	 *
 	 * @return int
 	 */
@@ -341,38 +334,42 @@ class MslsAdmin extends MslsMain {
 	/**
 	 * Shows the select-form-field 'blog_language'
 	 */
-	public function blog_language() {
+	public function blog_language(): void {
 		$languages = $this->options->get_available_languages();
 		$selected  = get_locale();
 
+        // phpcs:ignore WordPress.Security.EscapeOutput
 		echo ( new Select( 'blog_language', $languages, $selected ) )->render();
 	}
 
 	/**
 	 * Shows the select-form-field 'display'
 	 */
-	public function display() {
-		echo ( new Select( 'display', MslsLink::get_types_description(), $this->options->display ) )->render();
+	public function display(): void {
+        // phpcs:ignore WordPress.Security.EscapeOutput
+		echo ( new Select( 'display', MslsLink::get_types_description(), strval( $this->options->display ) ) )->render();
 	}
 
 	/**
 	 * Shows the select-form-field 'admin_display'
 	 */
-	public function admin_display() {
-		echo ( new Select(
+	public function admin_display(): void {
+		$select = new Select(
 			'admin_display',
 			array(
-				'flag'  => __( 'Flag', 'multisite-language-switcher' ),
-				'label' => __( 'Label', 'multisite-language-switcher' ),
+				MslsAdminIcon::TYPE_FLAG  => __( 'Flag', 'multisite-language-switcher' ),
+				MslsAdminIcon::TYPE_LABEL => __( 'Label', 'multisite-language-switcher' ),
 			),
-			$this->options->admin_display
-		) )->render();
+			$this->options->get_icon_type()
+		);
+
+		echo $select->render(); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	/**
 	 * Shows the select-form-field 'reference_user'
 	 */
-	public function reference_user() {
+	public function reference_user(): void {
 		$users = array();
 
 		foreach ( (array) apply_filters( 'msls_reference_users', $this->collection->get_users() ) as $user ) {
@@ -384,14 +381,16 @@ class MslsAdmin extends MslsMain {
 
 			/* translators: %s: maximum number of users */
 			$format = __(
-				'Multisite Language Switcher: Collection for reference user has been truncated because it exceeded the maximum of %s users. Please, use the hook "msls_reference_users" to filter the result before!',
+				'Multisite Language Switcher: Collection for reference user has been truncated because it exceeded the maximum of %d users. Please, use the hook "msls_reference_users" to filter the result before!',
 				'multisite-language-switcher'
 			);
 
-			trigger_error( sprintf( $format, self::MAX_REFERENCE_USERS ) );
+			// phpcs:ignore WordPress.Security.EscapeOutput
+			trigger_error( sprintf( esc_html( $format ), strval( self::MAX_REFERENCE_USERS ) ) );
 		}
 
-		echo ( new Select( 'reference_user', $users, $this->options->reference_user ) )->render();
+        // phpcs:ignore WordPress.Security.EscapeOutput
+		echo ( new Select( 'reference_user', $users, strval( $this->options->reference_user ) ) )->render();
 	}
 
 	/**
@@ -399,8 +398,9 @@ class MslsAdmin extends MslsMain {
 	 *
 	 * The language will be used ff there is no description.
 	 */
-	public function description() {
-		echo ( new Text( 'description', $this->options->description, '40' ) )->render();
+	public function description(): void {
+        // phpcs:ignore WordPress.Security.EscapeOutput
+		echo ( new Text( 'description', $this->options->description, 40 ) )->render();
 	}
 
 	/**
@@ -410,20 +410,21 @@ class MslsAdmin extends MslsMain {
 	 * trouble. So you can decide a higher (from 1) or a lower (to 100) priority
 	 * for the output
 	 */
-	public function content_priority() {
+	public function content_priority(): void {
 		$temp     = array_merge( range( 1, 10 ), array( 20, 50, 100 ) );
 		$arr      = array_combine( $temp, $temp );
 		$selected = empty( $this->options->content_priority ) ? 10 : $this->options->content_priority;
 
-		echo ( new Select( 'content_priority', $arr, $selected ) )->render();
+        // phpcs:ignore WordPress.Security.EscapeOutput
+		echo ( new Select( 'content_priority', $arr, strval( $selected ) ) )->render();
 	}
 
 	/**
 	 * Rewrites slugs for registered post types
 	 *
-	 * @param string $key
+	 * @param mixed $key
 	 */
-	public function render_rewrite( $key ) {
+	public function render_rewrite( $key ): void {
 		$rewrite = get_post_type_object( $key )->rewrite;
 
 		$value = '';
@@ -433,15 +434,16 @@ class MslsAdmin extends MslsMain {
 			$value = $rewrite['slug'];
 		}
 
+        // phpcs:ignore WordPress.Security.EscapeOutput
 		echo ( new Text( "rewrite_{$key}", $value, 30, true ) )->render();
 	}
 
 	/**
 	 * Validates input before saving it
 	 *
-	 * @param array $arr Values of the submitted form
+	 * @param array<string, mixed> $arr Values of the submitted form
 	 *
-	 * @return array Validated input
+	 * @return array<string, mixed>
 	 */
 	public function validate( array $arr ) {
 		/**
@@ -464,9 +466,9 @@ class MslsAdmin extends MslsMain {
 	/**
 	 * Filter which sets the global blog language
 	 *
-	 * @param array $arr
+	 * @param string[] $arr
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public function set_blog_language( array $arr ) {
 		if ( isset( $arr['blog_language'] ) ) {

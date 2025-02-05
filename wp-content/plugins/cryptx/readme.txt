@@ -1,10 +1,10 @@
 === CryptX ===
 Contributors: d3395
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4026696
-Tags: antispam, email, mail
+Tags: antispam, email, mail, addresses
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 3.4.3
+Stable tag: 3.4.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,6 +21,16 @@ No more SPAM by spiders scanning you site for email addresses. With CryptX you c
 2. Template functions
 
 == Changelog ==
+= 3.4.5.3 =
+* fixed a Critical error in combination with WPML
+= 3.4.5.2 =
+* fixed that mails are always displayed in this way: name [at] domain [dot] tld
+= 3.4.5.1 =
+* forgot to set the default value of the $args argument from encryptx function
+= 3.4.5 =
+* The "encryptx" template function has been revised so that it accepts arguments again, as in previous versions.
+= 3.4.4 =
+* changed type hinting of an argument to be string or null on some methods
 = 3.4.3 =
 * fixed a bug in the cryptx shortcode handler. (special thx to: <a href="https://wordpress.org/support/users/jamminjames/">jamminjames</a>,<a href="https://wordpress.org/support/users/basicweb/">basicweb</a>)
 = 3.4.2 =

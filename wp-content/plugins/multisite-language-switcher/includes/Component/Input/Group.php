@@ -1,20 +1,20 @@
-<?php
-
+<?php declare( strict_types = 1 );
 
 namespace lloc\Msls\Component\Input;
 
-use lloc\Msls\Component\InputInterface;
+use lloc\Msls\Component\Component;
 
 /**
  * Class Options
+ *
  * @package lloc\Msls\Component\Input
  */
-class Group implements InputInterface {
+final class Group extends Component {
 
 	/**
-	 * @var string[]
+	 * @var Component[]
 	 */
-	protected $arr = [];
+	protected $arr = array();
 
 	/**
 	 * @var string
@@ -31,11 +31,11 @@ class Group implements InputInterface {
 	}
 
 	/**
-	 * @param InputInterface $input
+	 * @param Component $input
 	 *
 	 * @return self
 	 */
-	public function add( InputInterface $input ): self {
+	public function add( Component $input ): self {
 		$this->arr[] = $input;
 
 		return $this;
@@ -45,11 +45,13 @@ class Group implements InputInterface {
 	 * @return string
 	 */
 	public function render(): string {
-		$items = array_map( function ( InputInterface $input ) {
-			return $input->render();
-		}, $this->arr );
+		$items = array_map(
+			function ( Component $input ) {
+				return $input->render(); // phpcs:ignore WordPress.Security.EscapeOutput
+			},
+			$this->arr
+		);
 
 		return implode( $this->glue, $items );
 	}
-
 }
