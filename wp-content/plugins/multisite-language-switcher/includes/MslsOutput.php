@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -68,7 +68,7 @@ class MslsOutput extends MslsMain {
 					 * Returns HTML-link for an item of the output-arr
 					 *
 					 * @param string $url
-					 * @param MslsLink $link
+					 * @param LinkInterface $link
 					 * @param bool $is_current_blog
 					 *
 					 * @since 0.9.8
@@ -98,26 +98,23 @@ class MslsOutput extends MslsMain {
 		$blogs   = msls_blog_collection();
 		$hlObj   = new HrefLang( $blogs );
 		$options = MslsOptions::create();
-
 		$arr     = array();
 		$default = '';
 
 		foreach ( $blogs->get_objects() as $blog ) {
 			$url = apply_filters( 'mlsl_output_get_alternate_links', $blog->get_url( $options ), $blog );
-
 			if ( is_null( $url ) ) {
 				continue;
 			}
 
-			$description = $blog->get_description();
-			$hreflang    = $hlObj->get( $blog->get_language() );
+			$hreflang = $hlObj->get( $blog->get_language() );
+			$format   = '<link rel="alternate" href="%1$s" hreflang="%2$s" />';
 
-			$format = '<link rel="alternate" hreflang="%s" href="%s" title="%s" />';
 			if ( '' === $default ) {
-				$default = sprintf( $format, 'x-default', esc_url( $url ), esc_attr( $description ) );
+				$default = sprintf( $format, esc_url( $url ), 'x-default' );
 			}
 
-			$arr[] = sprintf( $format, esc_attr( $hreflang ), esc_url( $url ), esc_attr( $description ) );
+			$arr[] = sprintf( $format, esc_url( $url ), esc_attr( $hreflang ) );
 		}
 
 		if ( 1 === count( $arr ) ) {
@@ -190,9 +187,9 @@ class MslsOutput extends MslsMain {
 	/**
 	 * Returns true if the requirements not fulfilled
 	 *
-	 * @param MslsOptions|null $thing
-	 * @param boolean          $exists
-	 * @param string           $language
+	 * @param ?OptionsInterface $thing
+	 * @param boolean           $exists
+	 * @param string            $language
 	 *
 	 * @return boolean
 	 */

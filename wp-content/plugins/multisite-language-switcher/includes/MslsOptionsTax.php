@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -7,7 +7,7 @@ namespace lloc\Msls;
  *
  * @package Msls
  */
-class MslsOptionsTax extends MslsOptions {
+class MslsOptionsTax extends MslsOptions implements OptionsTaxInterface {
 
 	public const SEPARATOR = '_term_';
 
@@ -16,19 +16,11 @@ class MslsOptionsTax extends MslsOptions {
 	/**
 	 * @param int $id
 	 *
-	 * @return MslsOptionsTax
+	 * @return OptionsTaxInterface
 	 */
-	public static function create( $id = 0 ): MslsOptionsTax {
-		$id = ! empty( $id ) ? (int) $id : get_queried_object_id();
-
-		$req = '';
-		if ( is_admin() ) {
-			$req = msls_content_types()->acl_request();
-		} elseif ( is_category() ) {
-			$req = 'category';
-		} elseif ( is_tag( $id ) ) {
-			$req = 'post_tag';
-		}
+	public static function create( $id = 0 ): OptionsTaxInterface {
+		$id  = ! empty( $id ) ? (int) $id : get_queried_object_id();
+		$req = self::get_content_type( $id );
 
 		switch ( $req ) {
 			case 'category':
@@ -41,15 +33,28 @@ class MslsOptionsTax extends MslsOptions {
 				$options = new MslsOptionsTax( $id );
 		}
 
-		if ( method_exists( $options, 'check_base' ) ) {
-			add_filter( 'msls_get_postlink', array( $options, 'check_base' ), 9, 2 );
-		} else {
-			global $wp_rewrite;
+		return $options->handle_rewrite();
+	}
 
-			$options->with_front = ! empty( $wp_rewrite->extra_permastructs[ $options->get_tax_query() ]['with_front'] );
+	/**
+	 * @param int $id
+	 *
+	 * @return string
+	 */
+	public static function get_content_type( int $id ): string {
+		if ( is_admin() ) {
+			return msls_content_types()->acl_request();
 		}
 
-		return $options;
+		return ( is_category( $id ) ? 'category' : ( is_tag( $id ) ? 'post_tag' : '' ) );
+	}
+
+	public function handle_rewrite(): OptionsTaxInterface {
+		global $wp_rewrite;
+
+		$this->with_front = ! empty( $wp_rewrite->extra_permastructs[ $this->get_tax_query() ]['with_front'] );
+
+		return $this;
 	}
 
 	/**
@@ -93,7 +98,7 @@ class MslsOptionsTax extends MslsOptions {
 	 *
 	 * @return string
 	 */
-	public function get_current_link() {
+	public function get_current_link(): string {
 		return $this->get_term_link( $this->get_arg( 0, 0 ) );
 	}
 
@@ -115,6 +120,10 @@ class MslsOptionsTax extends MslsOptions {
 			}
 		}
 
+		return '';
+	}
+
+	public static function get_base_option(): string {
 		return '';
 	}
 }

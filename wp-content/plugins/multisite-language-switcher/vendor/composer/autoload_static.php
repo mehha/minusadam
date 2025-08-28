@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb295695c4a8023a1a8ebe511195598c1
+class ComposerStaticInitb416f983875cff66d75d62d2e4a4fb3e
 {
     public static $prefixLengthsPsr4 = array (
         'l' => 
@@ -166,6 +166,7 @@ class ComposerStaticInitb295695c4a8023a1a8ebe511195598c1
         'lloc\\Msls\\ContentImport\\MetaBox' => __DIR__ . '/../..' . '/includes/ContentImport/MetaBox.php',
         'lloc\\Msls\\ContentImport\\Relations' => __DIR__ . '/../..' . '/includes/ContentImport/Relations.php',
         'lloc\\Msls\\ContentImport\\Service' => __DIR__ . '/../..' . '/includes/ContentImport/Service.php',
+        'lloc\\Msls\\LinkInterface' => __DIR__ . '/../..' . '/includes/LinkInterface.php',
         'lloc\\Msls\\Map\\HrefLang' => __DIR__ . '/../..' . '/includes/Map/HrefLang.php',
         'lloc\\Msls\\MslsAdmin' => __DIR__ . '/../..' . '/includes/MslsAdmin.php',
         'lloc\\Msls\\MslsAdminBar' => __DIR__ . '/../..' . '/includes/MslsAdminBar.php',
@@ -174,6 +175,7 @@ class ComposerStaticInitb295695c4a8023a1a8ebe511195598c1
         'lloc\\Msls\\MslsBlock' => __DIR__ . '/../..' . '/includes/MslsBlock.php',
         'lloc\\Msls\\MslsBlog' => __DIR__ . '/../..' . '/includes/MslsBlog.php',
         'lloc\\Msls\\MslsBlogCollection' => __DIR__ . '/../..' . '/includes/MslsBlogCollection.php',
+        'lloc\\Msls\\MslsCli' => __DIR__ . '/../..' . '/includes/MslsCli.php',
         'lloc\\Msls\\MslsContentFilter' => __DIR__ . '/../..' . '/includes/MslsContentFilter.php',
         'lloc\\Msls\\MslsContentTypes' => __DIR__ . '/../..' . '/includes/MslsContentTypes.php',
         'lloc\\Msls\\MslsCustomColumn' => __DIR__ . '/../..' . '/includes/MslsCustomColumn.php',
@@ -212,6 +214,8 @@ class ComposerStaticInitb295695c4a8023a1a8ebe511195598c1
         'lloc\\Msls\\MslsSqlCacher' => __DIR__ . '/../..' . '/includes/MslsSqlCacher.php',
         'lloc\\Msls\\MslsTaxonomy' => __DIR__ . '/../..' . '/includes/MslsTaxonomy.php',
         'lloc\\Msls\\MslsWidget' => __DIR__ . '/../..' . '/includes/MslsWidget.php',
+        'lloc\\Msls\\OptionsInterface' => __DIR__ . '/../..' . '/includes/OptionsInterface.php',
+        'lloc\\Msls\\OptionsTaxInterface' => __DIR__ . '/../..' . '/includes/OptionsTaxInterface.php',
         'lloc\\Msls\\Query\\AbstractQuery' => __DIR__ . '/../..' . '/includes/Query/AbstractQuery.php',
         'lloc\\Msls\\Query\\AuthorPostsCounterQuery' => __DIR__ . '/../..' . '/includes/Query/AuthorPostsCounterQuery.php',
         'lloc\\Msls\\Query\\BlogsInNetworkQuery' => __DIR__ . '/../..' . '/includes/Query/BlogsInNetworkQuery.php',
@@ -225,9 +229,9 @@ class ComposerStaticInitb295695c4a8023a1a8ebe511195598c1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb295695c4a8023a1a8ebe511195598c1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb295695c4a8023a1a8ebe511195598c1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb295695c4a8023a1a8ebe511195598c1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb416f983875cff66d75d62d2e4a4fb3e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb416f983875cff66d75d62d2e4a4fb3e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb416f983875cff66d75d62d2e4a4fb3e::$classMap;
 
         }, null, ClassLoader::class);
     }

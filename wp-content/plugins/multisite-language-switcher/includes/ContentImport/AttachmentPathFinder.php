@@ -9,12 +9,13 @@ class AttachmentPathFinder extends MslsRegistryInstance {
 	const LINKED = '_msls_linked';
 
 	/**
-	 * @param array  $sources
-	 * @param mixed  $sizeArray
-	 * @param string $imageSrc
-	 * @param mixed  $imageMeta
-	 * @param int    $attachmentId
-	 * @return array<string, string>
+	 * @param array<string, array<string, mixed>> $sources
+	 * @param mixed                               $sizeArray
+	 * @param string                              $imageSrc
+	 * @param mixed                               $imageMeta
+	 * @param int                                 $attachmentId
+	 *
+	 * @return array<string, mixed>
 	 */
 	public function filter_srcset( array $sources, $sizeArray, $imageSrc, $imageMeta, $attachmentId ): array {
 		if ( ! $msls_imported = $this->has_import_data( $attachmentId ) ) {
@@ -22,8 +23,7 @@ class AttachmentPathFinder extends MslsRegistryInstance {
 		}
 
 		$source_post = get_blog_post( $msls_imported['blog'], $msls_imported['post'] );
-
-		if ( false === $source_post ) {
+		if ( is_null( $source_post ) ) {
 			return $sources;
 		}
 
@@ -42,7 +42,7 @@ class AttachmentPathFinder extends MslsRegistryInstance {
 
 	/**
 	 * @param int $attachment_id
-	 * @return array|false
+	 * @return array<string, mixed>|false
 	 */
 	protected function has_import_data( $attachment_id ) {
 		if ( empty( $attachment_id ) ) {
@@ -85,15 +85,15 @@ class AttachmentPathFinder extends MslsRegistryInstance {
 	}
 
 	/**
-	 * @param int   $attachment_id
-	 * @param array $msls_imported
+	 * @param int                  $attachment_id
+	 * @param array<string, mixed> $msls_imported
 	 *
 	 * @return \WP_Post|false
 	 */
 	protected function get_source_post( $attachment_id, $msls_imported ) {
 		$source_post = get_blog_post( $msls_imported['blog'], $msls_imported['post'] );
 
-		if ( empty( $source_post ) || ! $source_post instanceof \WP_Post ) {
+		if ( ! $source_post instanceof \WP_Post ) {
 			delete_post_meta( $attachment_id, self::LINKED );
 
 			return false;

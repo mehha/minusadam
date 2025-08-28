@@ -1,9 +1,8 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
 class MslsBlock {
-
 
 	protected MslsOptions $options;
 

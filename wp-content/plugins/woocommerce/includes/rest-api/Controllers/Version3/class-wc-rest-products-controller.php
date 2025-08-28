@@ -8,8 +8,12 @@
  * @since   2.6.0
  */
 
+use Automattic\WooCommerce\Admin\Features\Features;
 use Automattic\WooCommerce\Enums\ProductStatus;
+use Automattic\WooCommerce\Enums\ProductStockStatus;
+use Automattic\WooCommerce\Enums\ProductTaxStatus;
 use Automattic\WooCommerce\Enums\ProductType;
+use Automattic\WooCommerce\Enums\CatalogVisibility;
 use Automattic\WooCommerce\Internal\CostOfGoodsSold\CogsAwareRestControllerTrait;
 use Automattic\WooCommerce\Utilities\I18nUtil;
 
@@ -33,13 +37,29 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 	protected $namespace = 'wc/v3';
 
 	/**
-	 * A string to inject into a query to do a partial match SKU search.
+	 * The value of the 'search_sku' argument if present.
 	 *
 	 * See prepare_objects_query()
 	 *
 	 * @var string
 	 */
-	private $search_sku_in_product_lookup_table = '';
+	private $search_sku_arg_value = '';
+
+	/**
+	 * If the 'search_name_or_sku' argument is present this will be set
+	 * to an array of the (space-separated) tokens that form the argument value.
+	 *
+	 * @var array|null
+	 */
+	private $search_name_or_sku_tokens = null;
+
+	/**
+	 * If the 'search_fields' argument is present with 'search' this will be set
+	 * to an array containing the fields to search and tokenized search terms.
+	 *
+	 * @var array|null
+	 */
+	private $search_fields_tokens = null;
 
 	/**
 	 * Suggested product ids.
@@ -54,6 +74,13 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 	 * @var array
 	 */
 	private $exclude_status = array();
+
+	/**
+	 * Stores attachment IDs processed during the current request for potential cleanup.
+	 *
+	 * @var array
+	 */
+	private $processed_attachment_ids_for_request = array();
 
 	/**
 	 * Register the routes for products.
@@ -293,11 +320,37 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 			);
 		}
 
-		if ( wc_product_sku_enabled() ) {
-			// Do a partial match for a sku. Supersedes sku parameter that does exact matching.
+		// Search parameter precedence: search_fields > search_name_or_sku > search_sku > sku.
+		$search_fields = $request['search_fields'] ?? array();
+		$search_arg    = trim( $request['search'] ?? '' );
+
+		if ( $search_fields && $search_arg ) {
+			$tokens = array_filter( array_map( 'trim', explode( ' ', $search_arg ) ) );
+
+			$this->search_fields_tokens = array(
+				'fields' => $search_fields,
+				'tokens' => $tokens,
+			);
+
+			unset( $request['search'], $request['search_sku'], $request['sku'], $request['search_name_or_sku'], $args['s'] );
+		}
+
+		$search_name_or_sku_arg = $request['search_name_or_sku'] ?? '';
+
+		if ( '' !== $search_name_or_sku_arg ) {
+			// Do a tokenized search for name or SKU. Supersedes the 'search', 'search_sku' and 'sku' arguments.
+			$tokens                          = array_filter( array_map( 'trim', explode( ' ', $search_name_or_sku_arg ) ) );
+			$this->search_name_or_sku_tokens = $tokens;
+
+			unset( $request['search'] );
+			unset( $args['s'] );
+			unset( $request['search_sku'] );
+			unset( $request['sku'] );
+		} elseif ( wc_product_sku_enabled() ) {
+			// Do a partial match for a sku. Supersedes the 'sku' argument, that does exact matching.
 			if ( ! empty( $request['search_sku'] ) ) {
 				// Store this for use in the query clause filters.
-				$this->search_sku_in_product_lookup_table = $request['search_sku'];
+				$this->search_sku_arg_value = $request['search_sku'];
 
 				unset( $request['sku'] );
 			}
@@ -372,7 +425,7 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 		}
 
 		// Force the post_type argument, since it's not a user input variable.
-		if ( ! empty( $request['sku'] ) || ! empty( $request['search_sku'] ) ) {
+		if ( ! empty( $request['sku'] ) || ! empty( $request['search_sku'] ) || $this->search_name_or_sku_tokens || $this->search_fields_tokens ) {
 			$args['post_type'] = array( 'product', 'product_variation' );
 		} else {
 			$args['post_type'] = $this->post_type;
@@ -409,8 +462,10 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 	 * @return array
 	 */
 	protected function get_objects( $query_args ) {
+		$add_search_criteria = $this->search_sku_arg_value || $this->search_name_or_sku_tokens || $this->search_fields_tokens;
+
 		// Add filters for search criteria in product postmeta via the lookup table.
-		if ( ! empty( $this->search_sku_in_product_lookup_table ) ) {
+		if ( $add_search_criteria ) {
 			add_filter( 'posts_join', array( $this, 'add_search_criteria_to_wp_query_join' ) );
 			add_filter( 'posts_where', array( $this, 'add_search_criteria_to_wp_query_where' ) );
 		}
@@ -423,11 +478,13 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 		$result = parent::get_objects( $query_args );
 
 		// Remove filters for search criteria in product postmeta via the lookup table.
-		if ( ! empty( $this->search_sku_in_product_lookup_table ) ) {
+		if ( $add_search_criteria ) {
 			remove_filter( 'posts_join', array( $this, 'add_search_criteria_to_wp_query_join' ) );
 			remove_filter( 'posts_where', array( $this, 'add_search_criteria_to_wp_query_where' ) );
 
-			$this->search_sku_in_product_lookup_table = '';
+			$this->search_sku_arg_value      = '';
+			$this->search_name_or_sku_tokens = null;
+			$this->search_fields_tokens      = null;
 		}
 
 		// Remove filters for excluding product statuses.
@@ -447,11 +504,23 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 	 * @return string
 	 */
 	public function add_search_criteria_to_wp_query_join( $join ) {
-		global $wpdb;
-		if ( ! empty( $this->search_sku_in_product_lookup_table ) && ! strstr( $join, 'wc_product_meta_lookup' ) ) {
-			$join .= " LEFT JOIN $wpdb->wc_product_meta_lookup wc_product_meta_lookup
-						ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
+		// Check if already joined to avoid duplicate joins.
+		if ( strstr( $join, 'wc_product_meta_lookup' ) ) {
+			return $join;
 		}
+
+		// Only join if we need meta table search.
+		if ( ! $this->search_fields_tokens &&
+			! $this->search_sku_arg_value &&
+			! ( $this->search_name_or_sku_tokens && wc_product_sku_enabled() ) ) {
+			return $join;
+		}
+
+		global $wpdb;
+
+		$join .= " LEFT JOIN $wpdb->wc_product_meta_lookup wc_product_meta_lookup
+						ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
+
 		return $join;
 	}
 
@@ -463,11 +532,68 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 	 */
 	public function add_search_criteria_to_wp_query_where( $where ) {
 		global $wpdb;
-		if ( ! empty( $this->search_sku_in_product_lookup_table ) ) {
-			$like_search = '%' . $wpdb->esc_like( $this->search_sku_in_product_lookup_table ) . '%';
+
+		if ( $this->search_fields_tokens ) {
+			$where .= $this->build_dynamic_search_clauses(
+				$this->search_fields_tokens['tokens'],
+				$this->search_fields_tokens['fields']
+			);
+		} elseif ( $this->search_name_or_sku_tokens ) {
+			$searchable_fields = wc_product_sku_enabled() ? array( 'name', 'sku' ) : array( 'name' );
+			$where            .= $this->build_dynamic_search_clauses(
+				$this->search_name_or_sku_tokens,
+				$searchable_fields
+			);
+		} elseif ( ! empty( $this->search_sku_arg_value ) ) {
+			$like_search = '%' . $wpdb->esc_like( $this->search_sku_arg_value ) . '%';
 			$where      .= ' AND ' . $wpdb->prepare( '(wc_product_meta_lookup.sku LIKE %s)', $like_search );
 		}
 		return $where;
+	}
+
+	/**
+	 * Build search clauses for dynamic product search.
+	 *
+	 * @param array $tokens Search tokens.
+	 * @param array $fields Fields to search in.
+	 * @return string
+	 */
+	private function build_dynamic_search_clauses( $tokens, $fields ) {
+		global $wpdb;
+
+		if ( empty( $fields ) || empty( $tokens ) ) {
+			return '';
+		}
+
+		$column_map = array(
+			'name'              => "{$wpdb->posts}.post_title",
+			'sku'               => 'wc_product_meta_lookup.sku',
+			'global_unique_id'  => 'wc_product_meta_lookup.global_unique_id',
+			'description'       => "{$wpdb->posts}.post_content",
+			'short_description' => "{$wpdb->posts}.post_excerpt",
+		);
+
+		$field_clauses = array();
+
+		foreach ( $tokens as $token ) {
+			$like_search         = '%' . $wpdb->esc_like( $token ) . '%';
+			$field_token_clauses = array();
+
+			foreach ( $fields as $field ) {
+				if ( ! isset( $column_map[ $field ] ) ) {
+					continue;
+				}
+
+				$db_column             = $column_map[ $field ];
+				$field_token_clauses[] = $wpdb->prepare( "({$db_column} LIKE %s)", $like_search ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			}
+
+			if ( $field_token_clauses ) {
+				$field_clauses[] = '(' . implode( ' OR ', $field_token_clauses ) . ')';
+			}
+		}
+
+		return $field_clauses ? ' AND (' . implode( ' AND ', $field_clauses ) . ')' : '';
 	}
 
 	/**
@@ -508,6 +634,8 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 
 			foreach ( $images as $index => $image ) {
 				$attachment_id = isset( $image['id'] ) ? absint( $image['id'] ) : 0;
+				// The request can contain an attachment ID, if it doesn't, it's a new upload.
+				$is_new_upload = false;
 
 				if ( 0 === $attachment_id && isset( $image['src'] ) ) {
 					$upload = wc_rest_upload_image_from_url( esc_url_raw( $image['src'] ) );
@@ -521,11 +649,17 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 					}
 
 					$attachment_id = wc_rest_set_uploaded_image_as_attachment( $upload, $product->get_id() );
+					$is_new_upload = true;
 				}
 
 				if ( ! wp_attachment_is_image( $attachment_id ) ) {
 					/* translators: %s: image ID */
 					throw new WC_REST_Exception( 'woocommerce_product_invalid_image_id', sprintf( __( '#%s is an invalid image ID.', 'woocommerce' ), $attachment_id ), 400 );
+				}
+
+				if ( $is_new_upload && $attachment_id > 0 ) {
+					// Tracking this for rollback purposes.
+					$this->processed_attachment_ids_for_request[] = $attachment_id;
 				}
 
 				$featured_image = $product->get_image_id();
@@ -819,7 +953,7 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 				$product->set_manage_stock( 'no' );
 				$product->set_backorders( 'no' );
 				$product->set_stock_quantity( '' );
-				$product->set_stock_status( 'instock' );
+				$product->set_stock_status( ProductStockStatus::IN_STOCK );
 			} elseif ( $product->get_manage_stock() ) {
 				// Stock status is always determined by children so sync later.
 				if ( ! $product->is_type( ProductType::VARIABLE ) ) {
@@ -1095,8 +1229,8 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 				'catalog_visibility'    => array(
 					'description' => __( 'Catalog visibility.', 'woocommerce' ),
 					'type'        => 'string',
-					'default'     => 'visible',
-					'enum'        => array( 'visible', 'catalog', 'search', 'hidden' ),
+					'default'     => CatalogVisibility::VISIBLE,
+					'enum'        => array( CatalogVisibility::VISIBLE, CatalogVisibility::CATALOG, CatalogVisibility::SEARCH, CatalogVisibility::HIDDEN ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description'           => array(
@@ -1242,8 +1376,8 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 				'tax_status'            => array(
 					'description' => __( 'Tax status.', 'woocommerce' ),
 					'type'        => 'string',
-					'default'     => 'taxable',
-					'enum'        => array( 'taxable', 'shipping', 'none' ),
+					'default'     => ProductTaxStatus::TAXABLE,
+					'enum'        => array( ProductTaxStatus::TAXABLE, ProductTaxStatus::SHIPPING, ProductTaxStatus::NONE ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'tax_class'             => array(
@@ -1259,13 +1393,13 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 				),
 				'stock_quantity'        => array(
 					'description' => __( 'Stock quantity.', 'woocommerce' ),
-					'type'        => has_filter( 'woocommerce_stock_amount', 'intval' ) ? 'integer' : 'number',
+					'type'        => wc_is_stock_amount_integer() ? 'integer' : 'number',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'stock_status'          => array(
 					'description' => __( 'Controls the stock status of the product.', 'woocommerce' ),
 					'type'        => 'string',
-					'default'     => 'instock',
+					'default'     => ProductStockStatus::IN_STOCK,
 					'enum'        => array_keys( wc_get_product_stock_status_options() ),
 					'context'     => array( 'view', 'edit' ),
 				),
@@ -1431,6 +1565,33 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 							),
 							'slug' => array(
 								'description' => __( 'Category slug.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+								'readonly'    => true,
+							),
+						),
+					),
+				),
+				'brands'                => array(
+					'description' => __( 'List of brands.', 'woocommerce' ),
+					'type'        => 'array',
+					'context'     => array( 'view', 'edit' ),
+					'items'       => array(
+						'type'       => 'object',
+						'properties' => array(
+							'id'   => array(
+								'description' => __( 'Brand ID.', 'woocommerce' ),
+								'type'        => 'integer',
+								'context'     => array( 'view', 'edit' ),
+							),
+							'name' => array(
+								'description' => __( 'Brand name.', 'woocommerce' ),
+								'type'        => 'string',
+								'context'     => array( 'view', 'edit' ),
+								'readonly'    => true,
+							),
+							'slug' => array(
+								'description' => __( 'Brand slug.', 'woocommerce' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -1669,6 +1830,20 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 			$schema = $this->add_cogs_related_product_schema( $schema, false );
 		}
 
+		if ( Features::is_enabled( 'experimental-wc-rest-api' ) ) {
+			$schema['properties']['__experimental_min_price'] = array(
+				'description' => __( 'Product minimum price.', 'woocommerce' ),
+				'type'        => 'string',
+				'context'     => array( 'view', 'edit' ),
+			);
+
+			$schema['properties']['__experimental_max_price'] = array(
+				'description' => __( 'Product maximum price.', 'woocommerce' ),
+				'type'        => 'string',
+				'context'     => array( 'view', 'edit' ),
+			);
+		}
+
 		return $this->add_additional_fields_schema( $schema );
 	}
 
@@ -1691,9 +1866,33 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 		);
 
 		$params['search_sku'] = array(
-			'description'       => __( 'Limit results to those with a SKU that partial matches a string.', 'woocommerce' ),
+			'description'       => __( "Limit results to those with a SKU that partial matches a string. This argument takes precedence over 'sku'.", 'woocommerce' ),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		);
+
+		$params['search_name_or_sku'] = array(
+			'description'       => __( "Limit results to those with a name or SKU that partial matches a string. This argument takes precedence over 'search', 'sku' and 'search_sku'.", 'woocommerce' ),
+			'type'              => 'string',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		);
+
+		$search_fields_enum = array( 'name', 'global_unique_id', 'description', 'short_description' );
+		if ( wc_product_sku_enabled() ) {
+			$search_fields_enum[] = 'sku';
+		}
+
+		$params['search_fields'] = array(
+			'description'       => __( 'Limit search to specific fields when used with search parameter. Available fields: name, sku, global_unique_id, description, short_description. This argument takes precedence over all other search parameters.', 'woocommerce' ),
+			'type'              => 'array',
+			'items'             => array(
+				'type' => 'string',
+				'enum' => $search_fields_enum,
+			),
+			'default'           => array(),
+			'sanitize_callback' => 'wp_parse_slug_list',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 
@@ -1856,6 +2055,14 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 				$data['global_unique_id'] = $product->get_global_unique_id( $context );
 			}
 
+			if ( in_array( '__experimental_min_price', $fields, true ) ) {
+				$data['__experimental_min_price'] = method_exists( $product, 'get_min_price' ) ? $product->get_min_price() : '';
+			}
+
+			if ( in_array( '__experimental_max_price', $fields, true ) ) {
+				$data['__experimental_max_price'] = method_exists( $product, 'get_max_price' ) ? $product->get_max_price() : '';
+			}
+
 			$post_type_obj = get_post_type_object( $this->post_type );
 			if ( is_post_type_viewable( $post_type_obj ) && $post_type_obj->public ) {
 				$permalink_template_requested = in_array( 'permalink_template', $fields, true );
@@ -1933,5 +2140,31 @@ class WC_REST_Products_Controller extends WC_REST_Products_V2_Controller {
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Create a single item.
+	 * Handles cleanup of orphaned images if product creation fails.
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
+	 */
+	public function create_item( $request ) {
+		$this->processed_attachment_ids_for_request = array();
+
+		$response = parent::create_item( $request );
+
+		if ( is_wp_error( $response ) ) {
+			if ( ! empty( $this->processed_attachment_ids_for_request ) ) {
+				// Handle deletion of orphaned images.
+				foreach ( $this->processed_attachment_ids_for_request as $attachment_id ) {
+					wp_delete_attachment( (int) $attachment_id, true );
+				}
+			}
+		}
+
+		$this->processed_attachment_ids_for_request = array();
+
+		return $response;
 	}
 }

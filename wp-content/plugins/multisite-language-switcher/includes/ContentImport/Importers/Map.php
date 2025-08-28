@@ -11,13 +11,16 @@ class Map extends MslsRegistryInstance {
 	 *
 	 * @param ImportCoordinates $import_coordinates
 	 *
-	 * @return array An array of importer instances in the shape [ <string: slug> => <Importer: $importer> ]
+	 * @return array<string, ImportersBaseFactory> An array of importer instances in the shape [ <string: slug> => <Importer: $importer> ]
 	 */
 	public function make( ImportCoordinates $import_coordinates ) {
-		$importers = array_map( function ( $factory ) use ( $import_coordinates ) {
-			/** @var ImportersFactory $factory */
-			return $factory->make( $import_coordinates );
-		}, $this->factories() );
+		$importers = array_map(
+			function ( $factory ) use ( $import_coordinates ) {
+				/** @var ImportersBaseFactory $factory */
+				return $factory->make( $import_coordinates );
+			},
+			$this->factories()
+		);
 
 		/**
 		 * Filters the map of importers that should be used.
@@ -38,18 +41,16 @@ class Map extends MslsRegistryInstance {
 	/**
 	 * Returns a filtered list of factories that will provide the importers.
 	 *
-	 * @return array An associative array in the shape [ <string: $slug> => <ImportersFactory: $factory> ]
-	 * @since TBD
-	 *
+	 * @return array<string, ImportersBaseFactory> An associative array in the shape [ <string: $slug> => <ImportersFactory: $factory> ]
 	 */
 	public function factories() {
-		$map = [
+		$map = array(
 			'post-fields'    => PostFieldsImporters::instance(),
 			'post-meta'      => PostMetaImporters::instance(),
 			'terms'          => TermsImporters::instance(),
 			'post-thumbnail' => PostThumbnailImporters::instance(),
 			'attachments'    => AttachmentsImporters::instance(),
-		];
+		);
 
 		/**
 		 * Filters the map of importer factories that should be used to build the importers.

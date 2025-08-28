@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -86,8 +86,7 @@ final class MslsAdmin extends MslsMain {
 	 */
 	public function __call( $method, $args ) {
 		$parts = explode( '_', $method, 2 );
-
-		if ( is_array( $parts ) && 'rewrite' === $parts[0] ) {
+		if ( count( $parts ) > 0 && 'rewrite' === $parts[0] ) {
 			$this->render_rewrite( $parts[1] );
 			return;
 		}
@@ -426,13 +425,7 @@ final class MslsAdmin extends MslsMain {
 	 */
 	public function render_rewrite( $key ): void {
 		$rewrite = get_post_type_object( $key )->rewrite;
-
-		$value = '';
-		if ( true === $rewrite ) {
-			$value = $key;
-		} elseif ( ! empty( $rewrite['slug'] ) ) {
-			$value = $rewrite['slug'];
-		}
+		$value   = $rewrite['slug'] ?? '';
 
         // phpcs:ignore WordPress.Security.EscapeOutput
 		echo ( new Text( "rewrite_{$key}", $value, 30, true ) )->render();

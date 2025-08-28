@@ -7,7 +7,7 @@
  * @wordpress-plugin
  *
  * Plugin Name: Multisite Language Switcher
- * Version: 2.9.5
+ * Version: 2.9.6
  * Plugin URI: http://msls.co/
  * Description: A simple but powerful plugin that will help you to manage the relations of your contents in a multilingual multisite-installation.
  * Author: Dennis Ploetner
@@ -40,7 +40,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  * @author Dennis Ploetner <re@lloc.de>
  */
 if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
-	define( 'MSLS_PLUGIN_VERSION', '2.9.5' );
+	define( 'MSLS_PLUGIN_VERSION', '2.9.6' );
 	define( 'MSLS_PLUGIN_PATH', plugin_basename( __FILE__ ) );
 	define( 'MSLS_PLUGIN__FILE__', __FILE__ );
 
@@ -208,9 +208,9 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 * - is_tax
 	 *
 	 * @param int $id
-	 * @return \lloc\Msls\MslsOptionsTax
+	 * @return \lloc\Msls\OptionsTaxInterface
 	 */
-	function msls_get_tax( int $id ): \lloc\Msls\MslsOptionsTax {
+	function msls_get_tax( int $id ): \lloc\Msls\OptionsTaxInterface {
 		return \lloc\Msls\MslsOptionsTax::create( $id );
 	}
 
@@ -230,5 +230,16 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 		return \lloc\Msls\MslsOptionsQuery::create();
 	}
 
+	/**
+	 * Trivial void function for actions that do not return anything.
+	 *
+	 * @return void
+	 */
+	if ( ! function_exists( '__return_void' ) ) {
+		function __return_void(): void {
+		}
+	}
+
 	lloc\Msls\MslsPlugin::init();
+	lloc\Msls\MslsCli::init();
 }

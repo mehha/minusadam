@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -7,7 +7,7 @@ namespace lloc\Msls;
  *
  * @package Msls
  */
-class MslsLinkTextImage extends MslsLink {
+class MslsLinkTextImage extends MslsLink implements LinkInterface {
 
 	/**
 	 * Output format

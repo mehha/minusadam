@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -8,21 +8,25 @@ use lloc\Msls\Component\Icon\IconPng;
  * General options class
  *
  * @package Msls
- * @property bool $activate_content_import
  * @property bool $activate_autocomplete
+ * @property bool $activate_content_import
  * @property bool $output_current_blog
+ * @property bool $only_with_translation
+ * @property int $content_priority
  * @property int $display
  * @property int $reference_user
- * @property int $content_priority
  * @property string $admin_display
  * @property string $admin_language
- * @property string $description
- * @property string $before_item
  * @property string $after_item
- * @property string $before_output
  * @property string $after_output
+ * @property string $before_item
+ * @property string $before_output
+ * @property string $content_filter
+ * @property string $description
+ * @property string $exclude_current_blog
+ * @property string $sort_by_description
  */
-class MslsOptions extends MslsGetSet {
+class MslsOptions extends MslsGetSet implements OptionsInterface {
 
 	public const PREFIX    = 'msls';
 	public const SEPARATOR = '';
@@ -55,7 +59,7 @@ class MslsOptions extends MslsGetSet {
 	 *
 	 * @param int $id
 	 *
-	 * @return MslsOptions
+	 * @return OptionsInterface
 	 */
 	public static function create( $id = 0 ) {
 		if ( is_admin() ) {
@@ -191,12 +195,7 @@ class MslsOptions extends MslsGetSet {
 		return true;
 	}
 
-	/**
-	 * @param string $language
-	 *
-	 * @return string
-	 */
-	public function get_permalink( $language ) {
+	public function get_permalink( string $language ): string {
 		/**
 		 * Filters the url by language
 		 *
@@ -236,10 +235,8 @@ class MslsOptions extends MslsGetSet {
 
 	/**
 	 * Get current link
-	 *
-	 * @return string
 	 */
-	public function get_current_link() {
+	public function get_current_link(): string {
 		return home_url( '/' );
 	}
 
@@ -373,7 +370,7 @@ class MslsOptions extends MslsGetSet {
 	/**
 	 * The 'blog'-slug-problem :/
 	 *
-	 * @param string      $url
+	 * @param mixed       $url
 	 * @param MslsOptions $options
 	 *
 	 * @return string

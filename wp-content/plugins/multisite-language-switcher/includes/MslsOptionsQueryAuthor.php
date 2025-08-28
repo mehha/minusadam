@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 
 namespace lloc\Msls;
 
@@ -48,7 +48,7 @@ class MslsOptionsQueryAuthor extends MslsOptionsQuery {
 	 *
 	 * @return string
 	 */
-	public function get_current_link() {
+	public function get_current_link(): string {
 		return get_author_posts_url( $this->author_id );
 	}
 }

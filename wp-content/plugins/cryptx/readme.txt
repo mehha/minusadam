@@ -1,26 +1,101 @@
 === CryptX ===
 Contributors: d3395
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4026696
-Tags: antispam, email, mail, addresses
-Requires at least: 6.0
-Tested up to: 6.5
-Stable tag: 3.4.5.3
-Requires PHP: 7.4
+Tags: antispam, mail, spam protection, email encryption, privacy
+Requires at least: 6.7
+Tested up to: 6.8
+Stable tag: 4.0.4
+Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+No more SPAM by spiders scanning you site for email addresses!
 
 == Description ==
 
 No more SPAM by spiders scanning you site for email addresses. With CryptX you can hide all your email addresses, with and without a mailto-link, by converting them using javascript or UNICODE.
 
+CryptX protects your email addresses from spam bots while keeping them readable and functional for your visitors. The plugin automatically detects email addresses in your content and encrypts them using various methods including JavaScript encryption, Unicode conversion, and image replacement.
+
+**Key Features:**
+
+* **Automatic Email Detection** - Finds and encrypts email addresses in posts, pages, comments, and widgets
+* **Multiple Encryption Methods** - JavaScript, Unicode, image replacement, and custom text options
+* **Widget Support** - Works with text widgets and other widget content
+* **RSS Feed Control** - Option to disable encryption in RSS feeds
+* **Whitelist Support** - Exclude specific domains from encryption
+* **Per-Post Control** - Enable/disable encryption on individual posts and pages
+* **Shortcode Support** - Use `[cryptx]email@example.com[/cryptx]` for manual encryption
+* **Template Functions** - Developer-friendly functions for theme integration
+
 [Plugin Homepage](http://weber-nrw.de/wordpress/cryptx/ "Plugin Homepage")
 
 == Screenshots ==
 
-1. Plugin settings
-2. Template functions
+1. Plugin settings - General configuration options
+2. Email encryption methods and display options
+3. Advanced settings and whitelist configuration
+
+== Installation ==
+
+1. Upload the CryptX folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Configure the plugin settings under Settings > CryptX
+4. Your email addresses will now be automatically protected!
+
+== Frequently Asked Questions ==
+
+= How does CryptX protect my email addresses? =
+
+CryptX uses various methods to hide email addresses from spam bots while keeping them functional for visitors. Methods include JavaScript encryption, Unicode conversion, and replacing emails with images or custom text.
+
+= Will this affect my website's performance? =
+
+CryptX is designed to be lightweight and only loads JavaScript when needed. The performance impact is minimal.
+
+= Can I exclude certain email addresses from encryption? =
+
+Not directly; currently, specific email addresses cannot be excluded. It is possible to add individual posts/pages to the exclusion list using their ID. These pages/posts will then not be processed by CryptX.
+
+= Does it work with contact forms? =
+
+CryptX primarily works with email addresses displayed in content. It doesn't interfere with contact forms or other form functionality.
+
+= Can I disable encryption on specific posts? =
+
+Yes, you can enable the meta box feature to control encryption on individual posts and pages.
+
+For more information, visit the [Plugin Homepage](http://weber-nrw.de/wordpress/cryptx/ "Plugin Homepage")
 
 == Changelog ==
+= 4.0.4 =
+* fixed issue of not loading new javascript if client has cached an old version.
+= 4.0.3 =
+* added option for PBKDF2 iterations to choose between more security or less performance impact (Thx to Alexander for hinting me)
+= 4.0.2 =
+* minor fix: changed the priority from the auto link filter back to 11 from 10 (Thx to Alexander: https://wordpress.org/support/topic/4-0-0-breaks-cryptx-in-custom-shortcode-output/)
+= 4.0.1 =
+* The "encryptx" function was mistakenly removed during code cleanup. The function has now been added back. (Thx to Jan: https://wordpress.org/support/topic/version-4-breaks-because-of-undefined-function-encryptx/)
+= 4.0.0 =
+* **Major Update**: Complete code refactoring and modernization
+* Improved PHP 8.1+ compatibility and performance
+* Enhanced plugin architecture with better separation of concerns
+* Improved widget filtering and universal widget support
+* Better error handling and debugging capabilities
+* Updated minimum requirements: WordPress 6.7+ and PHP 8.1+
+* Improved security and code quality
+* Enhanced admin interface and settings organization
+* Better handling of complex HTML structures and multiline content
+= 3.5.2 =
+* Fixed a bug where activating CryptX for the first time caused a PHP Fatal error
+* Fixed a bug that caused CryptX email addresses in multi-line code, e.g. in an Elementor button with a mailto-link as the target address, to not be recognized correctly and to be converted incorrectly.
+= 3.5.1 =
+* fixed a bug with missing function
+= 3.5.0 =
+* Parts of the code have been rewritten to make the plugin more maintainable.
+* fixed some bugs
+* added option to disable CryptX on RSS feeds (requested: https://wordpress.org/support/topic/cryptx-should-be-disabled-for-rss-content/)
+* Added new Javascript function to add CryptX mailto links via javascript on client side (requested: https://wordpress.org/support/topic/javascript-function-to-encrypt-emails/)
 = 3.4.5.3 =
 * fixed a Critical error in combination with WPML
 = 3.4.5.2 =
@@ -152,16 +227,11 @@ No more SPAM by spiders scanning you site for email addresses. With CryptX you c
 = 2.4.0 =
 * Add Option to disable CryptX on single post/page
 
-== Installation ==
-
-1. Upload "cryptX folder" to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit the Options under the Options Page.
-4. Look at your Blog and be happy.
-
 == Upgrade Notice ==
-Nothing special to do.
 
-== Frequently Asked Questions ==
+= 4.0.0 =
+Major update with improved PHP 8.1+ compatibility, enhanced performance, and modernized codebase. Please test on a staging site first. Minimum requirements: WordPress 6.7+ and PHP 8.1+.
 
-[Plugin Homepage](http://weber-nrw.de/wordpress/cryptx/ "Plugin Homepage")
+= 3.5.2 =
+Bug fixes for activation errors and Elementor compatibility issues.
+
