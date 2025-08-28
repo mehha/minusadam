@@ -15,7 +15,9 @@
     }
   }
 
-  footer.content-info { margin-top: auto; }
+  footer.content-info {
+    margin-top: auto;
+  }
 }
 
 html {
@@ -100,4 +102,15 @@ iframe {
 .icon {
   width: 1rem;
   height: auto;
+}
+
+.wpcf7 {
+  label {
+    font-weight: 700;
+
+    span {
+      margin-top: 8px;
+      display: inline-block;
+    }
+  }
 }
