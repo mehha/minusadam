@@ -1,4 +1,12 @@
-//.single {
+.single {
+  article {
+    header {
+      .entry-title {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
 //  &:has(.top-image) {
 //    .main-content-wrapper {
 //      @include clearfix;
@@ -12,4 +20,4 @@
 //      }
 //    }
 //  }
-//}
+}
