@@ -8,7 +8,7 @@
 
         @if(has_post_thumbnail())
           <div class="top-image">
-            {!! get_the_post_thumbnail(null, 'medium') !!}
+            {!! get_the_post_thumbnail(null, 'large') !!}
           </div>
         @endif
 
