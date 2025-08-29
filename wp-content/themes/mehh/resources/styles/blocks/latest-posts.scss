@@ -6,4 +6,14 @@
   .wp-block-latest-posts__post-excerpt {
     margin-top: 1rem;
   }
+
+  .wp-block-latest-posts__list {
+    li {
+      margin-bottom: 2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
