@@ -6,7 +6,7 @@
     <div class="content">
       <div class="main-content-wrapper">
 
-        @if(has_post_thumbnail())
+        @if(has_post_thumbnail() && 0)
           <div class="top-image">
             {!! get_the_post_thumbnail(null, 'large') !!}
           </div>
