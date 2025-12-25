@@ -18,9 +18,9 @@ abstract class Icon {
 	 * Icon constructor
 	 */
 	public function __construct() {
-		if ( $this->get_include() ) {
-			$this->map = include $this->get_include();
-		}
+		$filePath = $this->get_include();
+
+		$this->map = ! is_null( $filePath ) && is_readable( $filePath ) ? require $filePath : array();
 	}
 
 	/**
@@ -31,7 +31,7 @@ abstract class Icon {
 	 * @return string
 	 */
 	protected function maybe( string $language, string $prefix = '', string $postfix = '' ): string {
-		if ( 5 == strlen( $language ) ) {
+		if ( 5 === strlen( $language ) ) {
 			$language = strtolower( substr( $language, - 2 ) );
 		}
 
@@ -39,9 +39,11 @@ abstract class Icon {
 	}
 
 	/**
-	 * @return string
+	 * @return ?string
 	 */
-	abstract protected function get_include(): string;
+	protected function get_include(): ?string {
+		return null;
+	}
 
 	/**
 	 * @param string $language

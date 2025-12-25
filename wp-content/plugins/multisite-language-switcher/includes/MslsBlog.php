@@ -10,6 +10,10 @@ namespace lloc\Msls;
  */
 class MslsBlog {
 
+	const MSLS_GET_PERMALINK_HOOK = 'msls_blog_get_permalink';
+
+	const WP_ADMIN_BAR_SHOW_SITE_ICONS_HOOK = 'wp_admin_bar_show_site_icons';
+
 	/**
 	 * WordPress generates such an object
 	 *
@@ -90,12 +94,12 @@ class MslsBlog {
 	/**
 	 * Gets the language stored in this object
 	 *
-	 * @param string $default
+	 * @param string $preset
 	 *
 	 * @return string
 	 */
-	public function get_language( $default = 'en_US' ) {
-		return empty( $this->language ) ? $default : $this->language;
+	public function get_language( $preset = 'en_US' ) {
+		return empty( $this->language ) ? $preset : $this->language;
 	}
 
 	/**
@@ -115,7 +119,7 @@ class MslsBlog {
 	 * @return string|null
 	 */
 	public function get_url( $options ) {
-		if ( $this->obj->userblog_id == msls_blog_collection()->get_current_blog_id() ) {
+		if ( msls_blog_collection()->get_current_blog_id() === $this->obj->userblog_id ) {
 			return $options->get_current_link();
 		}
 
@@ -127,18 +131,15 @@ class MslsBlog {
 	 *
 	 * @return ?string
 	 */
-	protected function get_permalink( $options ) {
+	protected function get_permalink( OptionsInterface $options ) {
 		$url = null;
 
 		$is_home = is_front_page();
 
 		switch_to_blog( $this->obj->userblog_id );
 
-		if ( is_object( $options ) && method_exists(
-			$options,
-			'has_value'
-		) && ( $is_home || $options->has_value( $this->get_language() ) ) ) {
-			$url = apply_filters( 'mlsl_blog_get_permalink', $options->get_permalink( $this->get_language() ), $this );
+		if ( $is_home || $options->has_value( $this->get_language() ) ) {
+			$url = apply_filters( self::MSLS_GET_PERMALINK_HOOK, $options->get_permalink( $this->get_language() ), $this );
 		}
 
 		restore_current_blog();
@@ -154,8 +155,8 @@ class MslsBlog {
 	 *
 	 * @return int
 	 */
-	public static function _cmp( $a, $b ) {
-		if ( $a == $b ) {
+	public static function internal_cmp( $a, $b ) {
+		if ( $a === $b ) {
 			return 0;
 		}
 
@@ -171,7 +172,7 @@ class MslsBlog {
 	 * @return int
 	 */
 	public static function language( MslsBlog $a, MslsBlog $b ) {
-		return self::_cmp( $a->get_language(), $b->get_language() );
+		return self::internal_cmp( $a->get_language(), $b->get_language() );
 	}
 
 	/**
@@ -183,7 +184,7 @@ class MslsBlog {
 	 * @return int
 	 */
 	public static function description( MslsBlog $a, MslsBlog $b ) {
-		return self::_cmp( $a->get_description(), $b->get_description() );
+		return self::internal_cmp( $a->get_description(), $b->get_description() );
 	}
 
 	/**
@@ -191,7 +192,7 @@ class MslsBlog {
 	 */
 	public function get_blavatar(): string {
 		$blavatar_html   = '<div class="blavatar"></div>';
-		$show_site_icons = apply_filters( 'wp_admin_bar_show_site_icons', true );
+		$show_site_icons = apply_filters( self::WP_ADMIN_BAR_SHOW_SITE_ICONS_HOOK, true );
 
 		switch_to_blog( $this->obj->userblog_id );
 

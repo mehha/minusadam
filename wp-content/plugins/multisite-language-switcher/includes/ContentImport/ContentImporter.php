@@ -21,22 +21,34 @@ use lloc\Msls\MslsRequest;
 class ContentImporter extends MslsRegistryInstance {
 	use WithRequestPostAttributes;
 
+	const MSLS_BEFORE_IMPORT_ACTION = 'msls_content_import_before_import';
+
+	const MSLS_AFTER_IMPORT_ACTION = 'msls_content_import_after_import';
+
 	/**
 	 * @var MslsMain
 	 */
-	protected $main;
+	protected MslsMain $main;
+
+	/**
+	 * @var ImportLogger|null
+	 */
 	protected ?ImportLogger $logger = null;
+
+	/**
+	 * @var Relations|null
+	 */
 	protected ?Relations $relations = null;
 
 	/**
 	 * @var bool Whether the class should handle requests or not.
 	 */
-	protected $handle = true;
+	protected bool $handle = true;
 
 	/**
 	 * @var int The ID of the post the class created while handling the request, if any.
 	 */
-	protected $has_created_post = 0;
+	protected int $has_created_post = 0;
 
 	/**
 	 * ContentImporter constructor.
@@ -44,34 +56,34 @@ class ContentImporter extends MslsRegistryInstance {
 	 * @param ?MslsMain $main
 	 */
 	public function __construct( ?MslsMain $main = null ) {
-		$this->main = $main ?: MslsMain::create();
+		$this->main = ! is_null( $main ) ? $main : MslsMain::create();
 	}
 
 	/**
-	 * @return \lloc\Msls\ContentImport\ImportLogger
+	 * @return ?ImportLogger
 	 */
-	public function get_logger() {
+	public function get_logger(): ?ImportLogger {
 		return $this->logger;
 	}
 
 	/**
-	 * @param \lloc\Msls\ContentImport\ImportLogger $logger
+	 * @param ImportLogger $logger
 	 */
-	public function set_logger( $logger ): void {
+	public function set_logger( ImportLogger $logger ): void {
 		$this->logger = $logger;
 	}
 
 	/**
-	 * @return \lloc\Msls\ContentImport\Relations
+	 * @return ?Relations
 	 */
-	public function get_relations() {
+	public function get_relations(): ?Relations {
 		return $this->relations;
 	}
 
 	/**
-	 * @param \lloc\Msls\ContentImport\Relations $relations
+	 * @param Relations $relations
 	 */
-	public function set_relations( $relations ): void {
+	public function set_relations( Relations $relations ): void {
 		$this->relations = $relations;
 	}
 
@@ -83,13 +95,14 @@ class ContentImporter extends MslsRegistryInstance {
 	 * @return string[] The updated, if needed, data array.
 	 */
 	public function handle_import( array $data = array() ) {
-		if ( ! $this->pre_flight_check() || false === $sources = $this->parse_sources() ) {
+		$sources = $this->parse_sources();
+		if ( ! $this->pre_flight_check() || false === $sources ) {
 			return $data;
 		}
 
 		list( $source_blog_id, $source_post_id ) = $sources;
 
-		if ( $source_blog_id === get_current_blog_id() ) {
+		if ( get_current_blog_id() === $source_blog_id ) {
 			return $data;
 		}
 
@@ -147,6 +160,7 @@ class ContentImporter extends MslsRegistryInstance {
 			return false;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( ! isset( $_POST['msls_import'] ) ) {
 			return false;
 		}
@@ -224,7 +238,7 @@ class ContentImporter extends MslsRegistryInstance {
 		}
 		$this->handle( true );
 
-		$this->has_created_post = $post_id ?: false;
+		$this->has_created_post = $post_id > 0 ? $post_id : false;
 
 		restore_current_blog();
 
@@ -239,11 +253,11 @@ class ContentImporter extends MslsRegistryInstance {
 	public function handle( $handle ) {
 		$this->handle = $handle;
 
-		// also prevent MSLS from saving
+		// Also, prevent MSLS from saving.
 		if ( false === $handle ) {
-			add_action( 'msls_main_save', '__return_void' );
+			add_action( 'msls_main_save', 'msls_return_void' );
 		} else {
-			remove_action( 'msls_main_save', '__return_void' );
+			remove_action( 'msls_main_save', 'msls_return_void' );
 		}
 	}
 
@@ -267,7 +281,7 @@ class ContentImporter extends MslsRegistryInstance {
 		 *
 		 * @param ImportCoordinates $import_coordinates
 		 */
-		do_action( 'msls_content_import_before_import', $import_coordinates );
+		do_action( self::MSLS_BEFORE_IMPORT_ACTION, $import_coordinates );
 
 		/**
 		 * Filters the data before the import runs.
@@ -328,7 +342,7 @@ class ContentImporter extends MslsRegistryInstance {
 		 *
 		 * @since TBD
 		 */
-		do_action( 'msls_content_import_after_import', $import_coordinates, $this->logger, $this->relations );
+		do_action( self::MSLS_AFTER_IMPORT_ACTION, $import_coordinates, $this->logger, $this->relations );
 
 		/**
 		 * Filters the data after the import ran.
@@ -355,7 +369,7 @@ class ContentImporter extends MslsRegistryInstance {
 	 */
 	protected function update_inserted_blog_post_data( $blog_id, $post_id, array $data ) {
 		$data['ID']          = $post_id;
-		$data['post_status'] = empty( $data['post_status'] ) || $data['post_status'] === 'auto-draft'
+		$data['post_status'] = empty( $data['post_status'] ) || 'auto-draft' === $data['post_status']
 			? 'draft'
 			: $data['post_status'];
 		$this->insert_blog_post( $blog_id, $data );
@@ -371,7 +385,7 @@ class ContentImporter extends MslsRegistryInstance {
 	protected function redirect_to_blog_post( $dest_blog_id, $post_id ) {
 		switch_to_blog( $dest_blog_id );
 		$edit_post_link = html_entity_decode( get_edit_post_link( $post_id ) );
-		wp_redirect( $edit_post_link );
+		wp_safe_redirect( $edit_post_link );
 		die();
 	}
 
@@ -381,17 +395,18 @@ class ContentImporter extends MslsRegistryInstance {
 	 * Empty posts would not be saved to database but it's fine if in
 	 * the context of a content import as it will be populated.
 	 *
-	 * @param bool $empty
+	 * @param bool $is_empty
 	 *
 	 * @return bool
 	 */
-	public function filter_empty( $empty ) {
+	public function filter_empty( $is_empty ) {
 		if ( ! $this->main->verify_nonce() ) {
-			return $empty;
+			return $is_empty;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( ! isset( $_POST['msls_import'] ) ) {
-			return $empty;
+			return $is_empty;
 		}
 
 		return false;

@@ -11,6 +11,8 @@ use lloc\Msls\MslsBlogCollection;
  */
 class HrefLang {
 
+	const MSLS_HEAD_HREFLANG_HOOK = 'msls_head_hreflang';
+
 	/**
 	 * @var array<string, string>
 	 */
@@ -26,7 +28,7 @@ class HrefLang {
 		}
 
 		foreach ( $map as $alpha2 => $languages ) {
-			if ( 1 == count( $languages ) ) {
+			if ( 1 === count( $languages ) ) {
 				$this->map[ $languages[0] ] = $alpha2;
 			} else {
 				foreach ( $languages as $language ) {
@@ -64,6 +66,6 @@ class HrefLang {
 		 *
 		 * @since 0.9.9
 		 */
-		return (string) apply_filters( 'msls_head_hreflang', $language );
+		return (string) apply_filters( self::MSLS_HEAD_HREFLANG_HOOK, $language );
 	}
 }

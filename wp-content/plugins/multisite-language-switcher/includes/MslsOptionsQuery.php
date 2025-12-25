@@ -16,6 +16,9 @@ class MslsOptionsQuery extends MslsOptions {
 	 */
 	public ?bool $with_front = true;
 
+	/**
+	 * @var MslsSqlCacher
+	 */
 	protected MslsSqlCacher $sql_cache;
 
 	public function __construct( MslsSqlCacher $sql_cache ) {
@@ -34,7 +37,7 @@ class MslsOptionsQuery extends MslsOptions {
 	/**
 	 * Factory method
 	 *
-	 * @param int $id This parameter is unused here
+	 * @param int $id This parameter is unused here.
 	 *
 	 * @return ?MslsOptionsQuery
 	 */
@@ -71,9 +74,9 @@ class MslsOptionsQuery extends MslsOptions {
 		if ( $this->has_value( $language ) ) {
 			$post_link = $this->get_current_link();
 			if ( ! empty( $post_link ) ) {
-				$post_link = apply_filters_deprecated( 'check_url', array( $post_link, $this ), '2.7.1', 'msls_get_postlink' );
+				$post_link = apply_filters_deprecated( 'check_url', array( $post_link, $this ), '2.7.1', MslsOptions::MSLS_GET_POSTLINK_HOOK );
 
-				return apply_filters( 'msls_get_postlink', $post_link, $this );
+				return apply_filters( MslsOptions::MSLS_GET_POSTLINK_HOOK, $post_link, $this );
 			}
 		}
 

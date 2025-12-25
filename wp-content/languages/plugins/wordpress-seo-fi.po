@@ -2,17 +2,17 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-06-16 10:20:12+0000\n"
+"PO-Revision-Date: 2025-09-03 20:25:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: GlotPress/4.0.3\n"
 "Language: fi\n"
 "Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
 
 #. translators: %s: Yoast SEO.
-#: wp-seo-main.php:564
+#: wp-seo-main.php:578
 msgid "%s activation failed"
 msgstr "%s aktivointi epäonnistui"
 
@@ -20,6 +20,11 @@ msgstr "%s aktivointi epäonnistui"
 #: src/presenters/admin/migration-error-presenter.php:42
 msgid "%s is unable to create database tables"
 msgstr "%s ei voi luoda tietokantatauluja"
+
+#: src/presenters/admin/sidebar-presenter.php:107 js/dist/general-page.js:5
+#: js/dist/new-settings.js:5 js/dist/support.js:4
+msgid "Buy now"
+msgstr "Osta nyt"
 
 #: admin/menu/class-base-menu.php:260 admin/menu/class-base-menu.php:264
 msgid "Upgrades"
@@ -29,6 +34,24 @@ msgstr "Päivitykset"
 msgctxt "block keyword"
 msgid "breadcrumbs"
 msgstr "murut"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "How to"
+msgstr "Kuinka tehdä"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "SEO"
+msgstr "SEO"
+
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "Schema"
+msgstr "Schema"
 
 #: blocks/structured-data-blocks/faq/block.json
 msgctxt "block keyword"
@@ -40,12 +63,9 @@ msgctxt "block keyword"
 msgid "FAQ"
 msgstr "UKK"
 
-#: admin/class-premium-upsell-admin-block.php:82 js/dist/ai-consent.js:10
-#: js/dist/ai-generator.js:10 js/dist/block-editor.js:25
-#: js/dist/classic-editor.js:10 js/dist/editor-modules.js:318
-#: js/dist/elementor.js:11 js/dist/externals-components.js:191
-#: js/dist/general-page.js:12 js/dist/integrations-page.js:46
-#: js/dist/new-settings.js:12 js/dist/redirects.js:10 js/dist/support.js:12
+#: admin/class-premium-upsell-admin-block.php:89 js/dist/block-editor.js:475
+#: js/dist/classic-editor.js:458 js/dist/general-page.js:9
+#: js/dist/new-settings.js:9
 msgid "BLACK FRIDAY"
 msgstr "BLACK FRIDAY"
 
@@ -75,7 +95,7 @@ msgstr "Taksonomia ei ole uusi."
 msgid "Post type is not new."
 msgstr "Julkaisun tyyppi ei ole uusi."
 
-#: src/integrations/support-integration.php:119 js/dist/support.js:18
+#: src/integrations/support-integration.php:130 js/dist/support.js:7
 msgid "Support"
 msgstr "Tuki"
 
@@ -92,46 +112,51 @@ msgstr "Sisältötyyppiä %s ei voitu indeksoida, sillä se ei täytä indeksoin
 msgid "Academy"
 msgstr "Akatemia"
 
+#. translators: %1$s: Yoast SEO
+#: src/initializers/crawl-cleanup-permalinks.php:144
+msgid "%1$s: redirect utm variables to #"
+msgstr "%1$s: redirect utm variables to #"
+
 #. translators: CTA to finish the first time configuration. %s: Either
 #. first-time SEO configuration or SEO configuration.
 #: admin/class-admin.php:235
 msgid "Finish your %s"
 msgstr "Viimeistele %s"
 
-#: inc/class-wpseo-admin-bar-menu.php:572
+#: inc/class-wpseo-admin-bar-menu.php:573
 msgid "WordPress.org support forums"
 msgstr "WordPress.org tukifoorumit"
 
-#: inc/class-wpseo-admin-bar-menu.php:567
+#: inc/class-wpseo-admin-bar-menu.php:568
 msgid "Yoast Premium support"
 msgstr "Yoast Premium -tuki"
 
-#: inc/class-wpseo-admin-bar-menu.php:547
+#: inc/class-wpseo-admin-bar-menu.php:548
 msgid "Help"
 msgstr "Tuki"
 
-#: inc/class-wpseo-admin-bar-menu.php:528
+#: inc/class-wpseo-admin-bar-menu.php:529
 msgid "Write better content"
 msgstr "Kirjoita parempaa sisältöä"
 
-#: inc/class-wpseo-admin-bar-menu.php:523
+#: inc/class-wpseo-admin-bar-menu.php:524
 msgid "Improve your blog post"
 msgstr "Kehitä blogiartikkeleitasi"
 
-#: inc/class-wpseo-admin-bar-menu.php:518
-#: inc/class-wpseo-admin-bar-menu.php:577
+#: inc/class-wpseo-admin-bar-menu.php:519
+#: inc/class-wpseo-admin-bar-menu.php:578
 msgid "Learn more SEO"
 msgstr "Opi lisää hakukoneopimoinnista"
 
-#: inc/class-wpseo-admin-bar-menu.php:473
+#: inc/class-wpseo-admin-bar-menu.php:474
 msgid "SEO Tools"
 msgstr "Hakukoneoptimointityökalut"
 
-#: inc/class-wpseo-admin-bar-menu.php:236
+#: inc/class-wpseo-admin-bar-menu.php:238
 msgid "Focus keyphrase: "
 msgstr "Kohdennettu avainfraasi: "
 
-#: inc/class-wpseo-admin-bar-menu.php:230
+#: inc/class-wpseo-admin-bar-menu.php:232
 msgid "not set"
 msgstr "ei asetettu"
 
@@ -142,16 +167,16 @@ msgid_plural "Cleaned up %1$d records."
 msgstr[0] "Siistittiin %1$d kohde."
 msgstr[1] "Siistittiin %1$d kohdetta."
 
-#: admin/views/class-yoast-feature-toggles.php:210 js/dist/general-page.js:17
-#: js/dist/general-page.js:29 js/dist/integrations-page.js:3
+#: admin/views/class-yoast-feature-toggles.php:210 js/dist/general-page.js:12
+#: js/dist/general-page.js:24 js/dist/integrations-page.js:3
 #: js/dist/integrations-page.js:6 js/dist/integrations-page.js:18
-#: js/dist/integrations-page.js:51 js/dist/new-settings.js:324
-#: js/dist/plans.js:2 js/dist/post-edit.js:4
+#: js/dist/integrations-page.js:28 js/dist/new-settings.js:322
+#: js/dist/plans.js:3 js/dist/plans.js:7
 msgid "Learn more"
 msgstr "Opi lisää"
 
 #: src/integrations/admin/crawl-settings-integration.php:189
-#: js/dist/new-settings.js:178
+#: js/dist/new-settings.js:174
 msgid "Remove unused resources"
 msgstr "Poista käyttämättömät resurssit"
 
@@ -163,23 +188,23 @@ msgstr "Totea miksi inklusiivinen kieli on tärkeää SEO:ssa."
 msgid "The inclusive language analysis offers suggestions to write more inclusive copy."
 msgstr "Inklusiivinen kielianalyysi ehdottaa miten voit kirjoittaa inklusiivisempaa tekstiä."
 
-#: admin/views/class-yoast-feature-toggles.php:91 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:91 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "Inclusive language analysis"
 msgstr "Inklusiivinen kielianalyysi"
 
 #: admin/metabox/class-metabox-section-inclusive-language.php:30
-#: js/dist/externals-components.js:527
+#: js/dist/externals-components.js:422
 msgid "Inclusive language"
 msgstr "Inklusiivinen kieli"
 
 #: src/integrations/admin/crawl-settings-integration.php:153
-#: js/dist/new-settings.js:33 js/dist/new-settings.js:179
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:175
 msgid "Filter search terms"
 msgstr "Suodata hakutermejä"
 
-#: admin/views/class-yoast-feature-toggles.php:195 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:328
+#: admin/views/class-yoast-feature-toggles.php:195 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:326
 msgid "IndexNow"
 msgstr "Indeksoi nyt"
 
@@ -195,18 +220,10 @@ msgstr "Emoji-skriptit"
 msgid "Category feeds"
 msgstr "Kategoria-syötteet"
 
-#: src/integrations/admin/first-time-configuration-integration.php:128
-#: js/dist/general-page.js:49
+#: src/integrations/admin/first-time-configuration-integration.php:139
+#: js/dist/general-page.js:64 js/dist/general-page.js:66
 msgid "First-time configuration"
 msgstr "Aloitusmääritykset"
-
-#: src/deprecated/src/config/wordproof-translations.php:115
-msgid "Open settings"
-msgstr "Avaa asetukset"
-
-#: src/deprecated/src/config/wordproof-translations.php:101
-msgid "Open authentication"
-msgstr "Avaa tunnistus"
 
 #: src/integrations/admin/import-integration.php:236
 msgid "Cleanup failed with the following error:"
@@ -237,7 +254,7 @@ msgstr "Valitse SEO-lisäosa"
 msgid "The import can take a long time depending on your site's size."
 msgstr "Tuonnin kesto riippuu sivuston koosta"
 
-#: src/integrations/admin/installation-success-integration.php:104
+#: src/integrations/admin/installation-success-integration.php:114
 msgid "Installation Successful"
 msgstr "Asennus onnistui"
 
@@ -360,8 +377,8 @@ msgstr "Lue lisää %s -integraatiostamme."
 msgid "Read more about how internal linking can improve your site structure."
 msgstr "Lue lisää kuinka sisäinen linkitys voi parantaa sivustosi järjestystä"
 
-#: admin/views/class-yoast-feature-toggles.php:125 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:125 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "Link suggestions"
 msgstr "Linkkisuosituksia"
 
@@ -373,10 +390,9 @@ msgstr "Opi kuinka kehittää sisältöäsi Huomioiden avulla."
 msgid "Find relevant data about your content right in the Insights section in the Yoast SEO metabox. You’ll see what words you use most often and if they’re a match with your keywords! "
 msgstr "Saat lisää oleellista dataa sisällöstäsi Yoast SEO:n metalaatikon Huomiot-osiosta. Näet mitä sanoja käytät useimmin ja miten ne sopivat yhteen avainsanojesi kanssa!"
 
-#: admin/views/class-yoast-feature-toggles.php:116 js/dist/block-editor.js:238
-#: js/dist/block-editor.js:542 js/dist/classic-editor.js:223
-#: js/dist/elementor.js:110 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:116 js/dist/block-editor.js:226
+#: js/dist/block-editor.js:488 js/dist/classic-editor.js:209
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:322
 msgid "Insights"
 msgstr "Huomiot"
 
@@ -449,9 +465,9 @@ msgstr "Automaattiset %1$s-päivitykset on käytössä tämän asetuksen peruste
 
 #: src/presenters/admin/badge-presenter.php:80
 #: src/presenters/admin/badge-presenter.php:87
-#: js/dist/externals/componentsNew.js:1081 js/dist/integrations-page.js:3
-#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:18
-#: js/dist/new-settings.js:366
+#: js/dist/externals-components.js:422 js/dist/externals/componentsNew.js:1039
+#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:6
+#: js/dist/integrations-page.js:18 js/dist/new-settings.js:366
 msgid "New"
 msgstr "Uusi"
 
@@ -468,9 +484,15 @@ msgstr "Termi ei ole kelvollinen. WordPress antoi seuraavan syyn: %s"
 msgid "The term could not be found."
 msgstr "Termiä ei löytynyt."
 
-#: admin/class-yoast-form.php:1068 js/dist/general-page.js:46
+#: admin/class-yoast-form.php:1068 js/dist/general-page.js:55
 msgid "This feature has been disabled since subsites never send tracking data."
 msgstr "Tämä ominaisuus on poistettu käytöstä, sillä alasivustot eivät koskaan lähetä seurantatietoja."
+
+#. translators: %1$s expands to an opening anchor tag, %2$s expands to an
+#. closing anchor tag.
+#: src/integrations/third-party/wpml-wpseo-notification.php:110
+msgid "We notice that you have installed WPML. To make sure your canonical URLs are set correctly, %1$sinstall and activate the WPML SEO add-on%2$s as well!"
+msgstr "Huomaamme, että olet asentanut WPML:n. Varmistaaksesi että kanoniset osoitteesi on asetettu oikein, %1$sasenna ja aktivoi myös Yoast SEO Multilingual -lisäosa%2$s!"
 
 #: src/presenters/admin/indexing-notification-presenter.php:81
 msgid "Because of a change in your category base setting, some of your SEO data needs to be reprocessed."
@@ -480,7 +502,7 @@ msgstr "Kategorialinkkiesi rakennemuutoksen vuoksi osa SEO-datastasi tulee käsi
 msgid "Find out how a rich snippet can improve visibility and click-through-rate."
 msgstr "Opi kuinka rikas ote voi parantaa näkyvyyttä ja klikkaustaajuutta."
 
-#: admin/views/class-yoast-feature-toggles.php:189 js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:189 js/dist/new-settings.js:322
 msgid "This adds an author byline and reading time estimate to the article’s snippet when shared on Slack."
 msgstr "Tämä lisää kirjoittajatiedot ja arvioidun lukuajan artikkelin otteeseen kun se jaetaan Slackissa."
 
@@ -509,7 +531,7 @@ msgstr "Arvioitu lukuaika"
 msgid "Written by"
 msgstr "Kirjoittanut"
 
-#: inc/class-wpseo-admin-bar-menu.php:444
+#: inc/class-wpseo-admin-bar-menu.php:445
 msgid "Google Rich Results Test"
 msgstr "Google Rich Results -testi"
 
@@ -544,7 +566,7 @@ msgid "You can speed up your site and get insight into your internal linking str
 msgstr "Voit nopeuttaa sivustoasi ja oppia sen sisäisestä linkkirakenteesta sallimalla meidän tehdä muutamia optimointeja siihen kuinka sivuston SEO-data on taltioitu."
 
 #: src/presenters/admin/indexing-notification-presenter.php:59
-#: js/dist/general-page.js:42 js/dist/indexation.js:8
+#: js/dist/general-page.js:40 js/dist/indexation.js:8
 msgid "Start SEO data optimization"
 msgstr "Aloita SEO-datan optimointi"
 
@@ -572,17 +594,17 @@ msgid "Something has gone wrong and we couldn't complete the optimization of you
 msgstr "Jokin meni pieleen, emme pystyneet tekemään SEO-datasi optimointia loppuun asti. Ole hyvä ja %1$saloita prosessi uudelleen%2$s."
 
 #. translators: %s expands to a mailto support link.
-#: inc/class-addon-manager.php:877
+#: inc/class-addon-manager.php:889
 msgid "If you still need support and have an active subscription for this product, please email %s."
 msgstr "Jos tarvitset edelleen tukea ja sinulla on aktiivinen tilaus tähän tuotteeseen, ole hyvä ja lähetä sähköpostia osoitteeseen %s."
 
 #. translators: 1: expands to <a> that refers to the help page, 2: </a> closing
 #. tag.
-#: inc/class-addon-manager.php:874
+#: inc/class-addon-manager.php:886
 msgid "You can probably find an answer to your question in our %1$shelp center%2$s."
 msgstr "Löydät todennäköisesti vastauksen kysymykseesi %1$stukipalvelustamme%2$s."
 
-#: inc/class-addon-manager.php:871
+#: inc/class-addon-manager.php:883
 msgid "Need support?"
 msgstr "Tarvitsetko tukea?"
 
@@ -673,8 +695,8 @@ msgstr "UKK-sivu"
 msgid "About Page"
 msgstr "Tietoa-sivu"
 
-#: src/config/schema-types.php:64 js/dist/block-editor.js:521
-#: js/dist/classic-editor.js:506 js/dist/elementor.js:379
+#: src/config/schema-types.php:64 js/dist/block-editor.js:470
+#: js/dist/classic-editor.js:453
 msgid "Item Page"
 msgstr "Kohdesivu"
 
@@ -688,8 +710,8 @@ msgid "Allow us to track some data about your site to improve our plugin."
 msgstr "Salli meidän seurata sivustoasi voidaksemme kehittää lisäosaamme."
 
 #: admin/views/class-yoast-feature-toggles.php:165
-#: admin/views/class-yoast-feature-toggles.php:166 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:321
+#: admin/views/class-yoast-feature-toggles.php:166 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:319
 msgid "Usage tracking"
 msgstr "Käyttöseuranta"
 
@@ -876,37 +898,37 @@ msgstr "%1$sTämän raportoi %2$s-lisäosa%3$s"
 msgid "%1$sGo to the Discussion Settings page%2$s"
 msgstr "%1$sSiirry Keskusteluasetukset-sivulle%2$s"
 
-#: admin/metabox/class-metabox.php:194
+#: admin/metabox/class-metabox.php:191
 msgid "If you want to apply advanced <code>meta</code> robots settings for this page, please define them in the following field."
 msgstr "Mikäli tahdot käyttää edistyneitä <code>meta</code> -robottiasetuksia tälle sivulle, ole hyvä ja aseta ne seuraavassa kentässä."
 
 #. translators: 1: Link start tag to the Firefox website, 2: Link start tag to
 #. the Chrome website, 3: Link start tag to the Edge website, 4: Link closing
 #. tag.
-#: admin/metabox/class-metabox.php:150 admin/taxonomy/class-taxonomy.php:113
+#: admin/metabox/class-metabox.php:147 admin/taxonomy/class-taxonomy.php:113
 msgid "The browser you are currently using is unfortunately rather dated. Since we strive to give you the best experience possible, we no longer support this browser. Instead, please use %1$sFirefox%4$s, %2$sChrome%4$s or %3$sMicrosoft Edge%4$s."
 msgstr "Käyttämäsi selain on huomattavan vanha. Koska haluamme tarjota sinulle parhaan mahdollisen kokemuksen, suosittelemme sinua käyttämään %1$sFirefoxia%4$s, %2$sChromea%4$s ta %3$sMicrosoft Edgeä%4$s."
 
 #. translators: %1$s expands to Yoast SEO academy
 #. translators: %1$s expands to "Yoast SEO academy".
-#: src/presenters/admin/sidebar-presenter.php:168 js/dist/general-page.js:3
+#: src/presenters/admin/sidebar-presenter.php:154 js/dist/general-page.js:3
 #: js/dist/new-settings.js:3 js/dist/support.js:3
 msgid "Check out %1$s"
 msgstr "Tutustu: %1$s"
 
-#: src/presenters/admin/sidebar-presenter.php:161 js/dist/general-page.js:2
+#: src/presenters/admin/sidebar-presenter.php:147 js/dist/general-page.js:2
 #: js/dist/new-settings.js:2 js/dist/support.js:2
 msgid "We have both free and premium online courses to learn everything you need to know about SEO."
 msgstr "Meillä on sekä ilmaisia että maksullisia verkkokursseja, joiden avulla opit kaiken mitä sinun tulee tietää hakukoneoptimoinnista."
 
 #. translators: %1$s expands to Yoast SEO academy, which is a clickable link.
 #. translators: %1$s expands to "Yoast SEO" academy, which is a clickable link.
-#: src/presenters/admin/sidebar-presenter.php:159 js/dist/general-page.js:2
+#: src/presenters/admin/sidebar-presenter.php:145 js/dist/general-page.js:2
 #: js/dist/new-settings.js:2 js/dist/support.js:2
 msgid "Want to learn SEO from Team Yoast? Check out our %1$s!"
 msgstr "Haluatko oppia hakukoneoptimointia Team Yostin kanssa? Tsekkaa %1$s!"
 
-#: src/presenters/admin/sidebar-presenter.php:151 js/dist/general-page.js:2
+#: src/presenters/admin/sidebar-presenter.php:137 js/dist/general-page.js:2
 #: js/dist/new-settings.js:2 js/dist/support.js:2
 msgid "Learn SEO"
 msgstr "Opi hakukoneoptimointia"
@@ -926,10 +948,10 @@ msgstr "Tuo asetukset toisesta %1$s -asennuksesta liittämällä ne tähän ja n
 msgid "Your %1$s settings:"
 msgstr "%1$s-asetuksesi:"
 
-#: admin/metabox/class-metabox.php:427 js/dist/block-editor.js:567
-#: js/dist/elementor.js:530 js/dist/new-settings.js:28
-#: js/dist/new-settings.js:35 js/dist/new-settings.js:39
-#: js/dist/new-settings.js:68 js/dist/new-settings.js:266
+#: admin/metabox/class-metabox.php:424 js/dist/block-editor.js:513
+#: js/dist/new-settings.js:23 js/dist/new-settings.js:30
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:64
+#: js/dist/new-settings.js:264
 msgid "Schema"
 msgstr "Schema"
 
@@ -954,6 +976,10 @@ msgid "You have %d hidden notification:"
 msgid_plural "You have %d hidden notifications:"
 msgstr[0] "Sinulla on %d kätketty ilmoitus:"
 msgstr[1] "Sinulla on %d kätkettyä ilmoitusta:"
+
+#: src/helpers/score-icon-helper.php:84
+msgid "Focus keyphrase not set"
+msgstr "Focus keyphrase not set"
 
 #. translators: %1$s: amount of errors, %2$s: the admin page title
 #: admin/class-yoast-input-validation.php:65
@@ -1001,9 +1027,9 @@ msgstr "Nähdäksesi nykyiset indeksointivirheet, %1$sole hyvä ja vieraile Goog
 msgid "Google has discontinued its Crawl Errors API. Therefore, any possible crawl errors you might have cannot be displayed here anymore. %1$sRead our statement on this for further information%2$s."
 msgstr "Google on sukenut Crawl Errors -APInsa. Tämän vuoksi mahdollisia indeksointivirheitä ei voida enää näyttää tässä. %1$sLue lausuntomme aiheesta jos haluat lisätietoa%2$s."
 
-#: src/integrations/admin/first-time-configuration-integration.php:480
-#: src/integrations/admin/first-time-configuration-integration.php:493
-#: js/dist/new-settings.js:336
+#: src/integrations/admin/first-time-configuration-integration.php:497
+#: src/integrations/admin/first-time-configuration-integration.php:510
+#: js/dist/new-settings.js:334
 msgid "Organization"
 msgstr "Organisaatio"
 
@@ -1076,9 +1102,8 @@ msgstr "Vastaanotetut sisäiset linkit"
 msgid "Outgoing internal links"
 msgstr "Ulos osoittavat sisäiset linkit"
 
-#: admin/class-meta-columns.php:132 js/dist/block-editor.js:164
-#: js/dist/classic-editor.js:149 js/dist/editor-modules.js:286
-#: js/dist/elementor.js:500 js/dist/wincher-dashboard-widget.js:117
+#: admin/class-meta-columns.php:132 js/dist/block-editor.js:104
+#: js/dist/classic-editor.js:87 js/dist/wincher-dashboard-widget.js:117
 msgid "Keyphrase"
 msgstr "Avainfraasi"
 
@@ -1141,20 +1166,12 @@ msgstr "Sinulla ei ole vaadittavia oikeuksia viemään asetuksia."
 
 #. translators: %s expands to Yoast WooCommerce SEO
 #. translators: %s expands to Yoast SEO Premium
+#. translators: %s expands to "Yoast WooCommerce SEO
 #. translators: %s expands to "Yoast SEO" Premium
-#: admin/class-premium-upsell-admin-block.php:167
-#: admin/class-premium-upsell-admin-block.php:179 js/dist/ai-consent.js:11
-#: js/dist/ai-consent.js:12 js/dist/ai-generator.js:11
-#: js/dist/ai-generator.js:12 js/dist/block-editor.js:26
-#: js/dist/block-editor.js:27 js/dist/classic-editor.js:11
-#: js/dist/classic-editor.js:12 js/dist/editor-modules.js:319
-#: js/dist/editor-modules.js:320 js/dist/elementor.js:12
-#: js/dist/elementor.js:13 js/dist/externals-components.js:192
-#: js/dist/externals-components.js:193 js/dist/general-page.js:13
-#: js/dist/general-page.js:14 js/dist/integrations-page.js:47
-#: js/dist/integrations-page.js:48 js/dist/new-settings.js:13
-#: js/dist/new-settings.js:14 js/dist/redirects.js:11 js/dist/redirects.js:12
-#: js/dist/support.js:13 js/dist/support.js:14
+#: admin/class-premium-upsell-admin-block.php:181
+#: admin/class-premium-upsell-admin-block.php:192 js/dist/general-page.js:10
+#: js/dist/general-page.js:11 js/dist/new-settings.js:10
+#: js/dist/new-settings.js:11
 msgid "Upgrade to %s"
 msgstr "Päivitä %s:iin"
 
@@ -1195,7 +1212,7 @@ msgstr "Tällä välilehdellä voit valitusti poistaa käytöstä %s:n ominaisuu
 msgid "%s is a required feature toggle argument."
 msgstr "%s on vaadittu argumentti ominaisuuden tilan vaihtamiseksi"
 
-#: admin/class-yoast-form.php:1064 js/dist/general-page.js:46
+#: admin/class-yoast-form.php:1064 js/dist/general-page.js:55
 msgid "This feature has been disabled by the network admin."
 msgstr "Verkon ylläpitäjä on poistanut tämän ominaisuuden käytöstä."
 
@@ -1205,12 +1222,14 @@ msgid "Focus keyphrase not set."
 msgstr "Kohdennettua avainfraasia ei ole määritetty."
 
 #. translators: %s expands to Yoast SEO Premium
+#. translators: WooCommerce SEO
 #: admin/class-premium-popup.php:81
 #: admin/watchers/class-slug-change-watcher.php:230
+#: js/dist/externals-components.js:395
 msgid "Get %s"
 msgstr "Hanki %s"
 
-#: inc/class-wpseo-admin-bar-menu.php:887
+#: inc/class-wpseo-admin-bar-menu.php:941
 msgid "There is a new notification."
 msgid_plural "There are new notifications."
 msgstr[0] "Uusi ilmoitus."
@@ -1247,14 +1266,18 @@ msgstr[1] "%d tuntia"
 #. translators: %d expands to the number of day/days.
 #. translators: %d expands to the number of days.
 #: src/integrations/blocks/structured-data-blocks.php:132
-#: js/dist/block-editor.js:143 js/dist/classic-editor.js:128
-#: js/dist/editor-modules.js:265 js/dist/elementor.js:479
+#: js/dist/block-editor.js:83 js/dist/classic-editor.js:66
 #: js/dist/how-to-block.js:6 js/dist/how-to-block.js:12
-#: js/dist/wincher-dashboard-widget.js:43
+#: js/dist/wincher-dashboard-widget.js:59
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d päivä"
 msgstr[1] "%d päivää"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block description"
+msgid "Create a How-to guide in an SEO-friendly way. You can only use one How-to block per post."
+msgstr "Luo Kuinka-tehdä-opas SEO-ystävälliseen tapaan. Voit käyttää vain yhtä opasta per artikkeli."
 
 #. translators: %1$s expands to Yoast.
 #: src/integrations/blocks/block-categories.php:37
@@ -1266,11 +1289,11 @@ msgstr "%1$sin strukturoidut datalohkot"
 msgid "Time needed:"
 msgstr "Vaadittava aika:"
 
-#: inc/class-wpseo-admin-bar-menu.php:439
+#: inc/class-wpseo-admin-bar-menu.php:440
 msgid "Check links to this URL"
 msgstr "Tarkista linkit tähän osoitteeseen"
 
-#: inc/class-wpseo-admin-bar-menu.php:510
+#: inc/class-wpseo-admin-bar-menu.php:511
 msgid "How to"
 msgstr "Kuinka tehdä"
 
@@ -1322,19 +1345,16 @@ msgstr "Sivuston kuvaus"
 msgid "Not all required fields are given. Missing field %1$s"
 msgstr "Osa vaadituista kentistä puuttuu: %1$s"
 
-#: inc/class-wpseo-replace-vars.php:1489 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1489 js/dist/externals-redux.js:1
 msgid "Current year"
 msgstr "Kuluva vuosi"
 
-#: inc/class-wpseo-replace-vars.php:1475 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:318
+#: inc/class-wpseo-replace-vars.php:1475 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:28 js/dist/new-settings.js:316
 msgid "Tagline"
 msgstr "Kuvaus"
 
-#: inc/class-wpseo-replace-vars.php:1520 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1520 js/dist/externals-redux.js:1
 msgid "Page"
 msgstr "Sivu"
 
@@ -1370,8 +1390,7 @@ msgstr "Sivumäärä"
 msgid "User description"
 msgstr "Käyttäjän kuvaus"
 
-#: inc/class-wpseo-replace-vars.php:1517 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1517 js/dist/externals-redux.js:1
 msgid "ID"
 msgstr "Tunniste"
 
@@ -1387,13 +1406,12 @@ msgstr "Artikkelityyppi (monikko)"
 msgid "Post type (singular)"
 msgstr "Artikkelityyppi (yksikkö)"
 
-#: inc/class-wpseo-replace-vars.php:1487 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1 js/dist/new-settings.js:35
+#: inc/class-wpseo-replace-vars.php:1487 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:30
 msgid "Separator"
 msgstr "Erottaja"
 
-#: inc/class-wpseo-replace-vars.php:1485 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1485 js/dist/externals-redux.js:1
 msgid "Search phrase"
 msgstr "Hakulause"
 
@@ -1401,28 +1419,23 @@ msgstr "Hakulause"
 msgid "Term title"
 msgstr "Termin otsikko"
 
-#: inc/class-wpseo-replace-vars.php:1483 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1483 js/dist/externals-redux.js:1
 msgid "Term description"
 msgstr "Termin kuvaus"
 
-#: inc/class-wpseo-replace-vars.php:1482 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1482 js/dist/externals-redux.js:1
 msgid "Tag description"
 msgstr "Avainsanan kuvaus"
 
-#: inc/class-wpseo-replace-vars.php:1481 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1481 js/dist/externals-redux.js:1
 msgid "Category description"
 msgstr "Kategorian kuvaus"
 
-#: inc/class-wpseo-replace-vars.php:1480 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1480 js/dist/externals-redux.js:1
 msgid "Primary category"
 msgstr "Pääkategoria"
 
-#: inc/class-wpseo-replace-vars.php:1479 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1479 js/dist/externals-redux.js:1
 msgid "Category"
 msgstr "Kategoria"
 
@@ -1430,18 +1443,15 @@ msgstr "Kategoria"
 msgid "Tag"
 msgstr "Avainsana"
 
-#: inc/class-wpseo-replace-vars.php:1477 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1477 js/dist/externals-redux.js:1
 msgid "Excerpt only"
 msgstr "Ainoastaan ote"
 
-#: inc/class-wpseo-replace-vars.php:1476 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1476 js/dist/externals-redux.js:1
 msgid "Excerpt"
 msgstr "Ote"
 
-#: inc/class-wpseo-replace-vars.php:1474 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1474 js/dist/externals-redux.js:1
 msgid "Site title"
 msgstr "Sivuston nimi"
 
@@ -1449,23 +1459,22 @@ msgstr "Sivuston nimi"
 msgid "Archive title"
 msgstr "Arkiston otsikko"
 
-#: inc/class-wpseo-replace-vars.php:1472 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1472 js/dist/externals-redux.js:1
 msgid "Parent title"
 msgstr "Ylätason otsikko"
 
-#: inc/class-wpseo-replace-vars.php:1470 js/dist/elementor.js:530
-#: js/dist/externals-redux.js:1
+#: inc/class-wpseo-replace-vars.php:1470 js/dist/externals-redux.js:1
 msgid "Date"
 msgstr "Päivämäärä"
-
-#: inc/class-wpseo-admin-bar-menu.php:608
-msgid "Get Yoast SEO Premium"
-msgstr "Hanki Yoast SEO Premium"
 
 #: admin/watchers/class-slug-change-watcher.php:224
 msgid "You should create a redirect to ensure your visitors do not get a 404 error when they click on the no longer working URL."
 msgstr "Sinun kannattaa luoda edelleenohjaus varmistaaksesi, että vierailijasi eivät päädy 404-sivulle kun he käyttävät osoitetta, joka ei ole enää käytössä."
+
+#: admin/watchers/class-slug-change-watcher.php:90
+#: admin/watchers/class-slug-change-watcher.php:113
+msgid "Search engines and other websites can still send traffic to your deleted content."
+msgstr "Hakukoneet ja muut sivustot saattavat edelleen lähettää liikennettä poistettuun artikkeliisi."
 
 #: admin/watchers/class-slug-change-watcher.php:220
 msgid "Make sure you don't miss out on traffic!"
@@ -1588,17 +1597,8 @@ msgstr "Lisäosan %s datan tuonti onnistui."
 msgid "%s data not found."
 msgstr "Lisäosasta %s ei löytynyt dataa."
 
-#: admin/views/user-profile.php:17
-msgid "this author's archives"
-msgstr "tämän kirjoittajan arkisto"
-
-#. translators: %s expands to "this author's archives".
-#: admin/views/user-profile.php:16
-msgid "Do not allow search engines to show %s in search results."
-msgstr "Älä salli hakukoneiden näyttää %sa tuloksissaan."
-
 #: admin/class-yoast-form.php:960 admin/class-yoast-form.php:1000
-#: js/dist/externals/componentsNew.js:766
+#: js/dist/externals/componentsNew.js:724
 msgid "On"
 msgstr "Käytössä"
 
@@ -1611,7 +1611,7 @@ msgstr "Apua ominaisuudesta %s"
 
 #: admin/class-yoast-form.php:961 admin/class-yoast-form.php:1001
 #: admin/views/class-yoast-feature-toggles.php:160
-#: js/dist/externals/componentsNew.js:766
+#: js/dist/externals/componentsNew.js:724
 msgid "Off"
 msgstr "Ei käytössä"
 
@@ -1634,17 +1634,17 @@ msgid "See who contributed to %1$s."
 msgstr "Katso kuka auttoi %1$s:n kehittämisessä."
 
 #. translators: %1$s expands to the post type name.
-#: admin/metabox/class-metabox.php:189
+#: admin/metabox/class-metabox.php:186
 msgid "Should search engines follow links on this %1$s?"
 msgstr "Tuleeko hakukoneiden seurata linkkejä kohteessa %1$s?"
 
 #. translators: %1$s expands to Yes or No,  %2$s expands to the post type name.
-#: admin/metabox/class-metabox.php:184
+#: admin/metabox/class-metabox.php:181
 msgid "Default for %2$s, currently: %1$s"
 msgstr "%2$s:n oletus, tällä hetkellä: %1$s"
 
 #. translators: %s expands to the post type name.
-#: admin/metabox/class-metabox.php:179
+#: admin/metabox/class-metabox.php:176
 msgid "Allow search engines to show this %s in search results?"
 msgstr "Sallitaanko hakukoneiden näyttää kohde %s hakutuloksissa?"
 
@@ -1686,7 +1686,7 @@ msgstr "Ominaisuus mahdollistaa sisällön määrittelyn kulmakivisisälläksi s
 msgid "Discover why readability is important for SEO."
 msgstr "Opi miksi luettavuus on niin tärkeää hakukonenäkyvyyden kannalta."
 
-#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:85 js/dist/new-settings.js:322
 msgid "The readability analysis offers suggestions to improve the structure and style of your text."
 msgstr "Luettavuusanalyysi tekee ehdotuksia joiden avulla voit parantaa tekstisi tyyliä ja rakennetta."
 
@@ -1699,8 +1699,8 @@ msgid "The SEO analysis offers suggestions to improve the SEO of your text."
 msgstr "SEO-analyysi tekee ehdotuksia jolla parantaa tekstisi hakukonenäkyvyyttä."
 
 #: admin/views/class-yoast-feature-toggles.php:75
-#: js/dist/externals-components.js:507 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: js/dist/externals-components.js:402 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "SEO analysis"
 msgstr "SEO-analyysi"
 
@@ -1778,35 +1778,35 @@ msgstr "Merkitse tärkein %1$s \"kulmakiveksi\" parantaaksesi sivustosi rakennet
 
 #. translators: Hidden accessibility text.
 #: admin/class-admin-utils.php:79 admin/class-premium-popup.php:83
-#: admin/class-premium-upsell-admin-block.php:69 admin/class-yoast-form.php:935
+#: admin/class-premium-upsell-admin-block.php:76 admin/class-yoast-form.php:935
 #: admin/watchers/class-slug-change-watcher.php:232
 #: src/integrations/admin/workouts-integration.php:215
 #: src/integrations/admin/workouts-integration.php:245
-#: src/presenters/admin/help-link-presenter.php:76 js/dist/academy.js:9
-#: js/dist/ai-consent.js:4 js/dist/ai-consent.js:6 js/dist/ai-generator.js:4
-#: js/dist/ai-generator.js:6 js/dist/ai-generator.js:57
-#: js/dist/ai-generator.js:272 js/dist/block-editor.js:19
-#: js/dist/block-editor.js:21 js/dist/block-editor.js:535
-#: js/dist/block-editor.js:536 js/dist/classic-editor.js:4
-#: js/dist/classic-editor.js:6 js/dist/editor-modules.js:313
-#: js/dist/editor-modules.js:315 js/dist/editor-modules.js:573
-#: js/dist/elementor.js:5 js/dist/elementor.js:7
-#: js/dist/externals-components.js:21 js/dist/externals-components.js:186
-#: js/dist/externals-components.js:188 js/dist/externals-components.js:446
-#: js/dist/externals/componentsNew.js:1044 js/dist/externals/helpers.js:6
+#: src/presenters/admin/help-link-presenter.php:76
+#: src/presenters/admin/sidebar-presenter.php:159 js/dist/academy.js:9
+#: js/dist/ai-consent.js:2 js/dist/ai-generator.js:2 js/dist/ai-generator.js:45
+#: js/dist/ai-generator.js:260 js/dist/block-editor.js:476
+#: js/dist/block-editor.js:477 js/dist/editor-modules.js:116
+#: js/dist/editor-modules.js:367 js/dist/externals-components.js:21
+#: js/dist/externals-components.js:126 js/dist/externals-components.js:127
+#: js/dist/externals-components.js:378 js/dist/externals/componentsNew.js:1002
+#: js/dist/externals/helpers.js:6
 #: js/dist/externals/relatedKeyphraseSuggestions.js:3
-#: js/dist/externals/relatedKeyphraseSuggestions.js:7 js/dist/general-page.js:6
-#: js/dist/general-page.js:8 js/dist/general-page.js:30
-#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:4
-#: js/dist/integrations-page.js:5 js/dist/integrations-page.js:6
-#: js/dist/integrations-page.js:7 js/dist/integrations-page.js:8
-#: js/dist/integrations-page.js:13 js/dist/integrations-page.js:18
-#: js/dist/integrations-page.js:19 js/dist/integrations-page.js:20
-#: js/dist/integrations-page.js:40 js/dist/integrations-page.js:42
-#: js/dist/introductions.js:3 js/dist/new-settings.js:6
-#: js/dist/new-settings.js:8 js/dist/plans.js:2 js/dist/redirects.js:4
-#: js/dist/redirects.js:6 js/dist/support.js:6 js/dist/support.js:8
-#: js/dist/support.js:18
+#: js/dist/externals/relatedKeyphraseSuggestions.js:7 js/dist/general-page.js:4
+#: js/dist/general-page.js:5 js/dist/general-page.js:12
+#: js/dist/general-page.js:25 js/dist/general-page.js:43
+#: js/dist/general-page.js:49 js/dist/general-page.js:52
+#: js/dist/general-page.js:60 js/dist/general-page.js:64
+#: js/dist/installation-success.js:5 js/dist/integrations-page.js:3
+#: js/dist/integrations-page.js:4 js/dist/integrations-page.js:5
+#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:7
+#: js/dist/integrations-page.js:8 js/dist/integrations-page.js:13
+#: js/dist/integrations-page.js:18 js/dist/integrations-page.js:19
+#: js/dist/integrations-page.js:20 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:3 js/dist/introductions.js:7
+#: js/dist/new-settings.js:4 js/dist/new-settings.js:5
+#: js/dist/new-settings.js:12 js/dist/plans.js:2 js/dist/redirects.js:5
+#: js/dist/support.js:4 js/dist/support.js:7
 msgid "(Opens in a new browser tab)"
 msgstr "(Avataan uudessa välilehdessä)"
 
@@ -1853,8 +1853,8 @@ msgstr "Suodata luettavuuspisteiden mukaan"
 msgid "Request method %1$s is not valid."
 msgstr "Pyyntömenetelmä %1$s ei ole kelvollinen."
 
-#: admin/views/class-yoast-feature-toggles.php:108 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: admin/views/class-yoast-feature-toggles.php:108 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "Text link counter"
 msgstr "Linkkilaskuri"
 
@@ -1871,30 +1871,22 @@ msgstr "Luettavuuspisteet"
 
 #: admin/filters/class-cornerstone-filter.php:87
 #: admin/views/class-yoast-feature-toggles.php:100
-#: js/dist/externals-components.js:20 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: js/dist/externals-components.js:20 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "Cornerstone content"
 msgstr "Tärkeäksi merkitty sisältö"
 
-#: src/presenters/admin/sidebar-presenter.php:92 js/dist/ai-consent.js:7
-#: js/dist/ai-generator.js:7 js/dist/block-editor.js:22
-#: js/dist/classic-editor.js:7 js/dist/editor-modules.js:136
-#: js/dist/elementor.js:8 js/dist/externals-components.js:143
-#: js/dist/general-page.js:9 js/dist/integrations-page.js:43
-#: js/dist/new-settings.js:9 js/dist/redirects.js:7 js/dist/support.js:9
+#: src/presenters/admin/sidebar-presenter.php:127 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7 js/dist/support.js:6
 msgid "24/7 support"
 msgstr "24/7 tuki"
 
 #: admin/class-yoast-form.php:149 admin/class-yoast-form.php:154
-#: js/dist/general-page.js:42 js/dist/new-settings.js:17
+#: js/dist/general-page.js:40 js/dist/new-settings.js:12
 msgid "Save changes"
 msgstr "Tallenna muutokset"
 
-#: admin/class-premium-popup.php:89 js/dist/block-editor.js:279
-#: js/dist/block-editor.js:529 js/dist/classic-editor.js:264
-#: js/dist/classic-editor.js:514 js/dist/elementor.js:81
-#: js/dist/elementor.js:530 js/dist/externals-components.js:486
-#: js/dist/externals-components.js:488
+#: admin/class-premium-popup.php:89
 msgid "1 year free support and updates included!"
 msgstr "Ilmainen tuki vuodeksi, sisältäen päivitykset!"
 
@@ -1909,7 +1901,7 @@ msgstr "%2$s -lisäosa muuttaa sivusi ulkoasua ja tekee sen eri tavoin hakukonei
 msgid "Scroll to see the table content."
 msgstr "Vieritä nähdäksesi taulukon sisällön."
 
-#: admin/views/partial-notifications-warnings.php:22 js/dist/general-page.js:30
+#: admin/views/partial-notifications-warnings.php:22 js/dist/general-page.js:29
 msgid "No new notifications."
 msgstr "Ei uusia ilmoituksia."
 
@@ -1926,7 +1918,7 @@ msgstr "Tallenna"
 msgid "%1$s, Author at %2$s"
 msgstr "%1$s, tekijä sivustolla %2$s"
 
-#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:42
+#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:43
 msgid "Name"
 msgstr "Nimi"
 
@@ -1972,8 +1964,8 @@ msgstr "(ei otsikkoa)"
 msgid "The %1$s admin bar menu contains useful links to third-party tools for analyzing pages and makes it easy to see if you have new notifications."
 msgstr "%1$s hallintapalkki sisältää useita käyttökelpoisia linkkejä kolmansien osapuolien tekemiin sivuanalyysityökaluihin, sekä tuo ilmoitukset helposti saapuville."
 
-#: admin/views/class-yoast-feature-toggles.php:147 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324 js/dist/new-settings.js:326
+#: admin/views/class-yoast-feature-toggles.php:147 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322 js/dist/new-settings.js:324
 msgid "Admin bar menu"
 msgstr "Admin valikko"
 
@@ -1981,16 +1973,15 @@ msgstr "Admin valikko"
 msgid "Features"
 msgstr "Ominaisuudet"
 
-#: admin/metabox/class-metabox.php:175 js/dist/externals/analysis.js:107
-#: js/dist/externals/analysis.js:207
+#: admin/metabox/class-metabox.php:172
 #: js/dist/externals/replacementVariableEditor.js:27
-#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:26
-#: js/dist/new-settings.js:30 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:35 js/dist/new-settings.js:39
-#: js/dist/new-settings.js:65 js/dist/new-settings.js:79
-#: js/dist/new-settings.js:109 js/dist/new-settings.js:138
-#: js/dist/new-settings.js:203 js/dist/new-settings.js:220
-#: js/dist/new-settings.js:229 js/dist/new-settings.js:266
+#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
+#: js/dist/new-settings.js:25 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:30 js/dist/new-settings.js:34
+#: js/dist/new-settings.js:61 js/dist/new-settings.js:75
+#: js/dist/new-settings.js:105 js/dist/new-settings.js:134
+#: js/dist/new-settings.js:199 js/dist/new-settings.js:216
+#: js/dist/new-settings.js:225 js/dist/new-settings.js:264
 msgid "SEO title"
 msgstr "SEO-otsikko"
 
@@ -2046,15 +2037,13 @@ msgstr "tavuviiva (-)"
 msgid "Dash"
 msgstr "Ajatusmerkki"
 
-#: admin/metabox/class-metabox.php:186 admin/metabox/class-metabox.php:191
-#: js/dist/block-editor.js:279 js/dist/classic-editor.js:264
-#: js/dist/elementor.js:383
+#: admin/metabox/class-metabox.php:183 admin/metabox/class-metabox.php:188
+#: js/dist/block-editor.js:228 js/dist/classic-editor.js:211
 msgid "No"
 msgstr "Ei"
 
-#: admin/metabox/class-metabox.php:185 admin/metabox/class-metabox.php:190
-#: js/dist/block-editor.js:279 js/dist/classic-editor.js:264
-#: js/dist/elementor.js:383
+#: admin/metabox/class-metabox.php:182 admin/metabox/class-metabox.php:187
+#: js/dist/block-editor.js:228 js/dist/classic-editor.js:211
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -2084,16 +2073,14 @@ msgid "Get Premium"
 msgstr "Hanki Premium"
 
 #: admin/views/partial-notifications-warnings.php:20
-#: inc/class-wpseo-admin-bar-menu.php:400 js/dist/general-page.js:30
+#: inc/class-wpseo-admin-bar-menu.php:401 js/dist/general-page.js:29
 msgid "Notifications"
 msgstr "Ilmoitukset"
 
-#: admin/views/user-profile.php:50
 #: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:115
 msgid "Removes the focus keyphrase section from the metabox and disables all SEO-related suggestions."
 msgstr "Poistaa metalaatikosta osion kohdennetuille avainfraaseille ja poistaa käytöstä kaikki SEO-suositukset."
 
-#: admin/views/user-profile.php:47
 #: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:109
 msgid "Disable SEO analysis"
 msgstr "Poista SEO analyysit käytöstä"
@@ -2103,65 +2090,60 @@ msgid "Make primary"
 msgstr "Tee ensisijainen"
 
 #. translators: Hidden accessibility text; %s: number of notifications.
-#: admin/menu/class-admin-menu.php:118 inc/class-wpseo-admin-bar-menu.php:862
-#: js/dist/general-page.js:50
+#: admin/menu/class-admin-menu.php:118 inc/class-wpseo-admin-bar-menu.php:916
+#: js/dist/general-page.js:67
 msgid "%s notification"
 msgid_plural "%s notifications"
 msgstr[0] "%s ilmoitus"
 msgstr[1] "%s ilmoitusta"
 
-#: admin/views/user-profile.php:59
 #: src/user-meta/framework/custom-meta/content-analysis-disable.php:109
 msgid "Disable readability analysis"
 msgstr "Poista luettavuuden analyysit käytöstä"
 
-#: admin/views/user-profile.php:62
 #: src/user-meta/framework/custom-meta/content-analysis-disable.php:115
 msgid "Removes the readability analysis section from the metabox and disables all readability-related suggestions."
 msgstr "Poistaa metalaatikosta osion luettavuusanalyysille ja poistaa käytöstä kaikki luettavuuteen liittyvät suositukset."
 
 #: admin/views/class-yoast-feature-toggles.php:83
-#: js/dist/externals-components.js:462 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:324
+#: js/dist/externals-components.js:394 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:322
 msgid "Readability analysis"
 msgstr "Luettavuusanalyysi"
 
 #: admin/statistics/class-statistics-service.php:217
 #: inc/class-wpseo-rank.php:140 inc/class-wpseo-rank.php:176
 #: inc/class-wpseo-rank.php:208 inc/class-wpseo-rank.php:240
-#: js/dist/block-editor.js:534 js/dist/editor-modules.js:310
-#: js/dist/editor-modules.js:574 js/dist/elementor.js:84
-#: js/dist/externals-components.js:183 js/dist/externals/analysis.js:15
-#: js/dist/externals/dashboardFrontend.js:4
-#: js/dist/frontend-inspector-resources.js:1 js/dist/post-edit.js:1
-#: js/dist/term-edit.js:1
+#: js/dist/block-editor.js:475 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:368 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
 msgid "Needs improvement"
 msgstr "Tarvitsee parannusta"
 
 #: admin/metabox/class-metabox-section-readability.php:30
-#: inc/class-wpseo-admin-bar-menu.php:256
+#: inc/class-wpseo-admin-bar-menu.php:258
 msgid "Readability"
 msgstr "Luettavuus"
 
-#: admin/views/partial-notifications-errors.php:22 js/dist/general-page.js:30
+#: admin/views/partial-notifications-errors.php:22 js/dist/general-page.js:29
 msgid "Good job! We could detect no serious SEO problems."
 msgstr "Hienoa työtä! Emme huomanneet yhtään SEO-ongelmaa."
 
-#: admin/views/partial-notifications-errors.php:21 js/dist/general-page.js:30
+#: admin/views/partial-notifications-errors.php:21 js/dist/general-page.js:29
 msgid "We have detected the following issues that affect the SEO of your site."
 msgstr "Olemme huomanneet seuraavat virheet liittyen sivustosi hakukoneoptimointiin."
 
 #: admin/views/partial-notifications-errors.php:20
-#: js/dist/editor-modules.js:176 js/dist/externals-components.js:183
-#: js/dist/externals/analysisReport.js:39 js/dist/general-page.js:30
+#: js/dist/editor-modules.js:115 js/dist/externals-components.js:122
+#: js/dist/externals/analysisReport.js:38 js/dist/general-page.js:29
 msgid "Problems"
 msgstr "Ongelmat"
 
-#: inc/class-wpseo-rank.php:138 js/dist/block-editor.js:534
-#: js/dist/editor-modules.js:310 js/dist/editor-modules.js:574
-#: js/dist/elementor.js:84 js/dist/externals-components.js:183
-#: js/dist/frontend-inspector-resources.js:1 js/dist/post-edit.js:1
-#: js/dist/term-edit.js:1
+#: inc/class-wpseo-rank.php:138 js/dist/block-editor.js:475
+#: js/dist/editor-modules.js:115 js/dist/editor-modules.js:368
+#: js/dist/externals-components.js:122
+#: js/dist/frontend-inspector-resources.js:1
 msgid "Not available"
 msgstr "Ei saatavilla"
 
@@ -2175,7 +2157,7 @@ msgstr "Suodata SEO tuloksen mukaan"
 msgid "Meta description not set."
 msgstr "Sivun Meta kuvausta ei ole asetettu."
 
-#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:49
+#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:66
 msgid "Dashboard"
 msgstr "Ohjauspaneeli"
 
@@ -2207,8 +2189,8 @@ msgstr "Syötteen oletetaan olevan kokonaisluku."
 msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
 msgstr "Yritettiin luoda turvallista välimuistiavainta sivustokartalle, mutta etu-takaliiteyhdistelmät eivät jättäneet toiminnolle tilaa. Yritit luultavasti hakea sivua joka on selvästi oletetun välin ulkopuolella."
 
-#: src/integrations/admin/redirects-page-integration.php:75
-#: js/dist/redirects.js:15 js/dist/redirects.js:25
+#: src/integrations/admin/redirects-page-integration.php:100
+#: js/dist/redirects.js:2 js/dist/redirects.js:15
 msgid "Redirects"
 msgstr "Uudelleenohjaukset"
 
@@ -2238,7 +2220,7 @@ msgstr "Tee %1$s ensiarvoinen %2$s"
 
 #: admin/pages/network.php:20 admin/views/tabs/network/integrations.php:22
 #: src/integrations/admin/integrations-page.php:131
-#: js/dist/integrations-page.js:57
+#: js/dist/integrations-page.js:44
 msgid "Integrations"
 msgstr "integraatiot"
 
@@ -2269,7 +2251,7 @@ msgstr "No index"
 #: admin/class-meta-columns.php:114 admin/class-meta-columns.php:116
 #: admin/taxonomy/class-taxonomy-columns.php:87
 #: admin/taxonomy/class-taxonomy-columns.php:88
-#: inc/class-wpseo-admin-bar-menu.php:244
+#: inc/class-wpseo-admin-bar-menu.php:246
 #: js/dist/externals/dashboardFrontend.js:4
 msgid "SEO score"
 msgstr "SEO-pisteet"
@@ -2286,40 +2268,40 @@ msgstr "Ensimmäinen all-in-one SEO-ratkaisu WordPressiin, sisältäen sisältö
 
 #. Plugin Name of the plugin
 #: wp-seo.php admin/capabilities/class-capability-manager-integration.php:74
-#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:603
+#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:549
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
 #. installation manual in the Readme for the Yoast SEO code repository on
 #. GitHub
-#: wp-seo-main.php:524
+#: wp-seo-main.php:538
 msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
 msgstr "%1$s pluginin asennus on kesken. Ole hyvä ja katso %2$sasennus ohjeet%3$s."
 
-#: wp-seo-main.php:500
+#: wp-seo-main.php:514
 msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
 msgstr "Standard PHP Library (SPL) ei vaikuta olevan käytettävissä. Pyydä palveluntarjoajaasi sallimaan sen käyttö."
 
-#: inc/class-wpseo-admin-bar-menu.php:636
-#: inc/class-wpseo-admin-bar-menu.php:684
+#: inc/class-wpseo-admin-bar-menu.php:685
+#: inc/class-wpseo-admin-bar-menu.php:738
 msgid "SEO Settings"
 msgstr "SEO-asetukset"
 
-#: inc/class-wpseo-admin-bar-menu.php:454
+#: inc/class-wpseo-admin-bar-menu.php:455
 msgid "Google Page Speed Test"
 msgstr "Google PageSpeed -testi"
 
-#: inc/class-wpseo-admin-bar-menu.php:449
+#: inc/class-wpseo-admin-bar-menu.php:450
 msgid "Facebook Debugger"
 msgstr "Facebook virheenkorjaaja"
 
-#: inc/class-wpseo-admin-bar-menu.php:430
+#: inc/class-wpseo-admin-bar-menu.php:431
 msgid "Analyze this page"
 msgstr "Analysoi tämä sivu"
 
 #. translators: %s expands to the name of a post type (plural).
-#: inc/class-upgrade.php:1555 inc/options/class-wpseo-option-titles.php:309
+#: inc/class-upgrade.php:1557 inc/options/class-wpseo-option-titles.php:309
 msgid "%s Archive"
 msgstr "%s arkisto"
 
@@ -2381,12 +2363,10 @@ msgstr "Virhe 404: Sivua ei löydy"
 #: admin/statistics/class-statistics-service.php:227
 #: inc/class-wpseo-rank.php:142 inc/class-wpseo-rank.php:186
 #: inc/class-wpseo-rank.php:218 inc/class-wpseo-rank.php:250
-#: js/dist/block-editor.js:534 js/dist/editor-modules.js:310
-#: js/dist/editor-modules.js:574 js/dist/elementor.js:84
-#: js/dist/externals-components.js:183 js/dist/externals/analysis.js:15
-#: js/dist/externals/dashboardFrontend.js:4
-#: js/dist/frontend-inspector-resources.js:1 js/dist/post-edit.js:1
-#: js/dist/term-edit.js:1
+#: js/dist/block-editor.js:475 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:368 js/dist/externals-components.js:122
+#: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
 msgid "Good"
 msgstr "Hyvä"
 
@@ -2550,23 +2530,20 @@ msgid "Page not found"
 msgstr "Sivua ei löytynyt"
 
 #. translators: %s expands to the variable used for term title.
-#: inc/class-upgrade.php:1558 inc/options/class-wpseo-option-titles.php:345
+#: inc/class-upgrade.php:1560 inc/options/class-wpseo-option-titles.php:345
 #: src/editors/framework/seo/terms/title-data-provider.php:27
 msgid "%s Archives"
 msgstr "%s arkistot"
 
-#: admin/views/user-profile.php:30
 #: src/user-meta/framework/custom-meta/author-metadesc.php:97
 msgid "Meta description to use for Author page"
 msgstr "Tekijä-sivun metakuvaus"
 
-#: admin/views/user-profile.php:26
 #: src/user-meta/framework/custom-meta/author-title.php:97
 msgid "Title to use for Author page"
 msgstr "Tekijä-sivun otsikko"
 
 #. translators: %1$s expands to Yoast SEO
-#: admin/views/user-profile.php:13
 #: src/user-meta/user-interface/custom-meta-integration.php:100
 msgid "%1$s settings"
 msgstr "%1$s:n asetukset"
@@ -2655,7 +2632,7 @@ msgstr "Bulkki editori"
 msgid "Default settings"
 msgstr "Alkuperäiset asetukset"
 
-#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:268
+#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:266
 msgid "Description"
 msgstr "Selostus"
 
@@ -2729,7 +2706,7 @@ msgid "Settings Updated."
 msgstr "Asetukset on tallennettu."
 
 #: admin/views/tool-bulk-editor.php:111 inc/class-wpseo-replace-vars.php:1471
-#: js/dist/elementor.js:530 js/dist/externals-redux.js:1
+#: js/dist/externals-redux.js:1
 msgid "Title"
 msgstr "Otsikko"
 
@@ -2759,8 +2736,8 @@ msgstr "Optimoi videosi näyttääksesi se hakutuloksissa ja hanki lisää klikk
 msgid "The premium version of %1$s with more features & support."
 msgstr "Premium-versio %1$s -lisäosasta tarjoaa lisäominaisuuksia ja tukea."
 
-#: src/integrations/admin/first-time-configuration-integration.php:485
-#: js/dist/new-settings.js:336
+#: src/integrations/admin/first-time-configuration-integration.php:502
+#: js/dist/new-settings.js:334
 msgid "Person"
 msgstr "Henkilö"
 
@@ -2796,28 +2773,24 @@ msgid "%s Posts Overview"
 msgstr "%s artikkelien yleiskatsaus"
 
 #: admin/google_search_console/views/gsc-redirect-nopremium.php:27
-#: js/dist/ai-consent.js:4 js/dist/ai-consent.js:18 js/dist/ai-generator.js:4
-#: js/dist/ai-generator.js:18 js/dist/ai-generator.js:27
-#: js/dist/ai-generator.js:36 js/dist/ai-generator.js:51
-#: js/dist/ai-generator.js:57 js/dist/ai-generator.js:268
-#: js/dist/ai-generator.js:270 js/dist/ai-generator.js:272
-#: js/dist/block-editor.js:19 js/dist/classic-editor.js:4
-#: js/dist/editor-modules.js:313 js/dist/editor-modules.js:322
-#: js/dist/editor-modules.js:326 js/dist/editor-modules.js:335
-#: js/dist/editor-modules.js:344 js/dist/editor-modules.js:359
-#: js/dist/editor-modules.js:569 js/dist/editor-modules.js:571
-#: js/dist/editor-modules.js:573 js/dist/elementor.js:5
-#: js/dist/externals-components.js:186 js/dist/externals-components.js:199
-#: js/dist/externals-components.js:208 js/dist/externals-components.js:217
-#: js/dist/externals-components.js:232 js/dist/externals-components.js:442
-#: js/dist/externals-components.js:444 js/dist/externals-components.js:446
-#: js/dist/externals-components.js:499 js/dist/externals/componentsNew.js:790
-#: js/dist/general-page.js:6 js/dist/general-page.js:16
-#: js/dist/general-page.js:17 js/dist/general-page.js:30
-#: js/dist/integrations-page.js:40 js/dist/integrations-page.js:50
-#: js/dist/integrations-page.js:51 js/dist/introductions.js:3
-#: js/dist/new-settings.js:6 js/dist/new-settings.js:16
-#: js/dist/new-settings.js:42 js/dist/redirects.js:4 js/dist/support.js:6
+#: js/dist/ai-consent.js:5 js/dist/ai-generator.js:6 js/dist/ai-generator.js:15
+#: js/dist/ai-generator.js:24 js/dist/ai-generator.js:39
+#: js/dist/ai-generator.js:45 js/dist/ai-generator.js:256
+#: js/dist/ai-generator.js:258 js/dist/ai-generator.js:260
+#: js/dist/editor-modules.js:116 js/dist/editor-modules.js:120
+#: js/dist/editor-modules.js:129 js/dist/editor-modules.js:138
+#: js/dist/editor-modules.js:153 js/dist/editor-modules.js:363
+#: js/dist/editor-modules.js:365 js/dist/editor-modules.js:367
+#: js/dist/externals-components.js:126 js/dist/externals-components.js:131
+#: js/dist/externals-components.js:140 js/dist/externals-components.js:149
+#: js/dist/externals-components.js:164 js/dist/externals-components.js:374
+#: js/dist/externals-components.js:376 js/dist/externals-components.js:378
+#: js/dist/externals/componentsNew.js:748
+#: js/dist/externals/dashboardFrontend.js:6 js/dist/general-page.js:12
+#: js/dist/general-page.js:29 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:3 js/dist/introductions.js:7
+#: js/dist/introductions.js:11 js/dist/new-settings.js:12
+#: js/dist/new-settings.js:37
 msgid "Close"
 msgstr "Sulje"
 
@@ -2840,12 +2813,11 @@ msgstr "Sekä %1$s että %2$s voivat luoda Open Graph -tietoja, joka saattaa joh
 
 #: admin/statistics/class-statistics-service.php:222
 #: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:181
-#: inc/class-wpseo-rank.php:213 js/dist/block-editor.js:534
-#: js/dist/editor-modules.js:310 js/dist/editor-modules.js:574
-#: js/dist/elementor.js:84 js/dist/externals-components.js:183
-#: js/dist/externals/analysis.js:15 js/dist/externals/dashboardFrontend.js:4
-#: js/dist/frontend-inspector-resources.js:1 js/dist/post-edit.js:1
-#: js/dist/term-edit.js:1
+#: inc/class-wpseo-rank.php:213 js/dist/block-editor.js:475
+#: js/dist/editor-modules.js:115 js/dist/editor-modules.js:368
+#: js/dist/externals-components.js:122 js/dist/externals/analysis.js:15
+#: js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
 msgid "OK"
 msgstr "OK"
 
@@ -2861,72 +2833,72 @@ msgstr "Kaikki SEO-pisteet"
 msgid "Post is set to noindex."
 msgstr "Artikkeli on asettettu tilaan noindex."
 
-#: admin/metabox/class-metabox.php:212
+#: admin/metabox/class-metabox.php:209
 msgid "The URL that this page should redirect to."
 msgstr "URL, jolle tämän sivun pitäisi uudelleenohjautua."
 
-#: admin/metabox/class-metabox.php:211
+#: admin/metabox/class-metabox.php:208
 msgid "301 Redirect"
 msgstr "301-uudelleenohjaus"
 
 #. translators: 1: link open tag; 2: link close tag.
-#: admin/metabox/class-metabox.php:206
+#: admin/metabox/class-metabox.php:203
 msgid "The canonical URL that this page should point to. Leave empty to default to permalink. %1$sCross domain canonical%2$s supported too."
 msgstr "Kanoninen verkko-osoite, johon tämän sivun on määrä osoittaa. Jätä tyhjäksi käyttääksesi oletusosoiterakennetta. %1$sSivustojen väliset kanoniset osoitteet%2$s ovat myös tuettuja."
 
-#: admin/metabox/class-metabox.php:202 js/dist/block-editor.js:285
-#: js/dist/classic-editor.js:270 js/dist/elementor.js:389
+#: admin/metabox/class-metabox.php:199 js/dist/block-editor.js:234
+#: js/dist/classic-editor.js:217
 msgid "Canonical URL"
 msgstr "Ensisijainen URL"
 
-#: admin/metabox/class-metabox.php:200
+#: admin/metabox/class-metabox.php:197
 msgid "Title to use for this page in breadcrumb paths"
 msgstr "Tämän sivun otsikko leivänmurupoluissa"
 
-#: admin/metabox/class-metabox.php:199 js/dist/block-editor.js:284
-#: js/dist/classic-editor.js:269 js/dist/elementor.js:388
+#: admin/metabox/class-metabox.php:196 js/dist/block-editor.js:233
+#: js/dist/classic-editor.js:216
 msgid "Breadcrumbs Title"
 msgstr "Murupolun otsikko"
 
-#: admin/metabox/class-metabox.php:197 js/dist/block-editor.js:283
-#: js/dist/classic-editor.js:268 js/dist/elementor.js:387
+#: admin/metabox/class-metabox.php:194 js/dist/block-editor.js:232
+#: js/dist/classic-editor.js:215
 msgid "No Snippet"
 msgstr "Ei otetta"
 
-#: admin/metabox/class-metabox.php:196 js/dist/block-editor.js:283
-#: js/dist/classic-editor.js:268 js/dist/elementor.js:387
+#: admin/metabox/class-metabox.php:193 js/dist/block-editor.js:232
+#: js/dist/classic-editor.js:215
 msgid "No Archive"
 msgstr "Ei arkistointia"
 
-#: admin/metabox/class-metabox.php:195 js/dist/block-editor.js:283
-#: js/dist/classic-editor.js:268 js/dist/elementor.js:387
+#: admin/metabox/class-metabox.php:192 js/dist/block-editor.js:232
+#: js/dist/classic-editor.js:215
 msgid "No Image Index"
 msgstr "Ei kuvaindeksiä"
 
 #: admin/class-yoast-network-admin.php:43 src/config/schema-types.php:163
-#: src/integrations/settings-integration.php:604 js/dist/new-settings.js:17
+#: src/integrations/settings-integration.php:633 js/dist/new-settings.js:12
 #: js/dist/new-settings.js:368
 msgid "None"
 msgstr "Ei mitään"
 
-#: admin/metabox/class-metabox.php:193 js/dist/block-editor.js:283
-#: js/dist/classic-editor.js:268 js/dist/elementor.js:387
+#: admin/metabox/class-metabox.php:190 js/dist/block-editor.js:232
+#: js/dist/classic-editor.js:215
 msgid "Meta robots advanced"
 msgstr "Meta Robots edistynyt"
 
-#: admin/metabox/class-metabox.php:181
+#: admin/metabox/class-metabox.php:178
 msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
 msgstr "Varoitus: Vaikka voit asettaa tässä robot-asetusten metatiedot, koko sivusto on asetettu noindec-tilaan sivuston yksityisasetuksissa, joten näillä asetuksilla ei ole vaikutusta."
 
-#: admin/metabox/class-metabox.php:176
+#: admin/metabox/class-metabox.php:173
 #: js/dist/externals/replacementVariableEditor.js:27
-#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:26
-#: js/dist/new-settings.js:30 js/dist/new-settings.js:35
-#: js/dist/new-settings.js:39 js/dist/new-settings.js:65
-#: js/dist/new-settings.js:79 js/dist/new-settings.js:109
-#: js/dist/new-settings.js:138 js/dist/new-settings.js:203
-#: js/dist/new-settings.js:220 js/dist/new-settings.js:229
-#: js/dist/new-settings.js:266
+#: js/dist/externals/searchMetadataPreviews.js:62 js/dist/new-settings.js:21
+#: js/dist/new-settings.js:25 js/dist/new-settings.js:30
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:61
+#: js/dist/new-settings.js:75 js/dist/new-settings.js:105
+#: js/dist/new-settings.js:134 js/dist/new-settings.js:199
+#: js/dist/new-settings.js:216 js/dist/new-settings.js:225
+#: js/dist/new-settings.js:264
 msgid "Meta description"
 msgstr "Meta selostus"
 
@@ -2966,10 +2938,8 @@ msgstr "Artikkelin tila"
 msgid "WP Page Title"
 msgstr "WP sivun otsikko"
 
-#: admin/class-bulk-editor-list-table.php:866 js/dist/block-editor.js:143
-#: js/dist/classic-editor.js:128 js/dist/editor-modules.js:265
-#: js/dist/elementor.js:479 js/dist/externals/dashboardFrontend.js:5
-#: js/dist/wincher-dashboard-widget.js:43
+#: admin/class-bulk-editor-list-table.php:866 js/dist/block-editor.js:83
+#: js/dist/classic-editor.js:66 js/dist/externals/dashboardFrontend.js:5
 #: js/dist/wincher-dashboard-widget.js:112
 msgid "View"
 msgstr "Katso"
@@ -2989,8 +2959,8 @@ msgid "Preview &#8220;%s&#8221;"
 msgstr "Esikatsele &#8220;%s&#8221;"
 
 #: admin/class-bulk-editor-list-table.php:844
-#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:42
-#: js/dist/general-page.js:49
+#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:39
+#: js/dist/general-page.js:64
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -3027,11 +2997,11 @@ msgstr "Olemassa oleva Yoast Meta-kuvaus"
 msgid "Facebook profile URL"
 msgstr "Facebook-profiilin URL"
 
-#: admin/class-admin.php:229
+#: admin/class-admin.php:229 js/dist/externals-components.js:422
 msgid "FAQ"
 msgstr "UKK"
 
-#: admin/class-admin.php:224 src/integrations/settings-integration.php:347
+#: admin/class-admin.php:224 src/integrations/settings-integration.php:369
 #: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:11
 msgid "Settings"
 msgstr "Asetukset"
@@ -3049,7 +3019,7 @@ msgid "Edit Files"
 msgstr "Muokkaa tiedostoja"
 
 #: admin/menu/class-network-admin-menu.php:56 admin/pages/network.php:18
-#: src/general/user-interface/general-page-integration.php:191
+#: src/general/user-interface/general-page-integration.php:213
 #: js/dist/new-settings.js:366
 msgid "General"
 msgstr "Yleiset"
@@ -3058,23 +3028,23 @@ msgstr "Yleiset"
 msgid "Search Console"
 msgstr "Hakukonsoli"
 
-#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:324
+#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:322
 msgid "Tools"
 msgstr "Työkalut"
 
-#: admin/views/class-yoast-feature-toggles.php:136 js/dist/new-settings.js:33
-#: js/dist/new-settings.js:326 js/dist/new-settings.js:328
+#: admin/views/class-yoast-feature-toggles.php:136 js/dist/new-settings.js:28
+#: js/dist/new-settings.js:324 js/dist/new-settings.js:326
 msgid "XML sitemaps"
 msgstr "XML-sivustokartat"
 
-#: admin/metabox/class-metabox.php:435
-#: admin/taxonomy/class-taxonomy-metabox.php:160 js/dist/new-settings.js:39
+#: admin/metabox/class-metabox.php:432
+#: admin/taxonomy/class-taxonomy-metabox.php:159 js/dist/new-settings.js:34
 msgid "Social"
 msgstr "Sosiaalinen media"
 
-#: admin/metabox/class-metabox.php:410
-#: admin/taxonomy/class-taxonomy-metabox.php:142
-#: inc/class-wpseo-admin-bar-menu.php:715
+#: admin/metabox/class-metabox.php:407
+#: admin/taxonomy/class-taxonomy-metabox.php:141
+#: inc/class-wpseo-admin-bar-menu.php:769
 #: src/services/health-check/report-builder.php:168
 msgid "SEO"
 msgstr "SEO"

@@ -11,6 +11,8 @@ use lloc\Msls\Component\Component;
  */
 class MslsMain {
 
+	const MSLS_SAVE_ACTION = 'msls_main_save';
+
 	/**
 	 * Instance of options
 	 *
@@ -48,9 +50,11 @@ class MslsMain {
 	public function debugger( $message ): void {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) {
 			if ( is_array( $message ) || is_object( $message ) ) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 				$message = print_r( $message, true );
 			}
 
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'MSLS Debug: ' . $message );
 		}
 	}
@@ -127,7 +131,7 @@ class MslsMain {
 	 * @codeCoverageIgnore
 	 */
 	protected function save( $object_id, $class_name ): void {
-		if ( has_action( 'msls_main_save' ) ) {
+		if ( has_action( self::MSLS_SAVE_ACTION ) ) {
 			/**
 			 * Calls completely customized save-routine
 			 *
@@ -136,7 +140,7 @@ class MslsMain {
 			 *
 			 * @since 0.9.9
 			 */
-			do_action( 'msls_main_save', $object_id, $class_name );
+			do_action( self::MSLS_SAVE_ACTION, $object_id, $class_name );
 
 			return;
 		}
@@ -152,7 +156,7 @@ class MslsMain {
 		$options  = new $class_name( $object_id );
 		$temp     = $options->get_arr();
 
-		if ( 0 != $msla->get_val( $language ) ) {
+		if ( 0 !== $msla->get_val( $language ) ) {
 			$options->save( $msla->get_arr( $language ) );
 		} else {
 			$options->delete();
@@ -164,7 +168,7 @@ class MslsMain {
 			$language = $blog->get_language();
 			$larr_id  = $msla->get_val( $language );
 
-			if ( 0 != $larr_id ) {
+			if ( 0 !== $larr_id ) {
 				$options = new $class_name( $larr_id );
 				$options->save( $msla->get_arr( $language ) );
 			} elseif ( isset( $temp[ $language ] ) ) {

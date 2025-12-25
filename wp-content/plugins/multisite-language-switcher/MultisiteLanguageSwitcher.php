@@ -2,12 +2,8 @@
 /**
  * Multisite Language Switcher Plugin
  *
- * @copyright Copyright (C) 2011-2022, Dennis Ploetner, re@lloc.de
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 or later
- * @wordpress-plugin
- *
  * Plugin Name: Multisite Language Switcher
- * Version: 2.9.6
+ * Version: 2.10.1
  * Plugin URI: http://msls.co/
  * Description: A simple but powerful plugin that will help you to manage the relations of your contents in a multilingual multisite-installation.
  * Author: Dennis Ploetner
@@ -28,6 +24,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * @copyright Copyright (C) 2011-2022, Dennis Ploetner, re@lloc.de
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 or later
+ * @wordpress-plugin
+ * @package msls
  */
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -40,20 +41,20 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  * @author Dennis Ploetner <re@lloc.de>
  */
 if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
-	define( 'MSLS_PLUGIN_VERSION', '2.9.6' );
+	define( 'MSLS_PLUGIN_VERSION', '2.10.1' );
 	define( 'MSLS_PLUGIN_PATH', plugin_basename( __FILE__ ) );
 	define( 'MSLS_PLUGIN__FILE__', __FILE__ );
+
+	require_once __DIR__ . '/includes/deprectated.php';
 
 	/**
 	 * Get the output for using the links to the translations in your code
 	 *
 	 * @package Msls
-	 *
 	 * @param mixed $attr
-	 *
 	 * @return string
 	 */
-	function get_the_msls( $attr ): string {
+	function msls_get_switcher( $attr ): string {
 		$arr = is_array( $attr ) ? $attr : array();
 		$obj = apply_filters( 'msls_get_output', null );
 
@@ -75,9 +76,9 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 *
 	 * @param string[] $arr
 	 */
-	function the_msls( array $arr = array() ): void {
-        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo get_the_msls( $arr );
+	function msls_the_switcher( array $arr = array() ): void {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo msls_get_switcher( $arr );
 	}
 
 	/**
@@ -87,7 +88,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 *
 	 * @return string
 	 */
-	function get_msls_flag_url( string $locale ): string {
+	function msls_get_flag_url( string $locale ): string {
 		return ( new \lloc\Msls\MslsOptions() )->get_flag_url( $locale );
 	}
 
@@ -95,24 +96,25 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 * Gets the description for a blog for a specific locale
 	 *
 	 * @param string $locale
+	 * @param string $preset
 	 *
 	 * @return string
 	 */
-	function get_msls_blog_description( string $locale, string $default = '' ): string {
+	function msls_get_blog_description( string $locale, string $preset = '' ): string {
 		$blog = msls_blog( $locale );
 
-		return $blog ? $blog->get_description() : $default;
+		return $blog ? $blog->get_description() : $preset;
 	}
 
 	/**
 	 * Gets the permalink for a translation of the current post in a given language
 	 *
 	 * @param string $locale
-	 * @param string $default
+	 * @param string $preset
 	 *
 	 * @return string
 	 */
-	function get_msls_permalink( string $locale, string $default = '' ): string {
+	function msls_get_permalink( string $locale, string $preset = '' ): string {
 		$url  = null;
 		$blog = msls_blog( $locale );
 
@@ -121,7 +123,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 			$url     = $blog->get_url( $options );
 		}
 
-		return $url ?? $default;
+		return $url ?? $preset;
 	}
 
 	/**
@@ -235,9 +237,7 @@ if ( ! defined( 'MSLS_PLUGIN_VERSION' ) ) {
 	 *
 	 * @return void
 	 */
-	if ( ! function_exists( '__return_void' ) ) {
-		function __return_void(): void {
-		}
+	function msls_return_void(): void {
 	}
 
 	lloc\Msls\MslsPlugin::init();

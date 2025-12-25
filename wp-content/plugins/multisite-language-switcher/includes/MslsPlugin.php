@@ -34,8 +34,6 @@ class MslsPlugin {
 	public static function init(): void {
 		$obj = new self( msls_options() );
 
-		add_action( 'init', array( $obj, 'init_i18n_support' ) );
-
 		register_activation_hook( self::file(), array( __CLASS__, 'activate' ) );
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
@@ -114,10 +112,10 @@ class MslsPlugin {
 		}
 
 		$ver    = defined( 'MSLS_PLUGIN_VERSION' ) ? constant( 'MSLS_PLUGIN_VERSION' ) : false;
-		$folder = defined( 'SCRIPT_DEBUG' ) && constant( 'SCRIPT_DEBUG' ) ? 'src' : 'js';
+		$folder = defined( 'SCRIPT_DEBUG' ) && constant( 'SCRIPT_DEBUG' ) ? 'src' : 'assets/js';
 
-		wp_enqueue_style( 'msls-styles', self::plugins_url( 'css/msls.css' ), array(), $ver );
-		wp_enqueue_style( 'msls-flags', self::plugins_url( 'css-flags/css/flag-icon.min.css' ), array(), $ver );
+		wp_enqueue_style( 'msls-styles', self::plugins_url( 'assets/css/msls.css' ), array(), $ver );
+		wp_enqueue_style( 'msls-flags', self::plugins_url( 'assets/css-flags/css/flag-icon.min.css' ), array(), $ver );
 
 		if ( $this->options->activate_autocomplete ) {
 			wp_enqueue_script( 'msls-autocomplete', self::plugins_url( "$folder/msls.js" ), array( 'jquery-ui-autocomplete' ), $ver, array( 'in_footer' => true ) );
@@ -170,15 +168,6 @@ class MslsPlugin {
 	}
 
 	/**
-	 * Load textdomain
-	 *
-	 * The method should be executed always on init because we have some translatable string in the frontend too.
-	 */
-	public function init_i18n_support(): void {
-		load_plugin_textdomain( 'multisite-language-switcher', false, self::dirname( '/languages/' ) );
-	}
-
-	/**
 	 * Message handler
 	 *
 	 * Prints a message box to the screen.
@@ -217,9 +206,9 @@ class MslsPlugin {
 	 * The plugin data in all blogs of the current network will be
 	 * deleted after the uninstall procedure.
 	 *
-	 * @return boolean
+	 * @return void
 	 */
-	public static function uninstall() {
+	public static function uninstall(): void {
 		/**
 		 * We want to be sure that the user has not deactivated the
 		 * multisite because we need to use switch_to_blog and
@@ -236,7 +225,7 @@ class MslsPlugin {
 			}
 		}
 
-		return self::cleanup();
+		self::cleanup();
 	}
 
 	/**

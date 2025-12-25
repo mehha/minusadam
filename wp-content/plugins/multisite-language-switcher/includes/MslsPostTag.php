@@ -1,11 +1,5 @@
 <?php declare( strict_types=1 );
 
-/**
- * MslsPostTag
- *
- * @author Dennis Ploetner <re@lloc.de>
- */
-
 namespace lloc\Msls;
 
 use lloc\Msls\Component\Component;
@@ -17,8 +11,8 @@ use lloc\Msls\Component\Component;
  */
 class MslsPostTag extends MslsMain {
 
-	const EDIT_ACTION = 'msls_post_tag_edit_input';
-	const ADD_ACTION  = 'msls_post_tag_add_input';
+	const MSLS_EDIT_INPUT_ACTION = 'msls_post_tag_edit_input';
+	const MSLS_ADD_INPUT_ACTION  = 'msls_post_tag_add_input';
 
 	/**
 	 * Suggest
@@ -84,7 +78,7 @@ class MslsPostTag extends MslsMain {
 		$obj        = new $class( $options, $collection );
 
 		$taxonomy = msls_content_types()->acl_request();
-		if ( '' != $taxonomy ) {
+		if ( '' !== $taxonomy ) {
 			add_action( "{$taxonomy}_add_form_fields", array( $obj, 'add_input' ) );
 			add_action( "{$taxonomy}_edit_form_fields", array( $obj, 'edit_input' ), 10, 2 );
 			add_action( "edited_{$taxonomy}", array( $obj, 'set' ) );
@@ -98,7 +92,7 @@ class MslsPostTag extends MslsMain {
 	 * @param string $taxonomy
 	 */
 	public function add_input( string $taxonomy ): void {
-		if ( did_action( self::ADD_ACTION ) ) {
+		if ( did_action( self::MSLS_ADD_INPUT_ACTION ) ) {
 			return;
 		}
 
@@ -114,7 +108,7 @@ class MslsPostTag extends MslsMain {
 		$this->the_input( null, $title_format, $item_format );
 		echo '</div>';
 
-		do_action( self::ADD_ACTION, $taxonomy );
+		do_action( self::MSLS_ADD_INPUT_ACTION, $taxonomy );
 	}
 
 	/**
@@ -124,7 +118,7 @@ class MslsPostTag extends MslsMain {
 	 * @param string   $taxonomy
 	 */
 	public function edit_input( \WP_Term $tag, string $taxonomy ): void {
-		if ( did_action( self::EDIT_ACTION ) ) {
+		if ( did_action( self::MSLS_EDIT_INPUT_ACTION ) ) {
 			return;
 		}
 
@@ -148,7 +142,7 @@ class MslsPostTag extends MslsMain {
 
 		$this->the_input( $tag, $title_format, $item_format );
 
-		do_action( self::EDIT_ACTION, $tag, $taxonomy );
+		do_action( self::MSLS_EDIT_INPUT_ACTION, $tag, $taxonomy );
 	}
 
 	/**
@@ -184,8 +178,9 @@ class MslsPostTag extends MslsMain {
 				$language  = $blog->get_language();
 				$icon_type = $this->options->get_icon_type();
 				$icon      = MslsAdminIcon::create()->set_language( $language )->set_icon_type( $icon_type );
+				$value     = '';
+				$title     = '';
 
-				$value = $title = '';
 				if ( $mydata->has_value( $language ) ) {
 					$term = get_term( $mydata->$language, $type );
 					if ( is_object( $term ) ) {
