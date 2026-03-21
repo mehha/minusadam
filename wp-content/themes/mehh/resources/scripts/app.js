@@ -14,7 +14,6 @@ import {handleCheckScroll} from "./utilities/check-scroll";
 import {handleForms} from "./components/forms";
 import {handleCookieBanner} from "./components/cookie_banner";
 import {handleFullCalendar} from "./components/full-calendar";
-import {handleLangSwitcherFlags} from "./components/lang-switcher-flags";
 // import {handleDropdowns} from "./components/dropdowns";
 
 const mountedFns = [
@@ -26,7 +25,6 @@ const mountedFns = [
   handleForms,
   handleCookieBanner,
   handleFullCalendar,
-  handleLangSwitcherFlags,
 ]
 
 // Run fn-s
