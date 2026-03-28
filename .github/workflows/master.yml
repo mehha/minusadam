@@ -1,0 +1,30 @@
+name: Deploy to Virtuaal
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://minusadam.com
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+      - name: Copy files to server
+        run: |
+          rsync -avzn --delete --itemize-changes \
+          -e "ssh -p ${{ secrets.SSH_PORT }}" \
+          --exclude='.git/' \
+          --exclude='.github/' \
+          --exclude='node_modules/' \
+          --exclude='wp-content/uploads/' \
+          --exclude='wp-content/member-files/' \
+          ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}"
