@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-07 09:07:52+0000\n"
+"PO-Revision-Date: 2026-03-25 15:53:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/4.0.3\n"
 "Language: fi\n"
 "Project-Id-Version: Plugins - WooCommerce - Stable (latest release)\n"
+
+#: src/Internal/EmailEditor/EmailTemplates/WooEmailTemplate.php:60
+msgid "All Rights Reserved."
+msgstr "Kaikki oikeudet pidätetään."
 
 #: packages/email-editor/src/Engine/theme.json
 msgctxt "Font size name"
@@ -445,12 +449,12 @@ msgid "Order Cancelled: #%s"
 msgstr "Peruttu tilaus: #%s"
 
 #. translators: %s: product ID
-#: src/StoreApi/Utilities/CartController.php:1135
+#: src/StoreApi/Utilities/CartController.php:1127
 msgid "Product with ID \"%s\" was not found and cannot be added to the cart."
 msgstr "Tuotetta ID:llä \"%s\" ei löydy, eikä sitä voida lisätä ostoskoriin."
 
 #. translators: %s: product name
-#: src/StoreApi/Utilities/CartController.php:287
+#: src/StoreApi/Utilities/CartController.php:279
 msgid "You cannot add &quot;%s&quot; with a quantity less than or equal to 0 to the cart."
 msgstr "Et voi lisätä &quot;%s&quot; ostoskoriin määrällä joka on vähemmän tai yhtäkuin 0."
 
@@ -1419,11 +1423,11 @@ msgstr "Tilauksella on jo laskutussähköpostiosoite."
 msgid "%s is not a valid template for this order."
 msgstr "%s ei ole kelvollinen mallipohja tälle tilaukselle."
 
-#: src/StoreApi/Routes/V1/Checkout.php:127
+#: src/StoreApi/Routes/V1/Checkout.php:123
 msgid "Selected payment method for the order."
 msgstr "Valittu maksutapa tilaukselle."
 
-#: src/StoreApi/Routes/V1/Checkout.php:123
+#: src/StoreApi/Routes/V1/Checkout.php:119
 msgid "Additional fields related to the order."
 msgstr "Tilaukseen liittyvät lisäkentät."
 
@@ -1455,7 +1459,7 @@ msgstr "Operaattori tuotteen brändin arvojen vertailuun."
 msgid "Limit result set to products assigned a set of tag IDs or slugs, separated by commas."
 msgstr "Rajoita tulosjoukko tuotteisiin, joille on määritetty joukko tunnisteita tai polkutunnuksia pilkuilla erotettuna."
 
-#: src/StoreApi/Routes/V1/Checkout.php:131
+#: src/StoreApi/Routes/V1/Checkout.php:127
 msgid "Order notes."
 msgstr "Tilauksen kommentit."
 
@@ -1625,7 +1629,7 @@ msgstr "Ehdotuksen liittämiseen tarkoitettu URL-osoite."
 msgid "The link to mark the suggestion as attached. This should be called when an extension is installed."
 msgstr "Linkki ehdotuksen liittämiseksi. Tätä tulisi kutsua, kun laajennus asennetaan."
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:907
+#: src/Internal/Admin/Settings/PaymentsProviders.php:971
 msgid "Wallets & Express checkouts"
 msgstr "Lompakot ja Express-pikakassat"
 
@@ -2004,7 +2008,7 @@ msgstr "WC_Session ei ole käytettävissä, asiakastietoja ei voida tallentaa is
 msgid "An error occurred while saving account details: %s"
 msgstr "Tilitietojen tallennuksessa tapahtui virhe: %s"
 
-#: includes/class-wc-cart.php:1227
+#: includes/class-wc-cart.php:1215
 msgid "The selected product is invalid."
 msgstr "Valittu tuote on virheellinen."
 
@@ -2127,11 +2131,11 @@ msgstr "Koskee vain muunnelmia. Jos arvo on true, efektiivinen arvo on päätuot
 msgid "Helio Pay"
 msgstr "Helio Pay"
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:920
+#: src/Internal/Admin/Settings/PaymentsProviders.php:984
 msgid "Offer cryptocurrency payment options to your shoppers."
 msgstr "Tarjoa kryptovaluuttojen maksuvaihtoehtoja asiakkaillesi."
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:919
+#: src/Internal/Admin/Settings/PaymentsProviders.php:983
 msgid "Crypto Payments"
 msgstr "Crypto Payments"
 
@@ -2304,7 +2308,7 @@ msgid "Show password"
 msgstr "Näytä salasana"
 
 #. translators: %s: site name.
-#: includes/shortcodes/class-wc-shortcode-my-account.php:100
+#: includes/shortcodes/class-wc-shortcode-my-account.php:97
 msgid "Your account with %s is using a temporary password. We emailed you a link to change your password."
 msgstr "Käyttäjätilisi verkkokaupassa %s käyttää väliaikaista salasanaa. Lähetimme sinulle sähköpostitse linkin, jolla voit vaihtaa salasanan."
 
@@ -2689,7 +2693,7 @@ msgid "The list of suggestions, excluding the ones part of the providers list."
 msgstr "Luettelo ehdotuksista, lukuun ottamatta palveluntarjoajien luettelossa olevia ehdotuksia."
 
 #: includes/admin/settings/class-wc-settings-point-of-sale.php:93
-#: src/Blocks/BlockTypes/Checkout.php:82
+#: src/Blocks/BlockTypes/Checkout.php:80
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
@@ -2697,20 +2701,20 @@ msgstr "Puhelinnumero"
 msgid "Something big is brewing! Our store is in the works – Launching shortly!"
 msgstr "Jotain suurta on tulossa! Kauppamme on työn alla ja julkaistaan pian."
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:797
-#: src/Internal/Admin/Settings/PaymentsProviders.php:864
+#: src/Internal/Admin/Settings/PaymentsProviders.php:861
+#: src/Internal/Admin/Settings/PaymentsProviders.php:928
 msgid "Invalid suggestion ID."
 msgstr "Virheellinen ehdotuksen tunniste."
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:913
+#: src/Internal/Admin/Settings/PaymentsProviders.php:977
 msgid "Buy Now, Pay Later"
 msgstr "Osta nyt, maksa myöhemmin"
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:925
+#: src/Internal/Admin/Settings/PaymentsProviders.php:989
 msgid "Payment Providers"
 msgstr "Maksupalveluntarjoajat"
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:914
+#: src/Internal/Admin/Settings/PaymentsProviders.php:978
 msgid "Offer flexible payment options to your shoppers."
 msgstr "Tarjoa joustavia maksuvaihtoehtoja asiakkaillesi."
 
@@ -2950,7 +2954,7 @@ msgstr "Korin %1$s vähimmäismäärä on %2$s"
 msgid "The quantity of &quot;%1$s&quot; cannot be changed"
 msgstr "Määrää \"%1$s\" ei voi muuttaa"
 
-#: src/StoreApi/Utilities/CartController.php:561
+#: src/StoreApi/Utilities/CartController.php:553
 msgid "Cannot place an order, your cart is empty."
 msgstr "Et voi tehdä tilausta koska ostoskorisi on tyhjä."
 
@@ -4664,7 +4668,7 @@ msgstr "Arvioitu %1$d / 5"
 #. translators: Payment gateway enabled notification email. 1: Username, 2:
 #. Gateway Title, 3: Site URL, 4: Gateway Settings URL, 5: Admin Email, 6: Site
 #. Name, 7: Site URL.
-#: includes/class-wc-payment-gateways.php:238
+#: includes/class-wc-payment-gateways.php:236
 msgid ""
 "Howdy %1$s,\n"
 "\n"
@@ -5858,7 +5862,7 @@ msgid "Whether or not plugins step in core profiler was skipped."
 msgstr "Ohitettiinko lisäosavaihe ydinprofiloijassa vai ei."
 
 #. Translators: %s Payment method ID.
-#: src/StoreApi/Routes/V1/Checkout.php:852
+#: src/StoreApi/Routes/V1/Checkout.php:829
 msgid "%s is not available for this order—please choose a different payment method"
 msgstr "%s ei ole saatavilla tälle tilaukselle — valitse toinen maksutapa"
 
@@ -6021,7 +6025,7 @@ msgstr "Vahvista"
 msgid "We were unable to verify the email address you provided. Please try again."
 msgstr "Emme voineet vahvistaa antamaasi sähköpostiosoitetta. Yritä uudelleen."
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:316
+#: includes/shortcodes/class-wc-shortcode-checkout.php:314
 msgid "Please log in to your account to view this order."
 msgstr "Ole hyvä ja kirjaudu tilillesi tarkastellaksesi tätä tilausta."
 
@@ -6866,7 +6870,7 @@ msgid "Basic details"
 msgstr "Perustiedot"
 
 #. translators: %s coupon code.
-#: includes/class-wc-ajax.php:1439
+#: includes/class-wc-ajax.php:1431
 msgid "Coupon removed: \"%s\"."
 msgstr "Alennuskoodi poistettu: \"%s\"."
 
@@ -7005,13 +7009,13 @@ msgid "30-day free trial"
 msgstr "30 päivän ilmainen kokeilujakso."
 
 #. translators: %s: List of invalid parameters.
-#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:114
-#: src/StoreApi/Routes/V1/Checkout.php:342
+#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:112
+#: src/StoreApi/Routes/V1/Checkout.php:328
 msgid "Invalid parameter(s): %s"
 msgstr "Väärä(t) parametri(t): %s"
 
-#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:92
-#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:103
+#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:90
+#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:101
 msgid "Invalid parameter."
 msgstr "Virheellinen parametri."
 
@@ -7155,7 +7159,7 @@ msgid "Invalid meta_query clause key: %s."
 msgstr "Virheellinen meta_query tapaus avain %s."
 
 #. translators: 1: line break tag.
-#: src/Internal/Features/FeaturesController.php:1409
+#: src/Internal/Features/FeaturesController.php:1397
 msgid ""
 "%1$s This navigation will soon become unavailable while we make necessary improvements.\n"
 "\t\t\t\t\t\t\t\t\tIf you turn it off now, you will not be able to turn it back on."
@@ -7190,8 +7194,8 @@ msgstr "Markkinointikampanjan hinta"
 msgid "Title of the marketing campaign."
 msgstr "Markkinointikampanjan nimi"
 
-#. translators: %d: shipping package number
-#: includes/class-wc-cart.php:1750
+#. translators: %d: shipping package number.
+#: includes/class-wc-cart.php:1691
 msgctxt "shipping packages"
 msgid "Shipment %d"
 msgstr "Toimitus %d"
@@ -7532,7 +7536,7 @@ msgstr "Dakar"
 msgid "Diourbel"
 msgstr "Diourbel"
 
-#: src/Blocks/BlockTypes/Cart.php:70 assets/client/blocks/cart.js:2
+#: src/Blocks/BlockTypes/Cart.php:68 assets/client/blocks/cart.js:2
 #: assets/client/blocks/cart.js:11 assets/client/blocks/product-collection.js:1
 msgid "You may be interested in…"
 msgstr "Saatat olla kiinnostunut myös..."
@@ -8361,11 +8365,11 @@ msgstr "Mukautetut tilausten tietokantataulut poistettu."
 msgid "Delete the custom orders tables"
 msgstr "Poista mukautetut tilausten tietokantataulut"
 
-#: src/StoreApi/Routes/V1/AbstractCartRoute.php:318
+#: src/StoreApi/Routes/V1/AbstractCartRoute.php:303
 msgid "Nonce is invalid."
 msgstr "Kertakäyttöavain ei kelpaa."
 
-#: src/StoreApi/Routes/V1/AbstractCartRoute.php:314
+#: src/StoreApi/Routes/V1/AbstractCartRoute.php:299
 msgid "Missing the Nonce header. This endpoint requires a valid nonce."
 msgstr "Kertakäyttöavaimen (nonce) otsake puuttuu. Tämä endpoint vaatii kelvollisen kertakäyttöavaimen."
 
@@ -8716,7 +8720,7 @@ msgstr "Poista maksunvälittäjä"
 msgid "The database version for WooCommerce. This should be the same as your WooCommerce version."
 msgstr "WooCommercen tietokannan versio. Tämän tulisi olla sama kuin WooCommercen versio."
 
-#: includes/class-woocommerce.php:1325
+#: includes/class-woocommerce.php:1324
 msgid "You have installed a development version of WooCommerce which requires files to be built and minified. From the plugin directory, run <code>pnpm install</code> and then <code>pnpm --filter='@woocommerce/plugin-woocommerce' build</code> to build and minify assets."
 msgstr "Olet asentanut WooCommercen kehitysversion, mikä edellyttää tiedostojen kokoamisen ja pakkaamisen. Aja lisäosan hakemistossa ensin <code>pnpm install</code> ja sen jälkeen <code>pnpm run build --filter=woocommerce</code> kootaksesi ja pakataksesi tarvittavat tiedostot."
 
@@ -9393,7 +9397,7 @@ msgstr "Tämä on asiakkaalle lähetettävä ilmoitus tilauksesta, joka sisält�
 msgid "Product Reviews"
 msgstr "Tuotearvostelut"
 
-#: includes/class-wc-ajax.php:2544
+#: includes/class-wc-ajax.php:2536
 msgid "There was an error generating your API Key."
 msgstr "API-avaimen luonnissa oli ongelma."
 
@@ -9970,7 +9974,7 @@ msgid "\"%s\" is already registered."
 msgstr "\"%s\" on jo rekisteröity."
 
 #. translators: %s: product name.
-#: src/StoreApi/Utilities/CartController.php:422
+#: src/StoreApi/Utilities/CartController.php:414
 msgid "%s is out of stock and cannot be purchased. Please remove it from your cart."
 msgstr "%s ei ole varastossa eikä sitä voi ostaa. Poista tuote ostoskoristasi jatkaaksesi tilausta."
 
@@ -9998,7 +10002,7 @@ msgstr "Lista postinumeroista. Esitelty WooCommerce 5.3:ssa."
 
 #. translators: 1: page name 2: page ID
 #: includes/admin/class-wc-admin-settings.php:714
-#: includes/class-wc-ajax.php:2219
+#: includes/class-wc-ajax.php:2211
 #: assets/client/admin/settings-editor/index.js:2
 msgid "%1$s (ID: %2$s)"
 msgstr "%1$s (ID: %2$s)"
@@ -10018,7 +10022,7 @@ msgstr "Mollie tarjoaa helpot maksut: maailmanlaajuiset ja paikalliset maksutava
 #. translators: %s: is the field label
 #. translators: %s Field label.
 #: src/Blocks/Domain/Services/CheckoutFieldsFrontend.php:347
-#: src/StoreApi/Routes/V1/Checkout.php:287
+#: src/StoreApi/Routes/V1/Checkout.php:273
 #: src/StoreApi/Utilities/OrderController.php:500
 msgid "%s is required"
 msgstr "%s vaaditaan"
@@ -10182,7 +10186,7 @@ msgid "Alta Verapaz"
 msgstr "Alta Verapaz"
 
 #. translators: ISO 3166-1 alpha-2 country code
-#: includes/class-wc-checkout.php:858
+#: includes/class-wc-checkout.php:856
 msgid "'%s' is not a valid country code."
 msgstr "'%s' ei kelpaa maakoodiksi."
 
@@ -10413,7 +10417,7 @@ msgstr "Valittu asiakkaan laskutusosoite."
 msgid "The discount type for the coupon (e.g. percentage or fixed amount)"
 msgstr "Kupongin alennustyyppi (esim. prosenttiosuus tai kiinteä summa)"
 
-#: src/StoreApi/Routes/V1/Checkout.php:720
+#: src/StoreApi/Routes/V1/Checkout.php:697
 msgid "Unable to create order"
 msgstr "Tilauksen luominen epäonnistui"
 
@@ -11758,7 +11762,7 @@ msgstr "%1$s %2$s kautta"
 msgid "File uploaded: %s"
 msgstr "Tiedosto ladattu: %s"
 
-#: includes/class-wc-checkout.php:1202
+#: includes/class-wc-checkout.php:1185
 msgid "An account is already registered with your email address. <a href=\"#\" class=\"showlogin\">Please log in.</a>"
 msgstr "Tili on jo luotu antamallasi sähköpostiosoitteella. <a href=\"#\" class=\"showlogin\">Ole hyvä ja kirjaudu sisään.</a>"
 
@@ -11999,18 +12003,18 @@ msgstr "Aseta uusia maksutapavaihtoehtoja"
 msgid "Invalid admin note"
 msgstr "Virheellinen ylläpitäjän huomio"
 
-#: src/Blocks/BlockTypes/Cart.php:80
+#: src/Blocks/BlockTypes/Cart.php:78
 #: assets/client/blocks/checkout-frontend.js:5
 msgid "Browse store"
 msgstr "Selaa kauppaa"
 
-#: includes/class-wc-install.php:3215 src/Blocks/BlockTypes/Cart.php:79
+#: includes/class-wc-install.php:3215 src/Blocks/BlockTypes/Cart.php:77
 #: src/Blocks/BlockTypes/MiniCart.php:941 assets/client/blocks/cart.js:22
 #: assets/client/blocks/checkout-frontend.js:5
 msgid "Your cart is currently empty!"
 msgstr "Ostoskorisi on tyhjä!"
 
-#: includes/class-wc-install.php:3223 src/Blocks/BlockTypes/Cart.php:89
+#: includes/class-wc-install.php:3223 src/Blocks/BlockTypes/Cart.php:87
 #: assets/client/blocks/cart.js:22
 msgid "New in store"
 msgstr "Uutta kaupassa"
@@ -12474,17 +12478,17 @@ msgid "Coupon cannot be removed because it is not already applied to the cart."
 msgstr "Kuponkia ei voi poistaa koska se on jo käytetty ostoskoriin."
 
 #. translators: %s coupon code
-#: src/StoreApi/Utilities/CartController.php:962
+#: src/StoreApi/Utilities/CartController.php:954
 msgid "\"%s\" is an invalid coupon code."
 msgstr "\"%s\" ei ole kelvollinen kuponkikoodi."
 
 #. translators: %1$s coupon code, %2$s reason.
-#: src/StoreApi/Utilities/CartController.php:1083
+#: src/StoreApi/Utilities/CartController.php:1075
 msgid "The \"%1$s\" coupon has been removed from your cart: %2$s"
 msgstr "Kuponki \"%1$s\" on poistettu ostoskoristasi: %2$s"
 
 #. translators: %s: product name
-#: src/StoreApi/Utilities/CartController.php:1193
+#: src/StoreApi/Utilities/CartController.php:1185
 msgid "&quot;%s&quot; is not available for purchase."
 msgstr "&quot;%s&quot; ei ole saatavilla."
 
@@ -12498,12 +12502,12 @@ msgid "Cannot create order from empty cart."
 msgstr "Tyhjästä ostoskorista ei voi luoda tilausta."
 
 #. translators: %s: coupon code
-#: src/StoreApi/Utilities/CartController.php:1022
+#: src/StoreApi/Utilities/CartController.php:1014
 msgid "\"%s\" has already been applied and cannot be used in conjunction with other coupons."
 msgstr "\"%s\" on jo käytössä eikä sitä voi käyttää muiden kuponkien yhteydessä."
 
 #. translators: %s coupon code
-#: src/StoreApi/Utilities/CartController.php:974
+#: src/StoreApi/Utilities/CartController.php:966
 msgid "Coupon code \"%s\" has already been applied."
 msgstr "Kuponkikoodi \"%s\" on jo käytössä."
 
@@ -12545,7 +12549,7 @@ msgstr "Kuponkia ei ole ostoskorissa."
 msgid "Sort ascending or descending."
 msgstr "Laita nousevaan tai laskevaan järjestykseen."
 
-#: src/StoreApi/Routes/V1/Checkout.php:94
+#: src/StoreApi/Routes/V1/Checkout.php:90
 #: src/StoreApi/Routes/V1/CheckoutOrder.php:70
 msgid "Data to pass through to the payment method when processing payment."
 msgstr "Maksutavan läpi kulkeva data, kun maksutapahtumaa käsitellään."
@@ -12589,7 +12593,7 @@ msgstr "Tuotteen lyhyt kuvaus HTML-muodossa."
 msgid "ID of the parent product, if applicable."
 msgstr "Ylätason tuotteen ID, jos sovellettavissa."
 
-#: src/StoreApi/Utilities/CartController.php:256
+#: src/StoreApi/Utilities/CartController.php:248
 msgid "Cart item is invalid."
 msgstr "Ostoskorissa oleva tuote ei kelpaa."
 
@@ -12601,7 +12605,7 @@ msgstr "Uusi tuotteen määrä ostoskorissa."
 msgid "Unique identifier (key) for the cart item to update."
 msgstr "Ostoskorin päivitettävän tuotteen yksilöllinen tunnus (key)."
 
-#: src/StoreApi/Routes/V1/Checkout.php:838
+#: src/StoreApi/Routes/V1/Checkout.php:815
 #: src/StoreApi/Routes/V1/CheckoutOrder.php:252
 msgid "No payment method provided."
 msgstr "Maksutapaa ei ole annettu."
@@ -12984,12 +12988,12 @@ msgstr "Bomet"
 msgid "Baringo"
 msgstr "Baringo"
 
-#: src/Internal/Features/FeaturesController.php:1289
+#: src/Internal/Features/FeaturesController.php:1277
 msgid "Start using new features that are being progressively rolled out to improve the store management experience."
 msgstr "Aloita käyttämään uusia toimintoja, jotka otetaan asteittain käyttöön kaupan hallintakokemuksen parantamiseksi."
 
-#: src/Internal/Features/FeaturesController.php:1262
-#: src/Internal/Features/FeaturesController.php:1287
+#: src/Internal/Features/FeaturesController.php:1250
+#: src/Internal/Features/FeaturesController.php:1275
 msgid "Features"
 msgstr "Ominaisuudet"
 
@@ -15493,7 +15497,7 @@ msgstr "Osastojen luettelo ja niiden tuotteiden lukumäärä"
 msgid "List of categories"
 msgstr "Osastojen luettelo"
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:115
+#: includes/shortcodes/class-wc-shortcode-checkout.php:113
 msgid "You are paying for a guest order. Please continue with payment only if you recognize this order."
 msgstr "Olet maksamassa vierailijan tilausta. Jatka vain jos tunnistat tämän tilauksen omaksi."
 
@@ -15720,7 +15724,7 @@ msgstr "Hinta-alue, jos sellainen on."
 msgid "Sale product price, if applicable."
 msgstr "Tarjoushinta, jos sellainen on."
 
-#: src/StoreApi/Utilities/CartController.php:824
+#: src/StoreApi/Utilities/CartController.php:816
 msgid "Unable to retrieve cart."
 msgstr "Ostoskoria ei voida palauttaa."
 
@@ -15728,16 +15732,16 @@ msgstr "Ostoskoria ei voida palauttaa."
 msgid "Attribute does not exist."
 msgstr "Ominaisuutta ei ole olemassa."
 
-#: src/StoreApi/Utilities/CartController.php:1400
+#: src/StoreApi/Utilities/CartController.php:1392
 msgid "No matching variation found."
 msgstr "Vastaavaa muunnelmaa ei löytynyt."
 
-#: src/StoreApi/Utilities/CartController.php:1497
+#: src/StoreApi/Utilities/CartController.php:1489
 msgid "This product cannot be added to the cart."
 msgstr "Tätä tuotetta ei voi lisätä ostoskoriin."
 
 #. translators: %s: field name
-#: includes/class-wc-checkout.php:868
+#: includes/class-wc-checkout.php:866
 msgctxt "checkout-validation"
 msgid "Billing %s"
 msgstr "Laskutus %s"
@@ -15906,7 +15910,7 @@ msgstr "Olemassa olevaa ostoskorin kohdetta ei voi luoda."
 
 #: src/StoreApi/Routes/V1/CartItemsByKey.php:90
 #: src/StoreApi/Routes/V1/CartItemsByKey.php:128
-#: src/StoreApi/Utilities/CartController.php:250
+#: src/StoreApi/Utilities/CartController.php:242
 msgid "Cart item does not exist."
 msgstr "Ostoskorin kohdetta ei ole."
 
@@ -15919,12 +15923,12 @@ msgstr "Muista poikkeava tunniste ostoskorissa olevalle kohteelle."
 msgid "Unique identifier for the attribute."
 msgstr "Muista poikkeava tunniste ominaisuudelle."
 
-#: src/StoreApi/Utilities/CartController.php:1340
+#: src/StoreApi/Utilities/CartController.php:1332
 msgid "Missing variation data for variable product."
 msgstr "Muunnelmatuotteesta puuttuu muunnelman tiedot."
 
 #. translators: %1$s: Attribute name, %2$s: Allowed values.
-#: src/StoreApi/Utilities/CartController.php:1318
+#: src/StoreApi/Utilities/CartController.php:1310
 msgid "Invalid value posted for %1$s. Allowed values: %2$s"
 msgstr "%1$s :lle annettu arvo ei kelpaa. Sallitut arvot: %2$s"
 
@@ -15933,7 +15937,7 @@ msgid "Total post count."
 msgstr "Artikkeleita yhteensä."
 
 #. translators: %s: field name
-#: includes/class-wc-checkout.php:864
+#: includes/class-wc-checkout.php:862
 msgctxt "checkout-validation"
 msgid "Shipping %s"
 msgstr "Toimitus %s"
@@ -16066,7 +16070,7 @@ msgid "Every 15 Days"
 msgstr "Joka 15. päivä"
 
 #. translators: %s product name
-#: includes/class-wc-ajax.php:1184
+#: includes/class-wc-ajax.php:1176
 msgid "%s is a variable product parent and cannot be added."
 msgstr "%s on muunnelmatuotteen ylempi taso eikä sitä voi poistaa."
 
@@ -16904,11 +16908,11 @@ msgstr "Kenttä ei kelpaa"
 
 #. translators: 1: URL of WordPress.org Repository 2: URL of the GitHub
 #. Repository release page
-#: includes/class-woocommerce.php:1328
+#: includes/class-woocommerce.php:1327
 msgid "Or you can download a pre-built version of the plugin from the <a href=\"%1$s\">WordPress.org repository</a> or by visiting <a href=\"%2$s\">the releases page in the GitHub repository</a>."
 msgstr "Tai voit ladata lisäosan ennalta valmistellun version täältä <a href=\"%1$s\">WordPress.org repository</a> tai käymällä <a href=\"%2$s\">GitHub julkaistut sivulla</a>."
 
-#: includes/class-wc-ajax.php:1598
+#: includes/class-wc-ajax.php:1590
 msgid "Order not editable"
 msgstr "Tilaus ei muokattavissa"
 
@@ -17052,25 +17056,25 @@ msgid "WooCommerce is updating the database in the background. The database upda
 msgstr "WooCommerce päivittää tietokantaa taustalla. Tietokannan päivitys voi kestää hetken, ole kärsivällinen."
 
 #. Translators: %d stock amount
-#: includes/class-wc-ajax.php:1834
+#: includes/class-wc-ajax.php:1826
 msgid "Stock: %d"
 msgstr "Varasto: %d"
 
 #. translators: %1$s: item name %2$s: stock change
-#: includes/class-wc-ajax.php:1525
+#: includes/class-wc-ajax.php:1517
 msgid "Deleted %1$s and adjusted stock (%2$s)"
 msgstr "Poistettu %1$s ja muutettu varasto (%2$s)"
 
-#: includes/class-wc-ajax.php:1486
+#: includes/class-wc-ajax.php:1478
 msgid "Invalid items"
 msgstr "Kohde ei kelpaa"
 
-#: includes/class-wc-ajax.php:1368
+#: includes/class-wc-ajax.php:1360
 msgid "Invalid rate"
 msgstr "Määrä ei kelpaa"
 
 #. translators: %s item name.
-#: includes/class-wc-ajax.php:1204
+#: includes/class-wc-ajax.php:1196
 msgid "Added line items: %s"
 msgstr "Lisätty rivikohteet: %s"
 
@@ -17442,7 +17446,7 @@ msgstr "tilin poistopyyntö"
 msgid "Default product category cannot be deleted."
 msgstr "Tuotteen oletusosastoa ei voi poistaa."
 
-#: includes/class-wc-ajax.php:2490
+#: includes/class-wc-ajax.php:2482
 msgid "You do not have permission to assign API Keys to the selected user."
 msgstr "Et voi osoittaa API-avaimia valitulle käyttäjälle. Tarvitset laajemmat oikeudet"
 
@@ -18288,7 +18292,7 @@ msgid "WooCommerce Customer Orders"
 msgstr "WooCommerce asiakkaiden tilaukset"
 
 #. translators: %1$s: field name, %2$s finder.eircode.ie URL
-#: includes/class-wc-checkout.php:880
+#: includes/class-wc-checkout.php:878
 msgid "%1$s is not valid. You can look up the correct Eircode <a target=\"_blank\" href=\"%2$s\">here</a>."
 msgstr "%1$s ei kelpaa. Voit etsiä oikean Eircode <a target=\"_blank\" href=\"%2$s\">täältä</a>."
 
@@ -18352,8 +18356,8 @@ msgstr "Sinulle on luotu tili {site_title} -sivustolla!"
 
 #. translators: 1: product name 2: quantity in stock
 #. translators: %s: product name
-#: includes/class-wc-cart.php:866
-#: includes/shortcodes/class-wc-shortcode-checkout.php:172
+#: includes/class-wc-cart.php:862
+#: includes/shortcodes/class-wc-shortcode-checkout.php:170
 #: src/StoreApi/Utilities/OrderController.php:777
 msgid "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused."
 msgstr "Pahoittelemme, meillä ei ole tarpeeksi tuotetta \"%1$s\" varastossa jotta voisimme täyttää tilauksen (%2$s on saatavilla). Pahoittelemme aiheutunutta haittaa."
@@ -19113,14 +19117,14 @@ msgstr "Tilan päivitystapahtuma ei onnistunut."
 msgid "Payment complete event failed."
 msgstr "Maksun loppuunsaattaminen ei onnistunut."
 
-#: includes/class-wc-checkout.php:185 includes/class-wc-emails.php:71
-#: includes/class-wc-payment-gateways.php:63 includes/class-wc-shipping.php:80
+#: includes/class-wc-checkout.php:183 includes/class-wc-emails.php:71
+#: includes/class-wc-payment-gateways.php:61 includes/class-wc-shipping.php:80
 #: includes/class-woocommerce.php:178
 msgid "Cloning is forbidden."
 msgstr "Monistus on kielletty."
 
-#: includes/class-wc-checkout.php:192 includes/class-wc-emails.php:81
-#: includes/class-wc-payment-gateways.php:72 includes/class-wc-shipping.php:89
+#: includes/class-wc-checkout.php:190 includes/class-wc-emails.php:81
+#: includes/class-wc-payment-gateways.php:70 includes/class-wc-shipping.php:89
 #: includes/class-woocommerce.php:189
 #: includes/rest-api/Utilities/SingletonTrait.php:49
 msgid "Unserializing instances of this class is forbidden."
@@ -19198,7 +19202,7 @@ msgstr "Käyttäjä \"%s\" poistettu"
 msgid "Purchased Downloads"
 msgstr "Ostetut lataukset"
 
-#: includes/class-wc-checkout.php:1361
+#: includes/class-wc-checkout.php:1344
 msgid "Unable to create order."
 msgstr "Tilausta ei voitu luoda."
 
@@ -19248,7 +19252,7 @@ msgstr "\"Kaikki käytetty\" -latausoikeudet"
 msgid "Limit result set to products with a specific attribute. Use the taxonomy name/attribute slug."
 msgstr "Rajoita tulokset tuotteisiin joilla tietty ominaisuus. Käytä luokittelunimeä tai ominaisuuden polkutunnusta."
 
-#: includes/class-wc-checkout.php:952 includes/class-wc-form-handler.php:451
+#: includes/class-wc-checkout.php:950 includes/class-wc-form-handler.php:451
 msgid "Please read and accept the terms and conditions to proceed with your order."
 msgstr "Ole hyvä, lue ja hyväksy tilaus- ja toimitusehdot jotta voit edetä tilauksen tekemisessä."
 
@@ -20325,11 +20329,11 @@ msgid "Municipality / District"
 msgstr "Kunta / Kuntaryhmä"
 
 #. translators: %s: field name
-#: includes/class-wc-checkout.php:884
+#: includes/class-wc-checkout.php:882
 msgid "%s is not a valid postcode / ZIP."
 msgstr "%s ei ole kelvollinen postinumero/-koodi."
 
-#: includes/class-wc-ajax.php:2363
+#: includes/class-wc-ajax.php:2355
 msgid "Error processing refund. Please try again."
 msgstr "Virhe hyvityksen käsittelyssä. Yritä uudelleen."
 
@@ -20833,7 +20837,7 @@ msgstr "Alennushinnan päättymispäivä (GMT aikavyöhyke)."
 msgid "Define if the variation is visible on the product's page."
 msgstr "Määritä onko muunnelma näkyvissä tuotesivulla."
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:363
+#: includes/shortcodes/class-wc-shortcode-my-account.php:360
 msgid "This key is invalid or has already been used. Please reset your password again if needed."
 msgstr "Tämä avain on virheellinen tai se on jo käytetty. Nollaa salasana uudelleen, jos se on tarpeellista."
 
@@ -20930,7 +20934,7 @@ msgstr "Asiaankuuluvuus"
 #. translators: 1: wc_load_cart 2: woocommerce_init
 #. translators: 1: class::method 2: plugins_loaded
 #: includes/wc-core-functions.php:2518
-#: src/Internal/Features/FeaturesController.php:1102
+#: src/Internal/Features/FeaturesController.php:1090
 msgid "%1$s should not be called before the %2$s action."
 msgstr "%1$s ei tulisi kutsua ennen %2$s toimintoa."
 
@@ -20949,7 +20953,7 @@ msgid "Please enter a valid email address"
 msgstr "Kirjoita kelvollinen sähköpostiosoite"
 
 #. translators: %s: product name
-#: includes/shortcodes/class-wc-shortcode-checkout.php:158
+#: includes/shortcodes/class-wc-shortcode-checkout.php:156
 #: src/StoreApi/Utilities/OrderController.php:750
 msgid "Sorry, \"%s\" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused."
 msgstr "Pahoittelemme, \"%s\" ei ole enää varastossa joten tätä tilausta ei voi maksaa. Pahoittelemme mahdollisesti aiheutunutta haittaa."
@@ -20976,7 +20980,7 @@ msgstr "Maksutapa lisätty."
 msgid "Invalid payment gateway."
 msgstr "Maksukäytävä ei kelpaa."
 
-#: includes/class-wc-checkout.php:286
+#: includes/class-wc-checkout.php:284
 msgid "Create account password"
 msgstr "Luo tilin salasana"
 
@@ -21005,7 +21009,7 @@ msgid "Invalid discount amount."
 msgstr "Alennuksen määrä ei kelpaa."
 
 #. translators: %s fee amount
-#: includes/class-wc-ajax.php:1279
+#: includes/class-wc-ajax.php:1271
 msgid "%s fee"
 msgstr "%s maksu"
 
@@ -21612,7 +21616,7 @@ msgid "Enter a fixed amount or percentage to apply as a fee."
 msgstr "Kirjoita kiinteä määrä tai prosenttiluku jota käytetään maksuna."
 
 #: includes/abstracts/abstract-wc-order.php:1307
-#: includes/class-wc-ajax.php:1433 includes/class-wc-discounts.php:251
+#: includes/class-wc-ajax.php:1425 includes/class-wc-discounts.php:251
 #: src/Internal/Orders/CouponsController.php:70
 msgid "Invalid coupon"
 msgstr "Kuponki ei kelpaa"
@@ -21699,11 +21703,11 @@ msgstr "Kaupassa ja hakutuloksissa"
 msgid "Shop only"
 msgstr "Vain kaupassa"
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:121
+#: includes/shortcodes/class-wc-shortcode-checkout.php:119
 msgid "This order cannot be paid for. Please contact us if you need assistance."
 msgstr "Tilauksen maksaminen epäonnistui. Mikäli tarvitset apua, ota yhteyttä meihin."
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:102
+#: includes/shortcodes/class-wc-shortcode-checkout.php:100
 msgid "Please log in to your account below to continue to the payment form."
 msgstr "Ole hyvä ja kirjaudu tilillesi jatkaaksesi maksuvaiheeseen."
 
@@ -21789,7 +21793,7 @@ msgstr "Ei voitu kiinnittää \"%s\"."
 msgid "Variation cannot be imported: Missing parent ID or parent does not exist yet."
 msgstr "Muunnelmaa ei voi tuoda: Ylemmän tason tunnus/ID puuttuu tai ylempää tasoa ei vielä ole."
 
-#: includes/class-wc-ajax.php:2551
+#: includes/class-wc-ajax.php:2543
 msgid "API Key generated successfully. Make sure to copy your new keys now as the secret key will be hidden once you leave this page."
 msgstr "Rajapinta/API avain tehty. Kopioi uudet avaimet nyt koska salainen avain piilotetaan kun poistut tältä sivulta."
 
@@ -22704,7 +22708,7 @@ msgid "WooCommerce Services"
 msgstr "WooCommerce Services (WC palvelut)"
 
 #. translators: %s: logout url
-#: includes/shortcodes/class-wc-shortcode-my-account.php:93
+#: includes/shortcodes/class-wc-shortcode-my-account.php:90
 #: includes/wc-template-functions.php:56
 msgid "Are you sure you want to log out? <a href=\"%s\">Confirm and log out</a>"
 msgstr "Oletko varma että haluat kirjautua ulos? <a href=\"%s\">Vahvista uloskirjautuminen</a>"
@@ -22794,7 +22798,7 @@ msgstr "Ylemmän tason teeman versio"
 msgid "Parent theme author URL"
 msgstr "Ylemmän tason teeman tekijän verkko-osoite"
 
-#: includes/class-wc-ajax.php:1180 includes/class-wc-order-item-product.php:93
+#: includes/class-wc-ajax.php:1172 includes/class-wc-order-item-product.php:93
 msgid "Invalid product ID"
 msgstr "Tuotteen tunnus/ID ei kelpaa"
 
@@ -22991,7 +22995,7 @@ msgstr "Kuponki: %s"
 msgid "Percentage discount"
 msgstr "Prosenttialennus"
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:87
+#: includes/shortcodes/class-wc-shortcode-my-account.php:84
 msgid "Your password has been reset successfully."
 msgstr "Salasanan vaihto onnistui."
 
@@ -23097,8 +23101,8 @@ msgstr "Pankki"
 msgid "To override and edit this email template copy %1$s to your theme folder: %2$s."
 msgstr "Kun haluat ohittaa ja muokata tätä sähköpostin pohjaa, kopioi %1$s teeman hakemistoon: %2$s."
 
-#: includes/data-stores/class-wc-payment-token-data-store.php:47
-#: includes/data-stores/class-wc-payment-token-data-store.php:97
+#: includes/data-stores/class-wc-payment-token-data-store.php:44
+#: includes/data-stores/class-wc-payment-token-data-store.php:88
 msgid "Invalid or missing payment token fields."
 msgstr "Maksun (valtuutus)merkkikentät puuttuvat tai eivät kelpaa."
 
@@ -23125,7 +23129,7 @@ msgstr "Näytä vain tunnus/ID kun toiminto on onnistunut."
 msgid "%1$d update functions completed. Database version is %2$s"
 msgstr "%1$d päivitystä valmis. Tietokannan versio on %2$s"
 
-#: includes/data-stores/class-wc-payment-token-data-store.php:183
+#: includes/data-stores/class-wc-payment-token-data-store.php:174
 msgid "Invalid payment token."
 msgstr "Maksutietojen poletti ei kelpaa."
 
@@ -23336,7 +23340,7 @@ msgid "Error:"
 msgstr "Virhe:"
 
 #. translators: %s: Attribute name.
-#: includes/class-wc-cart.php:1203
+#: includes/class-wc-cart.php:1191
 msgid "Invalid value posted for %s"
 msgstr "%s:lle asetettu arvo ei kelpaa"
 
@@ -23386,8 +23390,8 @@ msgstr "Sähköpostiosoitteen rajoite ei kelpaa."
 msgid "Invalid discount type."
 msgstr "Alennuksen laji ei kelpaa."
 
-#: includes/class-wc-cart-session.php:633 includes/class-wc-cart.php:1265
-#: includes/class-wc-cart.php:1335 includes/class-wc-frontend-scripts.php:741
+#: includes/class-wc-cart-session.php:633 includes/class-wc-cart.php:1253
+#: includes/class-wc-cart.php:1323 includes/class-wc-frontend-scripts.php:741
 #: includes/wc-cart-functions.php:133 includes/wc-template-functions.php:2575
 #: src/Blocks/BlockTypes/ProductButton.php:397
 #: src/Blocks/BlockTypes/ProductButton.php:398
@@ -23395,14 +23399,14 @@ msgid "View cart"
 msgstr "Näytä ostoskori"
 
 #. translators: %s: product name
-#: includes/class-wc-cart-session.php:629 includes/class-wc-cart.php:1250
+#: includes/class-wc-cart-session.php:629 includes/class-wc-cart.php:1238
 msgid "You cannot add another \"%s\" to your cart."
 msgstr "Et voi lisätä toista \"%s\" ostoskoriin."
 
-#: includes/class-wc-ajax.php:1126 includes/class-wc-ajax.php:1158
-#: includes/class-wc-ajax.php:1252 includes/class-wc-ajax.php:1318
-#: includes/class-wc-ajax.php:1362 includes/class-wc-ajax.php:1428
-#: includes/class-wc-ajax.php:1482 src/Internal/Orders/CouponsController.php:65
+#: includes/class-wc-ajax.php:1118 includes/class-wc-ajax.php:1150
+#: includes/class-wc-ajax.php:1244 includes/class-wc-ajax.php:1310
+#: includes/class-wc-ajax.php:1354 includes/class-wc-ajax.php:1420
+#: includes/class-wc-ajax.php:1474 src/Internal/Orders/CouponsController.php:65
 msgid "Invalid order"
 msgstr "Tilaus ei kelpaa"
 
@@ -24664,7 +24668,7 @@ msgstr "%1$s (%2$s)"
 #. translators: $1: customer name, $2 customer id, $3: customer email
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:387
 #: includes/admin/settings/views/html-keys-edit.php:53
-#: includes/class-wc-ajax.php:1950 src/Internal/Admin/Orders/ListTable.php:984
+#: includes/class-wc-ajax.php:1942 src/Internal/Admin/Orders/ListTable.php:984
 #: src/Internal/StockNotifications/Admin/ListTable.php:503
 #: src/Internal/StockNotifications/Admin/Templates/html-admin-notification-create.php:90
 msgid "%1$s (#%2$s &ndash; %3$s)"
@@ -26236,7 +26240,7 @@ msgstr "Päiväys jolloin verkkotoimintokutsu luotiin, sivuston aikavyöhykkeell
 msgid "The date the webhook was last modified, in the site's timezone."
 msgstr "Päiväys jolloin verkkotoimintokutsua viimeksi muokattiin, sivuston aikavyöhykkeellä."
 
-#: includes/class-wc-checkout.php:970
+#: includes/class-wc-checkout.php:968
 msgid "No shipping method has been selected. Please double check your address, or contact us if you need any help."
 msgstr "Toimitustapaa ei ole valittu. Tarkasta vielä kerran osoite tai ota yhteyttä meihin jos tarvitset apua."
 
@@ -26312,7 +26316,7 @@ msgstr "Vyöhyke"
 msgid "Go to shop"
 msgstr "Siirry kauppaan"
 
-#: includes/class-wc-ajax.php:380 templates/cart/cart-empty.php:35
+#: includes/class-wc-ajax.php:378 templates/cart/cart-empty.php:35
 msgid "Return to shop"
 msgstr "Takaisin kauppaan"
 
@@ -26356,7 +26360,7 @@ msgstr "%1$s on asennettu mutta ei voitu ottaa käyttöön. <a href=\"%2$s\">Ota
 msgid "%1$s could not be installed (%2$s). <a href=\"%3$s\">Please install it manually by clicking here.</a>"
 msgstr "%1$s ei voitu asentaa (%2$s). <a href=\"%3$s\">Asenna manuaalisesti napsauttamalla tästä.</a>"
 
-#: includes/class-wc-checkout.php:959
+#: includes/class-wc-checkout.php:957
 msgid "Please enter an address to continue."
 msgstr "Kirjoita osoite, jotta voit jatkaa."
 
@@ -26457,7 +26461,7 @@ msgstr "Kaikki verot yhteensä."
 #: includes/rest-api/Controllers/Version1/class-wc-rest-orders-v1-controller.php:1090
 #: includes/rest-api/Controllers/Version2/class-wc-rest-orders-v2-controller.php:1287
 #: src/Internal/RestApi/Routes/V4/Orders/Schema/OrderSchema.php:266
-#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:54
+#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:52
 #: src/StoreApi/Schemas/V1/CheckoutSchema.php:126
 msgid "Billing address."
 msgstr "Laskutusosoite."
@@ -26474,7 +26478,7 @@ msgstr "Maakoodi ISO 3166-1 alpha-2 -muodossa."
 #: includes/rest-api/Controllers/Version1/class-wc-rest-orders-v1-controller.php:1153
 #: includes/rest-api/Controllers/Version2/class-wc-rest-orders-v2-controller.php:1350
 #: src/Internal/RestApi/Routes/V4/Orders/Schema/OrderSchema.php:329
-#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:61
+#: src/StoreApi/Routes/V1/CartUpdateCustomer.php:59
 #: src/StoreApi/Schemas/V1/CheckoutSchema.php:137
 msgid "Shipping address."
 msgstr "Toimitusosoite."
@@ -30137,13 +30141,13 @@ msgid "One review for %s"
 msgstr "Yksi arvostelu tuotteelle %s"
 
 #. translators: %s: order status
-#: includes/shortcodes/class-wc-shortcode-checkout.php:127
-#: includes/shortcodes/class-wc-shortcode-checkout.php:249
+#: includes/shortcodes/class-wc-shortcode-checkout.php:125
+#: includes/shortcodes/class-wc-shortcode-checkout.php:247
 msgid "This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance."
 msgstr "Tilauksen tila on &ldquo;%s&rdquo;&mdash; sitä ei voi maksaa. Epäselvässä tapauksessa ota meihin yhteyttä, selvitämme asian."
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:97
-#: includes/shortcodes/class-wc-shortcode-checkout.php:252
+#: includes/shortcodes/class-wc-shortcode-checkout.php:95
+#: includes/shortcodes/class-wc-shortcode-checkout.php:250
 msgid "Sorry, this order is invalid and cannot be paid for."
 msgstr "Pahoittelemme, tilaus ei ole kelvollinen ja sitä ei voi maksaa."
 
@@ -30159,7 +30163,7 @@ msgstr "Päivämäärä:"
 msgid "Log in"
 msgstr "Kirjaudu sisään"
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:328
+#: includes/shortcodes/class-wc-shortcode-my-account.php:325
 msgid "Password reset is not allowed for this user"
 msgstr "Salasanaa ei voi palauttaa tälle käyttäjälle."
 
@@ -30309,7 +30313,7 @@ msgstr "Ei käytössä"
 #: includes/widgets/class-wc-widget-cart.php:25
 #: includes/widgets/class-wc-widget-cart.php:29
 #: includes/widgets/class-wc-widget-cart.php:64
-#: src/Blocks/BlockTypes/Cart.php:62 src/Blocks/BlockTypes/CartLink.php:31
+#: src/Blocks/BlockTypes/Cart.php:60 src/Blocks/BlockTypes/CartLink.php:31
 #: src/Blocks/BlockTypes/MiniCart.php:835
 #: src/Blocks/BlockTypes/MiniCart.php:842
 #: assets/client/blocks/cart-frontend.js:8 assets/client/blocks/cart-link.js:1
@@ -30497,7 +30501,7 @@ msgstr "Ei hyväksytä"
 msgid "Username or email address"
 msgstr "Käyttäjätunnus tai sähköpostiosoite"
 
-#: includes/class-wc-checkout.php:288 templates/auth/form-login.php:44
+#: includes/class-wc-checkout.php:286 templates/auth/form-login.php:44
 #: templates/global/form-login.php:38 templates/myaccount/form-login.php:43
 #: templates/myaccount/form-login.php:93
 #: assets/client/admin/product-editor/index.js:2
@@ -30548,7 +30552,7 @@ msgstr "Ostoskori on tyhjä."
 #: includes/admin/settings/class-wc-settings-accounts.php:63
 #: includes/customizer/class-wc-shop-customizer.php:733
 #: includes/wc-template-functions.php:2588
-#: src/Blocks/BlockTypes/Checkout.php:138
+#: src/Blocks/BlockTypes/Checkout.php:136
 #: src/Internal/Admin/Orders/ListTable.php:610
 #: templates/checkout/form-checkout.php:32
 #: assets/client/blocks/checkout-frontend.js:5
@@ -30563,7 +30567,7 @@ msgstr "Ostoskorissa olevissa tuotteissa on jotain selvitettävää. Ole hyvä j
 msgid "Create an account?"
 msgstr "Rekisteröidy?"
 
-#: src/StoreApi/Routes/V1/Checkout.php:964
+#: src/StoreApi/Routes/V1/Checkout.php:941
 #: templates/checkout/form-checkout.php:26
 #: assets/client/blocks/checkout-frontend.js:5
 msgid "You must be logged in to checkout."
@@ -30600,7 +30604,7 @@ msgid "Sorry, it seems that there are no available payment methods for your loca
 msgstr "Pahoittelemme, (ennalta asetetut) maksutavat eivät ole käytettävissä tässä sijainnissa. Ole hyvä ja ota yhteyttä, jos tarvitset ohjeita tai haluat keskustella mitä voisi olla tehtävissä."
 
 #: includes/class-wc-query.php:122
-#: includes/shortcodes/class-wc-shortcode-checkout.php:210
+#: includes/shortcodes/class-wc-shortcode-checkout.php:208
 msgid "Pay for order"
 msgstr "Maksa tilaus"
 
@@ -31009,7 +31013,7 @@ msgstr "Tallenna osoite"
 msgid "Featured products"
 msgstr "Esittelyssä olevat tuotteet"
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:143
+#: includes/shortcodes/class-wc-shortcode-my-account.php:140
 #: src/Blocks/BlockTypes/OrderConfirmation/Status.php:147
 #: templates/checkout/thankyou.php:38
 #: templates/emails/block/customer-new-account.php:71
@@ -31022,15 +31026,15 @@ msgstr "Oma tili"
 msgid "Order number:"
 msgstr "Tilausnumero:"
 
-#: includes/shortcodes/class-wc-shortcode-checkout.php:375
+#: includes/shortcodes/class-wc-shortcode-checkout.php:367
 msgid "The order totals have been updated. Please confirm your order by pressing the \"Place order\" button at the bottom of the page."
 msgstr "Tilauksen loppusummat päivitetty. Tee tilaus painamalla \"Lähetä tilaus\" -painiketta sivun alaosassa."
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:289
+#: includes/shortcodes/class-wc-shortcode-my-account.php:286
 msgid "Enter a username or email address."
 msgstr "Kirjoita käyttäjätunnus tai sähköpostiosoite."
 
-#: includes/shortcodes/class-wc-shortcode-my-account.php:314
+#: includes/shortcodes/class-wc-shortcode-my-account.php:311
 msgid "Invalid username or email."
 msgstr "Käyttäjätunnus tai sähköposti ei kelpaa."
 
@@ -31671,7 +31675,7 @@ msgstr "Kirjoita lähialueelle toimituksesta valoitettava hinta. Ei huomioida jo
 msgid "Separate codes with a comma. Accepts wildcards, e.g. <code>P*</code> will match a postcode of PE30. Also accepts a pattern, e.g. <code>NG1___</code> would match NG1 1AA but not NG10 1AA"
 msgstr "Erota postinumerot pilkulla.  Jokerimerkit hyväksytään, esim. <code>P*</code> hyväksyy postinumeron PE30. Hyväksyy myös kaavan, esim. <code>NG1___</code> hyväksyy NG1 1AA mutta ei NG10 1AA"
 
-#: includes/shortcodes/class-wc-shortcode-cart.php:60
+#: includes/shortcodes/class-wc-shortcode-cart.php:57
 msgid "Shipping costs updated."
 msgstr "Toimituskulut päivitetty."
 
@@ -32057,40 +32061,40 @@ msgstr "Asiakkaalle voidaan lähettää sähköpostilla lasku jossa on tilauksen
 msgid "Awaiting BACS payment."
 msgstr "Odottaa tilisiirtoa."
 
-#: includes/class-wc-ajax.php:319
+#: includes/class-wc-ajax.php:317
 msgid "Sorry there was a problem removing this coupon."
 msgstr "Pahoittelemme, kupongin poisto epäonnistui."
 
-#: includes/class-wc-ajax.php:322
+#: includes/class-wc-ajax.php:320
 msgid "Coupon has been removed."
 msgstr "Kuponki on poistettu."
 
-#: includes/class-wc-ajax.php:380
+#: includes/class-wc-ajax.php:378
 msgid "Sorry, your session has expired."
 msgstr "Pahoittelemme, istunto on vanhentunut."
 
-#: includes/class-wc-ajax.php:2359
+#: includes/class-wc-ajax.php:2351
 msgid "Invalid refund amount"
 msgstr "Tilauksen hyvityksen määrä ei kelpaa"
 
-#: includes/class-wc-ajax.php:2473
+#: includes/class-wc-ajax.php:2465
 msgid "Description is missing."
 msgstr "Kuvaus puuttuu."
 
-#: includes/class-wc-ajax.php:2476
+#: includes/class-wc-ajax.php:2468
 msgid "User is missing."
 msgstr "Käyttäjä puuttuu."
 
-#: includes/class-wc-ajax.php:2479
+#: includes/class-wc-ajax.php:2471
 msgid "Permissions is missing."
 msgstr "Oikeudet puuttuvat."
 
-#: includes/class-wc-ajax.php:2516
+#: includes/class-wc-ajax.php:2508
 msgid "API Key updated successfully."
 msgstr "API -avain päivitettiin."
 
 #: includes/admin/meta-boxes/views/html-product-data-attributes.php:28
-#: includes/class-wc-ajax.php:2642
+#: includes/class-wc-ajax.php:2634
 #: src/Internal/Admin/ProductReviews/ReviewsCommentsOverrides.php:97
 #: assets/client/admin/app/index.js:2
 msgid "Dismiss this notice."
@@ -32194,36 +32198,36 @@ msgstr "Sivu %d"
 msgid "%s has been removed from your cart because it can no longer be purchased. Please contact us if you need assistance."
 msgstr "%s on poistettu ostoskorista koska sitä ei voi enää ostaa. Ota yhteyttä, jos tarvitset ohjeita."
 
-#: includes/class-wc-cart.php:656
+#: includes/class-wc-cart.php:652
 msgid "Get cart should not be called before the wp_loaded action."
 msgstr "Hae ostoskori -Get cart- ei pitäisi kutsua ennen wp_loaded toimintoa."
 
-#: includes/class-wc-cart.php:1273
+#: includes/class-wc-cart.php:1261
 msgid "Sorry, this product cannot be purchased."
 msgstr "Pahoittelemme, tätä tuotetta ei voi ostaa."
 
 #. translators: %s: product name
-#: includes/class-wc-cart.php:1288
+#: includes/class-wc-cart.php:1276
 #: src/Blocks/BlockTypes/AddToCartWithOptions/AddToCartWithOptions.php:254
-#: src/StoreApi/Utilities/CartController.php:299
+#: src/StoreApi/Utilities/CartController.php:291
 msgid "You cannot add &quot;%s&quot; to the cart because the product is out of stock."
 msgstr "&quot;%s&quot; ei voi lisätä ostoskoriin, koska tuote on loppunut varastosta."
 
-#: includes/class-wc-checkout.php:276
+#: includes/class-wc-checkout.php:274
 msgid "Account username"
 msgstr "Asiakastilin käyttäjätunnus"
 
-#: includes/class-wc-checkout.php:1306
+#: includes/class-wc-checkout.php:1289
 msgid "We were unable to process your order, please try again."
 msgstr "Virhe: Tilausta ei voitu käsitellä, yritä uudelleen."
 
 #. translators: %s: shipping location (prefix e.g. 'to' + ISO 3166-1 alpha-2
 #. country code)
-#: includes/class-wc-checkout.php:963
+#: includes/class-wc-checkout.php:961
 msgid "Unfortunately <strong>we do not ship %s</strong>. Please enter an alternative shipping address."
 msgstr "Valitettavasti <strong>emme toimita osoitteeseen %s</strong>. Kirjoita muu toimitusosoite, ole hyvä."
 
-#: includes/class-wc-checkout.php:980 includes/class-wc-form-handler.php:461
+#: includes/class-wc-checkout.php:978 includes/class-wc-form-handler.php:461
 #: includes/class-wc-form-handler.php:468
 #: includes/class-wc-form-handler.php:597
 #: includes/class-wc-form-handler.php:621
@@ -32372,8 +32376,8 @@ msgstr "Latauslinkki ei ole kelvollinen."
 #: includes/class-wc-download-handler.php:164
 #: includes/class-wc-form-handler.php:830
 #: includes/data-stores/abstract-wc-order-data-store-cpt.php:149
-#: includes/shortcodes/class-wc-shortcode-checkout.php:255
-#: includes/shortcodes/class-wc-shortcode-my-account.php:143
+#: includes/shortcodes/class-wc-shortcode-checkout.php:253
+#: includes/shortcodes/class-wc-shortcode-my-account.php:140
 #: includes/wc-order-functions.php:753
 msgid "Invalid order."
 msgstr "Tilaus ei kelpaa."
@@ -32509,14 +32513,14 @@ msgid "Please choose a product to add to your cart&hellip;"
 msgstr "Ole hyvä, valitse tuote joka lisätään ostoskoriin..."
 
 #. translators: %s: Attribute name.
-#: includes/class-wc-cart.php:1213
-#: src/StoreApi/Utilities/CartController.php:1344
+#: includes/class-wc-cart.php:1201
+#: src/StoreApi/Utilities/CartController.php:1336
 msgid "%s is a required field"
 msgid_plural "%s are required fields"
 msgstr[0] "Tämä kenttä tarvitaan %s"
 msgstr[1] "Nämä kentät tarvitaan %s"
 
-#: includes/class-wc-cart.php:1171
+#: includes/class-wc-cart.php:1159
 msgid "Please choose product options&hellip;"
 msgstr "Valitse tuotteen vaihtoehdoista..."
 
@@ -32738,7 +32742,7 @@ msgid "Products tagged &ldquo;%s&rdquo;"
 msgstr "Tuotteet avainsanalla &ldquo;%s&rdquo;"
 
 #. translators: %s: shop cart url
-#: includes/class-wc-checkout.php:1295
+#: includes/class-wc-checkout.php:1278
 msgid "Sorry, your session has expired. <a href=\"%s\" class=\"wc-backward\">Return to shop</a>"
 msgstr "Pahoittelemme. Istunto on umpeutunut.  <a href=\"%s\" class=\"wc-backward\">Palaa kauppaan</a>"
 
@@ -32977,36 +32981,36 @@ msgid "Access denied"
 msgstr "Pääsy kielletty"
 
 #. translators: %s: product name
-#: includes/class-wc-cart.php:843
+#: includes/class-wc-cart.php:839
 msgid "Sorry, \"%s\" is not in stock. Please edit your cart and try again. We apologize for any inconvenience caused."
 msgstr "Pahoittelemme, \"%s\" ei ole varastossa. Muokkaa tilausta ja yritä uudelleen, ole hyvä. Pahoittelemme aiheutunutta haittaa."
 
 #. translators: %s: field name
 #. translators: %s: Field name.
-#: includes/class-wc-checkout.php:933 includes/class-wc-form-handler.php:136
+#: includes/class-wc-checkout.php:931 includes/class-wc-form-handler.php:136
 #: includes/class-wc-form-handler.php:297
 msgid "%s is a required field."
 msgstr "%s on vaadittu tieto."
 
 #: includes/class-wc-form-handler.php:154
-#: includes/shortcodes/class-wc-shortcode-cart.php:44
+#: includes/shortcodes/class-wc-shortcode-cart.php:41
 msgid "Please enter a valid postcode / ZIP."
 msgstr "Kirjoita kelvollinen postinumero."
 
 #. translators: %s: phone number
 #. translators: %s: Phone number.
-#: includes/class-wc-checkout.php:896 includes/class-wc-form-handler.php:162
+#: includes/class-wc-checkout.php:894 includes/class-wc-form-handler.php:162
 msgid "%s is not a valid phone number."
 msgstr "%s ei ole kelvollinen puhelinnumero."
 
 #. translators: %s: email address
 #. translators: %s: Email address.
-#: includes/class-wc-checkout.php:906 includes/class-wc-form-handler.php:170
+#: includes/class-wc-checkout.php:904 includes/class-wc-form-handler.php:170
 msgid "%s is not a valid email address."
 msgstr "%s ei ole kelvollinen sähköpostiosoite."
 
 #. translators: 1: state field 2: valid states
-#: includes/class-wc-checkout.php:926
+#: includes/class-wc-checkout.php:924
 msgid "%1$s is not valid. Please enter one of the following: %2$s"
 msgstr "%1$s ei ole kelvollinen. Ole hyvä, valitse joku näistä: %2$s"
 
@@ -33027,8 +33031,8 @@ msgid "Refund failed."
 msgstr "Hyvitys ei onnistunut."
 
 #. translators: 1: product name 2: quantity in stock
-#: includes/class-wc-cart.php:1305
-#: src/StoreApi/Utilities/CartController.php:316
+#: includes/class-wc-cart.php:1293
+#: src/StoreApi/Utilities/CartController.php:308
 msgid "You cannot add that amount of &quot;%1$s&quot; to the cart because there is not enough stock (%2$s remaining)."
 msgstr "Lisää ostoskoriin vähemmän &quot;%1$s&quot; tuotetta, koska sitä on varastossa vain %2$s kappaletta."
 
@@ -33054,7 +33058,7 @@ msgid_plural "%d products"
 msgstr[0] "%d tuote"
 msgstr[1] "%d tuotetta"
 
-#: includes/class-wc-checkout.php:265
+#: includes/class-wc-checkout.php:263
 #: assets/client/blocks/checkout-frontend.js:5
 #: assets/client/blocks/checkout.js:21
 msgid "Notes about your order, e.g. special notes for delivery."
@@ -33076,7 +33080,7 @@ msgid_plural "On hold <span class=\"count\">(%s)</span>"
 msgstr[0] "Pidossa <span class=\"count\">(%s)</span>"
 msgstr[1] "Pidossa <span class=\"count\">(%s)</span>"
 
-#: includes/class-wc-cart.php:820
+#: includes/class-wc-cart.php:816
 msgid "An item which is no longer available was removed from your cart."
 msgstr "Ostoskorista poistettiin tuote, jota ei ole enää saatavilla."
 
@@ -33105,7 +33109,7 @@ msgid "Coupon does not exist."
 msgstr "Kuponkia ei ole olemassa."
 
 #. translators: 1: quantity in stock 2: current quantity
-#: includes/class-wc-cart.php:1332 includes/class-wc-cart.php:1339
+#: includes/class-wc-cart.php:1320 includes/class-wc-cart.php:1327
 msgid "You cannot add that amount to the cart &mdash; we have %1$s in stock and you already have %2$s in your cart."
 msgstr "Valittua määrää ei voi lisätä ostoskoriin. Varastossa on %1$s kpl ja ostoskorissasi on jo %2$s kpl."
 
@@ -33203,7 +33207,7 @@ msgid "PayPal uses this method of communicating when sending back transaction in
 msgstr "PayPal käyttää tätä viestintämenetelmää kun se lähettää takaisin tiedot maksutapahtumasta."
 
 #. translators: %s: error message
-#: includes/class-wc-ajax.php:1191 includes/wc-rest-functions.php:101
+#: includes/class-wc-ajax.php:1183 includes/wc-rest-functions.php:101
 #: assets/client/admin/email-editor/index.js:2
 #: assets/client/admin/wp-admin-scripts/email-editor-integration.js:2
 msgid "Error: %s"
@@ -33499,7 +33503,7 @@ msgid "Placeholder"
 msgstr "Paikanvaraus"
 
 #. translators: %s item name.
-#: includes/class-wc-ajax.php:1528
+#: includes/class-wc-ajax.php:1520
 msgid "Deleted %s"
 msgstr "Poistettu %s"
 
@@ -34279,7 +34283,7 @@ msgid "Generate API key"
 msgstr "Luo API-avain"
 
 #: includes/admin/settings/views/html-keys-edit.php:132
-#: includes/class-wc-ajax.php:2552
+#: includes/class-wc-ajax.php:2544
 msgid "Revoke key"
 msgstr "Kumoa avain"
 
@@ -34711,9 +34715,9 @@ msgstr "Ota käyttöön tuotearviot"
 #: src/Internal/Admin/Notes/SellingOnlineCourses.php:78
 #: src/Internal/Admin/Notes/UnsecuredReportFiles.php:50
 #: src/Internal/Admin/Notes/WooCommercePayments.php:121
-#: src/Internal/Features/FeaturesController.php:657
-#: src/Internal/Features/FeaturesController.php:666
-#: src/Internal/Features/FeaturesController.php:1468
+#: src/Internal/Features/FeaturesController.php:645
+#: src/Internal/Features/FeaturesController.php:654
+#: src/Internal/Features/FeaturesController.php:1456
 #: src/Internal/StockNotifications/Admin/Templates/html-admin-notifications.php:43
 #: assets/client/admin/chunks/homescreen.js:1
 #: assets/client/admin/chunks/marketplace.js:1
@@ -35198,7 +35202,7 @@ msgid "Name (Last, First)"
 msgstr "Nimi (Sukunimi, Etunimi)"
 
 #: includes/admin/reports/class-wc-report-customer-list.php:216
-#: includes/class-wc-checkout.php:278
+#: includes/class-wc-checkout.php:276
 #: src/Admin/API/Reports/Customers/Controller.php:589
 #: templates/myaccount/form-login.php:79
 #: assets/client/admin/chunks/analytics-report-customers.js:1
@@ -35273,7 +35277,7 @@ msgstr "Ei mitään"
 #: includes/widgets/class-wc-widget-brand-thumbnails.php:210
 #: src/Internal/Admin/Orders/ListTable.php:664
 #: src/Internal/Admin/Orders/ListTable.php:1817
-#: src/Internal/Features/FeaturesController.php:1911
+#: src/Internal/Features/FeaturesController.php:1899
 #: assets/client/admin/chunks/analytics-report-orders.js:1
 #: assets/client/admin/chunks/dashboard-charts.js:1
 #: assets/client/admin/components/index.js:2
@@ -36322,7 +36326,7 @@ msgstr "Toimitusosoitetta ei ole asetettu."
 #. translators: file name.
 #. translators: %d file count
 #: includes/admin/meta-boxes/class-wc-meta-box-order-downloads.php:64
-#: includes/class-wc-ajax.php:1065
+#: includes/class-wc-ajax.php:1057
 msgid "File %d"
 msgstr "Tiedosto %d"
 
@@ -36331,7 +36335,7 @@ msgid "Search for a downloadable product&hellip;"
 msgstr "Etsi ladattavaa tuotetta..."
 
 #. translators: $1: Date created, $2 Time created
-#: includes/class-wc-ajax.php:1729
+#: includes/class-wc-ajax.php:1721
 msgid "added on %1$s at %2$s"
 msgstr "lisätty %1$s * %2$s"
 
@@ -36341,12 +36345,12 @@ msgstr "lisätty %1$s * %2$s"
 #: includes/admin/class-wc-admin-status.php:462
 #: includes/admin/meta-boxes/views/html-order-notes.php:39
 #: includes/admin/views/html-admin-page-status-report.php:690
-#: includes/class-wc-ajax.php:1735 templates/content-widget-reviews.php:38
+#: includes/class-wc-ajax.php:1727 templates/content-widget-reviews.php:38
 msgid "by %s"
 msgstr "-- %s"
 
 #: includes/admin/meta-boxes/views/html-order-notes.php:42
-#: includes/class-wc-ajax.php:1738
+#: includes/class-wc-ajax.php:1730
 msgid "Delete note"
 msgstr "Poista kommentti"
 
@@ -37492,7 +37496,7 @@ msgstr "Sukunimi"
 #: includes/admin/class-wc-admin-profile.php:114
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:67
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:139
-#: src/Blocks/BlockTypes/Checkout.php:99
+#: src/Blocks/BlockTypes/Checkout.php:97
 #: src/Blocks/Domain/Services/CheckoutFields.php:715
 #: src/StoreApi/Schemas/V1/AbstractAddressSchema.php:58
 #: assets/client/blocks/checkout.js:2
@@ -37860,7 +37864,7 @@ msgstr "Sivun asetukset"
 msgid "Let's go!"
 msgstr "Aloitetaan!"
 
-#: includes/class-wc-checkout.php:264
+#: includes/class-wc-checkout.php:262
 msgid "Order notes"
 msgstr "Tilauksen kommentit"
 
@@ -38128,7 +38132,7 @@ msgstr "Tuntematon"
 #: includes/admin/class-wc-admin-notices.php:295
 #: includes/admin/class-wc-admin-status.php:310
 #: includes/emails/class-wc-email.php:1443
-#: src/Internal/Features/FeaturesController.php:1956
+#: src/Internal/Features/FeaturesController.php:1944
 msgid "Action failed. Please refresh the page and retry."
 msgstr "Toiminto ei onnistunut. Päivitä sivu ja yritä uudelleen."
 
@@ -39004,7 +39008,7 @@ msgid "Backordered"
 msgstr "Jälkitoimitus"
 
 #: includes/abstracts/abstract-wc-order.php:2302
-#: includes/class-wc-cart.php:1876 includes/class-wc-product-grouped.php:124
+#: includes/class-wc-cart.php:1833 includes/class-wc-product-grouped.php:124
 msgid "Free!"
 msgstr "Maksuton!"
 
