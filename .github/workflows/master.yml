@@ -12,13 +12,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: wp-content/themes/mehh/package-lock.json
+      - name: Install theme dependencies
+        working-directory: wp-content/themes/mehh
+        run: npm ci
+      - name: Build theme assets
+        working-directory: wp-content/themes/mehh
+        run: npm run build
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh/
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
-      - name: Dry run deploy to temp directory
+      - name: Deploy files to server
         run: |
           tar -czf - \
           --exclude='.git' \
@@ -27,4 +39,4 @@ jobs:
           --exclude='wp-content/uploads' \
           --exclude='wp-content/member-files' \
           . | ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-          "DRY_RUN_DIR='${{ secrets.DEPLOY_PATH }}-github-actions-dry-run' && rm -rf \"\$DRY_RUN_DIR\" && mkdir -p \"\$DRY_RUN_DIR\" && tar -xzf - -C \"\$DRY_RUN_DIR\" --no-same-owner && echo 'Dry run extracted to:' \"\$DRY_RUN_DIR\" && find \"\$DRY_RUN_DIR\" -maxdepth 2 | head -100"
+          "mkdir -p '${{ secrets.DEPLOY_PATH }}' && tar -xzf - -C '${{ secrets.DEPLOY_PATH }}' --no-same-owner"

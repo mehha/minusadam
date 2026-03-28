@@ -8,8 +8,8 @@
     "node": ">=12.14.0"
   },
   "scripts": {
-    "build": "mix",
-    "build:production": "mix --production",
+    "build:dev": "mix",
+    "build": "mix --production",
     "start": "mix watch",
     "hot": "mix watch --hot",
     "clear": "wp acorn optimize:clear",

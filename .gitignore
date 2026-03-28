@@ -11,3 +11,5 @@ cookie.txt
 .env
 docker-compose.yml
 Dockerfile
+/wp-content/themes/mehh/public/*
+!/wp-content/themes/mehh/public/.gitignore
