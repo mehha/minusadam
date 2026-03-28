@@ -13,3 +13,5 @@ docker-compose.yml
 Dockerfile
 /wp-content/themes/mehh/public/*
 !/wp-content/themes/mehh/public/.gitignore
+/wp-content/themes/mehh/vendor/*
+!/wp-content/themes/mehh/vendor/.gitignore
