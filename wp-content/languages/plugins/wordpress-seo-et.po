@@ -1,0 +1,4153 @@
+# Translation of Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) in Estonian
+# This file is distributed under the same license as the Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-07-03 19:13:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: et_EE\n"
+"Project-Id-Version: Plugins - Yoast SEO &#8211; Advanced SEO with real-time guidance and built-in AI - Stable (latest release)\n"
+
+#: src/myyoast-client/user-interface/myyoast-client-integration.php:76
+msgid "Every 90 days"
+msgstr "Iga 90 päeva"
+
+#: src/abilities/user-interface/ability-categories-integration.php:44
+msgid "SEO analysis capabilities provided by Yoast SEO."
+msgstr "SEO analüüsi võimalused, mida pakub Yoast SEO."
+
+#: src/abilities/user-interface/abilities-integration.php:252
+msgid "A human-readable label for the score."
+msgstr "Hinnangu inimloetav silt."
+
+#: src/abilities/user-interface/abilities-integration.php:248
+msgid "The score slug."
+msgstr "Punktisumma püsiviide."
+
+#: src/abilities/user-interface/abilities-integration.php:243
+msgid "The post title."
+msgstr "Postituse pealkiri."
+
+#: src/abilities/user-interface/abilities-integration.php:194
+msgid "The number of recently modified posts to retrieve scores for. Defaults to 10."
+msgstr "Hiljuti muudetud postituste arv, millele skoore hankida. Vaikimisi 10."
+
+#: src/abilities/user-interface/abilities-integration.php:167
+msgid "Get the inclusive language scores for the most recently modified posts."
+msgstr "Hangi kaasava keelekasutuse hinded viimati muudetud postituste kohta."
+
+#: src/abilities/user-interface/abilities-integration.php:166
+msgid "Get Inclusive Language Scores"
+msgstr "Hangi kaasava keelekasutuse skoorid"
+
+#: src/abilities/user-interface/abilities-integration.php:148
+msgid "Get the readability scores for the most recently modified posts."
+msgstr "Hangi loetavuse hinded viimati muudetud postituste jaoks."
+
+#: src/abilities/user-interface/abilities-integration.php:147
+msgid "Get Readability Scores"
+msgstr "Hangi loetavuse skoorid"
+
+#: src/abilities/user-interface/abilities-integration.php:129
+msgid "Get the SEO scores for the most recently modified posts."
+msgstr "Hangi viimati muudetud postituste SEO-skoorid."
+
+#: src/abilities/user-interface/abilities-integration.php:128
+msgid "Get SEO Scores"
+msgstr "Hangi SEO skoorid"
+
+#: src/abilities/user-interface/abilities-integration.php:121
+msgid "The focus keyphrase for the post, or null if not set."
+msgstr "Postituse fookusvõtmefraas või null, kui see pole määratud."
+
+#: src/task-list/domain/exceptions/complete-sample-page-task-exception.php:17
+msgid "Failed to delete the Sample Page."
+msgstr "Näidislehe kustutamine ebaõnnestus."
+
+#. translators: %1$s expands to <p>, %2$s expands to </p>, %3$s expands to <p>,
+#. %4$s expands to </p>, %5$s expands to <strong>, %6$s expands to </strong>,
+#. %7$s expands to <strong> and %8$s expands to </strong>.
+#: src/task-list/application/tasks/improve-default-meta-descriptions.php:111
+msgid "%1$sDefault meta descriptions don't always highlight what makes your page unique. Write your own to improve clarity and drive more clicks.%2$s%3$sShort on time? In %5$sYoast SEO Premium%6$s, use %7$sAI Generate%8$s to create tailored meta descriptions in seconds.%4$s"
+msgstr "%1$sVaikimisi metakirjeldused ei tõsta alati esile seda, mis muudab sinu lehe ainulaadseks. Kirjuta ise, et parandada selgust ja saada rohkem klikke.%2$s%3$sAega napib? %5$sYoast SEO Premiumis%6$s kasuta funktsiooni %7$sAI Generate%8$s, et luua kohandatud metakirjeldused sekunditega.%4$s"
+
+#. translators: %1$s expands to the post type label this task is about
+#: src/task-list/application/tasks/improve-default-meta-descriptions.php:108
+msgid "Improve default meta descriptions of your recent content: %1$s"
+msgstr "Täiusta oma hiljutise sisu vaikimisi metakirjeldusi: %1$s"
+
+#: src/task-list/application/tasks/delete-sample-page.php:124
+msgid "Remove the \"Sample Page\""
+msgstr "Eemalda näidisleht"
+
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:37
+msgid "Improve SEO"
+msgstr "Paranda SEO-d"
+
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:37
+msgid "Improve readability"
+msgstr "Paranda loetavust"
+
+#. translators: %s expands to the post type name this task is about
+#: src/task-list/application/tasks/set-search-appearance-templates.php:134
+msgid "Generic titles and descriptions make your results unclear in search. Templates ensure every %s has a clear, click-worthy snippet automatically. Go to Search appearance, choose your post type, and set default title and meta description patterns."
+msgstr "Üldised pealkirjad ja kirjeldused muudavad sinu tulemused otsingus ebaselgeks. Mallid tagavad, et igal %s-il on automaatselt selge ja klikkimist väärt katkend. Mine jaotisesse Otsingu välimus, vali oma postituse tüüp ning määra vaikimisi pealkirja ja metakirjelduse mustrid."
+
+#. translators: %1$s expands to an opening p tag, %2$s and %4$s expand to a
+#. closing p tag, %3$s expands to an opening p tag and opening strong tag, %5$s
+#. expands to a closing strong tag, %6$s expands to an opening strong tag, %7$s
+#. expands to a closing strong tag and closing p tag
+#: src/task-list/application/tasks/improve-content-seo.php:113
+msgid "%1$sBy aligning your content with search intent and focus keyphrases, you make it easier for people and AI systems to find your website, improving your organic visibility. Use the recommendations in the SEO analysis to strengthen your technical performance and ranking potential.%2$s%3$sPro tip%5$s: Use %6$sAI Generate%7$s to quickly generate high quality meta descriptions and keyphrase-rich headers that rank well.%4$s"
+msgstr "%1$sViies oma sisu vastavusse otsingu kavatsuse ja fookusvõtmefraasidega, muudad oma veebisaidi inimestele ja tehisintellekti süsteemidele lihtsamini leitavaks, parandades oma orgaanilist nähtavust. Kasuta SEO-analüüsi soovitusi, et tugevdada oma tehnilist toimivust ja järjestuspotentsiaali.%2$s%3$sProfessionaalne nõuanne%5$s: Kasuta funktsiooni %6$sAI Generate%7$s, et kiiresti luua kvaliteetseid metakirjeldusi ja võtmefraasirikkaid päiseid, mis saavutavad head positsioonid.%4$s"
+
+#. translators: %1$s expands to the post type label this task is about
+#: src/task-list/application/tasks/improve-content-seo.php:110
+msgid "Improve the SEO of your recent content: %1$s"
+msgstr "Paranda oma hiljutise sisu SEO-d: %1$s"
+
+#. translators: %1$s expands to an opening p tag, %2$s and %4$s expand to a
+#. closing p tag, %3$s expands to an opening p tag and opening strong tag, %5$s
+#. expands to a closing strong tag, %6$s expands to an opening strong tag, %7$s
+#. expands to a closing strong tag and closing p tag
+#: src/task-list/application/tasks/improve-content-readability.php:112
+msgid "%1$sChecking your recent content's readability ensures it stays clear and easy to follow, improving your user experience. Follow the feedback to refine your sentence structure and word choice and maintain a high standard of engagement and comprehension.%2$s%3$sPro tip%5$s: Use %6$sAI Optimize%7$s to automatically simplify complex sentences and improve the flow of your writing.%4$s"
+msgstr "%1$sHiljutise sisu loetavuse kontrollimine tagab, et see jääb selgeks ja kergesti jälgitavaks, parandades kasutajakogemust. Järgi tagasisidet, et täiustada lausete ülesehitust ja sõnavalikut ning säilitada kõrge kaasatuse ja arusaadavuse tase.%2$s%3$sProfessionaalne nõuanne%5$s: Kasuta tööriista %6$sAI Optimize%7$s, et automaatselt lihtsustada keerukaid lauseid ja parandada oma kirjutise sujuvust.%4$s"
+
+#. translators: %1$s expands to the post type label this task is about
+#: src/task-list/application/tasks/improve-content-readability.php:109
+msgid "Improve the readability of your recent content: %1$s"
+msgstr "Paranda oma hiljutise sisu loetavust: %1$s"
+
+#. translators: %1$s and %3$s expands to an opening p tag, %2$s and %5$s expand
+#. to a closing p tag and %4$s expands to Yoast
+#: src/task-list/application/tasks/create-new-content.php:111
+msgid "%1$sLong gaps without new content slow down your traffic growth. Publishing regularly gives search engines and visitors a reason to return.%2$s%3$sPlan a topic, write your post, and use the %4$s SEO and Readability Analyses to refine it before publishing.%5$s"
+msgstr "%1$sPikad pausid ilma uue sisuta aeglustavad sinu liikluse kasvu. Regulaarne avaldamine annab otsingumootoritele ja külastajatele põhjuse tagasi tulla.%2$s%3$sPlaneeri teema, kirjuta oma postitus ja kasuta enne avaldamist selle viimistlemiseks %4$s SEO ja loetavuse analüüse.%5$s"
+
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:58
+msgid "Your content is not yet optimized for search. Follow the SEO recommendations to help search engines understand and rank your page."
+msgstr "Sinu sisu pole veel otsingu jaoks optimeeritud. Järgi SEO-soovitusi, et aidata otsingumootoritel sinu lehte mõista ja järjestada."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:57
+msgid "Your content is partially optimized. Adding a few more SEO best practices will help you reach a wider audience."
+msgstr "Sinu sisu on osaliselt optimeeritud. Mõne täiendava SEO parima tava lisamine aitab sul jõuda laiema vaatajaskonnani."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:56
+msgid "Your content is well optimized for search engines. This increases your chances of ranking higher in search results."
+msgstr "Sinu sisu on otsingumootorite jaoks hästi optimeeritud. See suurendab sinu võimalusi olla otsingutulemustes kõrgemal kohal."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:58
+msgid "Your content is currently difficult to read. Check the analysis for specific ways to simplify your writing for a better user experience."
+msgstr "Sinu sisu on praegu raskesti loetav. Vaata analüüsist konkreetseid viise, kuidas oma kirjutist lihtsustada, et kasutajakogemust parandada."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:57
+msgid "Your content is readable but could be clearer. Consider simplifying a few sentences to improve the overall flow."
+msgstr "Sinu sisu on loetav, kuid võiks olla selgem. Kaalu mõne lause lihtsustamist, et parandada üldist sujuvust."
+
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:56
+msgid "Your content is clear and easy to read. This helps your audience stay engaged with your message."
+msgstr "Sinu sisu on selge ja kergesti loetav. See aitab sinu publikul sinu sõnumiga kaasatuna püsida."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cli-command.php:103
+msgid "An error occurred while aggregating the site schema."
+msgstr "Saidi skeemi koondamisel ilmnes viga."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cli-command.php:95
+msgid "The value for 'per_page' must be a positive integer higher than equal to 1."
+msgstr "Väärtus 'per_page' peab olema positiivne täisarv, mis on suurem või võrdne 1-ga."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cli-command.php:92
+msgid "The value for 'page' must be a positive integer higher than equal to 1."
+msgstr "„page” väärtus peab olema positiivne täisarv, mis on suurem kui või võrdne 1-ga."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cache-cli-command.php:99
+msgid "All site schema cache has been cleared successfully."
+msgstr "Kogu saidi skeemi vahemälu on edukalt tühjendatud."
+
+#: src/schema-aggregator/user-interface/site-schema-aggregator-cache-cli-command.php:90
+msgid "The site schema cache has been cleared successfully."
+msgstr "Saidi skeemi vahemälu on edukalt tühjendatud."
+
+#. translators: %1$s expands to "Yoast", %2$s expands to an opening anchor tag,
+#. %3$s expands to a closing anchor tag.
+#: src/alerts/application/indexables-disabled/indexables-disabled-alert.php:120
+msgid "%1$s indexables are disabled because your site is in a non-production environment or custom code is blocking them. This may affect your SEO features. %2$sLearn more about this%3$s."
+msgstr "%1$s indekseeritavad on keelatud, kuna sinu sait on mittetootmiskeskkonnas või kohandatud kood blokeerib neid. See võib mõjutada sinu SEO-funktsioone. %2$sLisateave selle kohta%3$s."
+
+#. translators: %1$s expands to the post type label this task is about
+#: src/task-list/application/tasks/set-search-appearance-templates.php:132
+msgid "Set search appearance templates for your content type: %1$s"
+msgstr "Määra oma sisutüübile otsingu välimuse mallid: %1$s"
+
+#: src/task-list/domain/exceptions/complete-llms-task-exception.php:17
+msgid "Failed to enable llms.txt option."
+msgstr "llms.txt valiku lubamine ebaõnnestus."
+
+#: src/task-list/domain/exceptions/complete-hello-world-task-exception.php:17
+msgid "Failed to delete the Hello World post."
+msgstr "Hello World postituse kustutamine ebaõnnestus."
+
+#: src/task-list/application/tasks/set-search-appearance-templates.php:116
+msgid "Set search templates"
+msgstr "Määra otsingumallid"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:109
+msgid "Without llms.txt, AI platforms may not know how to treat your content. Enabling it helps communicate your preferences in a clearer way to AI tools."
+msgstr "Ilma llms.txt failita ei pruugi tehisaru platvormid teada, kuidas sinu sisu käsitleda. Selle lubamine aitab sinu eelistusi tehisaru tööriistadele selgemalt edastada."
+
+#: src/task-list/application/tasks/enable-llms-txt.php:108
+msgid "Create an llms.txt file"
+msgstr "Loo fail llms.txt"
+
+#: src/task-list/application/tasks/enable-llms-txt.php:95
+msgid "Enable llms.txt"
+msgstr "Luba llms.txt"
+
+#: src/task-list/application/tasks/delete-hello-world.php:117
+#: src/task-list/application/tasks/delete-sample-page.php:125
+msgid "Leaving placeholder content makes your site look unfinished and untrustworthy. Removing it keeps your site clean and professional for visitors and search engines."
+msgstr "Kohatäite sisu jätmine muudab sinu saidi lõpetamata ja ebausaldusväärseks. Selle eemaldamine hoiab sinu saidi külastajate ja otsingumootorite jaoks puhta ja professionaalsena."
+
+#: src/task-list/application/tasks/delete-hello-world.php:116
+msgid "Remove the “Hello World” post"
+msgstr "Eemalda postitus “Hello World”"
+
+#: src/task-list/application/tasks/delete-hello-world.php:103
+#: src/task-list/application/tasks/delete-sample-page.php:111
+msgid "Delete for me"
+msgstr "Kustuta minu jaoks"
+
+#: src/task-list/application/tasks/create-new-content.php:108
+msgid "Create new content"
+msgstr "Loo uus sisu"
+
+#: src/task-list/application/tasks/create-new-content.php:95
+msgid "Create new post"
+msgstr "Loo uus postitus"
+
+#. translators: %s expands to Yoast SEO
+#: src/task-list/application/tasks/complete-ftc.php:94
+msgid "Skipping setup limits how much %s can help you. Completing it makes sure the core settings are working in your favor."
+msgstr "Seadistuse vahelejätmine piirab seda, kui palju %s saab sind aidata. Selle lõpuleviimine tagab, et põhiseaded töötavad sinu kasuks."
+
+#: src/task-list/application/tasks/complete-ftc.php:91
+msgid "Complete the first time configuration"
+msgstr "Lõpetage esmakordne seadistamine"
+
+#: src/presenters/admin/sidebar-presenter.php:115
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Less friction. Faster publishing."
+msgstr "Vähem takistusi. Kiirem avaldamine."
+
+#: src/presenters/admin/sidebar-presenter.php:115
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Less friction. Smarter optimization."
+msgstr "Vähem hõõrdumist. Nutikam optimeerimine."
+
+#: src/presenters/admin/sidebar-presenter.php:92 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Optimize pages for multiple keywords with guidance"
+msgstr "Optimeeri lehti mitme märksõna jaoks juhiste abil"
+
+#: src/presenters/admin/sidebar-presenter.php:91 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Manage redirects with ease and without extra plugins"
+msgstr "Halda ümbersuunamisi hõlpsalt ja ilma lisapluginate vajaduseta"
+
+#: src/presenters/admin/sidebar-presenter.php:90 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Apply AI suggestions to improve content in 1 click"
+msgstr "Rakenda tehisintellekti soovitusi sisu täiustamiseks 1 klikiga"
+
+#: src/presenters/admin/sidebar-presenter.php:89 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Create optimized SEO titles & meta descriptions in seconds"
+msgstr "Loo optimeeritud SEO pealkirjad ja metakirjeldused sekunditega"
+
+#: src/presenters/admin/sidebar-presenter.php:86 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Receive clear SEO and readability guidance to optimize your products"
+msgstr "Saa selgeid SEO ja loetavuse juhiseid oma toodete optimeerimiseks"
+
+#: src/presenters/admin/sidebar-presenter.php:85 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Create optimized SEO titles & meta descriptions with AI"
+msgstr "Looge optimeeritud SEO pealkirju ja metakirjeldusi tehisintellekti abil"
+
+#: src/presenters/admin/sidebar-presenter.php:84 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Make sure search engines show the right version of your product page"
+msgstr "Veendu, et otsingumootorid kuvaksid sinu tootelehe õiget versiooni"
+
+#: src/presenters/admin/sidebar-presenter.php:83 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Add product details to help your listings stand out"
+msgstr "Lisa toote üksikasjad, et sinu loendid silma paistaksid"
+
+#: src/presenters/admin/sidebar-presenter.php:77
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Optimize your site faster, smarter, and with more confidence."
+msgstr "Optimeeri oma sait kiiremini, nutikamalt ja enesekindlamalt."
+
+#: src/presenters/admin/sidebar-presenter.php:77
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Help ready-to-buy shoppers and search engines find your product."
+msgstr "Aita ostuvalmis ostlejatel ja otsingumootoritel sinu toodet leida."
+
+#: src/presenters/admin/sidebar-presenter.php:72
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Spend less time on SEO tasks!"
+msgstr "Kuluta SEO ülesannetele vähem aega!"
+
+#: src/presenters/admin/sidebar-presenter.php:72
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Grow your store's visibility!"
+msgstr "Kasvata oma poe nähtavust!"
+
+#. translators: %1$s expands to "Yoast SEO".
+#: src/alerts/application/ping-other-admins/ping-other-admins-alert.php:175
+msgid "Looks like you’re new here. %1$s makes it easy to optimize your website for search engines. Want to keep your site healthy and easier to find? Sign up below to receive practical emails to get you started!"
+msgstr "Paistab, et oled siin uus. %1$s teeb sinu veebisaidi optimeerimise otsingumootorite jaoks lihtsaks. Soovid hoida oma saiti korras ja lihtsamini leitavana? Registreeru allpool, et saada praktilisi e-kirju, mis aitavad sul alustada!"
+
+#: src/task-list/application/tasks/complete-ftc.php:78
+#: js/dist/installation-success.js:3
+msgid "Start configuration"
+msgstr "Alusta seadistamist"
+
+#: src/user-meta/framework/custom-meta/author-pronouns.php:108
+msgid "Enter the pronouns for the author, for example \"she/her\", \"he/him\", or \"they/them\"."
+msgstr "Sisesta autori asesõnad, näiteks „she/her“, „he/him“ või „they/them“."
+
+#: src/user-meta/framework/custom-meta/author-pronouns.php:97
+msgid "Pronouns to use"
+msgstr "Kasutatavad asesõnad"
+
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:130
+msgid "Get 30% off"
+msgstr "Saa 30% allahindlust"
+
+#. translators: %s: expands to Yoast
+#: src/integrations/admin/redirections-tools-page.php:60
+msgid "%s Redirects"
+msgstr "%s ümbersuunamist"
+
+#. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
+#. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
+#. to a closing strong tag, %5$s expands to a closing link tag.
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
+msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them for better visibility or %2$stry %3$sYoast AI Generate%4$s for free to do it faster.%5$s"
+msgstr "Sinu hiljutised postitused kasutavad vaikeväärtust %1$s, mistõttu võivad need otsingutulemustes kergesti märkamata jääda. Parema nähtavuse saavutamiseks uuenda neid või %2$sproovi tasuta funktsiooni %3$sYoast AI Generate%4$s, et seda kiiremini teha.%5$s"
+
+#. translators: %1$s expands to "SEO title" or "meta description", %2$s expands
+#. to an opening link tag, %3$s expands to an opening strong tag, %4$s expands
+#. to a closing strong tag, %5$s expands to a closing link tag.
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:192
+msgid "Your recent posts are using default %1$s, which can make them easy to overlook in search results. Update them manually or %2$sfind out how %3$sYoast AI Generate%4$s can improve them for you.%5$s"
+msgstr "Sinu hiljutised postitused kasutavad vaikeväärtust %1$s, mistõttu võivad need otsingutulemustes kergesti märkamata jääda. Uuenda neid käsitsi või %2$svaata, kuidas %3$sYoast AI Generate%4$s saab neid sinu eest täiustada.%5$s"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:185
+msgid "meta descriptions"
+msgstr "metakirjeldused"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:182
+msgid "SEO titles"
+msgstr "SEO pealkirjad"
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:179
+msgid "SEO titles and meta descriptions"
+msgstr "SEO pealkirjad ja metakirjeldused"
+
+#: admin/class-premium-upsell-admin-block.php:62 js/dist/general-page.js:8
+#: js/dist/new-settings.js:8
+msgid "Google Docs add-on (1 seat)"
+msgstr "Google Docsi lisandmoodul (1 kasutaja)"
+
+#: src/presenters/admin/sidebar-presenter.php:104
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Buy now for 30% off"
+msgstr "Osta kohe 30% soodsamalt"
+
+#. translators: 1: Link start tag to the WordPress Reading Settings page, 2:
+#. Link closing tag.
+#. translators: %1$s and %2$s are replaced by opening and closing <a> tags
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:39
+#: js/dist/new-settings.js:39
+msgid "An existing llms.txt file wasn't created by Yoast or has been edited manually. Yoast won't overwrite it. %1$sDelete it manually%2$s or turn off this feature."
+msgstr "Olemasolevat faili llms.txt ei loonud Yoast või seda on käsitsi muudetud. Yoast ei kirjuta seda üle. %1$sKustuta see käsitsi%2$s või lülita see funktsioon välja."
+
+#: inc/class-wpseo-admin-bar-menu.php:632
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:130
+msgid "30% off - BF Sale"
+msgstr "30% allahindlust - BF soodusmüük"
+
+#: inc/class-wpseo-admin-bar-menu.php:629
+#: src/plans/user-interface/upgrade-sidebar-menu-integration.php:127
+msgid "Upgrade"
+msgstr "Uuenda"
+
+#. translators: %1$s is the plugin name, %2$s and %3$s are a link.
+#: inc/class-addon-manager.php:420
+msgid "Your %1$s plugin cannot be updated as your subscription has expired. %2$sRenew your product subscription%3$s to restore updates and full feature access."
+msgstr "Sinu %1$s pluginat ei saa uuendada, kuna sinu tellimus on aegunud. %2$sUuenda oma toote tellimust%3$s, et taastada uuendused ja täielik juurdepääs funktsioonidele."
+
+#. translators: %1$s and %2$s are a <span> opening and closing tag.
+#: inc/class-addon-manager.php:411
+msgid "%1$s30%% OFF - Black Friday %2$s"
+msgstr "%1$s30%% ALLAHINDLUST - Must Reede %2$s"
+
+#: admin/class-premium-upsell-admin-block.php:213 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7
+msgid "Get 30% off now!"
+msgstr "Saa 30% soodustust kohe!"
+
+#: src/presenters/admin/sidebar-presenter.php:122
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "30-day money back guarantee"
+msgstr "30-päevane raha tagasi garantii"
+
+#. translators: %1$s and %2$s expand to a span wrap to avoid linebreaks. %3$s
+#. expands to "Yoast SEO Premium".
+#: src/presenters/admin/sidebar-presenter.php:66
+msgid "%1$s%2$s %3$s"
+msgstr "%1$s%2$s %3$s"
+
+#: inc/class-my-yoast-api-request.php:161
+msgid "Not all needed fields are present."
+msgstr "Kõik vajalikud väljad pole olemas."
+
+#: admin/class-premium-upsell-admin-block.php:163
+#: js/dist/ai-content-planner.js:188 js/dist/block-editor.js:252
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Boost visibility for your products, from 10 or 10,000+"
+msgstr "Suurenda oma toodete nähtavust, olgu neid 10 või 10 000+"
+
+#: admin/class-premium-upsell-admin-block.php:159 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Access to friendly help when you need it, day or night"
+msgstr "Ligipääs sõbralikule abile, kui sa seda vajad, päeval või öösel"
+
+#: admin/class-premium-upsell-admin-block.php:158 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Internal links and redirect management, easy"
+msgstr "Sisemiste linkide ja ümbersuunamiste haldamine, lihtne"
+
+#: admin/class-premium-upsell-admin-block.php:157 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Easy Local SEO. Show up in Google Maps results"
+msgstr "Lihtne kohalik SEO. Ilmu Google Mapsi tulemustes"
+
+#: admin/class-premium-upsell-admin-block.php:156 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Built to get found by search, AI, and real users"
+msgstr "Loodud selleks, et otsing, AI ja päris kasutajad teid leiaksid"
+
+#: admin/class-premium-upsell-admin-block.php:155 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Make your articles visible, be seen in Google News"
+msgstr "Muuda oma artiklid nähtavaks, ole nähtav Google Newsis"
+
+#: admin/class-premium-upsell-admin-block.php:154 js/dist/ai-consent.js:2
+#: js/dist/ai-content-planner.js:188 js/dist/ai-generator.js:2
+#: js/dist/block-editor.js:252 js/dist/classic-editor.js:2
+#: js/dist/editor-modules.js:116 js/dist/externals-components.js:26
+#: js/dist/general-page.js:5 js/dist/integrations-page.js:28
+#: js/dist/new-settings.js:5 js/dist/redirects.js:2 js/dist/support.js:5
+msgid "Generate SEO optimized metadata in seconds with AI"
+msgstr "Loo SEO-optimeeritud metaandmeid sekunditega tehisintellekti abil"
+
+#: src/ai-consent/user-interface/ai-consent-integration.php:122
+#: src/ai/consent/user-interface/ai-consent-integration.php:124
+msgid "AI features"
+msgstr "AI funktsioonid"
+
+#: admin/class-premium-upsell-admin-block.php:100 js/dist/general-page.js:8
+#: js/dist/new-settings.js:8 js/dist/plans.js:2 js/dist/plans.js:7
+msgid "Now includes:"
+msgstr "Nüüd sisaldab:"
+
+#: src/plans/user-interface/plans-page-integration.php:141 js/dist/plans.js:8
+msgid "Plans"
+msgstr "Paketid"
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:46
+#: js/dist/new-settings.js:39
+msgid "You have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file. It looks like there aren't sufficient permissions on the web server's filesystem."
+msgstr "Oled aktiveerinud Yoasti funktsiooni llms.txt, kuid me ei saanud faili llms.txt luua. Näib, et veebiserveri failisüsteemis pole piisavaid õigusi."
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:49
+#: src/llms-txt/user-interface/health-check/file-reports.php:87
+msgid "You have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file, for unknown reasons."
+msgstr "Oled aktiveerinud Yoasti llms.txt funktsiooni, kuid meil ei õnnestunud teadmata põhjustel llms.txt faili luua."
+
+#. translators: 1,3: expand to opening paragraph tag, 2,4: expand to opening
+#. paragraph tag.
+#: src/llms-txt/user-interface/health-check/file-reports.php:78
+msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there aren't sufficient permissions on the web server's filesystem.%4$s"
+msgstr "%1$sOled aktiveerinud Yoasti llms.txt funktsiooni, kuid me ei saanud luua llms.txt faili.%2$s%3$sNäib, et veebiserveri failisüsteemis pole piisavaid õigusi.%4$s"
+
+#. translators: 1,3,5: expand to opening paragraph tag, 2,4,6: expand to
+#. opening paragraph tag.
+#: src/llms-txt/user-interface/health-check/file-reports.php:65
+msgid "%1$sYou have activated the Yoast llms.txt feature, but we couldn't generate an llms.txt file.%2$s%3$sIt looks like there is an llms.txt file already that wasn't created by Yoast, or the llms.txt file created by Yoast has been edited manually.%4$s%5$sWe don't want to overwrite this file's content, so if you want to let Yoast keep auto-generating the llms.txt file, you can manually delete the existing one. Otherwise, consider disabling the Yoast feature.%6$s"
+msgstr "%1$sOled aktiveerinud Yoasti llms.txt funktsiooni, kuid meil ei õnnestunud llms.txt faili genereerida.%2$s%3$sNäib, et llms.txt fail on juba olemas ja seda ei loonud Yoast, või Yoasti loodud llms.txt faili on käsitsi muudetud.%4$s%5$sMe ei soovi selle faili sisu üle kirjutada, seega kui soovid lasta Yoastil llms.txt faili automaatselt genereerida, võid olemasoleva faili käsitsi kustutada. Muul juhul kaalu Yoasti funktsiooni keelamist.%6$s"
+
+#: src/llms-txt/application/file/file-failure-notification-presenter.php:55
+#: src/llms-txt/user-interface/health-check/file-reports.php:62
+#: src/llms-txt/user-interface/health-check/file-reports.php:75
+#: src/llms-txt/user-interface/health-check/file-reports.php:86
+msgid "Your llms.txt file couldn't be auto-generated"
+msgstr "Sinu faili llms.txt ei saanud automaatselt luua."
+
+#. translators: %s: Yoast SEO.
+#: src/llms-txt/user-interface/health-check/file-reports.php:41
+msgid "%s keeps your llms.txt file up-to-date. This helps LLMs access and provide your site's information more easily."
+msgstr "%s hoiab sinu llms.txt faili ajakohasena. See aitab LLM-idel sinu saidi teabele lihtsamini juurde pääseda ja seda esitada."
+
+#. translators: %s: Yoast SEO.
+#: src/llms-txt/user-interface/health-check/file-reports.php:35
+msgid "Your llms.txt file is auto-generated by %s"
+msgstr "Sinu llms.txt fail on automaatselt genereeritud %s-i poolt"
+
+#: src/dashboard/user-interface/tracking/setup-steps-tracking-route.php:143
+msgid "No valid parameters were passed."
+msgstr "Ühtegi sobivat parameetrit ei edastatud."
+
+#: src/integrations/admin/link-count-columns-integration.php:147
+msgid "Number of internal links linking to this post."
+msgstr "Sellele postitusele linkivate siselinkide arv."
+
+#: src/integrations/admin/link-count-columns-integration.php:139
+msgid "Number of outgoing internal links in this post."
+msgstr "Selle postituse väljaminevate siselinkide arv."
+
+#: inc/class-wpseo-rank.php:223 js/dist/externals/dashboardFrontend.js:4
+msgid "Not analyzed"
+msgstr "Analüüsimata"
+
+#. translators: %s: Yoast SEO.
+#: wp-seo-main.php:566
+msgid "%s activation failed"
+msgstr "%s aktiveerimine ebaõnnestus"
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:42
+msgid "%s is unable to create database tables"
+msgstr "%s ei saa andmebaasitabeleid luua"
+
+#: src/presenters/admin/sidebar-presenter.php:107
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "Buy now"
+msgstr "Osta kohe"
+
+#: src/integrations/admin/check-required-version.php:115
+msgid "Required Yoast SEO version"
+msgstr "Nõutav Yoast SEO versioon"
+
+#: src/integrations/admin/check-required-version.php:91
+msgid "The package could not be installed because it's not supported by the currently installed Yoast SEO version."
+msgstr "Paketti ei saanud installida, kuna praegu installitud Yoast SEO versioon ei toeta seda."
+
+#. translators: 1: Current Yoast SEO version, 2: Version required by the
+#. uploaded plugin.
+#: src/integrations/admin/check-required-version.php:84
+msgid "The Yoast SEO version on your site is %1$s, however the uploaded plugin requires %2$s."
+msgstr "Sinu saidil olev Yoast SEO versioon on %1$s, kuid üleslaaditud plugin nõuab versiooni %2$s."
+
+#: src/user-meta/framework/custom-meta/noindex-author.php:108
+msgid "Do not allow search engines to show this author's archives in search results."
+msgstr "Ära luba otsingumootoritel näidata selle autori arhiive otsingutulemustes."
+
+#: admin/menu/class-base-menu.php:257 admin/menu/class-base-menu.php:260
+msgid "Upgrades"
+msgstr "Uuendused"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "site structure"
+msgstr "saidi struktuur"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "internal linking"
+msgstr "sisemine linkimine"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block keyword"
+msgid "breadcrumbs"
+msgstr "leivapurud"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "Adds the Yoast SEO breadcrumbs to your template or content."
+msgstr "Lisab Yoast SEO leivapuru sinu malli või sisusse."
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Yoast Breadcrumbs"
+msgstr "Yoasti leivapurud"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "How to"
+msgstr "Kuidas"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "How-to"
+msgstr "Juhend"
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block title"
+msgid "Yoast How-to"
+msgstr "Yoast How-to"
+
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "Structured Data"
+msgstr "Struktureeritud andmed"
+
+#: blocks/dynamic-blocks/breadcrumbs/block.json
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "SEO"
+msgstr "SEO"
+
+#: blocks/structured-data-blocks/faq/block.json
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block keyword"
+msgid "Schema"
+msgstr "Skeem"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block keyword"
+msgid "Frequently Asked Questions"
+msgstr "Korduma kippuvad küsimused"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block keyword"
+msgid "FAQ"
+msgstr "KKK"
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block description"
+msgid "List your Frequently Asked Questions in an SEO-friendly way."
+msgstr "Loetlege oma korduma kippuvad küsimused SEO-sõbralikul viisil."
+
+#: blocks/structured-data-blocks/faq/block.json
+msgctxt "block title"
+msgid "Yoast FAQ"
+msgstr "Yoast KKK"
+
+#: admin/class-admin.php:315
+#: src/user-meta/framework/additional-contactmethods/x.php:28
+msgid "X username (without @)"
+msgstr "X kasutajanimi (ilma @-märgita)"
+
+#. translators: 1: PHP class name, 2: PHP variable name
+#: inc/class-yoast-dynamic-rewrites.php:67
+msgid "The %1$s class must not be instantiated before the %2$s global is set."
+msgstr "Klassi %1$s ei tohi instantseerida enne, kui globaalne %2$s on määratud."
+
+#. translators: %s expands to Yoast WooCommerce SEO
+#. translators: %s expands to Yoast SEO Premium
+#. translators: %s expands to product name: "Yoast WooCommerce SEO" or "Yoast
+#. SEO Premium"
+#: admin/class-premium-upsell-admin-block.php:219
+#: admin/class-premium-upsell-admin-block.php:221 js/dist/general-page.js:7
+#: js/dist/new-settings.js:7
+msgid "Explore %s now!"
+msgstr "Avasta %s kohe!"
+
+#: admin/watchers/class-slug-change-watcher.php:68
+msgid "Search engines and other websites can still send traffic to your trashed content."
+msgstr "Otsingumootorid ja teised veebisaidid saavad endiselt saata liiklust sinu prügikasti tõstetud sisule."
+
+#. translators: 1: Yoast SEO, 2: Link start tag to the Learn more link, 3: Link
+#. closing tag.
+#: src/presenters/admin/woocommerce-beta-editor-presenter.php:53
+msgid "The %1$s interface is currently unavailable in the beta WooCommerce product editor. To resolve any issues, please disable the beta editor. %2$sLearn how to disable the beta WooCommerce product editor.%3$s"
+msgstr "%1$s liides ei ole praegu WooCommerce’i beetaversiooni tootetoimetajas saadaval. Probleemide lahendamiseks keela beetaversiooni tootetoimetaja. %2$sVaata, kuidas keelata WooCommerce’i beetaversiooni tootetoimetaja.%3$s"
+
+#: src/presenters/admin/woocommerce-beta-editor-presenter.php:50
+msgid "Compatibility issue: Yoast SEO is incompatible with the beta WooCommerce product editor."
+msgstr "Ühilduvusprobleem: Yoast SEO ei ühildu WooCommerce’i beeta-tooteredaktoriga."
+
+#: admin/class-premium-upsell-admin-block.php:90
+#: admin/menu/class-base-menu.php:260 js/dist/block-editor.js:570
+#: js/dist/classic-editor.js:482 js/dist/general-page.js:8
+#: js/dist/new-settings.js:8
+msgid "30% OFF"
+msgstr "30% SOODUSTUST"
+
+#: admin/class-premium-upsell-admin-block.php:89 js/dist/block-editor.js:570
+#: js/dist/classic-editor.js:482 js/dist/general-page.js:8
+#: js/dist/new-settings.js:8
+msgid "BLACK FRIDAY"
+msgstr "MUST REEDE"
+
+#: admin/views/class-yoast-feature-toggles.php:205
+msgid "Use the power of Yoast AI to automatically generate compelling titles and descriptions for your posts and pages."
+msgstr "Kasuta Yoast AI võimsust, et luua oma postitustele ja lehtedele automaatselt kaasahaaravaid pealkirju ja kirjeldusi."
+
+#: admin/views/class-yoast-feature-toggles.php:202 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "AI title & description generator"
+msgstr "AI pealkirja ja kirjelduse generaator"
+
+#. translators: %s expands to a unit of time (e.g. 1 day).
+#. translators: %1$s, %2$s and %3$s expand to units of time (e.g. 1 day).
+#: src/integrations/blocks/structured-data-blocks.php:178
+#: js/dist/how-to-block.js:6 js/dist/how-to-block.js:12
+msgid "%1$s, %2$s and %3$s"
+msgstr "%1$s, %2$s ja %3$s"
+
+#. translators: %s expands to a unit of time (e.g. 1 day).
+#. translators: %1$s and %2$s expand to units of time (e.g. 1 day).
+#: src/integrations/blocks/structured-data-blocks.php:172
+#: js/dist/how-to-block.js:5 js/dist/how-to-block.js:11
+msgid "%1$s and %2$s"
+msgstr "%1$s ja %2$s"
+
+#. translators: 1: Opening tag of the link to the Search appearance settings
+#. page, 2: Link closing tag.
+#: src/content-type-visibility/application/content-type-visibility-watcher-actions.php:157
+msgid "You've added a new type of content. We recommend that you review the corresponding %1$sSearch appearance settings%2$s."
+msgstr "Lisasid uut tüüpi sisu. Soovitame sul üle vaadata vastavad %1$sotsingu välimuse seaded%2$s."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:73
+msgid "Error: Taxonomy was not removed from new_taxonomies list."
+msgstr "Viga: Taksonoomiat ei eemaldatud loendist new_taxonomies."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:73
+msgid "Taxonomy is no longer new."
+msgstr "Taksonoomia pole enam uus."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:66
+msgid "Taxonomy is not new."
+msgstr "Taksonoomia ei ole uus."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:43
+msgid "Error: Post type was not removed from new_post_types list."
+msgstr "Viga: Postituse tüüpi ei eemaldatud loendist new_post_types."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:43
+msgid "Post type is no longer new."
+msgstr "Postituse tüüp ei ole enam uus."
+
+#: src/content-type-visibility/application/content-type-visibility-dismiss-notifications.php:37
+msgid "Post type is not new."
+msgstr "Postituse tüüp ei ole uus."
+
+#: src/integrations/support-integration.php:130 js/dist/support.js:6
+msgid "Support"
+msgstr "Tugi"
+
+#: src/integrations/admin/crawl-settings-integration.php:163
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:267
+msgid "Prevent Google AdsBot from crawling"
+msgstr "Takista Google AdsBotil roomamist"
+
+#: src/integrations/admin/background-indexing-integration.php:186
+msgid "Every fifteen minutes"
+msgstr "Iga viieteistkümne minuti järel"
+
+#: src/commands/index-command.php:174
+msgid "Your WordPress environment is running on a non-production site. Indexables can only be created on production environments. Please check your `WP_ENVIRONMENT_TYPE` settings."
+msgstr "Sinu WordPressi keskkond töötab mitte-tootmissaidil. Indekseeritavaid üksusi saab luua ainult tootmiskeskkondades. Palun kontrolli oma `WP_ENVIRONMENT_TYPE` seadeid."
+
+#. translators: %s expands to the inclusive language score
+#: inc/class-wpseo-rank.php:239 inc/class-wpseo-rank.php:244
+#: inc/class-wpseo-rank.php:249
+msgid "Inclusive language: %s"
+msgstr "Kaasav keelekasutus: %s"
+
+#. translators: %1$s expands to Yoast SEO, %2$s to Wincher
+#: admin/class-wincher-dashboard-widget.php:58
+msgid "%1$s / %2$s: Top Keyphrases"
+msgstr "%1$s / %2$s: populaarseimad võtmefraasid"
+
+#. translators: %s: expands to the post type
+#: src/exceptions/indexable/post-type-not-built-exception.php:20
+msgid "The post type %s could not be indexed because it does not meet indexing requirements."
+msgstr "Postituse tüüpi %s ei saanud indekseerida, kuna see ei vasta indekseerimisnõuetele."
+
+#: inc/class-wpseo-admin-bar-menu.php:593
+#: src/integrations/academy-integration.php:110 js/dist/academy.js:2
+msgid "Academy"
+msgstr "Akadeemia"
+
+#. translators: %1$s expands to a strong tag, %2$s expands to the product name,
+#. %3$s expands to a closing strong tag, %4$s expands to an a tag. %5$s expands
+#. to MyYoast, %6$s expands to a closing a tag,  %7$s expands to the product
+#. name
+#: inc/class-addon-manager.php:532
+msgid "%1$s %2$s isn't working as expected %3$s and you are not receiving updates or support! Make sure to %4$s activate your product subscription in %5$s%6$s to unlock all the features of %7$s."
+msgstr "%1$s %2$s ei tööta ootuspäraselt %3$s ja sina ei saa värskendusi ega tuge! Veendu, et %4$s aktiveerid oma toote tellimuse asukohas %5$s%6$s, et avada kõik %7$s funktsioonid."
+
+#: src/integrations/admin/crawl-settings-integration.php:292
+msgid "This feature is disabled when your site is not using pretty permalinks."
+msgstr "See funktsioon on keelatud, kui sinu sait ei kasuta ilusaid püsilinke."
+
+#. translators: 1: Link start tag to the Permalinks settings page, 2: Link
+#. closing tag.
+#: src/integrations/admin/crawl-settings-integration.php:286
+msgid "This feature is disabled when your site is not using %1$spretty permalinks%2$s."
+msgstr "See funktsioon on keelatud, kui sinu sait ei kasuta %1$silusaid püsiviiteid%2$s."
+
+#. translators: %1$s: Yoast SEO
+#: src/helpers/crawl-cleanup-helper.php:271
+msgid "%1$s: unregistered URL parameter removed. See %2$s"
+msgstr "%1$s: registreerimata URL-i parameeter eemaldati. Vaata %2$s"
+
+#. translators: %1$s: Yoast SEO
+#: src/initializers/crawl-cleanup-permalinks.php:144
+msgid "%1$s: redirect utm variables to #"
+msgstr "%1$s: suuna utm-muutujad aadressile #"
+
+#: src/presenters/admin/indexing-notification-presenter.php:93
+msgid "It looks like you've enabled media pages. We recommend that you help us to re-analyze your site by running the SEO data optimization."
+msgstr "Tundub, et oled lubanud meedialehed. Soovitame sul aidata meil oma saiti uuesti analüüsida, käivitades SEO-andmete optimeerimise."
+
+#: inc/class-wpseo-rank.php:156 inc/class-wpseo-rank.php:245
+#: js/dist/block-editor.js:570 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:385 js/dist/externals-components.js:35
+#: js/dist/externals-components.js:373
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Potentially non-inclusive"
+msgstr "Potentsiaalselt mittekaasav"
+
+#. translators: CTA to finish the first time configuration. %s: Either
+#. first-time SEO configuration or SEO configuration.
+#: admin/class-admin.php:235
+msgid "Finish your %s"
+msgstr "Lõpeta oma %s"
+
+#: inc/class-wpseo-admin-bar-menu.php:568
+msgid "WordPress.org support forums"
+msgstr "WordPress.org tugifoorumid"
+
+#: inc/class-wpseo-admin-bar-menu.php:563
+msgid "Yoast Premium support"
+msgstr "Yoast Premiumi tugi"
+
+#: inc/class-wpseo-admin-bar-menu.php:558
+msgid "Yoast.com help section"
+msgstr "Yoast.com abijagu"
+
+#: inc/class-wpseo-admin-bar-menu.php:543
+msgid "Help"
+msgstr "Abi"
+
+#: inc/class-wpseo-admin-bar-menu.php:524
+msgid "Write better content"
+msgstr "Kirjuta paremat sisu"
+
+#: inc/class-wpseo-admin-bar-menu.php:519
+msgid "Improve your blog post"
+msgstr "Täiusta oma blogipostitust"
+
+#: inc/class-wpseo-admin-bar-menu.php:514
+#: inc/class-wpseo-admin-bar-menu.php:573
+msgid "Learn more SEO"
+msgstr "Õpi SEO kohta rohkem"
+
+#: inc/class-wpseo-admin-bar-menu.php:469
+msgid "SEO Tools"
+msgstr "SEO tööriistad"
+
+#: inc/class-wpseo-admin-bar-menu.php:232
+msgid "Focus keyphrase: "
+msgstr "Fookusvõtmefraas:"
+
+#: inc/class-wpseo-admin-bar-menu.php:226
+msgid "not set"
+msgstr "määramata"
+
+#: src/presenters/admin/indexing-notification-presenter.php:90
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your taxonomies. Please help us do that by running the SEO data optimization."
+msgstr "Peame osa sinu SEO andmetest uuesti analüüsima, kuna sinu taksonoomiate nähtavuses on toimunud muudatus. Palun aita meil seda teha, käivitades SEO andmete optimeerimise."
+
+#: src/presenters/admin/indexing-notification-presenter.php:87
+msgid "We need to re-analyze some of your SEO data because of a change in the visibility of your post types. Please help us do that by running the SEO data optimization."
+msgstr "Peame osa sinu SEO-andmetest uuesti analüüsima, kuna sinu postitustüüpide nähtavus on muutunud. Palun aita meil seda teha, käivitades SEO-andmete optimeerimise."
+
+#. translators: %s: expands to the term id
+#: src/exceptions/indexable/term-not-built-exception.php:20
+msgid "The term %s could not be built because it's not indexable."
+msgstr "Terminit %s ei saanud luua, sest seda ei saa indekseerida."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:32
+msgid "The post %s could not be indexed because it's post type is excluded from indexing."
+msgstr "Postitust %s ei saanud indekseerida, sest selle postituse tüüp on indekseerimisest välja jäetud."
+
+#. translators: %s: expands to the post id
+#: src/exceptions/indexable/post-not-built-exception.php:20
+msgid "The post %s could not be indexed because it does not meet indexing requirements."
+msgstr "Postitust %s ei saanud indekseerida, kuna see ei vasta indekseerimisnõuetele."
+
+#. translators: %1$s is the site url of the site that is cleaned up. %2$s is
+#. the name of the cleanup task that is currently running.
+#: src/commands/cleanup-command.php:160
+msgid "Cleaning up %1$s [%2$s]"
+msgstr "Puhastamine %1$s [%2$s]"
+
+#. translators: %1$s is the site url of the site that is skipped. %2$s is Yoast
+#. SEO.
+#: src/commands/cleanup-command.php:147
+msgid "Skipping %1$s. %2$s is not active on this site."
+msgstr "%1$s jäetakse vahele. %2$s ei ole sellel saidil aktiivne."
+
+#: src/commands/cleanup-command.php:85
+msgid "The value for 'batch-size' must be a positive integer higher than equal to 1."
+msgstr "'Batch-size' väärtus peab olema positiivne täisarv, mis on vähemalt 1."
+
+#: src/commands/cleanup-command.php:82
+msgid "The value for 'interval' must be a positive integer."
+msgstr "Väärtus „interval” peab olema positiivne täisarv."
+
+#: src/presenters/admin/sidebar-presenter.php:21
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/block-editor.js:529 js/dist/classic-editor.js:231
+#: js/dist/editor-modules.js:111 js/dist/externals-components.js:31
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "BLACK FRIDAY | 30% OFF"
+msgstr "MUST REEDE | 30% SOODSAM"
+
+#: admin/views/class-yoast-feature-toggles.php:206
+#: js/dist/ai-content-planner.js:226 js/dist/ai-content-planner.js:283
+#: js/dist/block-editor.js:67 js/dist/block-editor.js:124
+#: js/dist/general-page.js:8 js/dist/general-page.js:20
+#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:6
+#: js/dist/integrations-page.js:18 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:13 js/dist/new-settings.js:52 js/dist/plans.js:3
+#: js/dist/plans.js:7
+msgid "Learn more"
+msgstr "Loe lähemalt"
+
+#: src/integrations/admin/crawl-settings-integration.php:157
+msgid "Redirect pretty URLs for search pages to raw format"
+msgstr "Suuna otsingulehtede ilusad URL-id ümber toorvormingusse"
+
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Yoast SEO page of the Permalink Cleanup features, %2$s expands to a closing
+#. anchor tag.
+#: src/integrations/admin/crawl-settings-integration.php:204
+msgid "These are expert features, so make sure you know what you're doing before removing the parameters. %1$sRead more about how your site can be affected%2$s."
+msgstr "Need on ekspertfunktsioonid, seega veendu enne parameetrite eemaldamist, et tead, mida teed. %1$sLoe rohkem selle kohta, kuidas see võib sinu saiti mõjutada%2$s."
+
+#: src/task-list/application/tasks/child-tasks/improve-default-meta-descriptions-child.php:75
+msgid "Open editor"
+msgstr "Ava redaktor"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to the name of the
+#. class that could not be found.
+#: src/loader.php:267
+msgid "%1$s attempted to load the class %2$s but it could not be found."
+msgstr "%1$s proovis laadida klassi %2$s, kuid seda ei leitud."
+
+#: src/integrations/admin/crawl-settings-integration.php:189
+#: js/dist/new-settings.js:267
+msgid "Remove unused resources"
+msgstr "Eemalda kasutamata ressursid"
+
+#: src/integrations/admin/crawl-settings-integration.php:162
+msgid "Prevent search engines from crawling /wp-json/"
+msgstr "Takista otsingumootoritel /wp-json/ roomamist"
+
+#: src/integrations/admin/crawl-settings-integration.php:156
+msgid "Prevent search engines from crawling site search URLs"
+msgstr "Takista otsingumootoritel saidi otsingu-URL-ide roomamist"
+
+#: src/user-meta/framework/custom-meta/inclusive-language-analysis-disable.php:115
+msgid "Removes the inclusive language analysis section from the metabox and disables all inclusive language-related suggestions."
+msgstr "Eemaldab kaasava keele analüüsi jao metakastist ja keelab kõik kaasava keelega seotud soovitused."
+
+#: src/user-meta/framework/custom-meta/inclusive-language-analysis-disable.php:109
+msgid "Disable inclusive language analysis"
+msgstr "Keela kaasava keele analüüs"
+
+#: admin/views/class-yoast-feature-toggles.php:91
+msgid "Discover why inclusive language is important for SEO."
+msgstr "Avasta, miks kaasav keel on SEO jaoks oluline."
+
+#: admin/views/class-yoast-feature-toggles.php:90
+msgid "The inclusive language analysis offers suggestions to write more inclusive copy."
+msgstr "Kaasava keele analüüs pakub soovitusi kaasavama teksti kirjutamiseks."
+
+#: admin/views/class-yoast-feature-toggles.php:87 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "Inclusive language analysis"
+msgstr "Kaasava keele analüüs"
+
+#: admin/metabox/class-metabox-section-inclusive-language.php:30
+#: js/dist/externals-components.js:375
+msgid "Inclusive language"
+msgstr "Kaasav keelekasutus"
+
+#: inc/class-wpseo-admin-bar-menu.php:265
+msgid "Front-end SEO inspector"
+msgstr "Frontendi SEO inspektor"
+
+#: admin/class-yoast-form.php:931
+msgid "Unlock with Premium!"
+msgstr "Ava Premiumiga!"
+
+#. translators: 1: Yoast SEO Premium
+#: src/integrations/admin/deactivated-premium-integration.php:99
+msgid "Activate %1$s!"
+msgstr "Aktiveeri %1$s!"
+
+#. translators: 1: Yoast SEO Premium 2: Link start tag to activate premium, 3:
+#. Link closing tag.
+#: src/integrations/admin/deactivated-premium-integration.php:86
+msgid "You've installed %1$s but it's not activated yet. %2$sActivate %1$s now!%3$s"
+msgstr "Sa oled installinud %1$s, kuid see pole veel aktiveeritud. %2$sAktiveeri %1$s kohe!%3$s"
+
+#: src/integrations/admin/crawl-settings-integration.php:212
+msgid "Permalink cleanup settings"
+msgstr "Püsilingi puhastamise seaded"
+
+#: src/integrations/admin/crawl-settings-integration.php:198
+msgid "Search cleanup settings"
+msgstr "Otsingu puhastamise seaded"
+
+#: src/integrations/admin/crawl-settings-integration.php:155
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:268
+msgid "Filter searches with common spam patterns"
+msgstr "Filtreeri otsinguid levinud rämpspostimustritega"
+
+#: src/integrations/admin/crawl-settings-integration.php:154
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:268
+msgid "Filter searches with emojis and other special characters"
+msgstr "Filtreeri otsinguid emojide ja muude erimärkidega"
+
+#: src/integrations/admin/crawl-settings-integration.php:153
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:268
+msgid "Filter search terms"
+msgstr "Filtreeri otsingutermineid"
+
+#: src/integrations/admin/crawl-settings-integration.php:149
+msgid "Unregistered URL parameters"
+msgstr "Registreerimata URL-i parameetrid"
+
+#: src/integrations/admin/crawl-settings-integration.php:148
+msgid "Campaign tracking URL parameters"
+msgstr "Kampaania jälgimise URL-i parameetrid"
+
+#: admin/views/class-yoast-feature-toggles.php:195
+msgid "Find out how IndexNow can help your site."
+msgstr "Uuri, kuidas IndexNow saab sinu saiti aidata."
+
+#: admin/views/class-yoast-feature-toggles.php:194 js/dist/new-settings.js:525
+msgid "Automatically ping search engines like Bing and Yandex whenever you publish, update or delete a post."
+msgstr "Saada automaatselt ping otsingumootoritele nagu Bing ja Yandex, kui sina avaldad, uuendad või kustutad postituse."
+
+#: admin/views/class-yoast-feature-toggles.php:191 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:525
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Link
+#. closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:119
+msgid "We noticed that you haven't fully configured Yoast SEO yet. Optimize your SEO settings even further by using our improved %1$s First-time configuration%2$s."
+msgstr "Märkasime, et sa pole veel Yoast SEO-d täielikult seadistanud. Optimeeri oma SEO seadeid veelgi, kasutades meie täiustatud %1$s esmast seadistamist%2$s."
+
+#: src/helpers/first-time-configuration-notice-helper.php:64
+msgid "SEO configuration"
+msgstr "SEO seadistus"
+
+#: src/integrations/admin/crawl-settings-integration.php:188
+msgid "Feed crawl settings"
+msgstr "Voo roomamise seaded"
+
+#: src/integrations/admin/crawl-settings-integration.php:186
+msgid "Basic crawl settings"
+msgstr "Põhilised roomamise seaded"
+
+#: src/integrations/admin/crawl-settings-integration.php:144
+msgid "Powered by HTTP header"
+msgstr "Töötab HTTP-päise abil"
+
+#: src/integrations/admin/crawl-settings-integration.php:143
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:267
+msgid "Pingback HTTP header"
+msgstr "Pingbacki HTTP-päis"
+
+#: src/integrations/admin/crawl-settings-integration.php:161
+msgid "Emoji scripts"
+msgstr "Emotikonide skriptid"
+
+#: src/integrations/admin/crawl-settings-integration.php:142
+msgid "Generator tag"
+msgstr "Generaatori silt"
+
+#: src/integrations/admin/crawl-settings-integration.php:141
+msgid "oEmbed links"
+msgstr "oEmbedi lingid"
+
+#: src/integrations/admin/crawl-settings-integration.php:140
+msgid "RSD / WLW links"
+msgstr "RSD / WLW lingid"
+
+#: src/integrations/admin/crawl-settings-integration.php:139
+msgid "REST API links"
+msgstr "REST API lingid"
+
+#: src/integrations/admin/crawl-settings-integration.php:138
+msgid "Shortlinks"
+msgstr "Lühilingid"
+
+#: src/integrations/admin/crawl-settings-integration.php:134
+msgid "Atom/RDF feeds"
+msgstr "Atom/RDF-vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:133
+msgid "Search results feeds"
+msgstr "Otsingutulemuste vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:132
+msgid "Custom taxonomy feeds"
+msgstr "Kohandatud taksonoomia vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:131
+msgid "Tag feeds"
+msgstr "Siltide vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:130
+msgid "Category feeds"
+msgstr "Kategooria vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:129
+msgid "Post type feeds"
+msgstr "Postitustüübi vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:128
+msgid "Post authors feeds"
+msgstr "Postituste autorite vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:126
+msgid "Global comment feeds"
+msgstr "Globaalsed kommentaaride vood"
+
+#: src/integrations/admin/crawl-settings-integration.php:125
+msgid "Global feed"
+msgstr "Globaalne voog"
+
+#: src/integrations/admin/crawl-settings-integration.php:127
+msgid "Post comments feeds"
+msgstr "Postituste kommentaaride vood"
+
+#. translators: %1$s opens the link to the Yoast.com article about Crawl
+#. settings, %2$s closes the link,
+#: admin/views/tabs/network/crawl-settings.php:31
+msgid "%1$sLearn more about crawl settings.%2$s"
+msgstr "%1$sLisateave roomamisseadete kohta.%2$s"
+
+#: admin/pages/network.php:25 admin/views/tabs/network/crawl-settings.php:19
+msgid "Crawl settings"
+msgstr "Roomamise seaded"
+
+#: src/integrations/admin/first-time-configuration-integration.php:128
+#: js/dist/general-page.js:58 js/dist/general-page.js:61
+msgid "First-time configuration"
+msgstr "Esmakordne seadistamine"
+
+#. translators: 1: Link start tag to the First time configuration tab in the
+#. General page, 2: Link closing tag.
+#: admin/views/tabs/tool/import-seo.php:106
+msgid "You should finish the %1$sfirst time configuration%2$s to make sure your SEO data has been optimized and you’ve set the essential Yoast SEO settings for your site."
+msgstr "SEO-andmete optimeerimise ja oluliste Yoast SEO seadete seadistamise tagamiseks oma saidil peaksid lõpetama %1$sesmakordse seadistamise%2$s."
+
+#: admin/views/tabs/tool/import-seo.php:100
+msgid "Step 4: Go through the first time configuration"
+msgstr "Samm 4: läbige esmakordne seadistamine"
+
+#: src/integrations/admin/import-integration.php:220
+msgid "If you already have saved AIOSEO 'Search Appearance' settings and the issue persists, please contact our support team so we can take a closer look."
+msgstr "Kui sul on AIOSEO „Search Appearance“ seaded juba salvestatud ja probleem püsib, võta ühendust meie tugitiimiga, et saaksime asja lähemalt uurida."
+
+#: src/integrations/admin/import-integration.php:217
+msgid "If you have never saved any AIOSEO 'Search Appearance' settings, please do that first and run the import again."
+msgstr "Kui sa pole kunagi salvestanud ühtegi AIOSEO „Search Appearance“ seadistust, tee seda esmalt ja käivita import uuesti."
+
+#: src/integrations/admin/import-integration.php:214
+msgid "The AIOSEO import was cancelled because some AIOSEO data is missing. Please try and take the following steps to fix this:"
+msgstr "AIOSEO import tühistati, kuna osa AIOSEO andmeid puudub. Probleemi lahendamiseks proovi teha järgmist:"
+
+#: src/exceptions/importing/aioseo-validation-exception.php:17
+msgid "The validation of the AIOSEO data structure has failed."
+msgstr "AIOSEO andmestruktuuri valideerimine ebaõnnestus."
+
+#: src/integrations/admin/import-integration.php:236
+msgid "Cleanup failed with the following error:"
+msgstr "Puhastamine ebaõnnestus järgmise veaga:"
+
+#: src/integrations/admin/import-integration.php:120
+msgid "Note: These settings will overwrite the default settings of Yoast SEO."
+msgstr "Märkus: Need sätted kirjutavad üle Yoast SEO vaikesätted."
+
+#: src/integrations/admin/import-integration.php:116
+#: src/integrations/admin/import-integration.php:126
+msgid "Note: This metadata will only be imported if there is no existing Yoast SEO metadata yet."
+msgstr "Märkus: Need metaandmed imporditakse ainult siis, kui olemasolevaid Yoast SEO metaandmeid veel pole."
+
+#: src/integrations/admin/import-integration.php:115
+#: src/integrations/admin/import-integration.php:125
+msgid "Post metadata (SEO titles, descriptions, etc.)"
+msgstr "Postituse metaandmed (SEO pealkirjad, kirjeldused jne)"
+
+#. translators: %s: expands to the name of the plugin that is selected to be
+#. imported
+#: src/integrations/admin/import-integration.php:111
+msgid "The import from %s includes:"
+msgstr "Importimine asukohast %s sisaldab:"
+
+#: src/integrations/admin/import-integration.php:109
+msgid "Once you're certain that your site is working properly with the imported data from another SEO plugin, you can clean up all the original data from that plugin."
+msgstr "Kui oled kindel, et sinu sait töötab teisest SEO pluginast imporditud andmetega õigesti, võid eemaldada kõik selle plugina algsed andmed."
+
+#: src/integrations/admin/import-integration.php:108
+msgid "Please select an SEO plugin below to see what data can be imported."
+msgstr "Palun vali allpool SEO plugin, et näha, milliseid andmeid saab importida."
+
+#: admin/views/tool-import-export.php:35
+#: src/integrations/admin/import-integration.php:107
+msgid "Clean up"
+msgstr "Puhasta"
+
+#: src/integrations/admin/import-integration.php:99
+msgid "After you've imported data from another SEO plugin, please make sure to clean up all the original data from that plugin. (step 5)"
+msgstr "Kui oled importinud andmed teisest SEO pluginast, puhasta kindlasti kõik selle plugina algsed andmed. (samm 5)"
+
+#: src/integrations/admin/import-integration.php:98
+msgid "Note: "
+msgstr "Märkus:"
+
+#: src/integrations/admin/import-integration.php:97
+msgid "The cleanup can take a long time depending on your site's size."
+msgstr "Puhastamine võib sõltuvalt sinu saidi suurusest võtta kaua aega."
+
+#: src/integrations/admin/import-integration.php:238
+msgid "Import failed with the following error:"
+msgstr "Importimine ebaõnnestus järgmise veaga:"
+
+#: src/integrations/admin/import-integration.php:101
+msgid "No data found from other SEO plugins."
+msgstr "Teistest SEO pluginatest andmeid ei leitud."
+
+#: src/integrations/admin/import-integration.php:100
+msgid "Select SEO plugin"
+msgstr "Vali SEO plugin"
+
+#: src/integrations/admin/import-integration.php:96
+msgid "The import can take a long time depending on your site's size."
+msgstr "Importimine võib võtta kaua aega, olenevalt sinu saidi suurusest."
+
+#: src/integrations/admin/installation-success-integration.php:127
+msgid "Installation Successful"
+msgstr "Paigaldamine õnnestus"
+
+#: src/config/schema-types.php:131
+msgid "Blog Post"
+msgstr "Blogipostitus"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#. translators: 1: Yoast WooCommerce SEO
+#. translators: %s: Yoast WooCommerce SEO
+#: src/integrations/admin/workouts-integration.php:315
+#: js/dist/integrations-page.js:11 js/dist/new-settings.js:49
+msgid "Activate %s"
+msgstr "Aktiveeri %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:309
+msgid "Update %s"
+msgstr "Uuenda %s"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:302
+msgid "Renew %s"
+msgstr "Uuenda %s"
+
+#: src/integrations/admin/workouts-integration.php:243
+msgid "Get help activating your subscription"
+msgstr "Hangi abi oma tellimuse aktiveerimisel"
+
+#. translators: 1: expands to 'Yoast SEO Premium', 2: Link start tag to the
+#. page to update Premium, 3: Link closing tag.
+#: src/integrations/admin/workouts-integration.php:237
+msgid "It looks like you’re running an outdated and unactivated version of %1$s, please activate your subscription in %2$sMyYoast%3$s and update to the latest version (at least 17.7) to gain access to our updated workouts section."
+msgstr "Paistab, et kasutad %1$s aegunud ja aktiveerimata versiooni. Juurdepääsu saamiseks meie uuendatud treeningute jaole aktiveeri oma tellimus kohas %2$sMyYoast%3$s ja uuenda uusimale versioonile (vähemalt 17.7)."
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:233
+msgid "Activate your subscription of %s"
+msgstr "Aktiveeri oma %s tellimus"
+
+#. translators: 1: expands to 'Yoast SEO Premium', 2: Link start tag to the
+#. page to update Premium, 3: Link closing tag.
+#: src/integrations/admin/workouts-integration.php:224
+msgid "It looks like you're running an outdated version of %1$s, please %2$supdate to the latest version (at least 17.7)%3$s to gain access to our updated workouts section."
+msgstr "Paistab, et kasutad %1$s aegunud versiooni. Palun %2$svärskenda uusimale versioonile (vähemalt 17.7)%3$s, et saada juurdepääs meie uuendatud treeningute jaole."
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:221
+msgid "Update to the latest version of %s"
+msgstr "Värskenda %s uusimale versioonile"
+
+#: src/integrations/admin/workouts-integration.php:213
+msgid "Renew your subscription"
+msgstr "Uuenda oma tellimust"
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:206
+msgid "Accessing the latest workouts requires an updated version of %s (at least 17.7), but it looks like your subscription has expired. Please renew your subscription to update and gain access to all the latest features."
+msgstr "Uusimate treeningute kasutamiseks on vaja %s uuendatud versiooni (vähemalt 17.7), kuid tundub, et sinu tellimus on aegunud. Palun uuenda oma tellimust, et värskendada ja saada ligipääs kõigile uusimatele funktsioonidele."
+
+#. translators: %s: expands to 'Yoast SEO Premium'.
+#: src/integrations/admin/workouts-integration.php:203
+msgid "Renew your subscription of %s"
+msgstr "Uuenda oma tellimust: %s"
+
+#. translators: 1: Link start tag to the first-time configuration, 2: Yoast
+#. SEO, 3: Link closing tag.
+#: src/integrations/admin/first-time-configuration-notice-integration.php:110
+msgid "Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!"
+msgstr "Alusta kiiresti %1$s%2$s esmakordse seadistamisega%3$s ja seadista Yoast SEO oma saidi jaoks optimaalsete SEO-sätetega!"
+
+#: inc/class-wpseo-replace-vars.php:1499
+msgid "Current or first category title"
+msgstr "Praegune või esimese kategooria pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1499
+msgid "Category Title"
+msgstr "Kategooria pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1498
+msgid "Replaced with the post content"
+msgstr "Asendatud postituse sisuga"
+
+#: inc/class-wpseo-replace-vars.php:1498
+msgid "Post Content"
+msgstr "Postituse sisu"
+
+#: inc/class-wpseo-replace-vars.php:1497
+msgid "Replaced with the permalink"
+msgstr "Asendatud püsilingiga"
+
+#: inc/class-wpseo-replace-vars.php:1496
+msgid "Replaced with the last name of the author"
+msgstr "Asendatakse autori perekonnanimega"
+
+#: inc/class-wpseo-replace-vars.php:1496
+msgid "Author last name"
+msgstr "Autori perekonnanimi"
+
+#: inc/class-wpseo-replace-vars.php:1495
+msgid "Replaced with the first name of the author"
+msgstr "Asendatakse autori eesnimega"
+
+#: inc/class-wpseo-replace-vars.php:1495
+msgid "Author first name"
+msgstr "Autori eesnimi"
+
+#: inc/class-wpseo-replace-vars.php:1494
+msgid "Replaced with the day the post was published"
+msgstr "Asendatakse postituse avaldamise kuupäevaga"
+
+#: inc/class-wpseo-replace-vars.php:1494
+msgid "Post day"
+msgstr "Postituse päev"
+
+#: inc/class-wpseo-replace-vars.php:1493
+msgid "Replaced with the month the post was published"
+msgstr "Asendatakse kuuga, mil postitus avaldati"
+
+#: inc/class-wpseo-replace-vars.php:1493
+msgid "Post month"
+msgstr "Postituse kuu"
+
+#: inc/class-wpseo-replace-vars.php:1492
+msgid "Replaced with the year the post was published"
+msgstr "Asendatakse aastaga, mil postitus avaldati"
+
+#: inc/class-wpseo-replace-vars.php:1492
+msgid "Post year"
+msgstr "Postituse aasta"
+
+#: inc/class-wpseo-replace-vars.php:1491
+msgid "Current day"
+msgstr "Praegune päev"
+
+#: inc/class-wpseo-replace-vars.php:1490
+msgid "Current month"
+msgstr "Praegune kuu"
+
+#: inc/class-wpseo-replace-vars.php:1488
+msgid "Current date"
+msgstr "Praegune kuupäev"
+
+#. translators: %1$s expands to an opening strong tag, %2$s expands to the
+#. dependency name, %3$s expands to a closing strong tag, %4$s expands to an
+#. opening anchor tag, %5$s expands to a closing anchor tag.
+#: admin/class-suggested-plugins.php:111
+msgid "It looks like you aren't using our %1$s%2$s addon%3$s. %4$sUpgrade today%5$s to unlock more tools and SEO features to make your products stand out in search results."
+msgstr "Paistab, et sa ei kasuta meie %1$s%2$s lisamoodulit%3$s. %4$sUuenda täna%5$s, et avada rohkem tööriistu ja SEO-funktsioone, mis aitavad sinu toodetel otsingutulemustes esile tõusta."
+
+#. translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-error-presenter.php:102
+msgid "Below are the technical details for the error. See %1$sthis page%2$s for a more detailed explanation."
+msgstr "Allpool on vea tehnilised üksikasjad. Üksikasjalikuma selgituse leiad lehelt %1$ssee leht%2$s."
+
+#: src/integrations/admin/workouts-integration.php:93
+msgid "Workouts"
+msgstr "Treeningud"
+
+#: admin/views/class-yoast-integration-toggles.php:77
+msgid "Improve the quality of your site search! Automatically helps your users find your cornerstone and most important content in your internal search results. It also removes noindexed posts & pages from your site’s search results."
+msgstr "Paranda oma saidiotsingu kvaliteeti! Aitab sinu kasutajatel automaatselt leida sinu nurgakivi- ja kõige olulisemat sisu sisemistes otsingutulemustes. Samuti eemaldab see noindex-märgendiga postitused ja lehed sinu saidi otsingutulemustest."
+
+#. translators: %s: Algolia.
+#: admin/views/class-yoast-integration-toggles.php:79
+msgid "Find out more about our %s integration."
+msgstr "Lisateave meie %s integratsiooni kohta."
+
+#: admin/views/class-yoast-feature-toggles.php:125
+msgid "Read more about how internal linking can improve your site structure."
+msgstr "Loe lähemalt, kuidas sisemised lingid saavad parandada sinu saidi struktuuri."
+
+#: admin/views/class-yoast-feature-toggles.php:124
+msgid "Get relevant internal linking suggestions — while you’re writing! The link suggestions metabox shows a list of posts on your blog with similar content that might be interesting to link to. "
+msgstr "Hangi asjakohaseid sisemise linkimise soovitusi — kirjutamise ajal! Linkide soovituste metakast näitab sinu blogis sarnase sisuga postituste loendit, millele võiks olla huvitav linkida."
+
+#: admin/views/class-yoast-feature-toggles.php:121 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "Link suggestions"
+msgstr "Lingi soovitused"
+
+#: admin/views/class-yoast-feature-toggles.php:115
+msgid "Find out how Insights can help you improve your content."
+msgstr "Uuri, kuidas Insights aitab sul oma sisu parandada."
+
+#: admin/views/class-yoast-feature-toggles.php:114
+msgid "Find relevant data about your content right in the Insights section in the Yoast SEO metabox. You’ll see what words you use most often and if they’re a match with your keywords! "
+msgstr "Leia asjakohaseid andmeid oma sisu kohta otse Yoast SEO metaboksi Insightsi jaost. Näed, milliseid sõnu sa kõige sagedamini kasutad ja kas need kattuvad sinu märksõnadega!"
+
+#: admin/views/class-yoast-feature-toggles.php:112 js/dist/block-editor.js:529
+#: js/dist/block-editor.js:586 js/dist/classic-editor.js:231
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:522
+msgid "Insights"
+msgstr "Ülevaated"
+
+#. translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Premium installation page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-error-presenter.php:76
+#: src/presenters/admin/indexing-failed-notification-presenter.php:77
+msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please make sure to activate your subscription in MyYoast by completing %1$sthese steps%2$s."
+msgstr "Ups, midagi läks valesti ja me ei saanud sinu SEO-andmete optimeerimist lõpule viia. Palun veendu, et aktiveeriksid oma tellimuse MyYoastis, järgides %1$sneid samme%2$s."
+
+#. translators: %1$s expands to Yoast SEO
+#: src/integrations/admin/addon-installation/dialog-integration.php:94
+msgid "No %1$s plugins have been installed. You don't seem to own any active subscriptions."
+msgstr "Ühtegi %1$s pluginat pole installitud. Tundub, et sul pole ühtegi aktiivset tellimust."
+
+#. Translators: %s expands to the error message.
+#: src/integrations/admin/addon-installation/installation-integration.php:192
+msgid "Addon installation failed because of an error: %s."
+msgstr "Lisamooduli paigaldamine ebaõnnestus vea tõttu: %s."
+
+#: src/integrations/admin/addon-installation/installation-integration.php:188
+msgid "You are not allowed to install plugins."
+msgstr "Sul ei ole lubatud pluginaid paigaldada."
+
+#. Translators: %s expands to the name of the addon.
+#: src/integrations/admin/addon-installation/installation-integration.php:184
+msgid "Addon installed."
+msgstr "Lisamoodul on paigaldatud."
+
+#. Translators:%s expands to the error message.
+#: src/integrations/admin/addon-installation/installation-integration.php:160
+msgid "Addon activation failed because of an error: %s."
+msgstr "Lisamooduli aktiveerimine ebaõnnestus vea tõttu: %s."
+
+#: src/integrations/admin/addon-installation/installation-integration.php:156
+msgid "You are not allowed to activate plugins."
+msgstr "Sul ei ole lubatud pluginaid aktiveerida."
+
+#. Translators: %s expands to the name of the addon.
+#: src/integrations/admin/addon-installation/installation-integration.php:154
+msgid "Addon activated."
+msgstr "Lisamoodul aktiveeritud."
+
+#. translators: %1$s expands to an anchor tag to the admin premium page, %2$s
+#. expands to Yoast SEO Premium, %3$s expands to a closing anchor tag
+#: src/integrations/admin/addon-installation/installation-integration.php:129
+msgid "%1$s Continue to %2$s%3$s"
+msgstr "%1$s Jätka lehele %2$s%3$s"
+
+#: src/integrations/admin/addon-installation/installation-integration.php:106
+msgid "Installing and activating addons"
+msgstr "Lisade paigaldamine ja aktiveerimine"
+
+#. translators: %s expands to Yoast SEO Premium.
+#: admin/class-admin.php:248
+msgid "Required by %s"
+msgstr "%s nõuab"
+
+#. Translators: %1$s resolves to Yoast SEO.
+#: src/integrations/watchers/addon-update-watcher.php:95
+msgid "Auto-updates are disabled based on this setting for %1$s."
+msgstr "Automaatsed uuendused on selle sätte põhjal keelatud üksuse %1$s jaoks."
+
+#. Translators: %1$s resolves to Yoast SEO.
+#: src/integrations/watchers/addon-update-watcher.php:85
+msgid "Auto-updates are enabled based on this setting for %1$s."
+msgstr "Automaatsed uuendused on selle seade põhjal lubatud %1$s jaoks."
+
+#: src/presenters/admin/badge-presenter.php:80
+#: src/presenters/admin/badge-presenter.php:87
+#: js/dist/externals-components.js:375 js/dist/externals/componentsNew.js:563
+#: js/dist/integrations-page.js:3 js/dist/integrations-page.js:6
+#: js/dist/integrations-page.js:18 js/dist/new-settings.js:588
+msgid "New"
+msgstr "Uus"
+
+#: src/exceptions/indexable/post-not-found-exception.php:16
+msgid "The post could not be found."
+msgstr "Postitust ei leitud."
+
+#. translators: %s is the reason given by WordPress.
+#: src/exceptions/indexable/invalid-term-exception.php:21
+msgid "The term is considered invalid. The following reason was given by WordPress: %s"
+msgstr "Terminit peetakse kehtetuks. WordPress esitas järgmise põhjuse: %s"
+
+#: src/exceptions/indexable/term-not-found-exception.php:16
+msgid "The term could not be found."
+msgstr "Terminit ei leitud."
+
+#: admin/class-yoast-form.php:1066 js/dist/general-page.js:54
+msgid "This feature has been disabled since subsites never send tracking data."
+msgstr "See funktsioon on keelatud, kuna alamsaidid ei saada kunagi jälgimisandmeid."
+
+#. translators: %1$s expands to an opening anchor tag, %2$s expands to an
+#. closing anchor tag.
+#: src/integrations/third-party/wpml-wpseo-notification.php:110
+msgid "We notice that you have installed WPML. To make sure your canonical URLs are set correctly, %1$sinstall and activate the WPML SEO add-on%2$s as well!"
+msgstr "Märkasime, et sul on paigaldatud WPML. Veendumaks, et sinu kanoonilised URL-id on õigesti seadistatud, %1$spaigalda ja aktiveeri ka WPML SEO lisamoodul%2$s!"
+
+#: src/presenters/admin/indexing-notification-presenter.php:81
+msgid "Because of a change in your category base setting, some of your SEO data needs to be reprocessed."
+msgstr "Kategooria aluse sätte muutmise tõttu tuleb osa sinu SEO-andmeid uuesti töödelda."
+
+#: admin/views/class-yoast-feature-toggles.php:186
+msgid "Find out how a rich snippet can improve visibility and click-through-rate."
+msgstr "Uuri, kuidas rikkalik väljavõte saab parandada nähtavust ja läbiklõpsamissagedust."
+
+#: admin/views/class-yoast-feature-toggles.php:185 js/dist/new-settings.js:525
+msgid "This adds an author byline and reading time estimate to the article’s snippet when shared on Slack."
+msgstr "See lisab artikli väljavõttele autori nime ja hinnangulise lugemisaja, kui seda jagatakse Slackis."
+
+#: admin/views/class-yoast-feature-toggles.php:183
+msgid "Enhanced Slack sharing"
+msgstr "Täiustatud Slackis jagamine"
+
+#. translators: 1: Expands to Yoast SEO
+#: src/presenters/admin/indexing-notification-presenter.php:129
+msgid "Wait for a week or so, until %1$s automatically processes most of your content in the background."
+msgstr "Oota umbes nädal, kuni %1$s töötleb enamiku sinu sisust automaatselt taustal."
+
+#. translators: %s expands to the reading time number, in minutes
+#: src/presenters/slack/enhanced-data-presenter.php:55
+msgid "Est. reading time"
+msgstr "Eeldatav lugemisaeg"
+
+#: src/presenters/slack/enhanced-data-presenter.php:50
+msgid "Written by"
+msgstr "Kirjutanud"
+
+#: inc/class-wpseo-admin-bar-menu.php:440
+msgid "Google Rich Results Test"
+msgstr "Google’i rikastatud tulemuste test"
+
+#: src/presenters/admin/indexing-notification-presenter.php:84
+msgid "Because of a change in your tag base setting, some of your SEO data needs to be reprocessed."
+msgstr "Sinu sildibaasi sätte muutmise tõttu tuleb osa sinu SEO andmetest uuesti töödelda."
+
+#. translators: %s: 'Semrush'
+#: admin/views/class-yoast-integration-toggles.php:67
+msgid "The %s integration offers suggestions and insights for keywords related to the entered focus keyphrase."
+msgstr "%s integratsioon pakub sisestatud fookusvõtmefraasiga seotud märksõnade kohta soovitusi ja ülevaateid."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/network/integrations.php:27
+msgid "This tab allows you to selectively disable %1$s integrations with third-party products for all sites in the network. By default all integrations are enabled, which allows site admins to choose for themselves if they want to toggle an integration on or off for their site. When you disable an integration here, site admins will not be able to use that integration at all."
+msgstr "See vahekaart võimaldab sul valikuliselt keelata %1$s integratsioonid kolmanda osapoole toodetega kõigil võrgu saitidel. Vaikimisi on kõik integratsioonid lubatud, mis võimaldab saidi administraatoritel ise valida, kas nad soovivad integratsiooni oma saidil sisse või välja lülitada. Kui keelad siin integratsiooni, ei saa saidi administraatorid seda integratsiooni üldse kasutada."
+
+#: admin/class-admin.php:259
+msgid "Activate your subscription"
+msgstr "Aktiveeri oma tellimus"
+
+#: src/presenters/admin/indexing-error-presenter.php:64
+msgid "Oops, something has gone wrong and we couldn't complete the optimization of your SEO data. Please click the button again to re-start the process. "
+msgstr "Oih, midagi läks valesti ja me ei saanud sinu SEO-andmete optimeerimist lõpule viia. Protsessi taaskäivitamiseks kliki nuppu uuesti."
+
+#: src/integrations/watchers/indexable-homeurl-watcher.php:97
+msgid "All permalinks were successfully reset"
+msgstr "Kõik püsilingid lähtestati edukalt"
+
+#: src/presenters/admin/indexing-notification-presenter.php:96
+msgid "You can speed up your site and get insight into your internal linking structure by letting us perform a few optimizations to the way SEO data is stored."
+msgstr "Saad oma saiti kiirendada ja saada ülevaate oma sisemiste linkide struktuurist, lubades meil teha mõned optimeerimised selle kohta, kuidas SEO andmeid salvestatakse."
+
+#: src/presenters/admin/indexing-notification-presenter.php:59
+#: js/dist/general-page.js:44 js/dist/indexation.js:8
+msgid "Start SEO data optimization"
+msgstr "Alusta SEO-andmete optimeerimist"
+
+#: src/presenters/admin/indexing-list-item-presenter.php:42
+msgid "Learn more about the benefits of optimized SEO data."
+msgstr "Lisateave optimeeritud SEO-andmete eeliste kohta."
+
+#: src/presenters/admin/indexing-list-item-presenter.php:40
+msgid "You can speed up your site and get insight into your internal linking structure by letting us perform a few optimizations to the way SEO data is stored. If you have a lot of content it might take a while, but trust us, it's worth it."
+msgstr "Saad oma saiti kiirendada ja saada ülevaate oma sisemiste linkide struktuurist, lubades meil teha mõned optimeerimised selles, kuidas SEO andmeid salvestatakse. Kui sul on palju sisu, võib see veidi aega võtta, kuid usu meid, see on seda väärt."
+
+#: src/presenters/admin/indexing-list-item-presenter.php:37
+msgid "Optimize SEO Data"
+msgstr "Optimeeri SEO andmed"
+
+#: src/presenters/admin/indexing-error-presenter.php:71
+#: src/presenters/admin/indexing-failed-notification-presenter.php:71
+msgid "If the problem persists, please contact support."
+msgstr "Kui probleem püsib, võta palun ühendust toega."
+
+#. Translators: %1$s expands to an opening anchor tag for a link leading to the
+#. Yoast SEO tools page, %2$s expands to a closing anchor tag.
+#: src/presenters/admin/indexing-failed-notification-presenter.php:59
+msgid "Something has gone wrong and we couldn't complete the optimization of your SEO data. Please %1$sre-start the process%2$s."
+msgstr "Midagi läks valesti ja me ei saanud sinu SEO-andmete optimeerimist lõpule viia. Palun %1$salusta protsess uuesti%2$s."
+
+#. translators: %s expands to a mailto support link.
+#: inc/class-addon-manager.php:887
+msgid "If you still need support and have an active subscription for this product, please email %s."
+msgstr "Kui vajad endiselt tuge ja sul on selle toote aktiivne tellimus, saada palun e-kiri aadressile %s."
+
+#. translators: 1: expands to <a> that refers to the help page, 2: </a> closing
+#. tag.
+#: inc/class-addon-manager.php:884
+msgid "You can probably find an answer to your question in our %1$shelp center%2$s."
+msgstr "Tõenäoliselt leiad vastuse oma küsimusele meie %1$sabikeskusest%2$s."
+
+#: inc/class-addon-manager.php:881
+msgid "Need support?"
+msgstr "Vajad abi?"
+
+#. translators: %1$s: expands to an opening anchor tag, %2$s: expands to a
+#. closing anchor tag
+#: admin/views/class-yoast-feature-toggles.php:237
+msgid "Disabling Yoast SEO's XML sitemaps will not disable WordPress' core sitemaps. In some cases, this %1$s may result in SEO errors on your site%2$s. These may be reported in Google Search Console and other tools."
+msgstr "Yoast SEO XML-saidikaartide keelamine ei keela WordPressi põhilisi saidikaarte. Mõnel juhul võib see %1$spõhjustada sinu saidil SEO-vigu%2$s. Neist võidakse teatada Google Search Console'is ja teistes tööriistades."
+
+#. translators: 1: Yoast SEO, 2: translated version of "Off"
+#: admin/views/class-yoast-feature-toggles.php:154
+msgid "The advanced section of the %1$s meta box allows a user to remove posts from the search results or change the canonical. The settings in the schema tab allows a user to change schema meta data for a post. These are things you might not want any author to do. That's why, by default, only editors and administrators can do this. Setting to \"%2$s\" allows all users to change these settings."
+msgstr "Meta kasti %1$s täpsem jagu võimaldab kasutajal eemaldada postitusi otsingutulemustest või muuta kanoonilist URL-i. Skeemi vahekaardi sätted võimaldavad kasutajal muuta postituse skeemi metaandmeid. Need on asjad, mida sa ei pruugi soovida, et iga autor teeks. Seetõttu saavad seda vaikimisi teha ainult toimetajad ja administraatorid. Sätteks \"%2$s\" määramine võimaldab kõigil kasutajatel neid sätteid muuta."
+
+#: admin/views/class-yoast-feature-toggles.php:150
+msgid "Security: no advanced or schema settings for authors"
+msgstr "Turvalisus: autoritel puuduvad täpsemad või skeemi seaded"
+
+#: src/config/schema-types.php:159
+msgid "Report"
+msgstr "Aruanne"
+
+#: src/config/schema-types.php:155
+msgid "Tech Article"
+msgstr "Tehniline artikkel"
+
+#: src/config/schema-types.php:151
+msgid "Scholarly Article"
+msgstr "Teadusartikkel"
+
+#: src/config/schema-types.php:147
+msgid "Satirical Article"
+msgstr "Satiiriline artikkel"
+
+#: src/config/schema-types.php:143
+msgid "Advertiser Content Article"
+msgstr "Reklaamija sisuga artikkel"
+
+#: src/config/schema-types.php:139
+msgid "News Article"
+msgstr "Uudisteartikkel"
+
+#: src/config/schema-types.php:135
+msgid "Social Media Posting"
+msgstr "Sotsiaalmeediasse postitamine"
+
+#: src/config/schema-types.php:127
+msgid "Article"
+msgstr "Artikkel"
+
+#: src/config/schema-types.php:104
+msgid "Search Results Page"
+msgstr "Otsingutulemuste leht"
+
+#: src/config/schema-types.php:100
+msgid "Real Estate Listing"
+msgstr "Kinnisvarakuulutus"
+
+#: src/config/schema-types.php:96
+msgid "Checkout Page"
+msgstr "Kassa leht"
+
+#: src/config/schema-types.php:92
+msgid "Collection Page"
+msgstr "Kogumiku leht"
+
+#: src/config/schema-types.php:88
+msgid "Medical Web Page"
+msgstr "Meditsiiniline veebileht"
+
+#: src/config/schema-types.php:84
+msgid "Contact Page"
+msgstr "Kontaktileht"
+
+#: src/config/schema-types.php:80
+msgid "Profile Page"
+msgstr "Profiilileht"
+
+#: src/config/schema-types.php:76
+msgid "QA Page"
+msgstr "QA leht"
+
+#: src/config/schema-types.php:72
+msgid "FAQ Page"
+msgstr "KKK leht"
+
+#: src/config/schema-types.php:68
+msgid "About Page"
+msgstr "Lehe tutvustus"
+
+#: src/config/schema-types.php:64 js/dist/block-editor.js:565
+#: js/dist/classic-editor.js:477
+msgid "Item Page"
+msgstr "Eseme leht"
+
+#: src/config/schema-types.php:60
+msgid "Web Page"
+msgstr "Veebileht"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:166
+msgid "Allow us to track some data about your site to improve our plugin."
+msgstr "Luba meil jälgida mõningaid andmeid sinu saidi kohta, et täiustada meie pluginat."
+
+#: admin/views/class-yoast-feature-toggles.php:161
+#: admin/views/class-yoast-feature-toggles.php:162 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:521
+msgid "Usage tracking"
+msgstr "Kasutuse jälgimine"
+
+#: src/presenters/admin/indexing-notification-presenter.php:75
+msgid "Because of a change in your permalink structure, some of your SEO data needs to be reprocessed."
+msgstr "Kuna sinu püsilingi struktuuris tehti muudatus, tuleb osa sinu SEO-andmetest uuesti töödelda."
+
+#: src/presenters/admin/indexing-notification-presenter.php:78
+msgid "Because of a change in your home URL setting, some of your SEO data needs to be reprocessed."
+msgstr "Koduaadressi URL-i sätte muudatuse tõttu tuleb osa sinu SEO andmetest uuesti töödelda."
+
+#. translators: %1$s expands to Yoast.
+#: src/integrations/blocks/block-categories.php:45
+msgid "%1$s Internal Linking Blocks"
+msgstr "%1$s sisemise linkimise plokid"
+
+#. translators: 1: Link to the Yoast help center, 2: Link closing tag.
+#: src/services/health-check/links-table-reports.php:100
+msgid "%1$sFind out how to solve this problem on our help center%2$s."
+msgstr "%1$sUuri meie abikeskusest, kuidas seda probleemi lahendada%2$s."
+
+#: src/services/health-check/links-table-reports.php:58
+msgid "The text link counter feature is not working as expected"
+msgstr "Tekstilinkide loenduri funktsioon ei tööta ootuspäraselt"
+
+#. translators: 1: Link to the Yoast SEO blog, 2: Link closing tag.
+#: src/services/health-check/links-table-reports.php:73
+msgid "The text link counter helps you improve your site structure. %1$sFind out how the text link counter can enhance your SEO%2$s."
+msgstr "Tekstilinkide loendur aitab sul saidi struktuuri parandada. %1$sUuri, kuidas tekstilinkide loendur saab sinu SEO-d täiustada%2$s."
+
+#: src/services/health-check/links-table-reports.php:45
+msgid "The text link counter is working as expected"
+msgstr "Tekstilinkide loendur töötab ootuspäraselt"
+
+#. translators: %1$s: Link to article about text links, %2$s: Anchor closing
+#. tag, %3$s: Emphasis open tag, %4$s: Emphasis close tag
+#: admin/class-yoast-columns.php:52
+msgid "The links columns show the number of articles on this site linking %3$sto%4$s this article and the number of URLs linked %3$sfrom%4$s this article. Learn more about %1$show to use these features to improve your internal linking%2$s, which greatly enhances your SEO."
+msgstr "Linkide veerud näitavad selle saidi artiklite arvu, mis lingivad %3$ssellele%4$s artiklile, ja URL-ide arvu, millele on lingitud %3$ssellest%4$s artiklist. Loe lisaks, %1$skuidas kasutada neid funktsioone sisemiste linkide parandamiseks%2$s, mis parandab oluliselt sinu SEO-d."
+
+#. translators: %1$s: Link to article about content analysis, %2$s: Anchor
+#. closing
+#: admin/class-yoast-columns.php:43
+msgid "We've written an article about %1$show to use the SEO score and Readability score%2$s."
+msgstr "Oleme kirjutanud artikli selle kohta, kuidas %1$skasutada SEO skoori ja loetavuse skoori%2$s."
+
+#. translators: %1$s: Yoast SEO
+#: admin/class-yoast-columns.php:36
+msgid "%1$s adds several columns to this page."
+msgstr "%1$s lisab sellele lehele mitu veergu."
+
+#: src/presenters/admin/search-engines-discouraged-presenter.php:41
+msgid "I don't want this site to show in the search results."
+msgstr "Ma ei soovi, et see sait kuvataks otsingutulemustes."
+
+#. translators: 1: Link start tag to the WordPress Reading Settings page, 2:
+#. Link closing tag.
+#: src/presenters/admin/search-engines-discouraged-presenter.php:36
+msgid "If you want search engines to show this site in their results, you must %1$sgo to your Reading Settings%2$s and uncheck the box for Search Engine Visibility."
+msgstr "Kui soovid, et otsingumootorid näitaksid seda saiti oma tulemustes, pead %1$sminema lugemise seadistustesse%2$s ja tühjendama märkeruudu Otsingumootorite nähtavus."
+
+#: src/alerts/application/default-seo-data/default-seo-data-alert.php:188
+msgid "SEO data"
+msgstr "SEO andmed"
+
+#: src/presenters/admin/migration-error-presenter.php:64
+msgid "Show debug information"
+msgstr "Näita silumisteavet"
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:58
+msgid "Your site will continue to work normally, but won't take full advantage of %s."
+msgstr "Sinu sait töötab edasi tavapäraselt, kuid ei kasuta täielikult ära teenust %s."
+
+#. translators: %s: Yoast SEO.
+#: src/presenters/admin/migration-error-presenter.php:47
+msgid "%s had problems creating the database tables needed to speed up your site."
+msgstr "%s-il tekkis probleeme sinu saidi kiirendamiseks vajalike andmebaasitabelite loomisel."
+
+#: src/presenters/admin/indexing-notification-presenter.php:117
+msgid " We estimate this will take less than a minute."
+msgstr "Meie hinnangul võtab see vähem kui minuti."
+
+#: src/presenters/admin/indexing-notification-presenter.php:121
+msgid " We estimate this will take a couple of minutes."
+msgstr "Meie hinnangul võtab see paar minutit."
+
+#. translators: 1: Link to article about indexation command, 2: Anchor closing
+#. tag, 3: Link to WP CLI.
+#: src/presenters/admin/indexing-notification-presenter.php:136
+msgid "%1$sRun the indexation process on your server%2$s using %3$sWP CLI%2$s."
+msgstr "%1$sKäivita indekseerimisprotsess oma serveris%2$s, kasutades %3$sWP CLI-d%2$s."
+
+#: src/presenters/admin/indexing-notification-presenter.php:124
+msgid " We estimate this could take a long time, due to the size of your site. As an alternative to waiting, you could:"
+msgstr "Meie hinnangul võib see sinu saidi suuruse tõttu kaua aega võtta. Ootamise asemel võid:"
+
+#. translators: %1$s: link to help article about solving table issue. %2$s: is
+#. anchor closing.
+#: src/presenters/admin/migration-error-presenter.php:52
+msgid "Please read %1$sthis help article%2$s to find out how to resolve this problem."
+msgstr "Palun loe %1$sseda abiartiklit%2$s, et teada saada, kuidas see probleem lahendada."
+
+#: inc/class-wpseo-replace-vars.php:1486
+msgid "Replaced with the term ancestors hierarchy"
+msgstr "Asendatud terminiga esivanemate hierarhia"
+
+#: inc/class-wpseo-replace-vars.php:1486
+msgid "Term hierarchy"
+msgstr "Terminijaotus"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:177
+msgid "This %1$s REST API endpoint gives you all the metadata you need for a specific URL. This will make it very easy for headless WordPress sites to use %1$s for all their SEO meta output."
+msgstr "See %1$s REST API lõpp-punkt annab sulle kogu metaandmestiku, mida vajad konkreetse URL-i jaoks. See teeb peata WordPressi saitidel väga lihtsaks kasutada %1$s kogu nende SEO metaandmete väljundi jaoks."
+
+#: admin/views/class-yoast-feature-toggles.php:173
+msgid "REST API: Head endpoint"
+msgstr "REST API: päise lõpp-punkt"
+
+#. translators: 1: link open tag; 2: link close tag.
+#: src/services/health-check/default-tagline-reports.php:63
+msgid "%1$sYou can change the tagline in the customizer%2$s."
+msgstr "%1$sSaad tunnuslauset muuta kohandajas%2$s."
+
+#: src/services/health-check/default-tagline-reports.php:45
+msgid "You still have the default WordPress tagline. Even an empty one is probably better."
+msgstr "Sul on endiselt WordPressi vaikimisi tunnuslause. Isegi tühi on tõenäoliselt parem."
+
+#: src/services/health-check/default-tagline-reports.php:43
+msgid "You should change the default WordPress tagline"
+msgstr "Sa peaksid muutma WordPressi vaikimisi tunnuslauset."
+
+#: src/services/health-check/default-tagline-reports.php:32
+msgid "You are using a custom tagline or an empty one."
+msgstr "Kasutad kohandatud tunnuslauset või tühja tunnuslauset."
+
+#: src/services/health-check/default-tagline-reports.php:30
+msgid "You changed the default WordPress tagline"
+msgstr "Muutsid WordPressi vaikimisi alapealkirja"
+
+#: src/services/health-check/page-comments-reports.php:32
+msgid "Comments on your posts are displayed on a single page. This is just like we'd suggest it. You're doing well!"
+msgstr "Sinu postituste kommentaarid kuvatakse ühel lehel. Just nii me seda soovitaksimegi. Sul läheb hästi!"
+
+#. translators: %s expands to '/%postname%/'
+#: src/services/health-check/postname-permalink-reports.php:58
+msgid "It's highly recommended to have your postname in the URL of your posts and pages. Consider setting your permalink structure to %s."
+msgstr "On tungivalt soovitatav, et sinu postituste ja lehtede URL-is oleks postituse nimi. Kaalu püsilinkide struktuuri määramist väärtusele %s."
+
+#: src/services/health-check/postname-permalink-reports.php:43
+msgid "You do not have your postname in the URL of your posts and pages"
+msgstr "Sinu postituste ja lehtede URL-is puudub postituse nimi."
+
+#: src/services/health-check/postname-permalink-reports.php:32
+msgid "You do have your postname in the URL of your posts and pages."
+msgstr "Sinu postituste ja lehtede URL-is on postituse nimi."
+
+#: src/services/health-check/postname-permalink-reports.php:30
+msgid "Your permalink structure includes the post name"
+msgstr "Sinu püsilingi struktuur sisaldab postituse nime"
+
+#: src/services/health-check/page-comments-reports.php:45
+msgid "Comments on your posts break into multiple pages. As this is not needed in 999 out of 1000 cases, we recommend you disable it. To fix this, uncheck \"Break comments into pages...\" on the Discussion Settings page."
+msgstr "Sinu postituste kommentaarid jaotatakse mitmele lehele. Kuna seda pole 999 juhul 1000-st vaja, soovitame sul selle keelata. Selle parandamiseks eemalda arutelusätete lehel märge valikult „Jaota kommentaarid lehtedeks...“."
+
+#: src/services/health-check/page-comments-reports.php:43
+msgid "Comments break into multiple pages"
+msgstr "Kommentaarid jagunevad mitmeks leheks"
+
+#: src/services/health-check/page-comments-reports.php:30
+msgid "Comments are displayed on a single page"
+msgstr "Kommentaarid kuvatakse ühel lehel"
+
+#: src/helpers/post-helper.php:112
+msgid "No title"
+msgstr "Pealkiri puudub"
+
+#. translators: 1: Start of a paragraph beginning with the Yoast icon, 2:
+#. Expands to 'Yoast SEO', 3: Paragraph closing tag.
+#: src/services/health-check/report-builder.php:201
+msgid "%1$sThis was reported by the %2$s plugin%3$s"
+msgstr "%1$sSellest teatas plugin %2$s%3$s"
+
+#. translators: 1: Opening tag of the link to the discussion settings page, 2:
+#. Link closing tag.
+#: src/services/health-check/page-comments-reports.php:58
+msgid "%1$sGo to the Discussion Settings page%2$s"
+msgstr "%1$sMine arutelu sätete lehele%2$s"
+
+#: admin/metabox/class-metabox.php:191
+msgid "If you want to apply advanced <code>meta</code> robots settings for this page, please define them in the following field."
+msgstr "Kui soovid selle lehe jaoks rakendada täpsemaid <code>meta</code> robotite seadeid, määra need järgmisel väljal."
+
+#. translators: 1: Link start tag to the Firefox website, 2: Link start tag to
+#. the Chrome website, 3: Link start tag to the Edge website, 4: Link closing
+#. tag.
+#: admin/metabox/class-metabox.php:147 admin/taxonomy/class-taxonomy.php:113
+msgid "The browser you are currently using is unfortunately rather dated. Since we strive to give you the best experience possible, we no longer support this browser. Instead, please use %1$sFirefox%4$s, %2$sChrome%4$s or %3$sMicrosoft Edge%4$s."
+msgstr "Sinu praegu kasutatav brauser on kahjuks üsna aegunud. Kuna püüame pakkuda sulle parimat võimalikku kasutuskogemust, ei toeta me seda brauserit enam. Selle asemel kasuta palun brauserit %1$sFirefox%4$s, %2$sChrome%4$s või %3$sMicrosoft Edge%4$s."
+
+#. translators: %1$s expands to Yoast SEO academy
+#. translators: %1$s expands to "Yoast SEO academy".
+#: src/presenters/admin/sidebar-presenter.php:154
+#: js/dist/ai-content-planner.js:116 js/dist/block-editor.js:180
+#: js/dist/general-page.js:3 js/dist/new-settings.js:3 js/dist/support.js:3
+msgid "Check out %1$s"
+msgstr "Vaata %1$s"
+
+#: src/presenters/admin/sidebar-presenter.php:147
+#: js/dist/ai-content-planner.js:115 js/dist/block-editor.js:179
+#: js/dist/general-page.js:2 js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "We have both free and premium online courses to learn everything you need to know about SEO."
+msgstr "Meil on nii tasuta kui ka tasulised veebikursused, et õppida kõike, mida sul on vaja SEO kohta teada."
+
+#. translators: %1$s expands to Yoast SEO academy, which is a clickable link.
+#. translators: %1$s expands to "Yoast SEO" academy, which is a clickable link.
+#: src/presenters/admin/sidebar-presenter.php:145
+#: js/dist/ai-content-planner.js:115 js/dist/block-editor.js:179
+#: js/dist/general-page.js:2 js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "Want to learn SEO from Team Yoast? Check out our %1$s!"
+msgstr "Soovid õppida SEO-d Team Yoastilt? Vaata meie %1$s!"
+
+#: src/presenters/admin/sidebar-presenter.php:137
+#: js/dist/ai-content-planner.js:115 js/dist/block-editor.js:179
+#: js/dist/general-page.js:2 js/dist/new-settings.js:2 js/dist/support.js:2
+msgid "Learn SEO"
+msgstr "Õpi SEO-d"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-import.php:39
+msgid "%s settings to import:"
+msgstr "Imporditavad %s seaded:"
+
+#. translators: 1: expands to Yoast SEO, 2: expands to Import settings.
+#: admin/views/tabs/tool/wpseo-import.php:23
+msgid "Import settings from another %1$s installation by pasting them here and clicking \"%2$s\"."
+msgstr "Impordi sätted teisest %1$s installatsioonist, kleepides need siia ja klikkides „%2$s“."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-export.php:72
+msgid "Your %1$s settings:"
+msgstr "Sinu %1$s seaded:"
+
+#: admin/metabox/class-metabox.php:440 js/dist/block-editor.js:611
+#: js/dist/new-settings.js:20 js/dist/new-settings.js:30
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:39
+#: js/dist/new-settings.js:91 js/dist/new-settings.js:408
+msgid "Schema"
+msgstr "Skeem"
+
+#: admin/admin-settings-changed-listener.php:85
+msgid "Settings saved."
+msgstr "Seaded salvestatud."
+
+#. translators: Hidden accessibility text.
+#: admin/views/partial-notifications-template.php:47
+msgid "Show this item."
+msgstr "Kuva see ese."
+
+#. translators: Hidden accessibility text.
+#: admin/views/partial-notifications-template.php:39
+msgid "Hide this item."
+msgstr "Peida see ese."
+
+#: src/helpers/score-icon-helper.php:84
+msgid "Focus keyphrase not set"
+msgstr "Fookusvõtmefraas pole määratud"
+
+#. translators: %s expands to the score
+#: admin/statistics/class-statistics-service.php:216
+#: admin/statistics/class-statistics-service.php:221
+#: admin/statistics/class-statistics-service.php:226
+msgid "Posts with the SEO score: %s"
+msgstr "Postitused SEO skooriga: %s"
+
+#. translators: %s: expends to Yoast SEO
+#: admin/class-admin.php:354
+msgid "%s video tutorial"
+msgstr "%s videoõpetus"
+
+#: inc/class-wpseo-rank.php:191
+msgid "Post Noindexed"
+msgstr "Postitus on noindex-märgisega"
+
+#: inc/class-wpseo-rank.php:171
+msgid "No Focus Keyphrase"
+msgstr "Fookusvõtmefraasi pole"
+
+#. translators: %s expands to the SEO score
+#: inc/class-wpseo-rank.php:170 inc/class-wpseo-rank.php:175
+#: inc/class-wpseo-rank.php:180 inc/class-wpseo-rank.php:185
+#: inc/class-wpseo-rank.php:190
+msgid "SEO: %s"
+msgstr "SEO: %s"
+
+#. Translators: %1$s: expands to opening anchor tag, %2$s expands to closing
+#. anchor tag.
+#: admin/google_search_console/views/gsc-display.php:39
+msgid "To view your current crawl errors, %1$splease visit Google Search Console%2$s."
+msgstr "Praeguste roomamisvigade vaatamiseks %1$skülasta Google Search Console’i%2$s."
+
+#. Translators: %1$s: expands to opening anchor tag, %2$s expands to closing
+#. anchor tag.
+#: admin/google_search_console/views/gsc-display.php:32
+msgid "Google has discontinued its Crawl Errors API. Therefore, any possible crawl errors you might have cannot be displayed here anymore. %1$sRead our statement on this for further information%2$s."
+msgstr "Google on lõpetanud oma Crawl Errors API. Seetõttu ei saa võimalikke roomamisvigu, mis sul võivad olla, siin enam kuvada. %1$sLisateabe saamiseks loe meie avaldust selle kohta%2$s."
+
+#: src/integrations/admin/first-time-configuration-integration.php:480
+#: src/integrations/admin/first-time-configuration-integration.php:493
+#: js/dist/new-settings.js:538
+msgid "Organization"
+msgstr "Organisatsioon"
+
+#. translators: %1$s is a link start tag to the Search Appearance settings,
+#. %2$s is the link closing tag.
+#: admin/class-schema-person-upgrade-notification.php:66
+msgid "You have previously set your site to represent a person. We’ve improved our functionality around Schema and the Knowledge Graph, so you should go in and %1$scomplete those settings%2$s."
+msgstr "Oled varem määranud oma saidi esindama isikut. Oleme täiustanud oma funktsionaalsust seoses skeemi ja Knowledge Graphiga, seega peaksid avama ja %1$sneed sätted lõpule viima%2$s."
+
+#: admin/class-admin.php:317
+#: src/user-meta/framework/additional-contactmethods/wikipedia.php:28
+msgid "(if one exists)"
+msgstr "(kui see on olemas)"
+
+#: admin/class-admin.php:317
+#: src/user-meta/framework/additional-contactmethods/wikipedia.php:28
+msgid "Wikipedia page about you"
+msgstr "Vikipeedia leht sinu kohta"
+
+#: admin/class-admin.php:316
+#: src/user-meta/framework/additional-contactmethods/youtube.php:28
+msgid "YouTube profile URL"
+msgstr "YouTube’i profiili URL"
+
+#: admin/class-admin.php:314
+#: src/user-meta/framework/additional-contactmethods/tumblr.php:28
+msgid "Tumblr profile URL"
+msgstr "Tumblri profiili URL"
+
+#: admin/class-admin.php:313
+#: src/user-meta/framework/additional-contactmethods/soundcloud.php:28
+msgid "SoundCloud profile URL"
+msgstr "SoundCloudi profiili URL"
+
+#: admin/class-admin.php:311
+#: src/user-meta/framework/additional-contactmethods/myspace.php:28
+msgid "MySpace profile URL"
+msgstr "MySpace’i profiili URL"
+
+#: src/generators/schema/article.php:136
+msgid "Uncategorized"
+msgstr "Määratlemata"
+
+#: admin/class-admin.php:312
+#: src/user-meta/framework/additional-contactmethods/pinterest.php:28
+msgid "Pinterest profile URL"
+msgstr "Pinteresti profiili URL"
+
+#: admin/class-admin.php:310
+#: src/user-meta/framework/additional-contactmethods/linkedin.php:28
+msgid "LinkedIn profile URL"
+msgstr "LinkedIni profiili URL"
+
+#: admin/class-admin.php:309
+#: src/user-meta/framework/additional-contactmethods/instagram.php:28
+msgid "Instagram profile URL"
+msgstr "Instagrami profiili URL"
+
+#: inc/class-my-yoast-api-request.php:140
+msgid "No JSON object was returned."
+msgstr "JSON-objekti ei tagastatud."
+
+#. translators: Hidden accessibility text.
+#: src/integrations/admin/link-count-columns-integration.php:149
+msgid "Received internal links"
+msgstr "Saadud sisemised lingid"
+
+#. translators: Hidden accessibility text.
+#: src/integrations/admin/link-count-columns-integration.php:141
+msgid "Outgoing internal links"
+msgstr "Väljuvad sisemised lingid"
+
+#: admin/class-meta-columns.php:132 js/dist/block-editor.js:386
+#: js/dist/classic-editor.js:88 js/dist/wincher-dashboard-widget.js:130
+msgid "Keyphrase"
+msgstr "Võtmefraas"
+
+#. translators: 1: Yoast SEO.
+#: src/services/health-check/links-table-reports.php:87
+msgid "For this feature to work, %1$s needs to create a table in your database. We were unable to create this table automatically."
+msgstr "Selle funktsiooni toimimiseks peab %1$s looma sinu andmebaasi tabeli. Me ei saanud seda tabelit automaatselt luua."
+
+#. translators: %1$s expands to the requested url
+#: admin/exceptions/class-file-size-exception.php:40
+msgid "Cannot get the size of %1$s because of unknown reasons."
+msgstr "Teadmata põhjustel ei saa %1$s suurust hankida."
+
+#. translators: %1$s expands to the requested url
+#: admin/exceptions/class-file-size-exception.php:23
+msgid "Cannot get the size of %1$s because it is hosted externally."
+msgstr "%1$s suurust ei saa hankida, kuna see on majutatud väliselt."
+
+#. translators: %s expands to the current page number
+#: src/generators/breadcrumbs-generator.php:424
+msgid "Page %s"
+msgstr "Leht %s"
+
+#. translators: %1$s expands to the method name. %2$s expands to the class name
+#: src/exceptions/missing-method.php:24
+msgid "Method %1$s() does not exist in class %2$s"
+msgstr "Meetodit %1$s() ei eksisteeri klassis %2$s"
+
+#. translators: %s expands to Yoast SEO Premium
+#: admin/watchers/class-slug-change-watcher.php:224
+msgid "With %s, you can easily create such redirects."
+msgstr "%s abil saad selliseid ümbersuunamisi hõlpsasti luua."
+
+#: admin/views/tabs/tool/wpseo-import.php:15
+msgid "Import of settings is only supported on servers that run PHP 5.3 or higher."
+msgstr "Seadete importimine on toetatud ainult serverites, mis kasutavad PHP 5.3 või uuemat versiooni."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:26
+msgid "Export your %1$s settings here, to copy them on another site."
+msgstr "Ekspordi oma %1$s seaded siin, et kopeerida need teisele saidile."
+
+#: admin/import/class-import-settings.php:85
+msgid "No settings found."
+msgstr "Ühtegi seadistust ei leitud."
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to Yoast.com
+#: admin/class-export.php:97
+msgid "These are settings for the %1$s plugin by %2$s"
+msgstr "Need on %2$s plugina %1$s seaded"
+
+#. translators: %1$s expands to Import settings
+#: admin/class-export.php:61
+msgid "Copy all these settings to another site's %1$s tab and click \"%1$s\" there."
+msgstr "Kopeeri kõik need seaded teise saidi vahekaardile %1$s ja kliki seal „%1$s”."
+
+#: admin/class-export.php:54
+msgid "You do not have the required rights to export settings."
+msgstr "Sul pole seadete eksportimiseks vajalikke õigusi."
+
+#. translators: %s expands to Yoast WooCommerce SEO
+#. translators: %s expands to Yoast SEO Premium
+#. translators: %s expands to product name: "Yoast WooCommerce SEO" or "Yoast
+#. SEO Premium"
+#: admin/class-premium-upsell-admin-block.php:181
+#: admin/class-premium-upsell-admin-block.php:192 js/dist/general-page.js:6
+#: js/dist/new-settings.js:6
+msgid "Upgrade to %s"
+msgstr "Vii üle versioonile %s"
+
+#: admin/class-admin-init.php:354
+msgid "Learn about why permalinks are important for SEO."
+msgstr "Uuri, miks püsilingid on SEO jaoks olulised."
+
+#. translators: %1$s and %2$s expand to <em> items to emphasize the word in the
+#. middle.
+#: admin/class-admin-init.php:348
+msgid "Changing your permalinks settings can seriously impact your search engine visibility. It should almost %1$s never %2$s be done on a live website."
+msgstr "Püsilinkide seadete muutmine võib tõsiselt mõjutada sinu nähtavust otsingumootorites. Seda ei tohiks toimival veebisaidil peaaegu %1$s mitte kunagi %2$s teha."
+
+#: admin/class-admin-init.php:345
+msgid "WARNING:"
+msgstr "HOIATUS:"
+
+#: admin/views/tabs/network/features.php:95
+#: admin/views/tabs/network/integrations.php:82
+#: src/integrations/admin/crawl-settings-integration.php:251
+msgid "Disable"
+msgstr "Keela"
+
+#: admin/views/tabs/network/features.php:94
+#: admin/views/tabs/network/integrations.php:81
+#: src/integrations/admin/crawl-settings-integration.php:249
+msgid "Allow Control"
+msgstr "Luba juhtimine"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/network/crawl-settings.php:24
+#: admin/views/tabs/network/features.php:27
+msgid "This tab allows you to selectively disable %s features for all sites in the network. By default all features are enabled, which allows site admins to choose for themselves if they want to toggle a feature on or off for their site. When you disable a feature here, site admins will not be able to use that feature at all."
+msgstr "See vahekaart võimaldab sul valikuliselt keelata %s funktsioonid kõigil võrgus olevatel saitidel. Vaikimisi on kõik funktsioonid lubatud, mis võimaldab saidi administraatoritel ise valida, kas nad soovivad funktsiooni oma saidil sisse või välja lülitada. Kui keelad siin funktsiooni, ei saa saidi administraatorid seda funktsiooni üldse kasutada."
+
+#. translators: %s: argument name
+#: admin/views/class-yoast-feature-toggle.php:161
+msgid "%s is a required feature toggle argument."
+msgstr "%s on nõutav funktsioonilüliti argument."
+
+#: admin/class-yoast-form.php:1062 js/dist/general-page.js:54
+msgid "This feature has been disabled by the network admin."
+msgstr "Selle funktsiooni on võrguadministraator keelanud."
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:197
+msgid "Focus keyphrase not set."
+msgstr "Fookusvõtmefraas pole määratud."
+
+#. translators: %s expands to Yoast SEO Premium
+#. translators: WooCommerce SEO
+#: admin/class-premium-popup.php:81
+#: admin/watchers/class-slug-change-watcher.php:228
+#: js/dist/externals-components.js:348
+msgid "Get %s"
+msgstr "Hangi %s"
+
+#: inc/options/class-wpseo-option-titles.php:948
+msgid "Colon"
+msgstr "Koolon"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'SEO' plugin name of possibly
+#. conflicting plugin with regard to the creation of duplicate SEO meta.
+#: admin/class-plugin-conflict.php:90
+msgid "Both %1$s and %2$s manage the SEO of your site. Running two SEO plugins at the same time is detrimental."
+msgstr "Nii %1$s kui ka %2$s haldavad sinu saidi SEO-d. Kahe SEO plugina samaaegne kasutamine on kahjulik."
+
+#: blocks/structured-data-blocks/how-to/block.json
+msgctxt "block description"
+msgid "Create a How-to guide in an SEO-friendly way. You can only use one How-to block per post."
+msgstr "Loo SEO-sõbralik juhend. Ühe postituse kohta saad kasutada ainult ühte juhendi plokki."
+
+#. translators: %1$s expands to Yoast.
+#: src/integrations/blocks/block-categories.php:37
+msgid "%1$s Structured Data Blocks"
+msgstr "%1$s struktureeritud andmete plokid"
+
+#: src/integrations/blocks/structured-data-blocks.php:197
+#: js/dist/how-to-block.js:1 js/dist/how-to-block.js:12
+msgid "Time needed:"
+msgstr "Vajalik aeg:"
+
+#: inc/class-wpseo-admin-bar-menu.php:435
+msgid "Check links to this URL"
+msgstr "Kontrolli linke sellele URL-ile"
+
+#: inc/class-wpseo-admin-bar-menu.php:506
+msgid "How to"
+msgstr "Kuidas teha"
+
+#: admin/pages/network.php:31
+msgid "Restore Site"
+msgstr "Taasta sait"
+
+#: admin/menu/class-network-admin-menu.php:34
+msgid "Network Settings"
+msgstr "Võrguseaded"
+
+#: admin/class-yoast-network-admin.php:276
+msgid "You are not allowed to perform this action."
+msgstr "Sul ei ole lubatud seda toimingut teha."
+
+#. translators: %s: error message
+#: admin/class-yoast-network-admin.php:208
+msgid "Error: %s"
+msgstr "Viga: %s"
+
+#. translators: %s: success message
+#: admin/class-yoast-network-admin.php:206
+msgid "Success: %s"
+msgstr "Õnnestus: %s"
+
+#. translators: %s expands to the ID of a site within a multisite network.
+#: admin/class-yoast-network-admin.php:168
+msgid "Site with ID %d not found."
+msgstr "Saiti ID-ga %d ei leitud."
+
+#: admin/class-yoast-network-admin.php:159
+msgid "No site has been selected to restore."
+msgstr "Taastamiseks pole ühtegi saiti valitud."
+
+#: admin/class-yoast-network-admin.php:120
+msgid "You are not allowed to modify unregistered network settings."
+msgstr "Sul ei ole lubatud registreerimata võrguseadeid muuta."
+
+#: admin/class-yoast-network-admin.php:81
+msgid "deleted"
+msgstr "kustutatud"
+
+#: inc/class-wpseo-replace-vars.php:1475
+msgid "The site's tagline"
+msgstr "Saidi tunnuslause"
+
+#. translators: %1$s expands to the missing field name.
+#: admin/menu/class-replacevar-editor.php:152
+msgid "Not all required fields are given. Missing field %1$s"
+msgstr "Kõik kohustuslikud väljad ei ole täidetud. Puuduv väli %1$s"
+
+#: inc/class-wpseo-replace-vars.php:1489 js/dist/externals-redux.js:1
+msgid "Current year"
+msgstr "Praegune aasta"
+
+#: inc/class-wpseo-replace-vars.php:1475 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:27 js/dist/new-settings.js:518
+msgid "Tagline"
+msgstr "Tunnuslause"
+
+#: inc/class-wpseo-replace-vars.php:1520 js/dist/externals-redux.js:1
+msgid "Page"
+msgstr "Lehekülg"
+
+#: inc/class-wpseo-replace-vars.php:1528
+msgid "description (custom taxonomy)"
+msgstr "kirjeldus (kohandatud taksonoomia)"
+
+#: inc/class-wpseo-replace-vars.php:1527
+msgid "(custom taxonomy)"
+msgstr "(kohandatud taksonoomia)"
+
+#: inc/class-wpseo-replace-vars.php:1526
+msgid "(custom field)"
+msgstr "(kohandatud väli)"
+
+#: inc/class-wpseo-replace-vars.php:1525
+msgid "Term404"
+msgstr "Term404"
+
+#: inc/class-wpseo-replace-vars.php:1523
+msgid "Caption"
+msgstr "Pealdis"
+
+#: inc/class-wpseo-replace-vars.php:1522
+msgid "Pagenumber"
+msgstr "Lehekülje number"
+
+#: inc/class-wpseo-replace-vars.php:1521
+msgid "Pagetotal"
+msgstr "Lehekülgi kokku"
+
+#: inc/class-wpseo-replace-vars.php:1519
+msgid "User description"
+msgstr "Kasutaja kirjeldus"
+
+#: inc/class-wpseo-replace-vars.php:1517 js/dist/externals-redux.js:1
+msgid "ID"
+msgstr "ID"
+
+#: inc/class-wpseo-replace-vars.php:1516
+msgid "Modified"
+msgstr "Muudetud"
+
+#: inc/class-wpseo-replace-vars.php:1515
+msgid "Post type (plural)"
+msgstr "Postituse tüüp (mitmus)"
+
+#: inc/class-wpseo-replace-vars.php:1514
+msgid "Post type (singular)"
+msgstr "Postituse tüüp (ainsus)"
+
+#: inc/class-wpseo-replace-vars.php:1487 js/dist/externals-redux.js:1
+#: js/dist/new-settings.js:30
+msgid "Separator"
+msgstr "Eraldaja"
+
+#: inc/class-wpseo-replace-vars.php:1485 js/dist/externals-redux.js:1
+msgid "Search phrase"
+msgstr "Otsingufraas"
+
+#: inc/class-wpseo-replace-vars.php:1484
+msgid "Term title"
+msgstr "Termini pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1483 js/dist/externals-redux.js:1
+msgid "Term description"
+msgstr "Termini kirjeldus"
+
+#: inc/class-wpseo-replace-vars.php:1482 js/dist/externals-redux.js:1
+msgid "Tag description"
+msgstr "Sildi kirjeldus"
+
+#: inc/class-wpseo-replace-vars.php:1481 js/dist/externals-redux.js:1
+msgid "Category description"
+msgstr "Kategooria kirjeldus"
+
+#: inc/class-wpseo-replace-vars.php:1480 js/dist/externals-redux.js:1
+msgid "Primary category"
+msgstr "Peamine kategooria"
+
+#: inc/class-wpseo-replace-vars.php:1479 js/dist/externals-redux.js:1
+msgid "Category"
+msgstr "Kategooria"
+
+#: inc/class-wpseo-replace-vars.php:1478
+msgid "Tag"
+msgstr "Silt"
+
+#: inc/class-wpseo-replace-vars.php:1477 js/dist/externals-redux.js:1
+msgid "Excerpt only"
+msgstr "Ainult väljavõte"
+
+#: inc/class-wpseo-replace-vars.php:1476 js/dist/externals-redux.js:1
+msgid "Excerpt"
+msgstr "Väljavõte"
+
+#: inc/class-wpseo-replace-vars.php:1474 js/dist/externals-redux.js:1
+msgid "Site title"
+msgstr "Saidi pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1473
+msgid "Archive title"
+msgstr "Arhiivi pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1472 js/dist/externals-redux.js:1
+msgid "Parent title"
+msgstr "Ülempealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1470 js/dist/externals-redux.js:1
+msgid "Date"
+msgstr "Kuupäev"
+
+#: admin/watchers/class-slug-change-watcher.php:222
+msgid "You should create a redirect to ensure your visitors do not get a 404 error when they click on the no longer working URL."
+msgstr "Peaksid looma ümbersuunamise, et sinu külastajad ei saaks 404 viga, kui nad klikivad URL-il, mis enam ei tööta."
+
+#: admin/watchers/class-slug-change-watcher.php:90
+#: admin/watchers/class-slug-change-watcher.php:113
+msgid "Search engines and other websites can still send traffic to your deleted content."
+msgstr "Otsingumootorid ja teised veebisaidid võivad endiselt suunata liiklust sinu kustutatud sisule."
+
+#: admin/watchers/class-slug-change-watcher.php:218
+msgid "Make sure you don't miss out on traffic!"
+msgstr "Veendu, et sa ei jääks liiklusest ilma!"
+
+#. translators: %1$s expands to the translated name of the post type.
+#. translators: %1$s expands to the translated name of the term.
+#: admin/watchers/class-slug-change-watcher.php:89
+#: admin/watchers/class-slug-change-watcher.php:112
+msgid "You just deleted a %1$s."
+msgstr "Kustutasid just %1$s."
+
+#. translators: %1$s expands to the translated name of the post type.
+#: admin/watchers/class-slug-change-watcher.php:67
+msgid "You just trashed a %1$s."
+msgstr "Saatsid just prügikasti: %1$s."
+
+#. translators: %s is replaced with Yoast SEO.
+#: admin/import/plugins/class-abstract-plugin-importer.php:259
+msgid "The %s importer functionality uses temporary database tables. It seems your WordPress install does not have the capability to do this, please consult your hosting provider."
+msgstr "%s importija funktsionaalsus kasutab ajutisi andmebaasitabeleid. Tundub, et sinu WordPressi paigaldusel puudub selleks vajalik võimekus, palun konsulteeri oma majutusteenuse pakkujaga."
+
+#. translators: %s is replaced with the plugin's name.
+#: admin/import/plugins/class-abstract-plugin-importer.php:132
+msgid "Cleanup of %s data failed."
+msgstr "%s andmete puhastamine nurjus."
+
+#: admin/class-bulk-editor-list-table.php:1037
+msgid "Content Type"
+msgstr "Sisu tüüp"
+
+#. translators: Hidden accessibility text.
+#: admin/class-bulk-editor-list-table.php:429
+msgid "Filter by content type"
+msgstr "Filtreeri sisu tüübi järgi"
+
+#: admin/class-bulk-editor-list-table.php:411
+msgid "Show All Content Types"
+msgstr "Kuva kõik sisutüübid"
+
+#: inc/class-wpseo-replace-vars.php:1473
+msgid "Replaced with the normal title for an archive generated by WordPress"
+msgstr "Asendatud WordPressi loodud arhiivi tavalise pealkirjaga"
+
+#: admin/views/tabs/tool/import-seo.php:126
+msgid "Clean"
+msgstr "Puhasta"
+
+#: admin/views/tabs/tool/import-seo.php:117
+msgid "Once you're certain your site is OK, you can clean up. This will remove all the original data."
+msgstr "Kui oled kindel, et sinu sait on korras, võid puhastada. See eemaldab kõik algsed andmed."
+
+#: admin/views/tabs/tool/import-seo.php:115
+msgid "Step 5: Clean up"
+msgstr "5. samm: puhastamine"
+
+#: admin/views/tabs/tool/import-seo.php:95
+msgid "Please check your posts and pages and see if the metadata was successfully imported."
+msgstr "Palun kontrolli oma postitusi ja lehti ning vaata, kas metaandmed imporditi edukalt."
+
+#: admin/views/tabs/tool/import-seo.php:93
+msgid "Step 3: Check your data"
+msgstr "3. samm: kontrolli oma andmeid"
+
+#. translators: 1: expands to Yoast SEO
+#: admin/views/tabs/tool/import-seo.php:67
+msgid "This will import the post metadata like SEO titles and descriptions into your %1$s metadata. It will only do this when there is no existing %1$s metadata yet. The original data will remain in place."
+msgstr "See impordib postituse metaandmed, näiteks SEO pealkirjad ja kirjeldused, sinu %1$s metaandmetesse. Seda tehakse ainult siis, kui olemasolevaid %1$s metaandmeid veel pole. Algandmed jäävad alles."
+
+#: admin/views/tabs/tool/import-seo.php:62
+msgid "Step 2: Import"
+msgstr "2. samm: importimine"
+
+#: admin/views/tabs/tool/import-seo.php:57
+msgid "Please make a backup of your database before starting this process."
+msgstr "Palun tee oma andmebaasist varukoopia enne selle protsessi alustamist."
+
+#: admin/views/tabs/tool/import-seo.php:55
+msgid "Step 1: Create a backup"
+msgstr "Samm 1: Loo varukoopia"
+
+#: admin/views/tabs/tool/import-seo.php:51
+msgid "We've detected data from one or more SEO plugins on your site. Please follow the following steps to import that data:"
+msgstr "Tuvastasime sinu saidil andmeid ühest või mitmest SEO pluginast. Nende andmete importimiseks järgi järgmisi samme:"
+
+#: admin/views/tabs/tool/import-seo.php:39
+msgid "Plugin: "
+msgstr "Plugin:"
+
+#. translators: %s expands to Yoast SEO
+#: admin/views/tabs/tool/import-seo.php:22
+msgid "%s did not detect any plugin data from plugins it can import from."
+msgstr "%s ei tuvastanud ühtegi pluginaandmeid pluginatest, millest saab importida."
+
+#: admin/statistics/class-statistics-service.php:229
+msgid "Posts that should not show up in search results"
+msgstr "Postitused, mida ei tohiks otsingutulemustes kuvada"
+
+#. translators: %s is replaced with the name of the plugin we've found data
+#. from.
+#: admin/import/class-import-status.php:128
+msgid "%s data found."
+msgstr "Leiti %s andmed."
+
+#. translators: %s is replaced with the name of the plugin we're removing data
+#. from.
+#: admin/import/class-import-status.php:124
+msgid "%s data successfully removed."
+msgstr "%s andmed eemaldati edukalt."
+
+#. translators: %s is replaced with the name of the plugin we're importing data
+#. from.
+#: admin/import/class-import-status.php:121
+msgid "%s data successfully imported."
+msgstr "%s andmed imporditi edukalt."
+
+#. translators: %s is replaced with the name of the plugin we're trying to find
+#. data from.
+#: admin/import/class-import-status.php:61
+msgid "%s data not found."
+msgstr "%s andmeid ei leitud."
+
+#: admin/class-yoast-form.php:958 admin/class-yoast-form.php:998
+#: js/dist/externals/componentsNew.js:532
+msgid "On"
+msgstr "Sees"
+
+#. translators: Hidden accessibility text; %s expands to a feature's name.
+#. translators: Hidden accessibility text; %s expands to an integration's name.
+#: admin/views/tabs/network/features.php:62
+#: admin/views/tabs/network/integrations.php:50
+msgid "Help on: %s"
+msgstr "Abi: %s"
+
+#: admin/class-yoast-form.php:959 admin/class-yoast-form.php:999
+#: admin/views/class-yoast-feature-toggles.php:156
+#: js/dist/externals/componentsNew.js:532
+msgid "Off"
+msgstr "Väljas"
+
+#: admin/views/class-yoast-feature-toggles.php:136
+msgid "Read why XML Sitemaps are important for your site."
+msgstr "Loe, miks XML-saidikaardid on sinu saidi jaoks olulised."
+
+#. translators: %s: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:135
+msgid "Enable the XML sitemaps that %s generates."
+msgstr "Luba XML-saidikaardid, mida %s loob."
+
+#: admin/views/class-yoast-feature-toggles.php:66
+msgid "See the XML sitemap."
+msgstr "Vaata XML-saidikaarti."
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/dashboard/dashboard.php:19
+msgid "See who contributed to %1$s."
+msgstr "Vaata, kes panustas projekti %1$s."
+
+#. translators: %1$s expands to the post type name.
+#: admin/metabox/class-metabox.php:186
+msgid "Should search engines follow links on this %1$s?"
+msgstr "Kas otsingumootorid peaksid järgima linke sellel %1$s?"
+
+#. translators: %1$s expands to Yes or No,  %2$s expands to the post type name.
+#: admin/metabox/class-metabox.php:181
+msgid "Default for %2$s, currently: %1$s"
+msgstr "Vaikimisi %2$s jaoks, praegu: %1$s"
+
+#. translators: %s expands to the post type name.
+#: admin/metabox/class-metabox.php:176
+msgid "Allow search engines to show this %s in search results?"
+msgstr "Kas lubada otsingumootoritel seda %s otsingutulemustes kuvada?"
+
+#. translators: %s expands to an indexable object's name, like a post type or
+#. taxonomy
+#: admin/class-yoast-form.php:969
+msgid "Show %s in search results?"
+msgstr "Kas kuvada %s otsingutulemustes?"
+
+#. translators: %1$s expands to Yoast SEO.
+#: admin/class-plugin-conflict.php:82
+msgid "Toggle %1$s's XML Sitemap"
+msgstr "Lülita %1$s-i XML-saidikaart ümber"
+
+#. translators: %s: 'Semrush'
+#. translators: %s: Algolia.
+#: admin/views/class-yoast-integration-toggles.php:63
+#: admin/views/class-yoast-integration-toggles.php:74
+msgid "%s integration"
+msgstr "%s integratsioon"
+
+#: admin/views/class-yoast-feature-toggles.php:107
+msgid "Find out how the text link counter can enhance your SEO."
+msgstr "Uuri, kuidas tekstilinkide loendur saab sinu SEO-d parandada."
+
+#: admin/views/class-yoast-feature-toggles.php:106
+msgid "The text link counter helps you improve your site structure."
+msgstr "Tekstilinkide loendur aitab sul parandada saidi struktuuri."
+
+#: admin/views/class-yoast-feature-toggles.php:99
+msgid "Find out how cornerstone content can help you improve your site structure."
+msgstr "Uuri, kuidas nurgakivisisu saab aidata sul oma saidi struktuuri parandada."
+
+#: admin/views/class-yoast-feature-toggles.php:98
+msgid "The cornerstone content feature lets you to mark and filter cornerstone content on your website."
+msgstr "Nurgakivi sisu funktsioon võimaldab sul märkida ja filtreerida nurgakivi sisu sinu veebisaidil."
+
+#: admin/views/class-yoast-feature-toggles.php:82
+msgid "Discover why readability is important for SEO."
+msgstr "Avasta, miks loetavus on SEO jaoks oluline."
+
+#: admin/views/class-yoast-feature-toggles.php:81 js/dist/new-settings.js:522
+msgid "The readability analysis offers suggestions to improve the structure and style of your text."
+msgstr "Loetavuse analüüs pakub soovitusi sinu teksti struktuuri ja stiili parandamiseks."
+
+#: admin/views/class-yoast-feature-toggles.php:74
+msgid "Learn how the SEO analysis can help you rank."
+msgstr "Õpi, kuidas SEO analüüs aitab sul paremini järjestuda."
+
+#: admin/views/class-yoast-feature-toggles.php:73
+msgid "The SEO analysis offers suggestions to improve the SEO of your text."
+msgstr "SEO analüüs pakub soovitusi sinu teksti SEO parandamiseks."
+
+#: admin/views/class-yoast-feature-toggles.php:71
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:64
+#: js/dist/externals-components.js:355 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "SEO analysis"
+msgstr "SEO analüüs"
+
+#. Author URI of the plugin
+#: wp-seo.php
+msgid "https://yoa.st/1uk"
+msgstr "https://yoa.st/1uk"
+
+#. Plugin URI of the plugin
+#: wp-seo.php
+msgid "https://yoa.st/1uj"
+msgstr "https://yoa.st/1uj"
+
+#. translators: %1$s resolves to Yoast.com
+#: admin/class-yoast-dashboard-widget.php:128
+msgid "Latest blog posts on %1$s"
+msgstr "Viimased blogipostitused saidil %1$s"
+
+#: src/helpers/first-time-configuration-notice-helper.php:64
+msgid "First-time SEO configuration"
+msgstr "Esmane SEO seadistamine"
+
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:186
+msgid "%s file"
+msgstr "%s fail"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:174 admin/views/tool-file-editor.php:224
+msgid "Save changes to %s"
+msgstr "Salvesta muudatused üksusele %s"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:165 admin/views/tool-file-editor.php:215
+msgid "Edit the content of your %s:"
+msgstr "Muuda oma %s sisu:"
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:125
+msgid "Create %s file"
+msgstr "Loo fail %s"
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:65
+msgid "Updated %s"
+msgstr "Uuendatud %s"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:49 admin/views/tool-file-editor.php:76
+msgid "You cannot edit the %s file."
+msgstr "Sa ei saa faili %s muuta."
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:28
+msgid "You cannot create a %s file."
+msgstr "Sa ei saa luua %s faili."
+
+#. translators: Hidden accessibility text; %1$s expands to the dependency name
+#: admin/class-suggested-plugins.php:137
+msgid "More information about %1$s"
+msgstr "Lisateave %1$s kohta"
+
+#: src/integrations/admin/old-configuration-integration.php:38
+msgid "Old Configuration Wizard"
+msgstr "Vana seadistusviisard"
+
+#. translators: %1$s expands to the posttype label, %2$s expands anchor to blog
+#. post about cornerstone content, %3$s expands to </a>
+#: admin/filters/class-cornerstone-filter.php:104
+msgid "Mark the most important %1$s as 'cornerstone content' to improve your site structure. %2$sLearn more about cornerstone content%3$s."
+msgstr "Märgi kõige olulisem %1$s „nurgakivi sisuks“, et parandada oma saidi struktuuri. %2$sLoe lisateavet nurgakivi sisu kohta%3$s."
+
+#. translators: Hidden accessibility text.
+#: admin/class-admin-utils.php:79 admin/class-premium-popup.php:83
+#: admin/class-premium-upsell-admin-block.php:76 admin/class-yoast-form.php:933
+#: admin/watchers/class-slug-change-watcher.php:230
+#: src/integrations/admin/workouts-integration.php:215
+#: src/integrations/admin/workouts-integration.php:245
+#: src/presenters/admin/help-link-presenter.php:76
+#: src/presenters/admin/sidebar-presenter.php:159 js/dist/academy.js:12
+#: js/dist/ai-consent.js:2 js/dist/ai-content-planner.js:69
+#: js/dist/ai-content-planner.js:117 js/dist/ai-content-planner.js:226
+#: js/dist/ai-content-planner.js:274 js/dist/ai-generator.js:2
+#: js/dist/ai-generator.js:61 js/dist/ai-generator.js:276
+#: js/dist/block-editor.js:67 js/dist/block-editor.js:115
+#: js/dist/block-editor.js:133 js/dist/block-editor.js:181
+#: js/dist/block-editor.js:571 js/dist/block-editor.js:572
+#: js/dist/classic-editor.js:2 js/dist/editor-modules.js:116
+#: js/dist/editor-modules.js:383 js/dist/externals-components.js:21
+#: js/dist/externals-components.js:25 js/dist/externals-components.js:26
+#: js/dist/externals-components.js:328 js/dist/externals/componentsNew.js:675
+#: js/dist/externals/helpers.js:11
+#: js/dist/externals/relatedKeyphraseSuggestions.js:3
+#: js/dist/externals/relatedKeyphraseSuggestions.js:7 js/dist/general-page.js:4
+#: js/dist/general-page.js:5 js/dist/general-page.js:8
+#: js/dist/general-page.js:21 js/dist/general-page.js:58
+#: js/dist/installation-success.js:5 js/dist/integrations-page.js:3
+#: js/dist/integrations-page.js:4 js/dist/integrations-page.js:5
+#: js/dist/integrations-page.js:6 js/dist/integrations-page.js:7
+#: js/dist/integrations-page.js:8 js/dist/integrations-page.js:13
+#: js/dist/integrations-page.js:18 js/dist/integrations-page.js:19
+#: js/dist/integrations-page.js:20 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:2 js/dist/introductions.js:4
+#: js/dist/introductions.js:8 js/dist/introductions.js:13
+#: js/dist/introductions.js:14 js/dist/new-settings.js:4
+#: js/dist/new-settings.js:5 js/dist/new-settings.js:8 js/dist/plans.js:2
+#: js/dist/redirects.js:2 js/dist/redirects.js:6 js/dist/support.js:4
+#: js/dist/support.js:5 js/dist/support.js:6
+msgid "(Opens in a new browser tab)"
+msgstr "(Avaneb uuel brauseri vahekaardil)"
+
+#. translators: %1$s expands to an opening strong tag, %2$s expands to a
+#. closing strong tag
+#: admin/statistics/class-statistics-service.php:210
+msgid "Posts %1$swithout%2$s a focus keyphrase"
+msgstr "Postitused, millel %1$spuudub%2$s fookusvõtmefraas"
+
+#: admin/statistics/class-statistics-service.php:77
+msgid "Hey, your SEO is doing pretty well! Check out the stats:"
+msgstr "Hei, sinu SEO-l läheb päris hästi! Vaata statistikat:"
+
+#: admin/statistics/class-statistics-service.php:73
+msgid "You don't have any published posts, your SEO scores will appear here once you make your first post!"
+msgstr "Sul pole ühtegi avaldatud postitust, sinu SEO skoorid ilmuvad siia, kui oled teinud oma esimese postituse!"
+
+#: admin/class-yoast-dashboard-widget.php:131
+msgid "Read more like this on our SEO blog"
+msgstr "Loe rohkem sellist sisu meie SEO blogist"
+
+#. translators: %s expands to the readability score
+#: inc/class-wpseo-rank.php:207 inc/class-wpseo-rank.php:212
+#: inc/class-wpseo-rank.php:217 inc/class-wpseo-rank.php:222
+msgid "Readability: %s"
+msgstr "Loetavus: %s"
+
+#. translators: %1$s expands to Yoast
+#: src/presenters/admin/sidebar-presenter.php:34
+msgid "%1$s recommendations for you"
+msgstr "%1$s soovitust sulle"
+
+#: admin/class-meta-columns.php:302
+msgid "All Readability Scores"
+msgstr "Kõik loetavuse skoorid"
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:298
+msgid "Filter by Readability Score"
+msgstr "Filtreeri loetavuse skoori järgi"
+
+#. translators: %1$s expands to the request method
+#: admin/class-remote-request.php:97
+msgid "Request method %1$s is not valid."
+msgstr "Päringu viis %1$s ei ole kehtiv."
+
+#: admin/views/class-yoast-feature-toggles.php:104 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "Text link counter"
+msgstr "Tekstilinkide loendur"
+
+#. translators: %s expands to Yoast
+#: admin/class-yoast-columns.php:64
+msgid "%s Columns"
+msgstr "%s veergu"
+
+#: admin/class-meta-columns.php:122 admin/class-meta-columns.php:124
+#: admin/taxonomy/class-taxonomy-columns.php:92
+#: admin/taxonomy/class-taxonomy-columns.php:93
+msgid "Readability score"
+msgstr "Loetavuse skoor"
+
+#: admin/filters/class-cornerstone-filter.php:87
+#: admin/views/class-yoast-feature-toggles.php:96
+#: js/dist/externals-components.js:20 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "Cornerstone content"
+msgstr "Nurgakivi sisu"
+
+#: src/presenters/admin/sidebar-presenter.php:127
+#: js/dist/ai-content-planner.js:60 js/dist/block-editor.js:124
+#: js/dist/general-page.js:5 js/dist/new-settings.js:5 js/dist/support.js:5
+msgid "24/7 support"
+msgstr "24/7 tugi"
+
+#: admin/class-yoast-form.php:149 admin/class-yoast-form.php:154
+#: js/dist/general-page.js:44 js/dist/new-settings.js:8
+msgid "Save changes"
+msgstr "Salvesta muudatused"
+
+#: admin/class-premium-popup.php:89
+msgid "1 year free support and updates included!"
+msgstr "1 aasta tasuta tuge ja uuendusi hinna sees!"
+
+#. translators: %2$s expands to 'RS Head Cleaner' plugin name of possibly
+#. conflicting plugin with regard to differentiating output between search
+#. engines and normal users.
+#: admin/class-plugin-conflict.php:87
+msgid "The plugin %2$s changes your site's output and in doing that differentiates between search engines and normal users, a process that's called cloaking. We highly recommend that you disable it."
+msgstr "Plugin %2$s muudab sinu saidi väljundit ja eristab seda tehes otsingumootoreid tavakasutajatest – seda protsessi nimetatakse varjamiseks. Soovitame tungivalt selle keelata."
+
+#: admin/class-admin.php:355
+msgid "Scroll to see the table content."
+msgstr "Keri, et näha tabeli sisu."
+
+#: admin/views/partial-notifications-warnings.php:22 js/dist/general-page.js:28
+msgid "No new notifications."
+msgstr "Uusi teavitusi pole."
+
+#: admin/class-bulk-editor-list-table.php:922
+msgid "Save all"
+msgstr "Salvesta kõik"
+
+#: admin/class-bulk-editor-list-table.php:921
+msgid "Save"
+msgstr "Salvesta"
+
+#. translators: 1: Author name; 2: Site name.
+#: inc/options/class-wpseo-option-titles.php:272
+msgid "%1$s, Author at %2$s"
+msgstr "%1$s, autor veebisaidil %2$s"
+
+#: inc/class-wpseo-replace-vars.php:1518 js/dist/general-page.js:45
+msgid "Name"
+msgstr "Nimi"
+
+#: admin/views/tool-import-export.php:89
+msgid "Export settings"
+msgstr "Ekspordiseaded"
+
+#: admin/class-product-upsell-notice.php:181
+msgid "Please don't show me this notification anymore"
+msgstr "Palun ära näita mulle seda teavitust enam."
+
+#. translators: %1$s is a link start tag to the bugreport guidelines on the
+#. Yoast help center, %2$s is the link closing tag.
+#: admin/class-product-upsell-notice.php:174
+msgid "If you are experiencing issues, %1$splease file a bug report%2$s and we'll do our best to help you out."
+msgstr "Kui sul esineb probleeme, %1$spalun esita veateade%2$s ja anname endast parima, et sind aidata."
+
+#. translators: %1$s expands to Yoast SEO, %2$s is a link start tag to the
+#. plugin page on WordPress.org, %3$s is the link closing tag.
+#: admin/class-product-upsell-notice.php:166
+msgid "We've noticed you've been using %1$s for some time now; we hope you love it! We'd be thrilled if you could %2$sgive us a 5 stars rating on WordPress.org%3$s!"
+msgstr "Oleme märganud, et oled juba mõnda aega kasutanud %1$s; loodame, et see meeldib sulle! Oleksime väga tänulikud, kui saaksid %2$sanda meile WordPress.org-is 5-tärni hinnangu%3$s!"
+
+#. translators: %1$s: '%%term_title%%' variable used in titles and meta's
+#. template that's not compatible with the given template, %2$s: expands to
+#. 'HelpScout beacon'
+#: admin/class-admin.php:349
+msgid "Warning: the variable %1$s cannot be used in this template. See the %2$s for more info."
+msgstr "Hoiatus: muutujat %1$s ei saa selles mallis kasutada. Lisateabe saamiseks vaata %2$s."
+
+#. translators: %1$s expands anchor to premium plugin page, %2$s expands to
+#. </a>
+#: admin/class-product-upsell-notice.php:149
+msgid "By the way, did you know we also have a %1$sPremium plugin%2$s? It offers advanced features, like a redirect manager and support for multiple keyphrases. It also comes with 24/7 personal support."
+msgstr "Muide, kas teadsid, et meil on ka %1$sPremium plugin%2$s? See pakub täiustatud funktsioone, nagu ümbersuunamiste haldur ja mitme võtmefraasi tugi. Sellega kaasneb ka ööpäevaringne personaalne tugi."
+
+#: admin/class-bulk-editor-list-table.php:829
+#: src/abilities/application/score-retriever.php:165
+#: src/task-list/application/tasks/child-tasks/child-task-trait.php:73
+msgid "(no title)"
+msgstr "(pealkiri puudub)"
+
+#. translators: 1: Yoast SEO
+#: admin/views/class-yoast-feature-toggles.php:146
+msgid "The %1$s admin bar menu contains useful links to third-party tools for analyzing pages and makes it easy to see if you have new notifications."
+msgstr "%1$s adminiriba menüü sisaldab kasulikke linke kolmandate osapoolte tööriistadele lehtede analüüsimiseks ja teeb lihtsaks näha, kas sul on uusi teavitusi."
+
+#: admin/views/class-yoast-feature-toggles.php:143 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:525 js/dist/new-settings.js:528
+msgid "Admin bar menu"
+msgstr "Administraatoririba menüü"
+
+#: admin/pages/network.php:19 admin/views/tabs/network/features.php:22
+msgid "Features"
+msgstr "Omadused"
+
+#: admin/metabox/class-metabox.php:172
+#: js/dist/externals/replacementVariableEditor.js:71
+#: js/dist/externals/searchMetadataPreviews.js:102 js/dist/new-settings.js:17
+#: js/dist/new-settings.js:23 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:30 js/dist/new-settings.js:34
+#: js/dist/new-settings.js:87 js/dist/new-settings.js:107
+#: js/dist/new-settings.js:156 js/dist/new-settings.js:203
+#: js/dist/new-settings.js:308 js/dist/new-settings.js:335
+#: js/dist/new-settings.js:350 js/dist/new-settings.js:408
+msgid "SEO title"
+msgstr "SEO pealkiri"
+
+#: inc/options/class-wpseo-option-titles.php:988
+msgid "Greater than sign"
+msgstr "Suurem kui märk"
+
+#: inc/options/class-wpseo-option-titles.php:984
+msgid "Less than sign"
+msgstr "Märk vähem kui"
+
+#: inc/options/class-wpseo-option-titles.php:980
+msgid "Right angle quotation mark"
+msgstr "Täisnurkne jutumärk"
+
+#: inc/options/class-wpseo-option-titles.php:976
+msgid "Left angle quotation mark"
+msgstr "Vasakpoolne nurkjutumärk"
+
+#: inc/options/class-wpseo-option-titles.php:972
+msgid "Small tilde"
+msgstr "Väike tilde"
+
+#: inc/options/class-wpseo-option-titles.php:968
+msgid "Vertical bar"
+msgstr "Vertikaalne riba"
+
+#: inc/options/class-wpseo-option-titles.php:964
+msgid "Low asterisk"
+msgstr "Tärn madalal"
+
+#: inc/options/class-wpseo-option-titles.php:960
+msgid "Asterisk"
+msgstr "Tärn"
+
+#: inc/options/class-wpseo-option-titles.php:956
+msgid "Bullet"
+msgstr "Täpp"
+
+#: inc/options/class-wpseo-option-titles.php:952
+msgid "Middle dot"
+msgstr "Kesktäpp"
+
+#: inc/options/class-wpseo-option-titles.php:944
+msgid "Em dash"
+msgstr "Em-kriips"
+
+#: inc/options/class-wpseo-option-titles.php:940
+msgid "En dash"
+msgstr "Mõttekriips"
+
+#: inc/options/class-wpseo-option-titles.php:936
+msgid "Dash"
+msgstr "Töölaud"
+
+#: admin/metabox/class-metabox.php:183 admin/metabox/class-metabox.php:188
+#: js/dist/block-editor.js:531 js/dist/classic-editor.js:233
+msgid "No"
+msgstr "Ei"
+
+#: admin/metabox/class-metabox.php:182 admin/metabox/class-metabox.php:187
+#: js/dist/block-editor.js:531 js/dist/classic-editor.js:233
+msgid "Yes"
+msgstr "Jah"
+
+#: admin/views/tool-bulk-editor.php:63
+msgid "Posts list"
+msgstr "Postituste loend"
+
+#: admin/views/tool-bulk-editor.php:62
+msgid "Posts list navigation"
+msgstr "Postituste loendi navigeerimine"
+
+#: admin/views/tool-bulk-editor.php:61
+msgid "Filter posts list"
+msgstr "Filtreeri postituste loend"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:843
+msgid "Edit &#8220;%s&#8221;"
+msgstr "Muuda &#8220;%s&#8221;"
+
+#: src/integrations/admin/menu-badge-integration.php:35 js/dist/academy.js:11
+msgid "Premium"
+msgstr "Premium"
+
+#: admin/class-admin.php:266
+msgid "Get Premium"
+msgstr "Hangi Premium"
+
+#: admin/views/partial-notifications-warnings.php:20
+#: inc/class-wpseo-admin-bar-menu.php:396 js/dist/general-page.js:28
+msgid "Notifications"
+msgstr "Teavitused"
+
+#: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:115
+msgid "Removes the focus keyphrase section from the metabox and disables all SEO-related suggestions."
+msgstr "Eemaldab fookusvõtmefraasi jao metakastist ja keelab kõik SEO-ga seotud soovitused."
+
+#: src/user-meta/framework/custom-meta/keyword-analysis-disable.php:109
+msgid "Disable SEO analysis"
+msgstr "Keela SEO analüüs"
+
+#: admin/views/js-templates-primary-term.php:28
+msgid "Make primary"
+msgstr "Määra peamiseks"
+
+#: src/user-meta/framework/custom-meta/content-analysis-disable.php:109
+msgid "Disable readability analysis"
+msgstr "Keela loetavuse analüüs"
+
+#: src/user-meta/framework/custom-meta/content-analysis-disable.php:115
+msgid "Removes the readability analysis section from the metabox and disables all readability-related suggestions."
+msgstr "Eemaldab loetavuse analüüsi jao metakastist ja keelab kõik loetavusega seotud soovitused."
+
+#: admin/views/class-yoast-feature-toggles.php:79
+#: js/dist/externals-components.js:347 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522
+msgid "Readability analysis"
+msgstr "Loetavuse analüüs"
+
+#: admin/statistics/class-statistics-service.php:217
+#: inc/class-wpseo-rank.php:140 inc/class-wpseo-rank.php:176
+#: inc/class-wpseo-rank.php:208 inc/class-wpseo-rank.php:240
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:52
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:52
+#: js/dist/block-editor.js:570 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:385 js/dist/externals-components.js:35
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Needs improvement"
+msgstr "Vajab parandamist"
+
+#: admin/metabox/class-metabox-section-readability.php:30
+#: inc/class-wpseo-admin-bar-menu.php:252
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:64
+msgid "Readability"
+msgstr "Loetavus"
+
+#: admin/views/partial-notifications-errors.php:22 js/dist/general-page.js:28
+msgid "Good job! We could detect no serious SEO problems."
+msgstr "Tubli töö! Me ei tuvastanud ühtegi tõsist SEO-probleemi."
+
+#: admin/views/partial-notifications-errors.php:21 js/dist/general-page.js:28
+msgid "We have detected the following issues that affect the SEO of your site."
+msgstr "Tuvastasime järgmised probleemid, mis mõjutavad sinu saidi SEO-d."
+
+#: admin/views/partial-notifications-errors.php:20
+#: js/dist/editor-modules.js:115 js/dist/externals-components.js:35
+#: js/dist/externals/analysisReport.js:38 js/dist/general-page.js:28
+msgid "Problems"
+msgstr "Probleemid"
+
+#: inc/class-wpseo-rank.php:138
+#: src/abilities/application/score-retriever.php:140
+#: js/dist/block-editor.js:570 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:385 js/dist/externals-components.js:35
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Not available"
+msgstr "Pole saadaval"
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:269
+msgid "Filter by SEO Score"
+msgstr "Filtreeri SEO skoori järgi"
+
+#. translators: Hidden accessibility text.
+#: admin/class-meta-columns.php:181
+msgid "Meta description not set."
+msgstr "Metakirjeldus pole määratud."
+
+#: admin/menu/class-admin-menu.php:56 js/dist/general-page.js:61
+msgid "Dashboard"
+msgstr "Töölaud"
+
+#. translators: %1$s is a link start tag to the permalink settings page, %2$s
+#. is the link closing tag.
+#: src/services/health-check/postname-permalink-reports.php:71
+msgid "You can fix this on the %1$sPermalink settings page%2$s."
+msgstr "Saad selle parandada %1$sPüsilinkide seadete lehel%2$s."
+
+#: inc/class-wpseo-replace-vars.php:1480
+msgid "Replaced with the primary category of the post/page"
+msgstr "Asendatakse postituse/lehe peamise kategooriaga"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:50
+msgid "New %1$s Title"
+msgstr "Uus %1$s pealkiri"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-bulk-title-editor-list-table.php:48
+msgid "Existing %1$s Title"
+msgstr "Olemasolev %1$s pealkiri"
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:301
+msgid "Expected an integer as input."
+msgstr "Sisendiks oodati täisarvu."
+
+#: inc/sitemaps/class-sitemaps-cache-validator.php:111
+msgid "Trying to build the sitemap cache key, but the postfix and prefix combination leaves too little room to do this. You are probably requesting a page that is way out of the expected range."
+msgstr "Saidikaardi vahemälu võtme loomise katse, kuid järel- ja eesliite kombinatsioon jätab selleks liiga vähe ruumi. Tõenäoliselt taotled lehte, mis on eeldatavast vahemikust väga kaugel."
+
+#: src/integrations/admin/redirects-page-integration.php:100
+#: js/dist/redirects.js:3 js/dist/redirects.js:24
+msgid "Redirects"
+msgstr "Ümbersuunamised"
+
+#: src/integrations/admin/crawl-settings-integration.php:242
+#: js/dist/externals/relatedKeyphraseSuggestions.js:1
+msgid "Remove"
+msgstr "Eemalda"
+
+#: src/integrations/admin/crawl-settings-integration.php:241
+msgid "Keep"
+msgstr "Säilita"
+
+#. translators: %s is the taxonomy title. This will be shown to screenreaders
+#: admin/views/js-templates-primary-term.php:38
+msgid "Primary %s"
+msgstr "Esmane %s"
+
+#: admin/views/js-templates-primary-term.php:32
+msgid "Primary"
+msgstr "Peamine"
+
+#. translators: Hidden accessibility text; %1$s expands to the term title, %2$s
+#. to the taxonomy title.
+#: admin/views/js-templates-primary-term.php:18
+msgid "Make %1$s primary %2$s"
+msgstr "Määra %1$s esmaseks %2$s"
+
+#: admin/pages/network.php:20 admin/views/tabs/network/integrations.php:22
+#: src/integrations/admin/integrations-page.php:126
+#: js/dist/integrations-page.js:45
+msgid "Integrations"
+msgstr "Integratsioonid"
+
+#: admin/taxonomy/class-taxonomy-columns.php:170
+msgid "Term is set to noindex."
+msgstr "Termin on määratud noindexiks."
+
+#: src/integrations/admin/crawl-settings-integration.php:195
+#: src/presenters/admin/light-switch-presenter.php:120
+msgid "Enabled"
+msgstr "Lubatud"
+
+#: src/integrations/admin/crawl-settings-integration.php:194
+#: src/presenters/admin/light-switch-presenter.php:120
+#: js/dist/externals/dashboardFrontend.js:4
+msgid "Disabled"
+msgstr "Keelatud"
+
+#. translators: %s: wp_title() function.
+#: inc/class-wpseo-replace-vars.php:1462
+msgid "The separator defined in your theme's %s tag."
+msgstr "Sinu teema %s sildis määratletud eraldaja."
+
+#: inc/class-wpseo-rank.php:139
+msgid "No index"
+msgstr "Mitte indekseerida"
+
+#: admin/class-meta-columns.php:114 admin/class-meta-columns.php:116
+#: admin/taxonomy/class-taxonomy-columns.php:87
+#: admin/taxonomy/class-taxonomy-columns.php:88
+#: inc/class-wpseo-admin-bar-menu.php:240
+#: js/dist/externals/dashboardFrontend.js:4
+msgid "SEO score"
+msgstr "SEO skoor"
+
+#. Author of the plugin
+#: wp-seo.php
+msgid "Team Yoast"
+msgstr "Team Yoast"
+
+#. Description of the plugin
+#: wp-seo.php
+msgid "The first true all-in-one SEO solution for WordPress, including on-page content analysis, XML sitemaps and much more."
+msgstr "Esimene tõeline kõik-ühes SEO-lahendus WordPressile, mis sisaldab lehesisese sisu analüüsi, XML-saidikaarte ja palju muud."
+
+#. Plugin Name of the plugin
+#: wp-seo.php admin/capabilities/class-capability-manager-integration.php:74
+#: src/abilities/user-interface/ability-categories-integration.php:43
+#: src/presenters/meta-description-presenter.php:36 js/dist/block-editor.js:649
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#. translators: %1$s expands to Yoast SEO, %2$s / %3$s: links to the
+#. installation manual in the Readme for the Yoast SEO code repository on
+#. GitHub
+#: wp-seo-main.php:526
+msgid "The %1$s plugin installation is incomplete. Please refer to %2$sinstallation instructions%3$s."
+msgstr "Plugina %1$s paigaldamine on puudulik. Palun vaata %2$spaigaldusjuhiseid%3$s."
+
+#: wp-seo-main.php:502
+msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "Standard PHP Library (SPL) laiendus näib olevat kättesaamatu. Palu oma veebimajutusteenuse pakkujal see lubada."
+
+#: inc/class-wpseo-admin-bar-menu.php:701
+#: inc/class-wpseo-admin-bar-menu.php:759
+msgid "SEO Settings"
+msgstr "SEO seaded"
+
+#: inc/class-wpseo-admin-bar-menu.php:450
+msgid "Google Page Speed Test"
+msgstr "Google’i lehe kiiruse test"
+
+#: inc/class-wpseo-admin-bar-menu.php:445
+msgid "Facebook Debugger"
+msgstr "Facebooki silur"
+
+#: inc/class-wpseo-admin-bar-menu.php:426
+msgid "Analyze this page"
+msgstr "Analüüsi seda lehte"
+
+#. translators: %s expands to the name of a post type (plural).
+#: inc/class-upgrade.php:1555 inc/options/class-wpseo-option-titles.php:309
+msgid "%s Archive"
+msgstr "%s arhiiv"
+
+#. translators: %s expands to the search phrase.
+#: inc/options/class-wpseo-option-titles.php:274
+msgid "You searched for %s"
+msgstr "Otsisid: %s"
+
+#. translators: 1: link to post; 2: link to blog.
+#: inc/options/class-wpseo-option-titles.php:277
+msgid "The post %1$s appeared first on %2$s."
+msgstr "Postitus %1$s ilmus esimesena saidil %2$s."
+
+#: inc/options/class-wpseo-option-ms.php:243
+msgid "No numeric value was received."
+msgstr "Numbrilist väärtust ei saadud."
+
+#. translators: %s is the ID number of a blog.
+#: inc/options/class-wpseo-option-ms.php:231
+msgid "This must be an existing blog. Blog %s does not exist or has been marked as deleted."
+msgstr "See peab olema olemasolev blogi. Blogi %s ei eksisteeri või on märgitud kustutatuks."
+
+#: inc/options/class-wpseo-option-ms.php:227
+#: inc/options/class-wpseo-option-ms.php:243
+msgid "The default blog setting must be the numeric blog id of the blog you want to use as default."
+msgstr "Vaikimisi blogi säte peab olema selle blogi numbriline blogi ID, mida soovid kasutada vaikimisi blogina."
+
+#. translators: %1$s expands to the option name and %2$sexpands to Yoast SEO
+#: inc/options/class-wpseo-option-ms.php:208
+msgid "%1$s is not a valid choice for who should be allowed access to the %2$s settings. Value reset to the default."
+msgstr "%1$s ei ole sobiv valik selle jaoks, kellel peaks olema lubatud juurdepääs %2$s seadetele. Väärtus lähtestati vaikeväärtusele."
+
+#. translators: %s expands to a taxonomy slug.
+#: inc/options/class-wpseo-option-titles.php:583
+msgid "Please select a valid post type for taxonomy \"%s\""
+msgstr "Palun vali taksonoomia „%s” jaoks kehtiv postituse tüüp"
+
+#. translators: %s expands to a post type.
+#: inc/options/class-wpseo-option-titles.php:545
+msgid "Please select a valid taxonomy for post type \"%s\""
+msgstr "Palun vali postituse tüübile „%s” kehtiv taksonoomia."
+
+#: inc/options/class-wpseo-option-titles.php:282
+msgid "You searched for"
+msgstr "Otsisid järgmist:"
+
+#: inc/options/class-wpseo-option-titles.php:281
+msgid "Home"
+msgstr "Avaleht"
+
+#: inc/options/class-wpseo-option-titles.php:280
+msgid "Archives for"
+msgstr "Arhiivid:"
+
+#: inc/options/class-wpseo-option-titles.php:279
+msgid "Error 404: Page not found"
+msgstr "Viga 404: Lehte ei leitud"
+
+#: admin/statistics/class-statistics-service.php:227
+#: inc/class-wpseo-rank.php:142 inc/class-wpseo-rank.php:186
+#: inc/class-wpseo-rank.php:218 inc/class-wpseo-rank.php:250
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:50
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:50
+#: js/dist/block-editor.js:570 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:385 js/dist/externals-components.js:35
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "Good"
+msgstr "Hea"
+
+#: inc/options/class-wpseo-option-titles.php:275
+msgid "Page not found"
+msgstr "Lehte ei leitud"
+
+#. translators: %s expands to the variable used for term title.
+#: inc/class-upgrade.php:1558 inc/options/class-wpseo-option-titles.php:345
+#: src/editors/framework/seo/terms/title-data-provider.php:27
+msgid "%s Archives"
+msgstr "%s arhiivid"
+
+#: src/user-meta/framework/custom-meta/author-metadesc.php:97
+msgid "Meta description to use for Author page"
+msgstr "Metakirjeldus, mida kasutada autori lehel"
+
+#: src/user-meta/framework/custom-meta/author-title.php:97
+msgid "Title to use for Author page"
+msgstr "Autori lehe pealkiri"
+
+#. translators: %1$s expands to Yoast SEO
+#: src/user-meta/user-interface/custom-meta-integration.php:100
+msgid "%1$s settings"
+msgstr "%1$s seaded"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/tool/wpseo-export.php:15
+msgid "Export your %1$s settings"
+msgstr "Ekspordi oma %1$s seaded"
+
+#: admin/class-export.php:65 admin/views/tabs/tool/wpseo-import.php:25
+#: admin/views/tabs/tool/wpseo-import.php:45
+#: admin/views/tool-import-export.php:86
+msgid "Import settings"
+msgstr "Impordi seaded"
+
+#: admin/views/tabs/tool/import-seo.php:18
+#: admin/views/tabs/tool/import-seo.php:49
+#: admin/views/tool-import-export.php:92
+msgid "Import from other SEO plugins"
+msgstr "Impordi teistest SEO pluginatest"
+
+#: admin/views/tabs/tool/import-seo.php:88
+#: admin/views/tool-import-export.php:24
+msgid "Import"
+msgstr "Impordi"
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:135 admin/views/tool-file-editor.php:235
+msgid "If you had a %s file and it was editable, you could edit it from here."
+msgstr "Kui sul oleks %s fail ja see oleks muudetav, saaksid seda siit muuta."
+
+#. translators: %s expands to robots.txt.
+#. translators: %s expands to ".htaccess".
+#: admin/views/tool-file-editor.php:153 admin/views/tool-file-editor.php:203
+msgid "If your %s were writable, you could edit it from here."
+msgstr "Kui sinu %s oleks kirjutatav, saaksid seda siit muuta."
+
+#. translators: %s expands to robots.txt.
+#: admin/views/tool-file-editor.php:116
+msgid "You don't have a %s file, create one here:"
+msgstr "Sul pole %s faili, loo see siin:"
+
+#: admin/statistics/class-statistics-service.php:80
+msgid "Below are your published posts' SEO scores. Now is as good a time as any to start improving some of your posts!"
+msgstr "Allpool on sinu avaldatud postituste SEO-skoorid. Praegu on sama hea aeg kui iga teine, et alustada mõne oma postituse parandamist!"
+
+#: admin/views/tabs/dashboard/dashboard.php:40
+msgid "Credits"
+msgstr "Krediidid"
+
+#: admin/pages/tools.php:77
+msgid "&laquo; Back to Tools page"
+msgstr "« Tagasi tööriistade lehele"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/pages/tools.php:49
+msgid "%1$s comes with some very powerful built-in tools:"
+msgstr "%1$s sisaldab mitmeid väga võimsaid sisseehitatud tööriistu:"
+
+#: admin/pages/tools.php:37
+msgid "This tool allows you to quickly change important files for your SEO, like your robots.txt and, if you have one, your .htaccess file."
+msgstr "See tööriist võimaldab sul kiiresti muuta SEO jaoks olulisi faile, nagu sinu robots.txt ja, kui sul see olemas on, sinu .htaccess fail."
+
+#: admin/pages/tools.php:36
+msgid "File editor"
+msgstr "Failiredaktor"
+
+#: admin/pages/tools.php:31
+msgid "Import settings from other SEO plugins and export your settings for re-use on (another) site."
+msgstr "Impordi sätted teistest SEO pluginatest ja ekspordi oma sätted taaskasutamiseks (teisel) saidil."
+
+#: admin/pages/tools.php:30
+msgid "Import and Export"
+msgstr "Import ja eksport"
+
+#: admin/pages/tools.php:43
+msgid "This tool allows you to quickly change titles and descriptions of your posts and pages without having to go into the editor for each page."
+msgstr "See tööriist võimaldab sul kiiresti muuta oma postituste ja lehtede pealkirju ning kirjeldusi, ilma et peaksid iga lehe jaoks redaktorisse minema."
+
+#: admin/pages/tools.php:42
+msgid "Bulk editor"
+msgstr "Hulgiredaktor"
+
+#: src/integrations/admin/import-integration.php:119
+msgid "Default settings"
+msgstr "Vaikeseaded"
+
+#: admin/views/tool-bulk-editor.php:113 js/dist/new-settings.js:411
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: inc/class-wpseo-replace-vars.php:1528
+msgid "Replaced with a custom taxonomies description"
+msgstr "Asendatud kohandatud taksonoomiate kirjeldusega"
+
+#: inc/class-wpseo-replace-vars.php:1527
+msgid "Replaced with a posts custom taxonomies, comma separated."
+msgstr "Asendatud postituste kohandatud taksonoomiatega, komaga eraldatud."
+
+#: inc/class-wpseo-replace-vars.php:1526
+msgid "Replaced with a posts custom field value"
+msgstr "Asendatud postituste kohandatud välja väärtusega"
+
+#: inc/class-wpseo-replace-vars.php:1525
+msgid "Replaced with the slug which caused the 404"
+msgstr "Asendatakse püsiviiteosaga, mis põhjustas 404"
+
+#: inc/class-wpseo-replace-vars.php:1524
+msgid "Replaced with the posts focus keyphrase"
+msgstr "Asendatud postituste fookusvõtmefraasiga"
+
+#: inc/class-wpseo-replace-vars.php:1523
+msgid "Attachment caption"
+msgstr "Manuse pealdis"
+
+#: inc/class-wpseo-replace-vars.php:1522
+msgid "Replaced with the current page number"
+msgstr "Asendatud praeguse lehekülje numbriga"
+
+#: inc/class-wpseo-replace-vars.php:1521
+msgid "Replaced with the current page total"
+msgstr "Asendatud praeguse lehe kogusummaga"
+
+#: inc/class-wpseo-replace-vars.php:1520
+msgid "Replaced with the current page number with context (i.e. page 2 of 4)"
+msgstr "Asendatakse praeguse leheküljenumbriga koos kontekstiga (st lehekülg 2/4)"
+
+#: inc/class-wpseo-replace-vars.php:1489
+msgid "Replaced with the current year"
+msgstr "Asendatud praeguse aastaga"
+
+#: inc/class-wpseo-replace-vars.php:1490
+msgid "Replaced with the current month"
+msgstr "Asendatud käesoleva kuuga"
+
+#: inc/class-wpseo-replace-vars.php:1491
+msgid "Replaced with the current day"
+msgstr "Asendatud praeguse päevaga"
+
+#: inc/class-wpseo-replace-vars.php:1488
+msgid "Replaced with the current date"
+msgstr "Asendatud praeguse kuupäevaga"
+
+#: inc/class-wpseo-replace-vars.php:1519
+msgid "Replaced with the post/page author's 'Biographical Info'"
+msgstr "Asendatud postituse/lehe autori „Eluloolise infoga”"
+
+#: inc/class-wpseo-replace-vars.php:1518
+msgid "Replaced with the post/page author's 'nicename'"
+msgstr "Asendatud postituse/lehe autori „nicename’iga”"
+
+#: inc/class-wpseo-replace-vars.php:1517
+msgid "Replaced with the post/page ID"
+msgstr "Asendatud postituse/lehe ID-ga"
+
+#: inc/class-wpseo-replace-vars.php:1516
+msgid "Replaced with the post/page modified time"
+msgstr "Asendatud postituse/lehe muutmise ajaga"
+
+#: inc/class-wpseo-replace-vars.php:1515
+msgid "Replaced with the content type plural label"
+msgstr "Asendatud sisutüübi mitmuse sildiga"
+
+#: inc/class-wpseo-replace-vars.php:1514
+msgid "Replaced with the content type single label"
+msgstr "Asendatud sisutüübi ainsuse sildiga"
+
+#: inc/class-wpseo-replace-vars.php:1485
+msgid "Replaced with the current search phrase"
+msgstr "Asendatud praeguse otsingufraasiga"
+
+#: inc/class-wpseo-replace-vars.php:1484
+msgid "Replaced with the term name"
+msgstr "Asendatud termini nimega"
+
+#: inc/class-wpseo-replace-vars.php:1483
+msgid "Replaced with the term description"
+msgstr "Asendatud termini kirjeldusega"
+
+#: inc/class-wpseo-replace-vars.php:1482
+msgid "Replaced with the tag description"
+msgstr "Asendatud sildi kirjeldusega"
+
+#: inc/class-wpseo-replace-vars.php:1481
+msgid "Replaced with the category description"
+msgstr "Asendatud kategooria kirjeldusega"
+
+#: inc/class-wpseo-replace-vars.php:1479
+msgid "Replaced with the post categories (comma separated)"
+msgstr "Asendatakse postituse kategooriatega (komaga eraldatud)"
+
+#: inc/class-wpseo-replace-vars.php:1478
+msgid "Replaced with the current tag/tags"
+msgstr "Asendatud praeguse sildi / praeguste siltidega"
+
+#: inc/class-wpseo-replace-vars.php:1477
+msgid "Replaced with the post/page excerpt (without auto-generation)"
+msgstr "Asendatud postituse/lehe väljavõttega (ilma automaatse genereerimiseta)"
+
+#: inc/class-wpseo-replace-vars.php:1476
+msgid "Replaced with the post/page excerpt (or auto-generated if it does not exist)"
+msgstr "Asendatakse postituse/lehe väljavõttega (või luuakse automaatselt, kui seda pole olemas)"
+
+#: inc/class-wpseo-replace-vars.php:1474
+msgid "The site's name"
+msgstr "Saidi nimi"
+
+#: inc/class-wpseo-replace-vars.php:1472
+msgid "Replaced with the title of the parent page of the current page"
+msgstr "Asendatakse praeguse lehe ülemtaseme lehe pealkirjaga"
+
+#: inc/class-wpseo-replace-vars.php:1471
+msgid "Replaced with the title of the post/page"
+msgstr "Asendatakse postituse/lehe pealkirjaga"
+
+#: inc/class-wpseo-replace-vars.php:1470
+msgid "Replaced with the date of the post/page"
+msgstr "Asendatud postituse/lehe kuupäevaga"
+
+#. translators: 1: current page number, 2: total number of pages.
+#: inc/class-wpseo-replace-vars.php:1029
+msgid "Page %1$d of %2$d"
+msgstr "Leht %1$d / %2$d"
+
+#: inc/class-wpseo-replace-vars.php:124
+msgid "You cannot overrule a WPSEO standard variable replacement by registering a variable with the same name. Use the \"wpseo_replacements\" filter instead to adjust the replacement value."
+msgstr "Sa ei saa WPSEO standardmuutuja asendust tühistada, registreerides sama nimega muutuja. Kasuta selle asemel filtrit \"wpseo_replacements\", et kohandada asendusväärtust."
+
+#: inc/class-wpseo-replace-vars.php:120
+msgid "A replacement variable with the same name has already been registered. Try making your variable name unique."
+msgstr "Sama nimega asendusmuutuja on juba registreeritud. Proovi muuta oma muutuja nimi unikaalseks."
+
+#: inc/class-wpseo-replace-vars.php:110
+msgid "A replacement variable can not start with \"%%cf_\" or \"%%ct_\" as these are reserved for the WPSEO standard variable variables for custom fields and custom taxonomies. Try making your variable name unique."
+msgstr "Asendusmuutuja ei tohi alata tähisega \"%%cf_\" või \"%%ct_\", kuna need on reserveeritud WPSEO standardsete kohandatud väljade ja kohandatud taksonoomiate muutujate jaoks. Proovi muuta oma muutuja nimi ainulaadseks."
+
+#: inc/class-wpseo-replace-vars.php:107
+msgid "A replacement variable can only contain alphanumeric characters, an underscore or a dash. Try renaming your variable."
+msgstr "Asendusmuutuja võib sisaldada ainult tähti ja numbreid, alakriipsu või sidekriipsu. Proovi oma muutuja ümber nimetada."
+
+#. translators: %1$s resolves to Yoast SEO, %2$s resolves to the Settings
+#. submenu item.
+#: src/presenters/meta-description-presenter.php:35
+msgid "Admin only notice: this page does not show a meta description because it does not have one, either write it for this page specifically or go into the [%1$s - %2$s] menu and set up a template."
+msgstr "Ainult administraatorile nähtav teavitus: sellel lehel ei kuvata metakirjeldust, sest seda pole olemas. Kirjuta see spetsiaalselt selle lehe jaoks või ava menüü [%1$s - %2$s] ja seadista mall."
+
+#: admin/views/tabs/network/restore-site.php:32
+msgid "Restore site to defaults"
+msgstr "Taasta sait vaikeväärtustele"
+
+#: admin/views/tabs/network/restore-site.php:23
+#: admin/views/tabs/network/restore-site.php:28
+msgid "Site ID"
+msgstr "Saidi ID"
+
+#: admin/views/tabs/network/restore-site.php:16
+msgid "Using this form you can reset a site to the default SEO settings."
+msgstr "Selle vormi abil saad lähtestada saidi SEO vaikesätetele."
+
+#: admin/views/tabs/network/general.php:54
+msgid "Privacy sensitive (FB admins and such), theme specific (title rewrite) and a few very site specific settings will not be imported to new sites."
+msgstr "Privaatsustundlikke (FB administraatorid ja muu selline), teemaspetsiifilisi (pealkirja ümberkirjutamine) ja mõningaid väga saidispetsiifilisi seadeid ei impordita uutele saitidele."
+
+#. translators: 1: link open tag; 2: link close tag.
+#: admin/views/tabs/network/general.php:47
+msgid "Enter the %1$sSite ID%2$s for the site whose settings you want to use as default for all sites that are added to your network. Leave empty for none (i.e. the normal plugin defaults will be used)."
+msgstr "Sisesta %1$ssaidi ID%2$s saidi jaoks, mille seadeid soovid kasutada vaikeseadetena kõigi saitide jaoks, mis lisatakse sinu võrgustikku. Jäta tühjaks, kui ei soovi ühtegi (st kasutatakse plugina tavapäraseid vaikeseadeid)."
+
+#: admin/views/tabs/network/general.php:40
+msgid "Choose the site whose settings you want to use as default for all sites that are added to your network. If you choose 'None', the normal plugin defaults will be used."
+msgstr "Vali sait, mille seadeid soovid kasutada vaikimisi kõigi saitide jaoks, mis lisatakse sinu võrgustikku. Kui valid „Puudub“, kasutatakse plugina tavapäraseid vaikeseadeid."
+
+#: admin/views/tabs/network/general.php:37
+#: admin/views/tabs/network/general.php:43
+msgid "New sites in the network inherit their SEO settings from this site"
+msgstr "Võrgustiku uued saidid pärivad oma SEO seaded sellelt saidilt."
+
+#: admin/views/tabs/network/general.php:28
+msgid "Super Admins only"
+msgstr "Ainult superadministraatorid"
+
+#: admin/views/tabs/network/general.php:27
+msgid "Site Admins (default)"
+msgstr "Saidi administraatorid (vaikimisi)"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/views/tabs/network/general.php:25
+msgid "Who should have access to the %1$s settings"
+msgstr "Kellel peaks olema juurdepääs %1$s seadetele"
+
+#: admin/class-yoast-network-admin.php:80
+msgid "spam"
+msgstr "rämpspost"
+
+#: admin/class-yoast-network-admin.php:79
+msgid "mature"
+msgstr "küps"
+
+#: admin/class-yoast-network-admin.php:78
+msgid "archived"
+msgstr "arhiveeritud"
+
+#: admin/class-yoast-network-admin.php:77
+msgid "public"
+msgstr "avalik"
+
+#. translators: %s expands to the name of a site within a multisite network.
+#: admin/class-yoast-network-admin.php:174
+msgid "%s restored to default SEO settings."
+msgstr "%s taastati SEO vaikeseadetele."
+
+#: admin/class-yoast-network-admin.php:140
+msgid "Settings Updated."
+msgstr "Seaded uuendatud."
+
+#: admin/views/tool-bulk-editor.php:111 inc/class-wpseo-replace-vars.php:1471
+#: js/dist/ai-content-planner.js:270 js/dist/ai-content-planner.js:271
+#: js/dist/block-editor.js:111 js/dist/block-editor.js:112
+#: js/dist/externals-redux.js:1
+msgid "Title"
+msgstr "Pealkiri"
+
+#: admin/views/tabs/network/general.php:54
+msgid "Take note:"
+msgstr "Pane tähele:"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-availability.php:89
+msgid "Seamlessly integrate WooCommerce with %1$s and get extra features!"
+msgstr "Integreeri WooCommerce sujuvalt teenusega %1$s ja saa lisafunktsioone!"
+
+#: admin/class-plugin-availability.php:77
+msgid "Rank better locally and in Google Maps, without breaking a sweat!"
+msgstr "Saavuta parem kohalik nähtavus ja kõrgem koht Google Mapsis ilma vaevata!"
+
+#: admin/class-plugin-availability.php:67
+msgid "Are you in Google News? Increase your traffic from Google News by optimizing for it!"
+msgstr "Kas oled Google Newsis? Suurenda oma liiklust Google Newsist, optimeerides selle jaoks!"
+
+#: admin/class-plugin-availability.php:57
+msgid "Optimize your videos to show them off in search results and get more clicks!"
+msgstr "Optimeeri oma videoid, et neid otsingutulemustes esile tuua ja saada rohkem klikke!"
+
+#. translators: %1$s expands to Yoast SEO
+#: admin/class-plugin-availability.php:45
+msgid "The premium version of %1$s with more features & support."
+msgstr "%1$s premium-versioon, millel on rohkem funktsioone ja tugi."
+
+#: src/integrations/admin/first-time-configuration-integration.php:485
+#: js/dist/new-settings.js:538
+msgid "Person"
+msgstr "Isik"
+
+#: inc/class-wpseo-replace-vars.php:1497
+msgid "Permalink"
+msgstr "Püsilink"
+
+#. Translators: %1$s: expands to 'Yoast SEO Premium', %2$s: links to Yoast SEO
+#. Premium plugin page.
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:22
+msgid "To be able to create a redirect and fix this issue, you need %1$s. You can buy the plugin, including one year of support and updates, on %2$s."
+msgstr "Ümbersuunamise loomiseks ja selle probleemi lahendamiseks on sul vaja %1$s. Plugina, sealhulgas ühe aasta toe ja uuendustega, saad osta siit: %2$s."
+
+#. Translators: %s: expands to Yoast SEO Premium
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:15
+msgid "Creating redirects is a %s feature"
+msgstr "Ümbersuunamiste loomine on %s funktsioon"
+
+#. translators: %s: 'Facebook' plugin name of possibly conflicting plugin
+#: admin/class-yoast-plugin-conflict.php:184
+msgid "Deactivate %s"
+msgstr "Inaktiveeri %s"
+
+#. translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly
+#. conflicting plugin(s), %2$s to Yoast SEO
+#: admin/class-yoast-plugin-conflict.php:180
+msgid "The %1$s plugin might cause issues when used in conjunction with %2$s."
+msgstr "Plugin %1$s võib põhjustada probleeme, kui seda kasutatakse koos pluginaga %2$s."
+
+#. translators: %s is the plugin name
+#: admin/class-yoast-dashboard-widget.php:77
+msgid "%s Posts Overview"
+msgstr "%s postituste ülevaade"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Google XML Sitemaps' plugin
+#. name of possibly conflicting plugin with regard to the creation of sitemaps.
+#: admin/class-plugin-conflict.php:78
+msgid "Both %1$s and %2$s can create XML sitemaps. Having two XML sitemaps is not beneficial for search engines and might slow down your site."
+msgstr "Nii %1$s kui ka %2$s saavad luua XML-saidikaarte. Kahe XML-saidikaardi olemasolu ei ole otsingumootoritele kasulik ja võib sinu saiti aeglustada."
+
+#. translators: %1$s expands to Yoast SEO.
+#: admin/class-plugin-conflict.php:71
+msgid "Configure %1$s's Open Graph settings"
+msgstr "Seadista %1$s Open Graphi sätted"
+
+#. translators: %1$s expands to Yoast SEO, %2$s: 'Facebook' plugin name of
+#. possibly conflicting plugin with regard to creating OpenGraph output.
+#: admin/class-plugin-conflict.php:67
+msgid "Both %1$s and %2$s create Open Graph output, which might make Facebook, X, LinkedIn and other social networks use the wrong texts and images when your pages are being shared."
+msgstr "Nii %1$s kui ka %2$s loovad Open Graphi väljundi, mistõttu võivad Facebook, X, LinkedIn ja teised sotsiaalvõrgustikud kasutada valesid tekste ja pilte, kui sinu lehti jagatakse."
+
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:27
+#: js/dist/ai-consent.js:5 js/dist/ai-content-planner.js:4
+#: js/dist/ai-content-planner.js:241 js/dist/ai-content-planner.js:257
+#: js/dist/ai-content-planner.js:269 js/dist/ai-content-planner.js:272
+#: js/dist/ai-content-planner.js:274 js/dist/ai-content-planner.js:282
+#: js/dist/ai-generator.js:6 js/dist/ai-generator.js:21
+#: js/dist/ai-generator.js:37 js/dist/ai-generator.js:55
+#: js/dist/ai-generator.js:61 js/dist/ai-generator.js:272
+#: js/dist/ai-generator.js:274 js/dist/ai-generator.js:276
+#: js/dist/block-editor.js:4 js/dist/block-editor.js:82
+#: js/dist/block-editor.js:98 js/dist/block-editor.js:110
+#: js/dist/block-editor.js:113 js/dist/block-editor.js:115
+#: js/dist/block-editor.js:123 js/dist/editor-modules.js:116
+#: js/dist/editor-modules.js:120 js/dist/editor-modules.js:135
+#: js/dist/editor-modules.js:151 js/dist/editor-modules.js:169
+#: js/dist/editor-modules.js:379 js/dist/editor-modules.js:381
+#: js/dist/editor-modules.js:383 js/dist/externals-components.js:25
+#: js/dist/externals-components.js:30 js/dist/externals-components.js:80
+#: js/dist/externals-components.js:96 js/dist/externals-components.js:114
+#: js/dist/externals-components.js:324 js/dist/externals-components.js:326
+#: js/dist/externals-components.js:328 js/dist/externals/aiFrontend.js:190
+#: js/dist/externals/aiFrontend.js:195 js/dist/externals/componentsNew.js:626
+#: js/dist/externals/dashboardFrontend.js:6 js/dist/general-page.js:8
+#: js/dist/general-page.js:28 js/dist/integrations-page.js:28
+#: js/dist/introductions.js:2 js/dist/introductions.js:4
+#: js/dist/introductions.js:8 js/dist/introductions.js:12
+#: js/dist/introductions.js:13 js/dist/new-settings.js:8
+#: js/dist/new-settings.js:37
+msgid "Close"
+msgstr "Sulge"
+
+#: admin/statistics/class-statistics-service.php:222
+#: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:181
+#: inc/class-wpseo-rank.php:213
+#: src/task-list/application/tasks/child-tasks/improve-content-readability-child.php:51
+#: src/task-list/application/tasks/child-tasks/improve-content-seo-child.php:51
+#: js/dist/block-editor.js:570 js/dist/editor-modules.js:115
+#: js/dist/editor-modules.js:385 js/dist/externals-components.js:35
+#: js/dist/externals/analysis.js:409 js/dist/externals/dashboardFrontend.js:4
+#: js/dist/frontend-inspector-resources.js:1
+msgid "OK"
+msgstr "OK"
+
+#: admin/class-meta-columns.php:129
+msgid "Meta Desc."
+msgstr "Meta kirjeldus"
+
+#: admin/class-meta-columns.php:273
+msgid "All SEO Scores"
+msgstr "Kõik SEO skoorid"
+
+#: admin/class-meta-columns.php:828
+msgid "Post is set to noindex."
+msgstr "Postitus on määratud noindexiks."
+
+#: admin/metabox/class-metabox.php:209
+msgid "The URL that this page should redirect to."
+msgstr "URL, kuhu see leht peaks ümber suunama."
+
+#: admin/metabox/class-metabox.php:208
+msgid "301 Redirect"
+msgstr "301 ümbersuunamine"
+
+#. translators: 1: link open tag; 2: link close tag.
+#: admin/metabox/class-metabox.php:203
+msgid "The canonical URL that this page should point to. Leave empty to default to permalink. %1$sCross domain canonical%2$s supported too."
+msgstr "Kanooniline URL, millele see leht peaks viitama. Jäta tühjaks, et kasutada vaikimisi püsilinki. Toetatud on ka %1$sülene domeenide kanooniline URL%2$s."
+
+#: admin/metabox/class-metabox.php:199 js/dist/block-editor.js:537
+#: js/dist/classic-editor.js:239
+msgid "Canonical URL"
+msgstr "Kanooniline URL"
+
+#: admin/metabox/class-metabox.php:197
+msgid "Title to use for this page in breadcrumb paths"
+msgstr "Pealkiri, mida kasutada selle lehe jaoks leivatee radadel"
+
+#: admin/metabox/class-metabox.php:196 js/dist/block-editor.js:536
+#: js/dist/classic-editor.js:238
+msgid "Breadcrumbs Title"
+msgstr "Breadcrumbs pealkiri"
+
+#: admin/metabox/class-metabox.php:194 js/dist/block-editor.js:535
+#: js/dist/classic-editor.js:237
+msgid "No Snippet"
+msgstr "Ilma väljavõtteta"
+
+#: admin/metabox/class-metabox.php:193 js/dist/block-editor.js:535
+#: js/dist/classic-editor.js:237
+msgid "No Archive"
+msgstr "Arhiiv puudub"
+
+#: admin/metabox/class-metabox.php:192 js/dist/block-editor.js:535
+#: js/dist/classic-editor.js:237
+msgid "No Image Index"
+msgstr "Pildi indekseerimise keelamine"
+
+#: admin/class-yoast-network-admin.php:43 src/config/schema-types.php:163
+#: src/integrations/settings-integration.php:645 js/dist/new-settings.js:8
+#: js/dist/new-settings.js:590
+msgid "None"
+msgstr "Puudub"
+
+#: admin/metabox/class-metabox.php:190 js/dist/block-editor.js:535
+#: js/dist/classic-editor.js:237
+msgid "Meta robots advanced"
+msgstr "Meta robotite täpsemad seaded"
+
+#: admin/metabox/class-metabox.php:178
+msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
+msgstr "Hoiatus: kuigi saad siin määrata meta robotsi sätte, on kogu sait saidiülestes privaatsussätetes määratud noindexiks, seega need sätted ei avalda mõju."
+
+#: admin/metabox/class-metabox.php:173 js/dist/ai-content-planner.js:270
+#: js/dist/ai-content-planner.js:271 js/dist/block-editor.js:111
+#: js/dist/block-editor.js:112
+#: js/dist/externals/replacementVariableEditor.js:71
+#: js/dist/externals/searchMetadataPreviews.js:102 js/dist/new-settings.js:17
+#: js/dist/new-settings.js:23 js/dist/new-settings.js:30
+#: js/dist/new-settings.js:34 js/dist/new-settings.js:87
+#: js/dist/new-settings.js:107 js/dist/new-settings.js:156
+#: js/dist/new-settings.js:203 js/dist/new-settings.js:308
+#: js/dist/new-settings.js:335 js/dist/new-settings.js:350
+#: js/dist/new-settings.js:408
+msgid "Meta description"
+msgstr "Metakirjeldus"
+
+#: admin/class-meta-columns.php:128
+msgid "SEO Title"
+msgstr "SEO pealkiri"
+
+#: inc/class-wpseo-replace-vars.php:1524
+msgid "Focus keyword"
+msgstr "Fookusmärksõna"
+
+#: admin/import/class-import-settings.php:121
+msgid "Settings successfully imported."
+msgstr "Seaded imporditi edukalt."
+
+#: admin/import/class-import-settings.php:85
+msgid "Settings could not be imported:"
+msgstr "Seadeid ei saanud importida:"
+
+#: admin/class-bulk-editor-list-table.php:1045
+msgid "Action"
+msgstr "Toiming"
+
+#: admin/class-bulk-editor-list-table.php:1040
+msgid "Page URL/Slug"
+msgstr "Lehe URL/püsiviide"
+
+#: admin/class-bulk-editor-list-table.php:1039
+msgid "Publication date"
+msgstr "Avaldamise kuupäev"
+
+#: admin/class-bulk-editor-list-table.php:1038
+msgid "Post Status"
+msgstr "Postituse olek"
+
+#: admin/class-bulk-editor-list-table.php:1036
+msgid "WP Page Title"
+msgstr "WP lehe pealkiri"
+
+#: admin/class-bulk-editor-list-table.php:866 js/dist/block-editor.js:365
+#: js/dist/classic-editor.js:67 js/dist/externals/dashboardFrontend.js:5
+#: js/dist/wincher-dashboard-widget.js:125
+msgid "View"
+msgstr "Vaata"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:865
+msgid "View &#8220;%s&#8221;"
+msgstr "Vaata &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:856
+msgid "Preview"
+msgstr "Eelvaade"
+
+#. translators: Hidden accessibility text; %s: post title.
+#: admin/class-bulk-editor-list-table.php:855
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Eelvaade &#8220;%s&#8221;"
+
+#: admin/class-bulk-editor-list-table.php:844
+#: js/dist/externals/dashboardFrontend.js:4 js/dist/general-page.js:43
+#: js/dist/general-page.js:58
+msgid "Edit"
+msgstr "Muuda"
+
+#: admin/class-bulk-editor-list-table.php:438
+msgid "Filter"
+msgstr "Filter"
+
+#: admin/class-bulk-description-editor-list-table.php:47
+msgid "New Yoast Meta Description"
+msgstr "Uus Yoasti metakirjeldus"
+
+#: admin/class-bulk-description-editor-list-table.php:46
+msgid "Existing Yoast Meta Description"
+msgstr "Olemasolev Yoasti metakirjeldus"
+
+#: admin/class-admin.php:308
+#: src/user-meta/framework/additional-contactmethods/facebook.php:28
+msgid "Facebook profile URL"
+msgstr "Facebooki profiili URL"
+
+#: admin/class-admin.php:229 js/dist/externals-components.js:375
+msgid "FAQ"
+msgstr "KKK"
+
+#: admin/class-admin.php:224 src/integrations/settings-integration.php:380
+#: src/presenters/meta-description-presenter.php:37 js/dist/how-to-block.js:7
+msgid "Settings"
+msgstr "Seaded"
+
+#: src/presenters/admin/search-engines-discouraged-presenter.php:33
+msgid "Huge SEO Issue: You're blocking access to robots."
+msgstr "Suur SEO probleem: sa blokeerid robotite juurdepääsu."
+
+#: admin/class-admin.php:182
+msgid "Posts"
+msgstr "Postitused"
+
+#: admin/menu/class-network-admin-menu.php:63
+msgid "Edit Files"
+msgstr "Muuda faile"
+
+#: admin/menu/class-network-admin-menu.php:56 admin/pages/network.php:18
+#: src/general/user-interface/general-page-integration.php:213
+#: js/dist/new-settings.js:588
+msgid "General"
+msgstr "Üldine"
+
+#: admin/menu/class-admin-menu.php:92
+msgid "Search Console"
+msgstr "Search Console"
+
+#: admin/menu/class-admin-menu.php:96 js/dist/new-settings.js:528
+msgid "Tools"
+msgstr "Tööriistad"
+
+#: admin/views/class-yoast-feature-toggles.php:132 js/dist/new-settings.js:27
+#: js/dist/new-settings.js:522 js/dist/new-settings.js:525
+msgid "XML sitemaps"
+msgstr "XML-saidikaardid"
+
+#: admin/metabox/class-metabox.php:448
+#: admin/taxonomy/class-taxonomy-metabox.php:159 js/dist/new-settings.js:34
+msgid "Social"
+msgstr "Sotsiaalmeedia"
+
+#: admin/metabox/class-metabox.php:423
+#: admin/taxonomy/class-taxonomy-metabox.php:141
+#: inc/class-wpseo-admin-bar-menu.php:790
+#: src/services/health-check/report-builder.php:168
+msgid "SEO"
+msgstr "SEO"
+
+#. translators: %1$s expands to Yoast SEO, %2$s expands to the installed
+#. version, %3$s expands to Gutenberg
+#: admin/class-admin-gutenberg-compatibility-notification.php:88
+msgid "%1$s detected you are using version %2$s of %3$s, please update to the latest version to prevent compatibility issues."
+msgstr "%1$s tuvastas, et sina kasutad %3$s versiooni %2$s, palun uuenda uusimale versioonile, et vältida ühilduvusprobleeme."
+
+#: src/services/health-check/default-tagline-runner.php:32
+msgid "Just another WordPress site"
+msgstr "Veel üks WordPressi sait"
+
+#: admin/ajax.php:206
+msgid "You have used HTML in your value which is not allowed."
+msgstr "Oled kasutanud oma väärtuses HTML-i, mis pole lubatud."
+
+#. translators: %s expands to the name of a post type (plural).
+#: admin/ajax.php:197
+msgid "You can't edit %s that aren't yours."
+msgstr "Sa ei saa muuta %s, mis ei kuulu sulle."
+
+#. translators: %s expands to post type name.
+#: admin/ajax.php:185
+msgid "You can't edit %s."
+msgstr "Sa ei saa muuta %s."
+
+#. translators: %s expands to post type.
+#: admin/ajax.php:173
+msgid "Post has an invalid Content Type: %s."
+msgstr "Postitusel on kehtetu sisutüüp: %s."
+
+#: admin/ajax.php:162
+msgid "Post doesn't exist."
+msgstr "Postitust ei eksisteeri."
