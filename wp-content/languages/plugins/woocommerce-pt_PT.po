@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-06-15 13:40:20+0000\n"
+"PO-Revision-Date: 2026-07-26 08:25:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1307,10 +1307,20 @@ msgstr "Nome da marca."
 msgid "Brand ID."
 msgstr "ID da marca."
 
+#. translators: %s = formatted cost with currency symbol.
+#: includes/class-wc-order-item.php:653
+msgid "Cost per unit: %s"
+msgstr "Custo por unidade: %s"
+
 #. translators: %s: coupon code.
 #: includes/wc-cart-functions.php:321
 msgid "Remove %s coupon"
 msgstr "Remover cupão %s"
+
+#: includes/rest-api/Controllers/Version3/class-wc-rest-order-refunds-controller.php:173
+#: src/Internal/RestApi/Routes/V4/Refunds/Schema/RefundSchema.php:299
+msgid "Total value of the Cost of Goods Sold for the refund."
+msgstr "Valor total do custo das mercadorias vendidas para o reembolso."
 
 #. translators: %1$s: coupon code,  %2$s: coupon minimum amount
 #. translators: %1$s: coupon code, %2$s: coupon minimum amount
@@ -1651,6 +1661,10 @@ msgstr "O email de facturação foi atualizado para %s."
 msgid "Site"
 msgstr "Site"
 
+#: src/Internal/CostOfGoodsSold/CostOfGoodsSoldController.php:95
+msgid "This tool will generate the necessary Cost of Goods Sold (COGS) related columns in the product meta lookup table, and populate them from existing product data."
+msgstr "Esta ferramenta gerará as colunas necessárias relacionadas com o Custo das Mercadorias Vendidas (COGS) na tabela de metadados de produtos e preencherá-as com dados de produtos existentes."
+
 #: src/Internal/Admin/EmailPreview/EmailPreview.php:518
 msgid "Dummy Product Variation"
 msgstr "Variação de produto de teste"
@@ -1703,16 +1717,6 @@ msgstr "Obrigado de novo! Se precisar de ajuda com a sua encomenda, por favor en
 msgid "Logo width (px)"
 msgstr "Largura do logótipo (px)"
 
-#: includes/admin/importers/class-wc-product-csv-importer-controller.php:658
-#: includes/admin/importers/class-wc-product-csv-importer-controller.php:872
-#: includes/admin/meta-boxes/views/html-product-data-general.php:120
-#: includes/admin/meta-boxes/views/html-product-data-variations.php:111
-#: includes/export/class-wc-product-csv-exporter.php:176
-#: assets/client/admin/chunks/experimental-products-app-variation-view-main.js:1
-#: assets/client/admin/experimental-products-app/index.js:2
-msgid "Cost of goods"
-msgstr "Preço de custo"
-
 #: src/Internal/CostOfGoodsSold/CostOfGoodsSoldController.php:160
 msgid "Add the amount it costs you to buy or make this product."
 msgstr "Adicione o valor de custo para comprar ou produzir este produto."
@@ -1724,6 +1728,25 @@ msgstr "Adicione o valor de custo para comprar ou produzir este produto. Será a
 #: includes/admin/meta-boxes/views/html-variation-admin.php:249
 msgid "Add the amount it costs you to buy or make this product. Leave blank to use the default value from \"General\"."
 msgstr "Adicione o valor de custo para comprar ou produzir este produto. Deixe em branco para usar o valor por defeito em \"Geral\"."
+
+#. translators: %s: currency symbol
+#: includes/admin/meta-boxes/views/html-variation-admin.php:234
+msgid "Cost (%s)"
+msgstr "Custo (%s)"
+
+#: includes/admin/views/html-quick-edit-product.php:56
+msgid "Cost value"
+msgstr "Valor de custo"
+
+#: includes/admin/importers/class-wc-product-csv-importer-controller.php:658
+#: includes/admin/importers/class-wc-product-csv-importer-controller.php:872
+#: includes/admin/meta-boxes/views/html-product-data-general.php:120
+#: includes/admin/meta-boxes/views/html-product-data-variations.php:111
+#: includes/export/class-wc-product-csv-exporter.php:176
+#: assets/client/admin/chunks/experimental-products-app-variation-view-main.js:1
+#: assets/client/admin/experimental-products-app/index.js:2
+msgid "Cost of goods"
+msgstr "Custo dos produtos"
 
 #: assets/client/blocks/order-confirmation-create-account/block.json
 msgctxt "block description"
@@ -5939,17 +5962,6 @@ msgid "checkbox"
 msgstr "caixa de seleção"
 
 #: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
-#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
-msgctxt "block title"
-msgid "Product checkbox control"
-msgstr "Controlo da caixa de selecção do produto"
-
-#: assets/client/admin/product-editor/blocks/generic/conditional/block.json
-msgctxt "block title"
-msgid "Conditional"
-msgstr "Condicional"
-
-#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
 #: assets/client/admin/product-editor/blocks/generic/linked-product-list/block.json
 #: assets/client/admin/product-editor/blocks/generic/notice/block.json
 #: assets/client/admin/product-editor/blocks/generic/number/block.json
@@ -6029,6 +6041,17 @@ msgstr "Condicional"
 msgctxt "block keyword"
 msgid "products"
 msgstr "produtos"
+
+#: assets/client/admin/product-editor/blocks/generic/checkbox/block.json
+#: assets/client/admin/product-editor/blocks/generic/product-checkbox-field/block.json
+msgctxt "block title"
+msgid "Product checkbox control"
+msgstr "Controlo da caixa de selecção do produto"
+
+#: assets/client/admin/product-editor/blocks/generic/conditional/block.json
+msgctxt "block title"
+msgid "Conditional"
+msgstr "Condicional"
 
 #: assets/client/admin/product-editor/blocks/product-fields/inventory-email/block.json
 #: assets/client/admin/product-editor/blocks/product-fields/product-inventory-email-field/block.json
@@ -32503,19 +32526,6 @@ msgstr "Nome do custo adicional"
 msgid "To edit this order change the status back to \"Pending payment\""
 msgstr "Para editar esta encomenda mude o estado de volta para \"Pendente de pagamento\""
 
-#: includes/admin/class-wc-admin-setup-wizard.php:888
-#: includes/admin/list-tables/class-wc-admin-list-table-products.php:175
-#: includes/admin/meta-boxes/views/html-order-items.php:47
-#: includes/admin/views/html-bulk-edit-product.php:76
-#: includes/admin/views/html-quick-edit-product.php:54
-#: includes/shipping/flat-rate/includes/settings-flat-rate.php:35
-#: includes/shipping/legacy-flat-rate/includes/settings-flat-rate.php:65
-#: includes/shipping/local-pickup/class-wc-shipping-local-pickup.php:120
-#: assets/client/admin/chunks/multichannel-marketing.js:1
-#: assets/client/blocks/wc-shipping-method-pickup-location.js:83
-msgid "Cost"
-msgstr "Valor"
-
 #: includes/admin/reports/class-wc-report-customers.php:150
 #: assets/client/admin/chunks/analytics-report-products.js:1
 #: assets/client/admin/chunks/analytics-report-variations.js:1
@@ -32535,6 +32545,19 @@ msgstr "Reduzir preços de promoção (valor fixo ou %)"
 #: includes/admin/meta-boxes/views/html-product-data-variations.php:104
 msgid "Decrease regular prices (fixed amount or percentage)"
 msgstr "Reduzir preços normais (valor fixo ou %)"
+
+#: includes/admin/class-wc-admin-setup-wizard.php:888
+#: includes/admin/list-tables/class-wc-admin-list-table-products.php:175
+#: includes/admin/meta-boxes/views/html-order-items.php:47
+#: includes/admin/views/html-bulk-edit-product.php:76
+#: includes/admin/views/html-quick-edit-product.php:54
+#: includes/shipping/flat-rate/includes/settings-flat-rate.php:35
+#: includes/shipping/legacy-flat-rate/includes/settings-flat-rate.php:65
+#: includes/shipping/local-pickup/class-wc-shipping-local-pickup.php:120
+#: assets/client/admin/chunks/multichannel-marketing.js:1
+#: assets/client/blocks/wc-shipping-method-pickup-location.js:83
+msgid "Cost"
+msgstr "Custo"
 
 #: includes/emails/class-wc-email.php:461
 msgid "Accounts"
