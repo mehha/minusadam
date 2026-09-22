@@ -18,6 +18,16 @@ class SecureEncryption
     private static array $keyCache = [];
     private static int $maxCacheSize = 10; // Limit cache size to prevent memory issues
 
+    /**
+     * Performance optimization: one salt per request.
+     *
+     * The salt is generated once per page load and reused for every encryption of that
+     * request, so the PBKDF2 key derivation runs once instead of once per address.
+     * This is safe: AES-GCM requires unique IVs, not unique salts - and the IV is still
+     * generated freshly for every single encrypt() call (see encrypt()).
+     */
+    private static ?string $requestSalt = null;
+
     // Performance optimization: Pre-check cipher availability
     private static ?bool $cipherAvailable = null;
 
@@ -36,6 +46,24 @@ class SecureEncryption
     }
 
     /**
+     * Returns the salt for the current request, generating it on first use.
+     *
+     * Reusing the salt within one request is what makes the key cache effective:
+     * all addresses of a page share the same password anyway, so they may share the
+     * derived key. Uniqueness of the ciphertext is provided by the per-encryption IV.
+     *
+     * @return string
+     * @throws \Exception
+     */
+    private static function getRequestSalt(): string
+    {
+        if (self::$requestSalt === null) {
+            self::$requestSalt = random_bytes(self::SALT_LENGTH);
+        }
+        return self::$requestSalt;
+    }
+
+    /**
      * Derives a key from password using PBKDF2 with caching - compatible with JavaScript
      *
      * @param string $password
@@ -49,8 +77,11 @@ class SecureEncryption
             throw new \Exception('PBKDF2 not available');
         }
 
-        // Performance optimization: Cache derived keys
-        $cacheKey = hash('sha256', $password . $salt);
+        // Performance optimization: Cache derived keys.
+        // The iteration count is part of the cache key: setIterations() may change it
+        // within a single request, and the same password+salt yields a different key
+        // for a different iteration count.
+        $cacheKey = hash('sha256', self::getIterations() . '|' . $password . $salt);
 
         if (isset(self::$keyCache[$cacheKey])) {
             return self::$keyCache[$cacheKey];
@@ -87,10 +118,14 @@ class SecureEncryption
 
         self::setIterations();
 
-        // Performance optimization: Generate salt and IV in one call
-        $randomBytes = random_bytes(self::SALT_LENGTH + self::IV_LENGTH);
-        $salt = substr($randomBytes, 0, self::SALT_LENGTH);
-        $iv = substr($randomBytes, self::SALT_LENGTH);
+        // Performance optimization: the salt is generated once per request, which lets
+        // the key cache do its job (one PBKDF2 run per page instead of one per address).
+        $salt = self::getRequestSalt();
+
+        // SECURITY: the IV must NEVER be cached or reused. Reusing an IV with the same
+        // key breaks AES-GCM completely (keystream reuse, forgeable auth tag).
+        // Therefore random_bytes() runs on every single encrypt() call.
+        $iv = random_bytes(self::IV_LENGTH);
 
         // Derive key from password (now with caching)
         $key = self::deriveKey($password, $salt);
@@ -144,25 +179,15 @@ class SecureEncryption
     /**
      * Clears the key cache - useful for memory management
      *
+     * Also drops the remembered request salt, so the next encrypt() starts from a
+     * freshly generated salt and a genuinely empty cache.
+     *
      * @return void
      */
     public static function clearKeyCache(): void
     {
         self::$keyCache = [];
-    }
-
-    /**
-     * Gets current cache statistics
-     *
-     * @return array
-     */
-    public static function getCacheStats(): array
-    {
-        return [
-            'cache_size' => count(self::$keyCache),
-            'max_cache_size' => self::$maxCacheSize,
-            'memory_usage_bytes' => memory_get_usage(),
-        ];
+        self::$requestSalt = null;
     }
 
     /**
@@ -178,6 +203,12 @@ class SecureEncryption
         if (!function_exists('openssl_decrypt')) {
             throw new \Exception('OpenSSL extension not available');
         }
+
+        // Without this the iteration count is whatever a previous encrypt()
+        // happened to leave behind -- or the built-in default, if this request
+        // only ever decrypts. With a configured count other than 10000 the key
+        // derivation would then silently produce the wrong key.
+        self::setIterations();
 
         try {
             $combined = base64_decode($encryptedData, true);
@@ -228,44 +259,17 @@ class SecureEncryption
         }
     }
 
-    /**
-     * Test encryption/decryption with debug output
-     *
-     * @param string $plaintext
-     * @param string $password
-     * @return array Debug information
-     */
-    public static function debugEncryption(string $plaintext, string $password): array
-    {
-        try {
-            $startTime = microtime(true);
-            $encrypted = self::encrypt($plaintext, $password);
-            $encryptTime = microtime(true) - $startTime;
-
-            $startTime = microtime(true);
-            $decrypted = self::decrypt($encrypted, $password);
-            $decryptTime = microtime(true) - $startTime;
-
-            return [
-                'success' => true,
-                'plaintext' => $plaintext,
-                'encrypted' => $encrypted,
-                'decrypted' => $decrypted,
-                'match' => ($plaintext === $decrypted),
-                'encrypted_length' => strlen($encrypted),
-                'binary_length' => strlen(base64_decode($encrypted)),
-                'encrypt_time_ms' => round($encryptTime * 1000, 2),
-                'decrypt_time_ms' => round($decryptTime * 1000, 2),
-                'cache_stats' => self::getCacheStats()
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'error' => $e->getMessage(),
-                'plaintext' => $plaintext
-            ];
-        }
-    }
+    // debugEncryption() and getCacheStats() used to sit here. The second was
+    // only ever called by the first, so removing one left the other behind --
+    // which is how dead code usually spreads.
+    //
+    // debugEncryption(): it encrypted a string, decrypted it
+    // again and returned both, plus timings and the key-cache statistics. It
+    // had no caller anywhere in the plugin and was shipped to every site all
+    // the same. Nothing was reachable through it -- it is a static method, not
+    // an endpoint -- but a method that hands back a plaintext next to its
+    // ciphertext is a poor thing to leave lying around for the next person who
+    // needs somewhere to hook a quick diagnosis.
 
     /**
      * Validates URL for security
@@ -312,11 +316,26 @@ class SecureEncryption
         return self::$iterations;
     }
 
+    /** Bounds for the PBKDF2 iteration count taken from the stored option. */
+    private const MIN_ITERATIONS = 1000;
+    private const MAX_ITERATIONS = 1000000;
+
     private static function setIterations(): void
     {
         $config = new Config(get_option('cryptX', []));
-        self::$iterations = $config->get('iterations', self::getIterations());
+        $configured = $config->get('iterations', self::$iterations);
 
+        // The option is not necessarily a sane integer: the settings page keeps
+        // it as a string, and a hand-edited row can hold anything. A zero makes
+        // hash_pbkdf2() throw a ValueError and a non-numeric string a TypeError
+        // -- neither of which is an \Exception, so the fallback in
+        // CryptX::encryptEmailAddressSecure() would not catch them and the
+        // front end would fatal on every page carrying an address.
+        if (!is_numeric($configured)) {
+            return;
+        }
+
+        self::$iterations = max(self::MIN_ITERATIONS, min(self::MAX_ITERATIONS, (int) $configured));
     }
 
     /**

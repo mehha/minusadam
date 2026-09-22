@@ -1,43 +1,39 @@
-# Translation of Plugins - Activity Log &#8211; Monitor &amp; Record User Changes - Stable (latest release) in Portuguese (Portugal)
-# This file is distributed under the same license as the Plugins - Activity Log &#8211; Monitor &amp; Record User Changes - Stable (latest release) package.
+# Translation of Plugins - Activity Log – Monitor User and Agent Changes - Stable (latest release) in Portuguese (Portugal)
+# This file is distributed under the same license as the Plugins - Activity Log – Monitor User and Agent Changes - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-12 16:14:34+0000\n"
+"PO-Revision-Date: 2026-09-18 16:23:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: GlotPress/4.1.0\n"
 "Language: pt\n"
-"Project-Id-Version: Plugins - Activity Log &#8211; Monitor &amp; Record User Changes - Stable (latest release)\n"
+"Project-Id-Version: Plugins - Activity Log – Monitor User and Agent Changes - Stable (latest release)\n"
 
-#: classes/class-aal-activity-log-list-table.php:310
+#: classes/class-aal-rest.php:433
 msgid "Install Plugin"
 msgstr "Instalar Plugin"
 
-#: classes/class-aal-activity-log-list-table.php:307
+#: classes/class-aal-rest.php:432
 msgid "Activate Plugin"
 msgstr "Activar Plugin"
 
-#: classes/class-aal-activity-log-list-table.php:280
+#: classes/class-aal-rest.php:383
 msgid "Reduce image sizes without losing quality and improve your site speed."
 msgstr "Reduza o tamanho das imagens sem perder a qualidade e melhore a velocidade do seu site."
 
-#: classes/class-aal-activity-log-list-table.php:279
+#: classes/class-aal-rest.php:382
 msgid "Optimize Your Images for a Faster Website!"
 msgstr "Otimize suas imagens para ter um site mais rápido!"
 
-#: classes/class-aal-activity-log-list-table.php:259
+#: classes/class-aal-rest.php:377
 msgid "Use Site Mailer for improved email deliverability, detailed email logs, and an easy setup."
 msgstr "Use o Site Mailer para melhorar a entrega de e-mails, ter registros detalhados de e-mails e uma configuração fácil."
 
-#: classes/class-aal-activity-log-list-table.php:258
+#: classes/class-aal-rest.php:376
 msgid "Ensure your emails avoid the spam folder!"
 msgstr "Garanta que seus e-mails não caiam na pasta de spam!"
-
-#: classes/class-aal-activity-log-list-table.php:228
-msgid "Dismiss"
-msgstr "Descartar"
 
 #: i18n/strings.php:61
 msgid "All New Versions"
@@ -51,11 +47,11 @@ msgstr "auto_update_enabled"
 msgid "auto_update_disabled"
 msgstr "auto_update_disabled"
 
-#: classes/class-aal-settings.php:134
+#: classes/class-aal-rest.php:138
 msgid "Don't Keep"
 msgstr "Não manter"
 
-#: classes/class-aal-settings.php:124
+#: classes/class-aal-rest.php:134
 msgid "Keep Email Logs"
 msgstr "Manter registros de e-mails"
 
@@ -76,19 +72,11 @@ msgstr "Emails"
 msgid "This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized."
 msgstr "Este plugin de registro de atividades, altamente avaliado, ajuda você a monitorar e registrar todas as alterações e ações no seu site WordPress, para que você possa se manter seguro e organizado."
 
-#: classes/class-aal-settings.php:163
-msgid "<strong>Please note:</strong> if you choose \"Do not collect IP\", the IP column will be hidden in the log."
-msgstr "<strong>Nota:</strong> se escolher “Não registar IPs”, a coluna IP será ocultada no registro."
-
-#: classes/class-aal-settings.php:159
+#: classes/class-aal-rest.php:156
 msgid "Do not collect IP"
 msgstr "Não registar IPs"
 
-#: classes/class-aal-settings.php:161
-msgid "Select the source of the visitor IP address. For example, if you are using Cloudflare, select <code>HTTP_CF_CONNECTING_IP</code>."
-msgstr "Selecione a origem do endereço IP do visitante. Por exemplo, se estiver a usar o Cloudflare, seleccione <code>HTTP_CF_CONNECTING_IP</code>."
-
-#: classes/class-aal-settings.php:141
+#: classes/class-aal-rest.php:143
 msgid "Visitor IP Detected"
 msgstr "IP do visitante detectado"
 
@@ -124,54 +112,34 @@ msgstr "Anexos"
 msgid "Posts"
 msgstr "Artigos"
 
-#: classes/class-aal-activity-log-list-table.php:690
-msgid "Reset Filters"
-msgstr "Repor Filtros"
-
-#: classes/class-aal-activity-log-list-table.php:652
-msgid "All Topics"
-msgstr "Todos os tópicos"
-
-#: classes/class-aal-activity-log-list-table.php:452
+#: classes/class-aal-log-presenter.php:240
 msgid "Username:"
 msgstr "Utilizador:"
 
-#: classes/class-aal-activity-log-list-table.php:410
-#: classes/class-aal-activity-log-list-table.php:429
-#: classes/class-aal-activity-log-list-table.php:438
-#: classes/class-aal-activity-log-list-table.php:448
-msgid "Edit"
-msgstr "Editar"
-
-#: classes/class-aal-activity-log-list-table.php:409
-#: classes/class-aal-activity-log-list-table.php:423
-msgid "View"
-msgstr "Ver"
-
-#: classes/class-aal-activity-log-list-table.php:176
-#: classes/class-aal-privacy.php:76
+#: classes/class-aal-export.php:73 classes/class-aal-privacy.php:76
+#: assets/js/admin/build/index.js:1
 msgid "Meta"
 msgstr "Meta"
 
-#: classes/class-aal-activity-log-list-table.php:175
-#: classes/class-aal-privacy.php:72
+#: classes/class-aal-export.php:72 classes/class-aal-privacy.php:72
+#: assets/js/admin/build/index.js:1
 msgid "Context"
 msgstr "Contexto"
 
-#: classes/class-aal-activity-log-list-table.php:174
-#: classes/class-aal-privacy.php:68
+#: classes/class-aal-export.php:71 classes/class-aal-privacy.php:68
+#: assets/js/admin/build/index.js:1
 msgid "Topic"
 msgstr "Tópico"
 
-#: classes/class-aal-settings.php:117
+#: classes/class-aal-rest.php:129
 msgid "Don't Keep (Not recommended)"
 msgstr "Não manter (não recomendado)"
 
-#: classes/class-aal-settings.php:116 classes/class-aal-settings.php:133
+#: classes/class-aal-rest.php:128 classes/class-aal-rest.php:137
 msgid "Keep"
 msgstr "Manter"
 
-#: classes/class-aal-settings.php:107
+#: classes/class-aal-rest.php:125
 msgid "Keep Failed Login Logs"
 msgstr "Manter registros de acesso falhados"
 
@@ -191,10 +159,6 @@ msgstr "failed_login"
 msgid "uploaded"
 msgstr "uploaded"
 
-#: classes/class-aal-settings.php:330
-msgid "Attention: We are going to DELETE ALL ACTIVITIES from the database. Are you sure you want to do that?"
-msgstr "Atenção: Vamos APAGAR TODAS AS ACTIVIDADES da base de dados. Tem certeza de que quer fazer isso?"
-
 #. Author URI of the plugin
 #: aryo-activity-log.php
 msgid "https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
@@ -210,7 +174,7 @@ msgstr "Activity Log Team"
 msgid "https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
 msgstr "https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
 
-#: classes/class-aal-privacy.php:106
+#: classes/class-aal-privacy.php:117
 msgid "If you are a registered user, we save your content activity like create/update/delete posts and comments."
 msgstr "Se estiver registado, são guardados os dados da sua actividade, como criar, actualizar ou eliminar artigos e comentários."
 
@@ -222,23 +186,7 @@ msgstr "Hora"
 msgid "Activity Log Plugin"
 msgstr "Plugin Activity Log"
 
-#: classes/class-aal-activity-log-list-table.php:533
-msgid "Export as %s"
-msgstr "Exportar como %s"
-
-#: classes/class-aal-activity-log-list-table.php:531
-msgid "Export filtered records as %s"
-msgstr "Exportar registos filtrados como %s"
-
-#: classes/class-aal-activity-log-list-table.php:514
-msgid "Export File Format"
-msgstr "Formato do ficheiro de exportação"
-
-#: classes/class-aal-settings.php:563
-msgid "and"
-msgstr "e"
-
-#: classes/class-aal-admin-ui.php:16 classes/class-aal-admin-ui.php:26
+#: classes/class-aal-admin-ui.php:11 classes/class-aal-admin-ui.php:23
 msgctxt "Page and Menu Title"
 msgid "Activity Log"
 msgstr "Activity Log"
@@ -255,77 +203,9 @@ msgstr "Assinantes"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: notifications/class-aal-notification-email.php:69
-msgid "Customize the message using the following placeholders: %s"
-msgstr "Personalize a mensagem com os seguintes <em>placeholders</em>: %s"
-
-#: notifications/class-aal-notification-email.php:69
-msgid "Message"
-msgstr "Mensagem"
-
-#: notifications/class-aal-notification-email.php:68
-msgid "The Email address notifications will be sent to"
-msgstr "O endereço de email para onde as notificações serão enviadas"
-
-#: notifications/class-aal-notification-email.php:68
-msgid "To Email"
-msgstr "Email do destinatário"
-
-#: notifications/class-aal-notification-email.php:67
-msgid "The source Email address"
-msgstr "O endereço de email do remetente"
-
-#: notifications/class-aal-notification-email.php:67
-msgid "From Email"
-msgstr "Email do remetente"
-
-#: notifications/class-aal-notification-email.php:65
-msgid ""
-"Hi there!\n"
-"\n"
-"A notification condition on [sitename] was matched. Here are the details:\n"
-"\n"
-"[action-details]\n"
-"\n"
-"Sent by ARYO Activity Log"
-msgstr ""
-"Olá!\n"
-"\n"
-"Foi correspondida uma condição de notificação em [sitename]. Aqui estão os detalhes:\n"
-"\n"
-"[action-details]\n"
-"\n"
-"Enviado por ARYO Activity Log"
-
-#: notifications/class-aal-notification-email.php:49
-msgid "New notification from Activity Log"
-msgstr "Nova notificação do Activity Log"
-
-#: notifications/class-aal-notification-email.php:16
-msgid "Get notified by Email."
-msgstr "Obter notificações por email."
-
-#: notifications/class-aal-notification-email.php:15
-msgid "Email"
-msgstr "Email"
-
-#: classes/class-aal-activity-log-list-table.php:374
-#: classes/class-aal-activity-log-list-table.php:617
-#: notifications/abstract-class-aal-notification-base.php:121
+#: classes/class-aal-log-presenter.php:137 classes/class-aal-log-query.php:336
 msgid "N/A"
 msgstr "N/D"
-
-#: notifications/abstract-class-aal-notification-base.php:102
-msgid "IP Address"
-msgstr "Endereço IP"
-
-#: notifications/abstract-class-aal-notification-base.php:100
-msgid "Object Name"
-msgstr "Nome do objecto"
-
-#: notifications/abstract-class-aal-notification-base.php:99
-msgid "Object Type"
-msgstr "Tipo de objecto"
 
 #: i18n/strings.php:156
 msgid "downloaded"
@@ -711,190 +591,62 @@ msgstr "Tome conhecimento de quaisquer actividades que ocorram no seu painel! Fu
 msgid "(no title)"
 msgstr "(sem título)"
 
-#: classes/class-aal-settings.php:538
-msgid "A notification will be sent upon a successful match with the following conditions:"
-msgstr "Será enviada uma notificação quando forem correspondidas com sucesso as seguintes condições:"
-
-#: classes/class-aal-settings.php:528
-msgid "not equals to"
-msgstr "não é igual a"
-
-#: classes/class-aal-settings.php:527
-msgid "equals to"
-msgstr "é igual a"
-
-#: classes/class-aal-settings.php:523
-msgid "Action Performed"
-msgstr "Acção executada"
-
-#: classes/class-aal-settings.php:522
-#: notifications/abstract-class-aal-notification-base.php:101
-msgid "Action Type"
-msgstr "Tipo de acção"
-
-#: classes/class-aal-activity-log-list-table.php:172
-#: classes/class-aal-settings.php:521 i18n/strings.php:161
-#: notifications/abstract-class-aal-notification-base.php:98
+#: classes/class-aal-export.php:68 i18n/strings.php:161
+#: assets/js/admin/build/index.js:1
 msgid "User"
 msgstr "Utilizador"
 
-#: classes/class-aal-settings.php:504
-msgid "No"
-msgstr "Não"
-
-#: classes/class-aal-settings.php:503
-msgid "Yes"
-msgstr "Sim"
-
-#: classes/class-aal-settings.php:404
-msgid "Serve yourself with custom-tailored notifications. First, define your conditions. Then, choose how the notifications will be sent."
-msgstr "Crie as suas notificações personalizadas. Primeiro defina as suas condições. Depois escolha como as notificações serão enviadas."
-
-#: classes/class-aal-settings.php:398
-msgid "These are some basic settings for Activity Log."
-msgstr "Estas são algumas definições básicas do Activity Log."
-
-#: classes/class-aal-settings.php:341
+#: classes/class-aal-maintenance.php:245
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Não tem permissões suficientes para aceder a esta página."
 
-#: classes/class-aal-settings.php:319
-msgid "All activities have been successfully deleted."
-msgstr "Todas as actividades foram eliminadas com sucesso."
-
-#: classes/class-aal-settings.php:260
-msgid "General"
-msgstr "Geral"
-
-#: classes/class-aal-settings.php:224
-msgid "Enable?"
-msgstr "Activar?"
-
-#: classes/class-aal-settings.php:196
-msgid "Notification Events"
-msgstr "Eventos a notificar"
-
-#: classes/class-aal-settings.php:179
-msgid "Warning: Clicking this will delete all activities from the database."
-msgstr "Aviso: ao clicar aqui todas as actividades serão eliminadas da base de dados."
-
-#: classes/class-aal-settings.php:175
-msgid "<a href=\"%s\" id=\"%s\">Reset Database</a>"
-msgstr "<a href=\"%s\" id=\"%s\">Repor base de dados</a>"
-
-#: classes/class-aal-settings.php:170
-msgid "Delete Log Activities"
-msgstr "Eliminar registo de actividades"
-
-#: classes/class-aal-settings.php:101 classes/class-aal-settings.php:203
+#: classes/class-aal-rest.php:120
 msgid "Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended)."
 msgstr "Número máximo de dias a manter o registo de actividades. Deixe em branco para manter o registo de actividades permanentemente (não recomendado)."
 
-#: classes/class-aal-settings.php:100
+#: classes/class-aal-rest.php:121
 msgid "days."
 msgstr "dias."
 
-#: classes/class-aal-settings.php:91
+#: classes/class-aal-rest.php:118
 msgid "Keep logs for"
 msgstr "Manter registos durante"
 
-#: classes/class-aal-settings.php:84
-msgid "Display Options"
-msgstr "Opções de visualização"
-
-#: classes/class-aal-settings.php:43 classes/class-aal-settings.php:300
+#: classes/class-aal-settings.php:38 classes/class-aal-settings.php:114
 msgid "Activity Log Settings"
 msgstr "Definições do registo de actividade"
 
-#: classes/class-aal-settings.php:29 classes/class-aal-settings.php:44
+#: classes/class-aal-settings.php:24 classes/class-aal-settings.php:39
 msgid "Settings"
 msgstr "Definições"
 
-#: classes/class-aal-notifications.php:299
-msgid "The AAL notification handler you are trying to register does not exist."
-msgstr "O <handler> de notificação do AAL que tentou registar não existe."
-
-#: classes/class-aal-settings.php:189 classes/class-aal-settings.php:267
-msgid "Notifications"
-msgstr "Notificações"
-
-#. Plugin Name of the plugin
-#: aryo-activity-log.php classes/class-aal-privacy.php:53
-#: classes/class-aal-privacy.php:109 classes/class-aal-settings.php:26
-#: i18n/strings.php:5
+#: classes/class-aal-privacy.php:53 classes/class-aal-privacy.php:120
+#: classes/class-aal-settings.php:21 i18n/strings.php:5
 msgid "Activity Log"
 msgstr "Activity Log"
 
-#: classes/class-aal-activity-log-list-table.php:590
-msgid "Filter"
-msgstr "Filtrar"
-
-#: classes/class-aal-activity-log-list-table.php:583
-msgid "Month"
-msgstr "Mês"
-
-#: classes/class-aal-activity-log-list-table.php:582
-msgid "Week"
-msgstr "Semana"
-
-#: classes/class-aal-activity-log-list-table.php:581
-msgid "Yesterday"
-msgstr "Ontem"
-
-#: classes/class-aal-activity-log-list-table.php:580
-msgid "Today"
-msgstr "Hoje"
-
-#: classes/class-aal-activity-log-list-table.php:579
-msgid "All Time"
-msgstr "Sempre"
-
-#: classes/class-aal-activity-log-list-table.php:675
-msgid "All Actions"
-msgstr "Todas as acções"
-
-#: classes/class-aal-activity-log-list-table.php:628
-msgid "All Users"
-msgstr "Todos os utilizadores"
-
-#: classes/class-aal-activity-log-list-table.php:604
-msgid "All Roles"
-msgstr "Todos os papéis"
-
-#: classes/class-aal-activity-log-list-table.php:490
-msgid "Search"
-msgstr "Pesquisar"
-
-#: classes/class-aal-activity-log-list-table.php:458
+#: classes/class-aal-log-presenter.php:246
 msgid "All"
 msgstr "Tudo"
 
-#: classes/class-aal-activity-log-list-table.php:368
+#: classes/class-aal-log-presenter.php:121
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: classes/class-aal-activity-log-list-table.php:334
+#. translators: %s: human time diff
+#: classes/class-aal-log-presenter.php:102
 msgid "%s ago"
 msgstr "Há %s"
 
-#: classes/class-aal-activity-log-list-table.php:177
-#: classes/class-aal-privacy.php:64
+#: classes/class-aal-export.php:74 classes/class-aal-privacy.php:64
+#: assets/js/admin/build/index.js:1
 msgid "Action"
 msgstr "Acção"
 
-#: classes/class-aal-activity-log-list-table.php:173
-#: classes/class-aal-privacy.php:80
+#: classes/class-aal-export.php:146 classes/class-aal-privacy.php:80
 msgid "IP"
 msgstr "IP"
 
-#: classes/class-aal-activity-log-list-table.php:171
+#: classes/class-aal-export.php:67 assets/js/admin/build/index.js:1
 msgid "Date"
 msgstr "Data"
-
-#: classes/class-aal-activity-log-list-table.php:160
-msgid "Activities"
-msgstr "Actividades"
-
-#: aryo-activity-log.php:123 aryo-activity-log.php:134
-msgid "Cheatin&#8217; huh?"
-msgstr "Enganou-se?"

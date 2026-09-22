@@ -1,9 +1,34 @@
 /**
  * Secure CryptX Library - Fixed for backward compatibility
+ *
+ * Everything below lives inside an IIFE. Without it, the top-level `const` and
+ * `class` declarations -- CONFIG, ITERATIONS, KEY_LENGTH, SecureUtils,
+ * SecureEncryption -- sit in the global lexical environment of the page, and a
+ * second script declaring any of those names does not merely overwrite them:
+ * it throws "Identifier has already been declared" and one of the two scripts
+ * stops dead. With names this general that is a matter of time, and the failure
+ * would look like CryptX being broken for no reason.
+ *
+ * What the outside is meant to reach is assigned to `window` at the bottom,
+ * deliberately and by name.
  */
+(function () {
 
 // Configuration constants
-const ITERATIONS = window.cryptxConfig?.iterations || 100000; // fallback to old value
+// The ceiling PHP already enforces (SecureEncryption::MAX_ITERATIONS), repeated
+// here so that no path can hand an absurd number to PBKDF2 and leave a
+// visitor's browser tab grinding.
+const MAX_ROUNDS = 1000000;
+
+// parseInt, because wp_localize_script turns every value into a string on the
+// way into the page -- so cryptxConfig.iterations arrives as "10000", and a
+// string fails Number.isInteger. Without this the clamp below applied only to
+// the value read from a link and never to this one, which is the opposite of
+// what one would assume from reading it.
+const ITERATIONS = Math.min(
+	parseInt(window.cryptxConfig?.iterations, 10) || 100000, // fallback to old value
+	MAX_ROUNDS
+);
 const KEY_LENGTH = window.cryptxConfig?.keyLength || 32;
 const IV_LENGTH = window.cryptxConfig?.ivLength || 16;
 const SALT_LENGTH = window.cryptxConfig?.saltLength || 16;
@@ -212,7 +237,23 @@ class LegacyEncryption {
  * Modern encryption class using Web Crypto API - PHP Compatible
  */
 class SecureEncryption {
-	static async deriveKey(password, salt) {
+	/**
+	 * @param {string} password
+	 * @param {Uint8Array} salt
+	 * @param {number} [iterations] What the link itself says it was made with.
+	 *   Left out only by links written before 4.2.0, which then fall back to
+	 *   the configured value -- the behaviour that made changing the setting
+	 *   kill every link already delivered.
+	 */
+	static async deriveKey(password, salt, iterations) {
+		// Clamped to the same ceiling PHP enforces. The value can only come
+		// from the server today -- KSES lets neither class nor data-* through
+		// for anyone without unfiltered_html, and anyone with it does not need
+		// this route -- but a number that reaches PBKDF2 unchecked is worth one
+		// line of arithmetic.
+		const rounds = Number.isInteger(iterations) && iterations > 0
+			? Math.min(iterations, MAX_ROUNDS)
+			: ITERATIONS;
 		const encoder = new TextEncoder();
 		const keyMaterial = await crypto.subtle.importKey(
 			'raw',
@@ -226,7 +267,7 @@ class SecureEncryption {
 			{
 				name: 'PBKDF2',
 				salt: salt,
-				iterations: ITERATIONS,
+				iterations: rounds,
 				hash: 'SHA-256'
 			},
 			keyMaterial,
@@ -267,7 +308,12 @@ class SecureEncryption {
 		return SecureUtils.arrayBufferToBase64(combined.buffer);
 	}
 
-	static async decrypt(encryptedData, password) {
+	/**
+	 * @param {string} encryptedData
+	 * @param {string} password
+	 * @param {number} [iterations] See deriveKey().
+	 */
+	static async decrypt(encryptedData, password, iterations) {
 		if (typeof encryptedData !== 'string' || typeof password !== 'string') {
 			throw new Error('Both encryptedData and password must be strings');
 		}
@@ -291,7 +337,7 @@ class SecureEncryption {
 			const encryptedDataOnly = combined.slice(saltLength + ivLength, saltLength + ivLength + encryptedDataLength);
 			const tag = combined.slice(-tagLength); // Last 16 bytes
 
-			const key = await this.deriveKey(password, new Uint8Array(salt));
+			const key = await this.deriveKey(password, new Uint8Array(salt), iterations);
 
 			// Reconstruct the encrypted data with tag for Web Crypto API
 			const encryptedWithTag = new Uint8Array(encryptedDataOnly.byteLength + tag.byteLength);
@@ -321,7 +367,7 @@ class SecureEncryption {
  * @param {string} encryptedUrl
  * @param {string} password
  */
-async function secureDecryptAndNavigate(encryptedUrl, password = 'default_key') {
+async function secureDecryptAndNavigate(encryptedUrl, password = 'default_key', iterations) {
 	if (typeof encryptedUrl !== 'string' || encryptedUrl.length === 0) {
 		console.error('Invalid encrypted URL provided');
 		return;
@@ -332,7 +378,7 @@ async function secureDecryptAndNavigate(encryptedUrl, password = 'default_key') 
 
 		// Try modern decryption first, then fall back to original algorithm
 		try {
-			decryptedUrl = await SecureEncryption.decrypt(encryptedUrl, password);
+			decryptedUrl = await SecureEncryption.decrypt(encryptedUrl, password, iterations);
 		} catch (modernError) {
 			console.warn('Modern decryption failed, trying original algorithm');
 			decryptedUrl = LegacyEncryption.originalDecrypt(encryptedUrl);
@@ -405,7 +451,13 @@ async function generateSecureEmailLink(emailAddress, password = 'default_key') {
 	const encryptedData = await SecureEncryption.encrypt(mailtoUrl, password);
 	const escapedData = SecureUtils.escapeJavaScript(encryptedData);
 
-	return `javascript:secureDecryptAndNavigate('${escapedData}', '${SecureUtils.escapeJavaScript(password)}')`;
+	// The iteration count goes in as well, for the same reason the PHP side
+	// puts it in data-cxi: encrypt() used whatever ITERATIONS says right now,
+	// and without recording that, a later change to the setting would leave
+	// this link unopenable. Nothing in the plugin calls this function -- it is
+	// here for anyone building links themselves -- which is exactly why it
+	// should not be the one place that still breaks.
+	return `javascript:secureDecryptAndNavigate('${escapedData}', '${SecureUtils.escapeJavaScript(password)}', ${ITERATIONS})`;
 }
 
 /**
@@ -443,6 +495,247 @@ function generateHashFromString(inputString) {
 	}
 }
 
+/**
+ * CSP-safe link handling
+ *
+ * Markup produced by the PHP side (no javascript: URI, therefore no
+ * 'unsafe-inline' needed in the Content-Security-Policy):
+ *
+ *   <a href="#" class="cryptx-link" data-cx="BASE64" data-cxk="PASSWORD" data-cxm="secure" data-cxi="10000">…</a>
+ *   <a href="#" class="cryptx-link" data-cx="0i2p2h…" data-cxm="legacy">…</a>
+ *
+ * A single delegated listener on `document` covers links that are added later
+ * (widgets, AJAX, block editor preview). The legacy javascript: entry points
+ * above stay untouched for pages that were cached before this version.
+ */
+
+const CRYPTX_LINK_CLASS = 'cryptx-link';
+const CRYPTX_ATTR_PAYLOAD = 'data-cx';
+const CRYPTX_ATTR_KEY = 'data-cxk';
+const CRYPTX_ATTR_MODE = 'data-cxm';
+const CRYPTX_ATTR_ITERATIONS = 'data-cxi';
+const CRYPTX_MAX_DELEGATION_DEPTH = 50;
+
+/**
+ * True only when the Web Crypto API is usable (secure context, modern browser)
+ * @returns {boolean}
+ */
+function cryptxHasSubtleCrypto() {
+	return typeof crypto !== 'undefined' &&
+		!!crypto &&
+		!!crypto.subtle &&
+		typeof crypto.subtle.importKey === 'function';
+}
+
+/**
+ * @param {*} element
+ * @returns {boolean}
+ */
+function isCryptxLink(element) {
+	if (!element || typeof element.getAttribute !== 'function') {
+		return false;
+	}
+
+	if (element.classList && typeof element.classList.contains === 'function') {
+		return element.classList.contains(CRYPTX_LINK_CLASS);
+	}
+
+	if (typeof element.className === 'string') {
+		return (' ' + element.className + ' ').indexOf(' ' + CRYPTX_LINK_CLASS + ' ') !== -1;
+	}
+
+	return false;
+}
+
+/**
+ * Walks up from the event target to the CryptX link (clicks may land on a
+ * child element, e.g. an <img> or <span> inside the anchor).
+ * @param {*} startNode
+ * @returns {*|null}
+ */
+function findCryptxLink(startNode) {
+	let node = startNode;
+	let depth = 0;
+
+	while (node && depth < CRYPTX_MAX_DELEGATION_DEPTH) {
+		if (isCryptxLink(node)) {
+			return node;
+		}
+		node = node.parentElement || node.parentNode || null;
+		depth++;
+	}
+
+	return null;
+}
+
+/**
+ * Decrypts a data-cx payload according to data-cxm.
+ * Missing mode behaves like "secure" with a fallback to "legacy",
+ * exactly like secureDecryptAndNavigate() does.
+ * @param {string} payload
+ * @param {string|null} password
+ * @param {string|null} mode
+ * @param {string|number|null} [iterations] What data-cxi says. Links written
+ *   before 4.2.0 do not carry it and fall back to the configured value -- which
+ *   is why changing that value used to break every link already delivered.
+ * @returns {Promise<string>}
+ */
+async function cryptxDecryptPayload(payload, password, mode, iterations) {
+	if (typeof payload !== 'string' || payload.length === 0) {
+		throw new Error('Missing or invalid data-cx payload');
+	}
+
+	const normalizedMode = typeof mode === 'string' ? mode.trim().toLowerCase() : '';
+
+	if (normalizedMode === 'legacy') {
+		return LegacyEncryption.originalDecrypt(payload);
+	}
+
+	if (!cryptxHasSubtleCrypto()) {
+		if (normalizedMode === 'secure') {
+			throw new Error('Web Crypto API (crypto.subtle) is not available in this context');
+		}
+		return LegacyEncryption.originalDecrypt(payload);
+	}
+
+	const key = typeof password === 'string' && password.length > 0 ? password : 'default_key';
+	const rounds = parseInt(iterations, 10);
+
+	try {
+		return await SecureEncryption.decrypt(payload, key, rounds);
+	} catch (secureError) {
+		if (normalizedMode === 'secure') {
+			throw secureError;
+		}
+		console.warn('CryptX: modern decryption failed, trying original algorithm');
+		return LegacyEncryption.originalDecrypt(payload);
+	}
+}
+
+/**
+ * Delegated click handler. Never navigates without SecureUtils.validateUrl().
+ * @param {Object} event
+ * @returns {Promise<void>}
+ */
+async function handleCryptxLinkClick(event) {
+	if (!event) {
+		return;
+	}
+
+	const link = findCryptxLink(event.target);
+	if (!link) {
+		return;
+	}
+
+	// Suppress the "#" jump before anything asynchronous happens.
+	if (typeof event.preventDefault === 'function') {
+		event.preventDefault();
+	}
+
+	const payload = link.getAttribute(CRYPTX_ATTR_PAYLOAD);
+	const password = link.getAttribute(CRYPTX_ATTR_KEY);
+	const mode = link.getAttribute(CRYPTX_ATTR_MODE);
+	const iterations = link.getAttribute(CRYPTX_ATTR_ITERATIONS);
+
+	try {
+		const decryptedUrl = await cryptxDecryptPayload(payload, password, mode, iterations);
+
+		const validatedUrl = SecureUtils.validateUrl(decryptedUrl);
+		if (!validatedUrl) {
+			console.error('CryptX: invalid or unsafe URL detected, navigation aborted');
+			return;
+		}
+
+		window.location.href = validatedUrl;
+	} catch (error) {
+		console.error('CryptX: could not resolve link target:', error && error.message ? error.message : error);
+	}
+}
+
+/**
+ * Attaches the single delegated listener. Idempotent.
+ *
+ * The "attached" flag lives on the document itself (an expando property),
+ * not in a closure variable. Two things went wrong with a closure variable:
+ * first, any plugin or loader that runs cryptx.js a second time on the same
+ * document -- @swup/scripts-plugin does, Turbo/Hotwire does, any AJAX loader
+ * that brings footer markup along does -- gets a fresh closure and therefore
+ * a second `click` listener on `document`; measured: one click fired
+ * `mailto:` twice. Second, initCryptxLinkHandler(otherDocument) is exported
+ * for exactly this use but never worked, because the closure flag was
+ * already true from the main document and nothing was attached to the one
+ * passed in. Marking the document, not the module, fixes both with the same
+ * few lines.
+ * @param {Object} [targetDocument]
+ * @returns {boolean} true when the listener was attached by this call
+ */
+function initCryptxLinkHandler(targetDocument) {
+	const doc = targetDocument || (typeof document !== 'undefined' ? document : null);
+
+	if (!doc || typeof doc.addEventListener !== 'function') {
+		return false;
+	}
+
+	if (doc.__cryptxLinkHandlerAttached) {
+		return false;
+	}
+
+	doc.addEventListener('click', handleCryptxLinkClick, false);
+	doc.__cryptxLinkHandlerAttached = true;
+
+	return true;
+}
+
+// Attach immediately - delegation on `document` needs no finished DOM, so this
+// works for a <head> include as well as for a footer include, where
+// DOMContentLoaded may already have fired and would never come again.
+if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
+	initCryptxLinkHandler(document);
+
+	if (document.readyState === 'loading') {
+		// Safety net for exotic environments that replace `document` while parsing.
+		document.addEventListener('DOMContentLoaded', function () {
+			initCryptxLinkHandler(document);
+		});
+	}
+}
+
+// Keep everything reachable by name, also after minification.
+//
+// The three the plugin itself depends on are secureDecryptAndNavigate and
+// DeCryptX, which appear in the generated "javascript:" links, and
+// generateDeCryptXHandler, which the help tab documents for use in a theme.
+// The rest is kept because it has been exported for years; new code should use
+// the window.CryptX namespace, and the bare names will go with the next major
+// release, together with the deprecated encryptx().
+if (typeof window !== 'undefined') {
+	window.CryptX = {
+		secureDecryptAndNavigate,
+		DeCryptX,
+		DeCryptString,
+		generateSecureEmailLink,
+		generateDeCryptXHandler,
+		generateHashFromString,
+		handleCryptxLinkClick,
+		initCryptxLinkHandler,
+		SecureUtils,
+		LegacyEncryption,
+		SecureEncryption
+	};
+
+	window.secureDecryptAndNavigate = secureDecryptAndNavigate;
+	window.DeCryptX = DeCryptX;
+	window.DeCryptString = DeCryptString;
+	window.generateSecureEmailLink = generateSecureEmailLink;
+	window.generateDeCryptXHandler = generateDeCryptXHandler;
+	window.generateHashFromString = generateHashFromString;
+	window.handleCryptxLinkClick = handleCryptxLinkClick;
+	window.initCryptxLinkHandler = initCryptxLinkHandler;
+	window.SecureUtils = SecureUtils;
+	window.LegacyEncryption = LegacyEncryption;
+	window.SecureEncryption = SecureEncryption;
+}
+
 // Export functions for module usage
 if (typeof module !== 'undefined' && module.exports) {
 	module.exports = {
@@ -452,8 +745,12 @@ if (typeof module !== 'undefined' && module.exports) {
 		DeCryptString,
 		generateDeCryptXHandler,
 		generateHashFromString,
+		handleCryptxLinkClick,
+		initCryptxLinkHandler,
+		cryptxDecryptPayload,
 		SecureEncryption,
 		LegacyEncryption,
 		SecureUtils
 	};
 }
+})();

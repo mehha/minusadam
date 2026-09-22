@@ -4,9 +4,8 @@ namespace lloc\Msls\ContentImport\Importers\Terms;
 
 use lloc\Msls\ContentImport\ImportCoordinates;
 use lloc\Msls\ContentImport\Importers\BaseImporter;
-use lloc\Msls\MslsOptionsTax;
-use lloc\Msls\MslsOptionsTaxTerm;
-use lloc\Msls\OptionsTaxInterface;
+use lloc\Msls\Options\Tax\OptionsTaxInterface;
+use lloc\Msls\Options\Tax\Term;
 
 /**
  * Class ShallowDuplicating
@@ -53,16 +52,21 @@ class ShallowDuplicating extends BaseImporter {
 
 		switch_to_blog( $source_blog_id );
 
-		$source_terms     = wp_get_post_terms( $source_post_id, get_taxonomies() );
+		$source_terms = wp_get_post_terms( $source_post_id, get_taxonomies() );
+		if ( is_wp_error( $source_terms ) ) {
+			restore_current_blog();
+
+			return $data;
+		}
+
 		$source_terms_ids = wp_list_pluck( $source_terms, 'term_id' );
 		$msls_terms       = array_combine(
 			$source_terms_ids,
-			array_map( array( MslsOptionsTaxTerm::class, 'create' ), $source_terms_ids )
+			array_map( array( Term::class, 'create' ), $source_terms_ids )
 		);
 
 		switch_to_blog( $this->import_coordinates->dest_blog_id );
 
-		/** @var \WP_Term $term */
 		foreach ( $source_terms as $term ) {
 			// is there a translation for the term in this blog?
 			$msls_term    = $msls_terms[ $term->term_id ];
@@ -72,7 +76,7 @@ class ShallowDuplicating extends BaseImporter {
 				$dest_term_id = $this->create_local_term( $term, $msls_term, $dest_lang );
 			}
 
-			if ( false === $dest_term_id ) {
+			if ( ! is_int( $dest_term_id ) ) {
 				continue;
 			}
 
@@ -82,7 +86,7 @@ class ShallowDuplicating extends BaseImporter {
 				// While we think the term translation exists it might not, let's create it.
 				$dest_term_id = $this->create_local_term( $term, $msls_term, $dest_lang );
 
-				if ( false === $dest_term_id ) {
+				if ( ! is_int( $dest_term_id ) ) {
 					continue;
 				}
 

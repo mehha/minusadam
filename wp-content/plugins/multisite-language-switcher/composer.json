@@ -7,6 +7,7 @@
   "require": {
     "php": ">=7.4",
     "composer/installers": "~2.3.0",
+    "php-di/php-di": "^6.4",
     "ext-json": "*"
   },
   "require-dev": {
@@ -33,30 +34,29 @@
     }
   },
   "scripts": {
-    "test": "vendor/bin/phpunit",
-    "coverage": "@php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html tests/coverage",
-    "phpstan": "vendor/bin/phpstan analyze --memory-limit=1G",
-    "php74": "phpcs -p ./*.php includes/ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 7.4",
-    "php82": "phpcs -p ./*.php includes/ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.2",
-    "php83": "phpcs -p ./*.php includes/ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.3",
-    "php84": "phpcs -p ./*.php includes/ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.4",
-    "prepare": "wget -O build/translations.json http://api.wordpress.org/translations/core/1.0/",
+    "phpcs": "phpcs -p ./*.php includes/ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 7.4-",
+    "phpstan": "vendor/bin/phpstan analyze --memory-limit=2G",
+    "phpunit": "@php vendor/bin/phpunit",
+    "qa": [
+      "@phpcs",
+      "@phpstan",
+      "@phpunit"
+    ],
+    "prepare": "mkdir -p build && wget -O build/translations.json http://api.wordpress.org/translations/core/1.0/",
     "flags-png": "php bin/flags-png.php > assets/flags/flags.php",
     "flags-svg": "php bin/flags-svg.php > assets/css-flags/flags.php",
-    "diagram:class": "vendor/bin/php-class-diagram --php8 includes > docs/diagrams/msls-class.puml",
-    "diagram:package": "vendor/bin/php-class-diagram --package-diagram --php8 includes > docs/diagrams/msls-package.puml",
-    "git-release": "bin/git-release.sh",
-    "playwright": [
-      "npx playwright install --with-deps",
-      "npx playwright test"
-    ],
-    "build": [
+    "install-prod": [
+      "@composer install --no-dev --prefer-dist --optimize-autoloader",
       "@prepare",
       "@flags-png",
       "@flags-svg",
       "npm ci",
-      "npm run build",
-      "@git-release"
+      "npm run build"
+    ],
+    "build": [
+      "@install-prod",
+      "bin/git-release.sh",
+      "@composer update --prefer-dist --optimize-autoloader"
     ],
     "githooks": [
       "if [ -e bin/githooks/pre-commit ]; then cp bin/githooks/pre-commit ./.git/hooks/; fi",
@@ -67,7 +67,15 @@
     ],
     "post-update-cmd": [
       "@githooks"
-    ]
+    ],
+    "phpunit:clover": "@php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover tests/coverage.xml",
+    "phpunit:html": "@php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html tests/coverage",
+    "playwright": [
+      "npx playwright install --with-deps",
+      "npx playwright test"
+    ],
+    "diagram:class": "vendor/bin/php-class-diagram --php8 includes > docs/diagrams/msls-class.puml",
+    "diagram:package": "vendor/bin/php-class-diagram --package-diagram --php8 includes > docs/diagrams/msls-package.puml"
   },
   "authors": [
     {

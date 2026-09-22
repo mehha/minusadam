@@ -2,9 +2,9 @@
 
 namespace lloc\Msls\ContentImport;
 
-use lloc\Msls\MslsOptions;
-use lloc\Msls\OptionsInterface;
-use lloc\Msls\OptionsTaxInterface;
+use lloc\Msls\Options\Options;
+use lloc\Msls\Options\OptionsInterface;
+use lloc\Msls\Options\Tax\OptionsTaxInterface;
 
 /**
  * Class Relations
@@ -21,7 +21,7 @@ class Relations {
 	public array $to_create = array();
 
 	/**
-	 * @var array<int, array<int, mixed>>
+	 * @var array<int, array{0: OptionsInterface, 1: int}>
 	 */
 	protected array $local_options = array();
 
@@ -72,7 +72,7 @@ class Relations {
 		switch_to_blog( $this->import_coordinates->source_blog_id );
 
 		foreach ( $this->to_create as $relation ) {
-			/** @var MslsOptions $option */
+			/** @var Options $option */
 			list( $option, $lang, $id ) = $relation;
 			$option->save( array( $lang => $id ) );
 			$source_id = $option->get_arg( 0, $id );
@@ -93,7 +93,7 @@ class Relations {
 			 * @param mixed $created If not `null` then the class will not create the local to source relation.
 			 * @param int $local_id
 			 * @param int $source_id
-			 * @param MslsOptions $source_option
+			 * @param OptionsInterface $source_option
 			 */
 			$created = apply_filters(
 				'msls_content_import_relation_local_to_source_create',
@@ -106,9 +106,15 @@ class Relations {
 				continue;
 			}
 
+			if ( ! $source_option instanceof Options ) {
+				continue;
+			}
+
 			$option_class = get_class( $source_option );
-			$local_option = call_user_func( array( $option_class, 'create' ), $local_id );
-			$local_option->save( array( $this->import_coordinates->source_lang => $source_id ) );
+			$local_option = $option_class::create( $local_id );
+			if ( $local_option instanceof Options ) {
+				$local_option->save( array( $this->import_coordinates->source_lang => $source_id ) );
+			}
 		}
 	}
 

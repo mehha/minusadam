@@ -4,9 +4,9 @@ Contributors: realloc, lucatume
 Donate link: https://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, localization
 Requires at least: 6.1
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.10.1
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,18 +25,21 @@ Please, don't forget to [rate this plugin](https://wordpress.org/support/plugin/
 * Use the WordPress admin to install the plugin from there or
 * Download the plugin and uncompress it with your preferred unzip programme and copy the entire directory in the plugin directory of your WordPress blog (/wp-content/plugins)
 * Activate the plugin in your plugin administration page (by the network administrator on all the blogs or by the blog administrator for each particular blog).
-* You need to activate the plugin once in each blog, by setting the configuration in `Settings` -> `Multisite Language Switcher`
+* After activation, configure the plugin once in each blog under `Settings` -> `Multisite Language Switcher`
 
 Now you can:
 
-* Connect your translated pages and posts in `Posts` -> `Edit` or `Page` -> `Edit`
-* Connect your translated categories and tags in `Posts` -> `Categories` or `Post` -> `Tags`
+* Connect your translated pages and posts in `Posts` -> `Edit` or `Pages` -> `Edit`
+* Connect your translated categories and tags in `Posts` -> `Categories` or `Posts` -> `Tags`
 * connect your Custom Post Types and Custom Taxonomies across languages
+* create a missing translation in one step - straight from the editor metabox, or from the `Add from Translation` submenu, which lists everything that is not translated yet and can create translations in bulk (Quick Create, new in 3.0)
 * use the widget, the Gutenberg block, the shortcode [sc_msls] and/or a content_filter which displays a hint to the user if a translation is available
 * you can find also a shortcode for the widget [sc_msls_widget]
-* optionally you can place the code `<?php if ( function_exists( 'the_msls' ) ) the_msls(); ?>` directly in your theme files
+* optionally you can place the code `<?php if ( function_exists( 'msls_the_switcher' ) ) msls_the_switcher(); ?>` directly in your theme files
 
-Review the [Multisite Language Switcher Website](http://msls.co/) for more information.
+Review the [Multisite Language Switcher Website](https://msls.co/) for more information.
+Developers will find the API functions, every action and filter, and a set of integration
+snippets in the [developer documentation](https://github.com/lloc/Multisite-Language-Switcher/tree/master/docs).
 
 == Frequently Asked Questions ==
 
@@ -54,9 +57,7 @@ It's up to you - of course. But yes, if you want to use the Multisite Language S
 
 = How can I automatically redirect users based on the browser language? =
 
-The Multisite Language Switcher does not redirect the users automatically. I'm not sure if the plugin should do that. You might check out this [jQuery plugin](
-https://github.com/danieledesantis/jquery-language-detection) or [this approach with a theme](https://github.com/oncleben31/Multisite-Language-Switcher-Theme)
-if you need such functionality.
+The Multisite Language Switcher does not redirect the users automatically. I'm not sure if the plugin should do that.
 
 = How can I add the Multisite Language Switcher to the nav menu of my blog? =
 
@@ -70,10 +71,11 @@ Please check the add-on [MslsSelect](https://wordpress.org/plugins/mslsselect/) 
 
 Yes, you should use the WordPress API function `get_locale()` but you could also use code like that
 
-`use lloc\Msls\MslsBlogCollection;
-
-$blog     = MslsBlogCollection::instance()->get_current_blog();
+`$blog     = msls_blog_collection()->get_current_blog();
 $language = $blog->get_language();`
+
+The class behind it moved to `lloc\Msls\Blog\Collection` in version 3.0.0. The old name
+`lloc\Msls\MslsBlogCollection` still resolves, so existing code keeps working.
 
 = If I have another question, where can I ask? =
 
@@ -91,7 +93,74 @@ Please visit the [MSLS website](https://msls.co/) or use the [WordPress support 
 
 == Changelog ==
 
-This project has a separate [Changelog](https://github.com/lloc/Multisite-Language-Switcher/blob/master/Changelog.md).
+= 3.0.3 =
+
+* Fixed: on PHP 7.4 the plugin's dependencies could not be installed, because one of them required PHP 8. MSLS supports PHP 7.4 again, as documented.
+
+= 3.0.2 =
+
+* Fixed: with more than 100 users on a blog, opening the settings page raised a PHP notice that ended up in the error log (and in services such as Sentry). The truncated user list is now reported as a hint below the "Reference user" dropdown instead.
+* Changed: MSLS no longer runs `count_users()` to detect the truncation, which removes a costly query from the settings page on blogs with many users.
+
+= 3.0.1 =
+
+* Fixed: 3.0.0 could not be published on WordPress.org
+* The plugin code is identical to 3.0.0.
+
+= 3.0.0 =
+
+* New: Quick Create - create the translated post straight from the editor metabox, or pick a source post on the new `Add from Translation` submenu (single and bulk). Backed by a REST endpoint and switchable in the settings.
+* New: `msls_quick_create_capability` lets integrations override the Quick Create permission checks. Additional filters cover the post data, the inserted post, the REST response, the untranslated-posts list and the mapped taxonomy terms.
+* New: filter hooks for the AJAX suggest results of the post and term metaboxes.
+* New: a developer reference in `docs/` - public API, every hook, integration snippets and the Playwright setup.
+* Changed: the `lloc\Msls\` namespace is split into per-concern sub-namespaces. Every pre-3.0 class name (`MslsOptions`, `MslsLink`, `MslsOutput`, ...) keeps working through a backwards-compatibility alias, so add-ons and custom code do not need changes.
+* Changed: the public helper functions moved to `includes/api.php`, and the `$attr` argument of `msls_get_switcher()` is now optional.
+* Fixed: add-ons such as MslsMenu and MslsSelect could be silently disabled because the plugin registered its classes too late. Aliases and API functions are now available the moment the plugin file is loaded.
+* Fixed: authorization is checked on the destination post during content import, and the ContentImporter permission and post type checks were corrected.
+* Fixed: no `home_url()` fallback for taxonomy and query archives anymore.
+* Fixed: broken links on the page for the latest posts.
+* Fixed: several issues in the blog collection.
+* Internal: strict typing throughout, PHPStan level 8 clean, `ABSPATH` guards, Plugin Check and PHPCS findings addressed, a wp-env based local multisite and a Playwright end-to-end suite.
+
+= 2.10.1 =
+
+* Fixed: deprecated function warning pointed to a non-existent function.
+* Documentation: README.md code snippets reflect the new function names.
+
+= 2.10.0 =
+
+* New: prefixed public helper functions (`msls_get_*`, `msls_the_switcher`) with deprecation shims for the legacy names.
+* New: action hook names are exposed as constants for safer programmatic use.
+* Accessibility: `aria-current="page"` on the active language link.
+* Fixed: path-related issue affecting asset/loader resolution.
+
+The full history is kept in the separate [Changelog](https://github.com/lloc/Multisite-Language-Switcher/blob/master/Changelog.md).
+
+== Upgrade Notice ==
+
+= 3.0.3 =
+
+Maintenance release for PHP 7.4 installations. One of the plugin's dependencies required
+PHP 8, which broke the installation on the PHP version MSLS documents as its minimum. No
+changes to the plugin's behaviour.
+
+= 3.0.2 =
+
+Bugfix release. The settings page no longer logs a PHP notice when the blog has more users
+than the "Reference user" dropdown shows; the limit is displayed below the dropdown. The
+`msls_max_reference_users_count` filter still adjusts that limit.
+
+= 3.0.1 =
+
+Republishes 3.0.0, whose upload to WordPress.org failed. The plugin code is unchanged
+against 3.0.0 - only the release pipeline was fixed. See the 3.0.0 notice below for what
+the major release brings.
+
+= 3.0.0 =
+
+Major release. The class structure moved into sub-namespaces, but every pre-3.0 class name
+still resolves through a compatibility alias, so add-ons, themes and snippets keep working.
+Requirements are unchanged (PHP 7.4, WordPress 6.1). Clear your opcode cache after updating.
 
 == Translators ==
 

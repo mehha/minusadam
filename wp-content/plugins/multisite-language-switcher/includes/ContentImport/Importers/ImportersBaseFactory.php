@@ -3,9 +3,9 @@
 namespace lloc\Msls\ContentImport\Importers;
 
 use lloc\Msls\ContentImport\ImportCoordinates;
-use lloc\Msls\MslsRegistryInstance;
+use lloc\Msls\Registry\Instance;
 
-abstract class ImportersBaseFactory extends MslsRegistryInstance implements ImportersFactory {
+abstract class ImportersBaseFactory extends Instance implements ImportersFactory {
 
 	/**
 	 * The type of this importers factory; should be overridden by child classes.
@@ -13,7 +13,7 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 	const TYPE = 'none';
 
 	/**
-	 * @var array<string, string> An array defining the slug and Importer class relationships in
+	 * @var array<string, class-string<Importer>> An array defining the slug and Importer class relationships in
 	 *            the shape [ <slug> => <importer-class> ]
 	 */
 	protected array $importers_map = array();
@@ -54,7 +54,7 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 		 * @param array $map A map of importers in the shape [ <importer-slug> => <importer-class> ]
 		 * @param ImportCoordinates $import_coordinates
 		 *
-		 * @since TBD
+		 * @since 2.4.0
 		 */
 		$map = apply_filters( "msls_content_import_{$type}_importers_map", $this->importers_map, $import_coordinates );
 
@@ -67,6 +67,9 @@ abstract class ImportersBaseFactory extends MslsRegistryInstance implements Impo
 
 		// If there is some incoherence, return the null-doing base importer.
 		$class = ! empty( $slug ) && isset( $map[ $slug ] ) ? $map[ $slug ] : BaseImporter::class;
+		if ( ! is_string( $class ) || ! is_a( $class, Importer::class, true ) ) {
+			$class = BaseImporter::class;
+		}
 
 		return new $class( $import_coordinates );
 	}

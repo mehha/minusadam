@@ -1,15 +1,19 @@
-# Translation of WordPress - 7.0.x - Development - Administration - Network Admin in Chinese (China)
-# This file is distributed under the same license as the WordPress - 7.0.x - Development - Administration - Network Admin package.
+# Translation of WordPress - 7.1.x - Development - Administration - Network Admin in Chinese (China)
+# This file is distributed under the same license as the WordPress - 7.1.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-12-02 05:08:14+0000\n"
+"PO-Revision-Date: 2026-08-19 12:13:42+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.3\n"
+"X-Generator: GlotPress/4.1.0\n"
 "Language: zh_CN\n"
-"Project-Id-Version: WordPress - 7.0.x - Development - Administration - Network Admin\n"
+"Project-Id-Version: WordPress - 7.1.x - Development - Administration - Network Admin\n"
+
+#: wp-admin/network/users.php:343
+msgid "No users were deleted because no user was selected for content reassignment."
+msgstr "由于未选择任何用户进行内容重新分配，因此未删除任何用户。"
 
 #: wp-admin/network/sites.php:361
 msgid "Site flagged for deletion."
@@ -661,7 +665,7 @@ msgstr "标签层级"
 msgid "Domain"
 msgstr "您的域名"
 
-#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:270
+#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:297
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\">Documentation on Network Users</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\">站点网络用户文档</a>"
 
@@ -726,7 +730,7 @@ msgstr "将这些加入您位于 %2$s 的 %1$s 文件，<strong>替换</strong>�
 msgid "Confirm your action"
 msgstr "确认您的操作"
 
-#: wp-admin/network/users.php:260
+#: wp-admin/network/users.php:287
 msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
 msgstr "将鼠标移至用户的上方，将出现编辑链接。左侧的编辑链接是编辑用户信息的；而右侧的编辑链接用于编辑其所属站点的信息。"
 
@@ -1081,8 +1085,8 @@ msgid "The choice of subdirectory sites is disabled if this setup is more than a
 msgstr "若本站点网络配置完成已经超过一个月了。由于主站点「/blog/」固定链接的问题，您不能选择使用子目录。此问题将很快在未来版本中解决。"
 
 #: wp-admin/network.php:65
-msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
-msgstr "在您添加完代码后，请在浏览器刷新页面，之后多站点功能就应该自动启用了。这个页面将仍然保留这段代码，以备日后使用。您可在「管理网络」界面的导航菜单中再次访问本页面来查看代码。用户可以通过顶部「工具栏」中的「我的站点」下拉菜单在「管理网络」和「管理站点」之间切换。"
+msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can switch between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
+msgstr "添加此代码并刷新浏览器后，多站点功能应会启用。此界面现在位于「管理网络」导航菜单中，并会保留所添加代码的归档。您可以点击工具栏中「我的站点」下拉菜单里的「管理网络」或单个站点名称，在「管理网络」和「站点管理」之间切换。"
 
 #: wp-admin/network.php:63
 msgid "The next screen for Network Setup will give you individually-generated lines of code to add to your wp-config.php and .htaccess files. Make sure the settings of your FTP client make files starting with a dot visible, so that you can find .htaccess; you may have to create this file if it really is not there. Make backup copies of those two files."
@@ -1105,7 +1109,7 @@ msgid "The Network creation panel is not for WordPress MU networks."
 msgstr "站点网络创建面板不适用于 WordPress MU 网络。"
 
 #. translators: %s: User login.
-#: wp-admin/network/users.php:87 wp-admin/network/users.php:126
+#: wp-admin/network/users.php:88 wp-admin/network/users.php:127
 msgid "Warning! User cannot be modified. The user %s is a network administrator."
 msgstr "警告！无法修改 %s，该用户是网络管理员。"
 
@@ -1125,11 +1129,11 @@ msgstr "将鼠标移至站点上方，会出现 7 个选项（主站点则出现
 msgid "Operational settings has fields for the network&#8217;s name and admin email."
 msgstr "运营设置包括站点网络的名称及管理员电子邮箱地址字段。"
 
-#: wp-admin/network/users.php:263
+#: wp-admin/network/users.php:290
 msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
 msgstr "批量操作将永久删除选中的用户，或标记 / 取消标记选择的用户为垃圾用户。垃圾用户发布的文章将被移除，并无法再使用相同的电子邮箱地址注册。"
 
-#: wp-admin/network/users.php:261
+#: wp-admin/network/users.php:288
 msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
 msgstr "您也可以通过点击用户名转到用户的个人资料页面。"
 
@@ -1137,7 +1141,7 @@ msgstr "您也可以通过点击用户名转到用户的个人资料页面。"
 msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
 msgstr "上传设置控制每个站点所能上传的文件数目、大小和文件类型（用空格隔开）。您也可以对每个站点做出不同的限制。"
 
-#: wp-admin/network/users.php:264
+#: wp-admin/network/users.php:291
 msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
 msgstr "您可以让一个现有的用户成为额外的超级管理员，方法是进入编辑用户个人资料的页面，勾选方框以授予该权限。"
 
@@ -1145,11 +1149,11 @@ msgstr "您可以让一个现有的用户成为额外的超级管理员，方法
 msgid "Users who are signed up to the network without a site are added as subscribers to the main or primary dashboard site, giving them profile pages to manage their accounts. These users will only see Dashboard and My Sites in the main navigation until a site is created for them."
 msgstr "已在站点网络中注册，且不拥有站点的用户将以订阅者的身份加入主仪表盘站点，允许他们在其中修改资料、管理自己的账户。在他们创建自己的站点之前，只能在导航栏中看到「仪表盘」和「我的站点」菜单。"
 
-#: wp-admin/network/users.php:262
+#: wp-admin/network/users.php:289
 msgid "You can sort the table by clicking on any of the table headings and switch between list and excerpt views by using the icons above the users list."
 msgstr "您可以点击表头来排序，也可以使用用户列表上方的图标来切换列表和摘要视图。"
 
-#: wp-admin/network/users.php:259
+#: wp-admin/network/users.php:286
 msgid "This table shows all users across the network and the sites to which they are assigned."
 msgstr "本表格列出了站点网络中的所有用户，以及它们所在的站点。"
 
@@ -1206,7 +1210,7 @@ msgstr "如果您想禁止使用下列电子邮箱域名的用户注册站点。
 msgid "If you want to limit site registrations to certain domains. One domain per line."
 msgstr "若您想把站点的注册限制于某些域名。每行一个域名。"
 
-#: wp-admin/network/users.php:294
+#: wp-admin/network/users.php:321
 msgid "Users removed from spam."
 msgstr "多个用户已被从垃圾用户列表中移除。"
 
@@ -1226,11 +1230,11 @@ msgstr "多个站点已被标记为垃圾站点。"
 msgid "Sites removed from spam."
 msgstr "多个站点已被从垃圾站点列表中移除。"
 
-#: wp-admin/network/users.php:297
+#: wp-admin/network/users.php:324
 msgid "Users deleted."
 msgstr "用户已被删除。"
 
-#: wp-admin/network/users.php:291
+#: wp-admin/network/users.php:318
 msgid "Users marked as spam."
 msgstr "用户已被标记为垃圾用户。"
 

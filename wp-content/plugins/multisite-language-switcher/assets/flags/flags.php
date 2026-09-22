@@ -3,7 +3,7 @@
 /**
  * File is auto-generated
  * 
- * 131 translations-teams for WordPress found
+ * 133 translations-teams for WordPress found
  */
 // Unhandled language: am (Amharic)
 // Unhandled language: arg (Aragonese)
@@ -12,8 +12,10 @@
 // Unhandled language: hsb (Upper Sorbian)
 // Unhandled language: kn (Kannada)
 // Unhandled language: kir (Kyrgyz)
+// Unhandled language: pcm (Nigerian Pidgin)
 // Unhandled language: snd (Sindhi)
 // Unhandled language: sw (Swahili)
+// Unhandled language: yor (Yoruba)
 return [
     'af' => 'za.png',
     'ar' => 'arableague.png',
@@ -38,25 +40,25 @@ return [
     'de_CH_informal' => 'ch.png',
     'dzo' => 'bt.png',
     'el' => 'gr.png',
-    'en_NZ' => 'nz.png',
-    'en_CA' => 'ca.png',
     'en_GB' => 'gb.png',
     'en_ZA' => 'za.png',
+    'en_CA' => 'ca.png',
     'en_AU' => 'au.png',
+    'en_NZ' => 'nz.png',
     'eo' => 'europeanunion.png',
     'es_AR' => 'ar.png',
     'es_CL' => 'cl.png',
-    'es_ES' => 'es.png',
+    'es_CO' => 'co.png',
     'es_PE' => 'pe.png',
-    'es_CR' => 'cr.png',
     'es_VE' => 've.png',
     'es_EC' => 'ec.png',
     'es_DO' => 'do.png',
     'es_UY' => 'uy.png',
     'es_PR' => 'pr.png',
-    'es_MX' => 'mx.png',
     'es_GT' => 'gt.png',
-    'es_CO' => 'co.png',
+    'es_MX' => 'mx.png',
+    'es_ES' => 'es.png',
+    'es_CR' => 'cr.png',
     'et' => 'ee.png',
     'eu' => 'es.png',
     'fa_IR' => 'ir.png',
@@ -107,8 +109,8 @@ return [
     'ps' => 'af.png',
     'pt_BR' => 'br.png',
     'pt_PT' => 'pt.png',
-    'pt_PT_ao90' => '90.png',
     'pt_AO' => 'ao.png',
+    'pt_PT_ao90' => '90.png',
     'ro_RO' => 'ro.png',
     'ru_RU' => 'ru.png',
     'sah' => 'ru.png',
@@ -133,8 +135,8 @@ return [
     'ur' => 'pk.png',
     'uz_UZ' => 'uz.png',
     'vi' => 'vn.png',
-    'zh_TW' => 'tw.png',
     'zh_CN' => 'cn.png',
+    'zh_TW' => 'tw.png',
     'zh_HK' => 'hk.png',
 ];
 

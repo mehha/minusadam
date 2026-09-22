@@ -12,6 +12,16 @@ abstract class Component {
 	const INPUT_PREFIX = 'msls_input_';
 
 	const ALLOWED_HTML = array(
+		'button' => array(
+			'type'                => true,
+			'class'               => true,
+			'title'               => true,
+			'aria-label'          => true,
+			'data-target-blog-id' => true,
+			'data-source-post-id' => true,
+			'data-source-blog-id' => true,
+			'data-edit-title'     => true,
+		),
 		'form'   => array(
 			'action' => true,
 			'method' => true,
