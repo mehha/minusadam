@@ -100,3 +100,44 @@ add_filter('the_content', function ($content) {
 
     return $tags->get_updated_html();
 }, 20);
+
+/**
+ * Let the REST API read and write the Yoast SEO meta description of posts, pages, products
+ * and product categories, so descriptions can be managed in bulk (with an application password).
+ */
+add_action('init', function () {
+    if (! defined('WPSEO_VERSION')) {
+        return;
+    }
+
+    foreach (['post', 'page', 'product'] as $post_type) {
+        register_post_meta($post_type, '_yoast_wpseo_metadesc', [
+            'type' => 'string',
+            'single' => true,
+            'show_in_rest' => true,
+            'sanitize_callback' => 'sanitize_text_field',
+            'auth_callback' => fn ($allowed, $meta_key, $post_id) => current_user_can('edit_post', $post_id),
+        ]);
+    }
+});
+
+add_action('rest_api_init', function () {
+    if (! class_exists('WPSEO_Taxonomy_Meta')) {
+        return;
+    }
+
+    register_rest_field('product_cat', 'yoast_metadesc', [
+        'get_callback' => fn ($term) => (string) \WPSEO_Taxonomy_Meta::get_term_meta(
+            (int) $term['id'],
+            'product_cat',
+            'desc'
+        ),
+        'update_callback' => function ($value, $term) {
+            \WPSEO_Taxonomy_Meta::set_value($term->term_id, $term->taxonomy, 'desc', sanitize_text_field($value));
+            // Yoast rebuilds its cached term data (and LiteSpeed purges the page) when a term is edited.
+            wp_update_term($term->term_id, $term->taxonomy);
+            return true;
+        },
+        'schema' => ['type' => 'string', 'context' => ['view', 'edit']],
+    ]);
+});
