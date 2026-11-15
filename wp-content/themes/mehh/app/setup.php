@@ -241,6 +241,13 @@ add_action('wp_head', function () { ?>
     <?php
 }, -1000);
 
+// Pages are cached for every visitor, so the cookie banner is always in the HTML.
+// Hide it before the first paint for visitors who already accepted.
+add_action('wp_head', function () { ?>
+    <script>if (document.cookie.split('; ').includes('cookies_accepted=true')) document.documentElement.classList.add('cookies-accepted');</script>
+    <?php
+}, 1);
+
 //Admin styles
 add_action('login_head', function(){
 
