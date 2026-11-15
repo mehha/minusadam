@@ -90,6 +90,9 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+// LiteSpeed Cache sets this on the server when caching is on; keep it here so deploys don't remove it.
+define( 'WP_CACHE', true );
+
 define( 'MULTISITE', true );
 define( 'SUBDOMAIN_INSTALL', false );
 //define( 'DOMAIN_CURRENT_SITE', 'minusadam.com' );
