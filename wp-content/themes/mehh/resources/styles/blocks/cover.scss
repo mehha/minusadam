@@ -32,3 +32,71 @@
     }
   }
 }
+
+// A cover that is the only block in a column fills the column, so it stays level with the
+// column next to it when that one is taller.
+.wp-block-column > .wp-block-cover:only-child {
+  height: 100%;
+}
+
+// Covers with a white card (the home page box): the card keeps its logo beside the text even
+// when "Stack on mobile" is left on in the editor, and on phones it moves under the photo, so
+// it never hides the photo.
+$cover-card: ".wp-block-cover__inner-container > .wp-block-group.has-white-background-color";
+
+@media (max-width: 781px) {
+  #{$cover-card} > .wp-block-columns {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+
+    > .wp-block-column {
+      flex-basis: 0 !important;
+      flex-grow: 1 !important;
+
+      &:first-child {
+        flex: 0 0 28% !important;
+      }
+    }
+  }
+}
+
+// The card's logo keeps its shape when its column is narrower than the size set in the editor.
+#{$cover-card} > .wp-block-columns > .wp-block-column:first-child img {
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+@include media-breakpoint-down(md) {
+  .wp-block-cover:has(> #{$cover-card}) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 !important;
+    min-height: 0 !important;
+
+    // The whole photo at its own shape, at most 70% of the screen height.
+    > .wp-block-cover__image-background {
+      position: static;
+      width: 100%;
+      height: auto;
+      max-height: 70svh;
+      object-fit: cover;
+    }
+
+    > .wp-block-cover__inner-container {
+      width: 100%;
+
+      > .wp-block-group {
+        max-width: none;
+
+        // Under the photo the white margin around the frame blends into the page, so put the
+        // frame on the card's edges to line it up with the photo.
+        &::after {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}
