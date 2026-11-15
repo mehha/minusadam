@@ -16,6 +16,5 @@
 
 @include('partials.footer')
 
-@if(!isset($_COOKIE['cookies_accepted']))
-  @include('components.cookie-banner')
-@endif
+{{-- Always in the HTML: pages are cached for every visitor, so cookie_banner.js decides whether to show it. --}}
+@include('components.cookie-banner')
