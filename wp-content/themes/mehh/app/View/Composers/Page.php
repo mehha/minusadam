@@ -24,7 +24,18 @@ class Page extends Composer
     {
         return [
             'hide_title' => $this->hideTitle(),
+            'front_page_title' => $this->frontPageTitle(),
         ];
+    }
+
+    /**
+     * The H1 for the front page: the site name and tagline (the page's own title is just "Home").
+     */
+    public function frontPageTitle()
+    {
+        $tagline = get_bloginfo('description');
+
+        return $tagline ? get_bloginfo('name') . ' – ' . $tagline : get_bloginfo('name');
     }
 
     public function hideTitle()

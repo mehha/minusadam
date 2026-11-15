@@ -102,8 +102,8 @@ add_filter('the_content', function ($content) {
 }, 20);
 
 /**
- * Let the REST API read and write the Yoast SEO meta description of posts, pages, products
- * and product categories, so descriptions can be managed in bulk (with an application password).
+ * Let the REST API read and write the Yoast SEO title and meta description of posts, pages,
+ * products and product categories, so they can be managed in bulk (with an application password).
  */
 add_action('init', function () {
     if (! defined('WPSEO_VERSION')) {
@@ -111,13 +111,15 @@ add_action('init', function () {
     }
 
     foreach (['post', 'page', 'product'] as $post_type) {
-        register_post_meta($post_type, '_yoast_wpseo_metadesc', [
-            'type' => 'string',
-            'single' => true,
-            'show_in_rest' => true,
-            'sanitize_callback' => 'sanitize_text_field',
-            'auth_callback' => fn ($allowed, $meta_key, $post_id) => current_user_can('edit_post', $post_id),
-        ]);
+        foreach (['_yoast_wpseo_metadesc', '_yoast_wpseo_title'] as $meta_key) {
+            register_post_meta($post_type, $meta_key, [
+                'type' => 'string',
+                'single' => true,
+                'show_in_rest' => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'auth_callback' => fn ($allowed, $key, $post_id) => current_user_can('edit_post', $post_id),
+            ]);
+        }
     }
 });
 
