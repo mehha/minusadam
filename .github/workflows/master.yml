@@ -48,3 +48,38 @@ jobs:
           --exclude='wp-content/member-files' \
           . | ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
           "mkdir -p '${{ secrets.DEPLOY_PATH }}' && tar -xzf - -C '${{ secrets.DEPLOY_PATH }}' --no-same-owner"
+      # The tar upload above never removes anything on the server. This step deletes
+      # the files that were deleted in git by this push (and directories left empty),
+      # and leaves files git never tracked (uploads, server config, caches) alone.
+      - name: Remove files deleted in git
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_TARGET: ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "No previous commit to compare with, nothing removed."
+            exit 0
+          fi
+          if ! git fetch --quiet --depth=1 origin "$BEFORE"; then
+            echo "::warning::Could not fetch $BEFORE, so files deleted in this push were not removed from the server."
+            exit 0
+          fi
+          git diff --name-only --no-renames --diff-filter=D -z "$BEFORE" "$AFTER" > deleted-all.lst
+          # Skip paths the upload excludes; the server manages those itself.
+          grep -zvE '^(\.github|wp-content/uploads|wp-content/member-files)/|(^|/)node_modules/' deleted-all.lst > deleted.lst || true
+          if [ ! -s deleted.lst ]; then
+            echo "No files were deleted in git."
+            exit 0
+          fi
+          echo "Removing $(tr -cd '\0' < deleted.lst | wc -c) files from the server:"
+          tr '\0' '\n' < deleted.lst
+          # Parent directories of the deleted files, deepest first. rmdir only removes empty ones.
+          tr '\0' '\n' < deleted.lst | while IFS= read -r f; do
+            d=$(dirname "$f")
+            while [ "$d" != "." ]; do echo "$d"; d=$(dirname "$d"); done
+          done | LC_ALL=C sort -ru | tr '\n' '\0' > dirs.lst
+          ssh -p "$SSH_PORT" "$SSH_TARGET" "cd '$DEPLOY_PATH' && xargs -0 -r rm -f --" < deleted.lst
+          ssh -p "$SSH_PORT" "$SSH_TARGET" "cd '$DEPLOY_PATH' && { xargs -0 -r rmdir -- 2>/dev/null; true; }" < dirs.lst
