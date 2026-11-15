@@ -34,9 +34,12 @@ class AAL_API {
 	}
 
 	public function maybe_add_schedule_delete_old_items() {
-		if ( ! wp_next_scheduled( 'aal/maintenance/clear_old_items' ) ) {
-			wp_schedule_event( time(), 'daily', 'aal/maintenance/clear_old_items' );
+		if ( 'hourly' === wp_get_schedule( 'aal/maintenance/clear_old_items' ) ) {
+			return;
 		}
+
+		wp_clear_scheduled_hook( 'aal/maintenance/clear_old_items' );
+		wp_schedule_event( time(), 'hourly', 'aal/maintenance/clear_old_items' );
 	}
 
 	public function delete_old_items() {
@@ -47,11 +50,18 @@ class AAL_API {
 			return;
 		}
 
+		$batch_size = absint( apply_filters( 'aal/maintenance/delete_batch_size', 50000 ) );
+		if ( 0 === $batch_size ) {
+			return;
+		}
+
 		$wpdb->query(
 			$wpdb->prepare(
 				'DELETE FROM `' . $wpdb->activity_log . '`
-					WHERE `hist_time` < %d',
-				strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
+					WHERE `hist_time` < %d
+					LIMIT %d',
+				strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) ),
+				$batch_size
 			)
 		);
 	}
@@ -94,7 +104,23 @@ class AAL_API {
 	public function erase_all_items() {
 		global $wpdb;
 
+		$last_histid = (int) $wpdb->get_var( 'SELECT MAX(`histid`) FROM `' . $wpdb->activity_log . '`' );
+
 		$wpdb->query( 'TRUNCATE `' . $wpdb->activity_log . '`' );
+
+		if ( $last_histid > 0 ) {
+			// Keep IDs increasing so after_id pollers don't stall.
+			$wpdb->query( 'ALTER TABLE `' . $wpdb->activity_log . '` AUTO_INCREMENT = ' . ( $last_histid + 1 ) );
+		}
+
+		aal_insert_log(
+			array(
+				'action'         => 'erased',
+				'object_type'    => 'Options',
+				'object_name'    => 'erased',
+				'object_subtype' => 'Activity Log',
+			)
+		);
 	}
 
 	/**
@@ -116,6 +142,7 @@ class AAL_API {
 				'object_id'      => '',
 				'hist_ip'        => $this->_get_ip_address(),
 				'hist_time'      => current_time( 'timestamp' ),
+				'meta'           => array(),
 			)
 		);
 
@@ -124,34 +151,6 @@ class AAL_API {
 		$should_skip_insert = apply_filters( 'aal_skip_insert_log', false, $args );
 
 		if ( $should_skip_insert ) {
-			return;
-		}
-
-		// Make sure for non duplicate.
-		$check_duplicate = $wpdb->get_row(
-			$wpdb->prepare(
-				'SELECT `histid` FROM `' . $wpdb->activity_log . '`
-					WHERE `user_caps` = %s
-						AND `action` = %s
-						AND `object_type` = %s
-						AND `object_subtype` = %s
-						AND `object_name` = %s
-						AND `user_id` = %s
-						AND `hist_ip` = %s
-						AND `hist_time` = %s
-				;',
-				$args['user_caps'],
-				$args['action'],
-				$args['object_type'],
-				$args['object_subtype'],
-				$args['object_name'],
-				$args['user_id'],
-				$args['hist_ip'],
-				$args['hist_time']
-			)
-		);
-
-		if ( $check_duplicate ) {
 			return;
 		}
 
@@ -167,6 +166,7 @@ class AAL_API {
 			'hist_time'      => $args['hist_time'],
 		);
 		$formats = array( '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d' );
+		$meta_json = null;
 
 		if ( AAL_Maintenance::is_schema_ready( '1.1' ) ) {
 			$request_source = $this->resolve_request_source( $args );
@@ -174,12 +174,60 @@ class AAL_API {
 			$formats[] = '%s';
 			$args['request_source'] = $request_source;
 
-			$meta = $this->build_meta();
+			$meta = $this->build_meta( $args );
 			if ( null !== $meta ) {
-				$row['meta'] = wp_json_encode( $meta );
+				$meta_json = wp_json_encode( $meta, JSON_UNESCAPED_UNICODE );
+				$row['meta'] = $meta_json;
 				$formats[] = '%s';
 				$args['meta'] = $meta;
 			}
+		}
+
+		// Make sure for non duplicate.
+		// Check only the latest rows by primary key to avoid a full table scan on large tables.
+		$duplicate_columns = '`histid`, `user_caps`, `action`, `object_type`, `object_subtype`, `object_name`, `user_id`, `hist_ip`, `hist_time`';
+		$duplicate_meta_sql  = '';
+		$duplicate_args      = array(
+			$args['user_caps'],
+			$args['action'],
+			$args['object_type'],
+			$args['object_subtype'],
+			$args['object_name'],
+			$args['user_id'],
+			$args['hist_ip'],
+			$args['hist_time'],
+		);
+
+		if ( AAL_Maintenance::is_schema_ready( '1.1' ) ) {
+			$duplicate_columns .= ', `meta`';
+			$duplicate_meta_sql = ' AND COALESCE( `meta`, \'\' ) = %s';
+			$duplicate_args[]   = null === $meta_json ? '' : $meta_json;
+		}
+
+		$check_duplicate = $wpdb->get_row(
+			$wpdb->prepare(
+				'SELECT `histid` FROM (
+						SELECT ' . $duplicate_columns . '
+						FROM `' . $wpdb->activity_log . '`
+						ORDER BY `histid` DESC
+						LIMIT 20
+					) AS `recent`
+					WHERE `user_caps` = %s
+						AND `action` = %s
+						AND `object_type` = %s
+						AND `object_subtype` = %s
+						AND `object_name` = %s
+						AND `user_id` = %s
+						AND `hist_ip` = %s
+						AND `hist_time` = %s'
+				. $duplicate_meta_sql .
+				';',
+				...$duplicate_args
+			)
+		);
+
+		if ( $check_duplicate ) {
+			return;
 		}
 
 		$wpdb->insert( $wpdb->activity_log, $row, $formats );
@@ -195,7 +243,10 @@ class AAL_API {
 		}
 
 		if ( $user ) {
-			$args['user_caps'] = strtolower( key( $user->caps ) );
+			$args['user_caps'] = ! empty( $user->roles[0] )
+				? strtolower( $user->roles[0] )
+				: ( is_super_admin( $user->ID ) ? 'administrator' : 'guest' );
+
 			if ( empty( $args['user_id'] ) ) {
 				$args['user_id'] = $user->ID;
 			}
@@ -204,12 +255,6 @@ class AAL_API {
 			if ( empty( $args['user_id'] ) ) {
 				$args['user_id'] = 0;
 			}
-		}
-
-		// TODO: Find better way to Multisite compatibility.
-		// Fallback for multisite with bbPress
-		if ( empty( $args['user_caps'] ) || 'bbp_participant' === $args['user_caps'] ) {
-			$args['user_caps'] = 'administrator';
 		}
 
 		return $args;
@@ -301,8 +346,12 @@ class AAL_API {
 	/**
 	 * @return array|null Meta array or null if nothing to store.
 	 */
-	private function build_meta() {
+	private function build_meta( $args ) {
 		$meta = array();
+
+		if ( ! empty( $args['meta'] ) && is_array( $args['meta'] ) ) {
+			$meta = $args['meta'];
+		}
 
 		if ( ! empty( $this->ability_stack ) ) {
 			$meta['ability'] = end( $this->ability_stack );

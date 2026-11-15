@@ -200,6 +200,7 @@ class AAL_Maintenance {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only display notice after redirect.
 		$upgrade_result = isset( $_GET['aal_upgrade'] ) ? sanitize_key( $_GET['aal_upgrade'] ) : '';
 
 		if ( 'success' === $upgrade_result ) {
@@ -302,7 +303,7 @@ class AAL_Maintenance {
 		if ( $admin_role instanceof WP_Role && ! $admin_role->has_cap( 'view_all_aryo_activity_log' ) )
 			$admin_role->add_cap( 'view_all_aryo_activity_log' );
 		
-		update_option( 'activity_log_db_version', self::TARGET_DB_VERSION );
+		self::maybe_upgrade();
 	}
 
 	protected static function _remove_tables() {

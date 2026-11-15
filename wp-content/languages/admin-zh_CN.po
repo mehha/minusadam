@@ -190,67 +190,67 @@ msgctxt "label for responsive previews group"
 msgid "Responsive Views"
 msgstr "响应式视图"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:244
 msgid "WordPress 7.1 continues to polish accessibility across WordPress Core and Gutenberg, advancing the goals to meet accessibility standards. In this release, high impact changes include the new accessible tooltips API, improved predictability for screen readers, and improved labeling in many places in the admin. The editor adds extensive improvements to navigation and interaction."
 msgstr "WordPress 7.1 继续改进 WordPress 核心和 Gutenberg 的无障碍功能，进一步推进符合无障碍标准的目标。此版本的重要改进包括全新的无障碍工具提示 API、提升屏幕阅读器行为的可预测性，以及改善管理界面多处标签。编辑器的导航和交互也得到广泛改进。"
 
-#: wp-admin/about.php:170
+#: wp-admin/about.php:235
 msgid "Image compression, resizing, and thumbnail generation now happen in the browser, via a WebAssembly build of libvips, so large uploads won&#8217;t hit PHP memory limits or time out on shared hosts. This also frees up server CPU and memory, while producing smaller files for visitors. Media handling includes built-in support for AVIF, HEIC and HDR gain maps."
 msgstr "现在，图片压缩、调整大小和缩略图生成会通过 libvips 的 WebAssembly 构建在浏览器中完成，因此上传大型文件不会触及 PHP 内存限制，也不会在共享主机上超时。这还能释放服务器的 CPU 和内存，同时为访客生成更小的文件。媒体处理现已内置支持 AVIF、HEIC 和 HDR 增益图。"
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:234
 msgid "Improved media handling"
 msgstr "改进的媒体处理"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:219
 msgid "Notes now support rich text and @mentions. Add bold, italic, code, and links so feedback reads clearly. Type &#8220;@&#8221; to pull up a list of collaborators to tag the right person directly, with built-in email notifications. Leave a note on a specific text selection instead of an entire block. Start more than one conversation on the same block. Collapse long notes to keep the margin tidy."
 msgstr "批注现已支持富文本和 @提及。您可以添加粗体、斜体、代码和链接，让反馈更易阅读。输入「@」即可打开协作者列表，直接提及合适的人员，并通过内置邮件通知对方。您可以针对特定选中文本而非整个区块留下批注，也可以在同一区块中发起多个对话。折叠较长的批注可保持页边整洁。"
 
-#: wp-admin/about.php:153
+#: wp-admin/about.php:218
 msgid "More ways to leave feedback."
 msgstr "以更多方式留下反馈。"
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:216
 msgid "Inline notes with mentions and rich text"
 msgstr "支持提及和富文本的内嵌批注"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:199
 msgid "A new media editor modal replaces the old inline cropping tool, bringing freeform and aspect-ratio cropping, flip, precise rotation, and metadata editing together in a single streamlined workflow. The familiar Crop button still gets you there, now opening a dedicated space to crop, rotate, and adjust images before publishing."
 msgstr "全新的媒体编辑器模态窗取代了旧的内嵌裁剪工具，将自由裁剪、按宽高比裁剪、翻转、精确旋转和元数据编辑整合到一个精简流程中。熟悉的「裁剪」按钮仍是入口，但现在会打开专用界面，供您在发布前裁剪、旋转和调整图片。"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:198
 msgid "One dedicated workflow for editing your images."
 msgstr "一个用于编辑图片的专属工作流程。"
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:196
 msgid "A new way to crop"
 msgstr "全新的裁剪方式"
 
-#: wp-admin/about.php:124
+#: wp-admin/about.php:189
 msgid "The admin bar now stays with you across all editors, so you always know where you are. The admin bar also gets a small visual refresh."
 msgstr "管理工具栏如今会在所有编辑器中始终显示，让您随时知道自己所处的位置。管理工具栏的视觉样式也得到小幅更新。"
 
-#: wp-admin/about.php:123
+#: wp-admin/about.php:188
 msgid "Consistent navigation, from dashboard to editor."
 msgstr "从仪表盘到编辑器的一致导航。"
 
-#: wp-admin/about.php:121
+#: wp-admin/about.php:186
 msgid "Admin bar, now in every editor"
 msgstr "管理工具栏现已进入每个编辑器"
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:169
 msgid "WordPress 7.1 takes a major step toward built-in responsive design. Set how a block looks at different screen sizes directly in the editor, for both Global Styles and individual blocks, all without writing custom CSS."
 msgstr "WordPress 7.1 朝着内置响应式设计迈出重要一步。无需编写自定义 CSS，即可直接在编辑器中为全局样式和单个区块设置区块在不同屏幕尺寸下的外观。"
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:168
 msgid "Style content your way, on every screen."
 msgstr "在每种屏幕上，以您的方式设置内容样式。"
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:166
 msgid "Apply responsive styles"
 msgstr "应用响应式样式"
 
-#: wp-admin/about.php:95
+#: wp-admin/about.php:160
 msgid "WordPress 7.1 makes styling and collaborating easier. Style how all blocks look across screen sizes and how the Button block responds to hover, focus, and active states, all without writing custom CSS. A streamlined media editor brings cropping, rotation, and metadata editing together in one workflow. Notes now support rich text and @mentions, and the admin bar travels with you into every editor, so the tools you rely on stay with you wherever you&#8217;re working."
 msgstr "WordPress 7.1 让样式设置和协作更加轻松。无需编写自定义 CSS，即可设置所有区块在不同屏幕尺寸下的外观，以及按钮区块在悬停、焦点和激活状态下的响应方式。精简的媒体编辑器将裁剪、旋转和元数据编辑整合到一个工作流程中。批注现已支持富文本和 @提及，管理工具栏也会随您进入每个编辑器，让常用工具始终触手可及。"
 
@@ -780,12 +780,12 @@ msgid "Skip to Editor"
 msgstr "跳转到编辑器"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:339
 msgid "WordPress %s Field Guide"
 msgstr "WordPress %s 技术指南"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:247
+#: wp-admin/about.php:312
 msgid "WordPress %s Release Notes"
 msgstr "WordPress %s 发布说明"
 
@@ -944,7 +944,7 @@ msgstr "如果您是插件作者，可以了解更多有关<a href=\"https://dev
 msgid "If you are a plugin author, you can learn more about <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">how to add the Personal Data Eraser to a plugin</a>."
 msgstr "如果您是插件作者，可以了解更多有关<a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">如何将个人数据抹除器添加到插件</a>的信息。"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:265
 msgid "See everything new"
 msgstr "查看所有新内容"
 
@@ -954,11 +954,11 @@ msgid "https://wordpress.org/download/releases/%s/"
 msgstr "https://wordpress.org/download/releases/%s/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:192
+#: wp-admin/about.php:257
 msgid "For a comprehensive overview of all the new features and enhancements in WordPress %s, please visit the feature-showcase website."
 msgstr "要全面了解 WordPress %s 的所有新功能和改进项目，请访问功能展示网站。"
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:251
 msgid "And much more"
 msgstr "还有更多"
 
@@ -1160,12 +1160,12 @@ msgid "When using Bulk Edit, you can change the metadata (categories, author, et
 msgstr "使用批量编辑时，您可以一次性更改所有选定文章的元数据（类别、作者等）。要从分组中移除一篇文章，只需点击批量编辑区域中其名称旁边的 %s<span class=\"screen-reader-text\">移除</span>按钮即可。"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:257
+#: wp-admin/about.php:322
 msgid "Read the WordPress %s Release Notes for information on installation, enhancements, fixed issues, release contributors, learning resources, and the list of file changes."
 msgstr "请阅读 WordPress %s 发行说明，了解有关安装、增强功能、修复问题、发行贡献者、学习资源和文件更改列表的信息。"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:284
+#: wp-admin/about.php:349
 msgid "Explore the WordPress %s Field Guide. Learn about the changes in this release with detailed developer notes to help you build with WordPress."
 msgstr "探索 WordPress %s 技术指南。 通过详细的开发人员说明了解此版本中的更改，以帮助您使用 WordPress 进行构建。"
 
@@ -1648,7 +1648,7 @@ msgid "Be the future of WordPress"
 msgstr "成为 WordPress 的未来"
 
 #. translators: 1: Learn WordPress link, 2: Workshops link.
-#: wp-admin/about.php:225
+#: wp-admin/about.php:290
 msgid "<a href=\"%1$s\">Learn WordPress</a> is a free resource for new and experienced WordPress users. Learn is stocked with how-to videos on using various features in WordPress, <a href=\"%2$s\">interactive workshops</a> for exploring topics in-depth, and lesson plans for diving deep into specific areas of WordPress."
 msgstr "<a href=\"%1$s\">学习 WordPress</a> 是为 WordPress 新用户和经验丰富的用户提供的免费资源。学习包含有关使用 WordPress 中的各种功能的操作视频、用于深入探索主题的<a href=\"%2$s\">互动活动</a>以及用于深入了解 WordPress 特定领域的课程计划。"
 
@@ -1794,12 +1794,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">定制器文档</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:365
+#: wp-admin/about.php:430
 msgid "https://wordpress.org/download/"
 msgstr "https://cn.wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:362
+#: wp-admin/about.php:427
 msgid "This is the final release of WordPress %s"
 msgstr "这是 WordPress %s 的最终版本"
 
@@ -2118,12 +2118,12 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "联系 WordPress 核心开发人员以确保您不会再遇到这个问题。"
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:359
+#: wp-admin/about.php:424
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "重要！您使用的 WordPress 版本（%1$s）即将停止接收安全更新。 为了确保您站点的安全，请尽快 <a href=\"%2$s\">更新到最新的 WordPress 版本</a>。"
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:356
+#: wp-admin/about.php:421
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "重要！您使用的 WordPress 版本（%1$s）已不再受到支持，您的站点将不会再接收到任何的安全更新。 为了确保您站点的安全，请尽快 <a href=\"%2$s\">更新到最新的 WordPress 版本</a>。"
 
@@ -2133,7 +2133,7 @@ msgid "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 msgstr "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:216
+#: wp-admin/about.php:281
 msgid "Learn more about WordPress %s"
 msgstr "了解 WordPress %s"
 
@@ -3024,7 +3024,7 @@ msgstr "添加应用程序密码"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "此功能需要创建应用程序密码，但不需要更新用户信息。"
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Updates"
 msgstr "转到「更新」页面"
 
@@ -6109,9 +6109,10 @@ msgstr "此插件不适用于您的 WordPress 和 PHP 版本。"
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:21 wp-admin/about.php:83 wp-admin/includes/update.php:321
-#: wp-admin/index.php:119 wp-admin/install.php:242 wp-admin/update-core.php:94
-#: wp-admin/upgrade.php:96
+#: wp-admin/about.php:21 wp-admin/about.php:78 wp-admin/about.php:103
+#: wp-admin/about.php:123 wp-admin/about.php:148
+#: wp-admin/includes/update.php:321 wp-admin/index.php:119
+#: wp-admin/install.php:242 wp-admin/update-core.php:94 wp-admin/upgrade.php:96
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/documentation/wordpress-version/version-%s/"
 
@@ -8350,8 +8351,9 @@ msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "（当前设置为：%s）"
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:330
+#: wp-admin/about.php:113 wp-admin/about.php:395
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>版本 %s</strong>修正了一个安全问题。"
 
@@ -8364,15 +8366,15 @@ msgstr "https://cn.gravatar.com/"
 msgid "Profile Picture"
 msgstr "资料图片"
 
-#: wp-admin/about.php:63 wp-admin/about.php:327
+#: wp-admin/about.php:63 wp-admin/about.php:392
 msgid "Maintenance and Security Releases"
 msgstr "维护和安全更新"
 
-#: wp-admin/about.php:324
+#: wp-admin/about.php:389
 msgid "Security Releases"
 msgstr "安全更新"
 
-#: wp-admin/about.php:321
+#: wp-admin/about.php:386
 msgid "Maintenance Releases"
 msgstr "维护更新"
 
@@ -9987,8 +9989,8 @@ msgstr "您位于 %1$s 的站点在更新至到 WordPress %2$s 的过程中遇�
 msgid "WordPress %s is also now available."
 msgstr "WordPress %s 也已可用。"
 
-#: wp-admin/includes/update-core.php:1619
-#: wp-admin/includes/update-core.php:1655
+#: wp-admin/includes/update-core.php:1620
+#: wp-admin/includes/update-core.php:1656
 msgid "The update cannot be installed because your site is unable to copy some files. This is usually due to inconsistent file permissions."
 msgstr "因为不能复制一些文件，更新无法安装。这通常是因为存在不正确的文件权限。"
 
@@ -10103,7 +10105,7 @@ msgstr "更新翻译"
 msgid "Background updates"
 msgstr "后台更新"
 
-#: wp-admin/includes/update-core.php:1722
+#: wp-admin/includes/update-core.php:1723
 msgid "There is not enough free disk space to complete the update."
 msgstr "磁盘空间不足，无法执行更新。"
 
@@ -10181,7 +10183,7 @@ msgstr "您提供的用户名包含非法字符。"
 msgid "Please provide a valid username."
 msgstr "请提供有效的用户名。"
 
-#: wp-admin/includes/update-core.php:1636
+#: wp-admin/includes/update-core.php:1637
 msgid "Copying the required files&#8230;"
 msgstr "正在复制所需的文件&#8230;"
 
@@ -10858,7 +10860,7 @@ msgid "Search engine visibility"
 msgstr "对搜索引擎的可见性"
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2024 wp-admin/update-core.php:923
+#: wp-admin/includes/update-core.php:2025 wp-admin/update-core.php:923
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
 msgstr "欢迎使用 WordPress %1$s。我们将带您到「关于 WordPress」页面。如果没有自动跳转，请<a href=\"%2$s\">点击这里</a>。"
 
@@ -11568,44 +11570,47 @@ msgstr "在浏览站点时显示工具栏"
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:80 wp-admin/about.php:353
+#: wp-admin/about.php:75 wp-admin/about.php:100 wp-admin/about.php:120
+#: wp-admin/about.php:145 wp-admin/about.php:418
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "欲了解更多，参见<a href=\"%s\">发行注记</a>。"
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:68 wp-admin/about.php:347
+#: wp-admin/about.php:88 wp-admin/about.php:133 wp-admin/about.php:412
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修补了安全漏洞、修正了 %2$s 个问题。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:341
+#: wp-admin/about.php:406
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修补了安全漏洞、修正了 %2$s 个问题。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:335
+#: wp-admin/about.php:400
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>%1$s 版本</strong>修复了 %2$s 个问题。"
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:332
+#: wp-admin/about.php:68 wp-admin/about.php:397
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>版本 %s</strong> 修正了一些安全问题。"
 
-#: wp-admin/about.php:326
+#: wp-admin/about.php:391
 msgid "Maintenance and Security Release"
 msgstr "维护和安全更新"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:388
 msgid "Security Release"
 msgstr "安全更新"
 
-#: wp-admin/about.php:320
+#: wp-admin/about.php:385
 msgid "Maintenance Release"
 msgstr "维护更新"
 
@@ -11619,7 +11624,7 @@ msgid "This screen allows you to choose your permalink structure. You can choose
 msgstr "此界面可以让您选择您的固定链接结构。您可以选择常见的设置或建立自定义 URL 结构。"
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2032 wp-admin/update-core.php:931
+#: wp-admin/includes/update-core.php:2033 wp-admin/update-core.php:931
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "欢迎使用 WordPress %1$s。<a href=\"%2$s\">了解更多</a>。"
 
@@ -11878,15 +11883,15 @@ msgstr "点击<strong>编辑</strong>可在编辑器中编辑该文章。直接�
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "由于当前多站点功能已经开启，您可以直接通过输入用户名或邮箱地址的方式将站点网络中的现有用户添加到站点中，然后为其指定用户角色。如需修改密码等其他信息，您需要拥有网络管理员的权限，访问「管理网络」>「所有用户」，然后将鼠标放置在用户名上方，点击出现的「编辑」链接。"
 
-#: wp-admin/about.php:94
+#: wp-admin/about.php:159
 msgid "Welcome to WordPress 7.1"
 msgstr "欢迎使用 WordPress 7.1"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard &rarr; Home"
 msgstr "转到「仪表盘」 &rarr; 「首页」页面"
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "转到「仪表盘」 &rarr; 「更新」页面"
 
@@ -13530,7 +13535,7 @@ msgid "User already exists. Password inherited."
 msgstr "用户已存在。密码保持不变。"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:529
-#: wp-admin/includes/update-core.php:2018 wp-admin/update-core.php:919
+#: wp-admin/includes/update-core.php:2019 wp-admin/update-core.php:919
 msgid "WordPress updated successfully."
 msgstr "WordPress 升级成功。"
 
@@ -13559,7 +13564,7 @@ msgstr "WordPress 更新"
 msgid "Edit menu item"
 msgstr "编辑菜单项"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard"
 msgstr "转到「仪表盘」页面"
 
@@ -14623,7 +14628,7 @@ msgstr "更新到 %s"
 msgid "You are using a development version (%1$s). Cool! Please <a href=\"%2$s\">stay updated</a>."
 msgstr "您在使用开发版本（%1$s）。太棒了，请<a href=\"%2$s\">保持更新</a>。"
 
-#: wp-admin/includes/update-core.php:1891
+#: wp-admin/includes/update-core.php:1892
 msgid "Upgrading database&#8230;"
 msgstr "正在升级数据库&#8230;"
 
@@ -15477,7 +15482,7 @@ msgid "Empty archive."
 msgstr "压缩文件为空。"
 
 #: wp-admin/includes/file.php:1836 wp-admin/includes/file.php:1995
-#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1829
+#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1830
 msgid "Could not copy file."
 msgstr "无法复制文件。"
 
@@ -15782,12 +15787,12 @@ msgid "The plugin is at the latest version."
 msgstr "插件已是最新版。"
 
 #: wp-admin/includes/class-wp-upgrader.php:210
-#: wp-admin/includes/update-core.php:1776
+#: wp-admin/includes/update-core.php:1777
 msgid "Disabling Maintenance mode&#8230;"
 msgstr "正在停用维护模式&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:209
-#: wp-admin/includes/update-core.php:1627
+#: wp-admin/includes/update-core.php:1628
 msgid "Enabling Maintenance mode&#8230;"
 msgstr "正在启用维护模式&#8230;"
 

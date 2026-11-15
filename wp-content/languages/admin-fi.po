@@ -190,67 +190,67 @@ msgctxt "label for responsive previews group"
 msgid "Responsive Views"
 msgstr "Responsiiviset näkymät"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:244
 msgid "WordPress 7.1 continues to polish accessibility across WordPress Core and Gutenberg, advancing the goals to meet accessibility standards. In this release, high impact changes include the new accessible tooltips API, improved predictability for screen readers, and improved labeling in many places in the admin. The editor adds extensive improvements to navigation and interaction."
 msgstr "WordPress 7.1 jatkaa saavutettavuuden parantamista sekä WordPressin ytimessä että Gutenbergissa ja edistää tavoitteita saavutettavuusstandardien täyttämiseksi. Tässä julkaisussa merkittävimpiä muutoksia ovat uusi saavutettava vihjetekstien rajapinta, näytönlukijoiden ennustettavuuden parantaminen sekä hallintapaneelin monien osien nimitysten parantaminen. Editoriin on lisätty laajoja parannuksia navigointiin ja vuorovaikutukseen."
 
-#: wp-admin/about.php:170
+#: wp-admin/about.php:235
 msgid "Image compression, resizing, and thumbnail generation now happen in the browser, via a WebAssembly build of libvips, so large uploads won&#8217;t hit PHP memory limits or time out on shared hosts. This also frees up server CPU and memory, while producing smaller files for visitors. Media handling includes built-in support for AVIF, HEIC and HDR gain maps."
 msgstr "Kuvien pakkaus, koon muuttaminen ja pikkukuvien luominen tapahtuvat nyt selaimessa libvips-kirjaston WebAssembly-version avulla, joten suuret tiedostot eivät enää ylitä PHP:n muistirajoja tai aiheuta aikakatkaisuja jaetuissa palvelimissa. Tämä vapauttaa myös palvelimen prosessoritehoa ja muistia sekä tuottaa kävijöille pienempiä tiedostoja. Mediakäsittely sisältää sisäänrakennetun tuen AVIF-, HEIC- ja HDR-muodoille."
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:234
 msgid "Improved media handling"
 msgstr "Parannettu mediatiedostojen käsittely"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:219
 msgid "Notes now support rich text and @mentions. Add bold, italic, code, and links so feedback reads clearly. Type &#8220;@&#8221; to pull up a list of collaborators to tag the right person directly, with built-in email notifications. Leave a note on a specific text selection instead of an entire block. Start more than one conversation on the same block. Collapse long notes to keep the margin tidy."
 msgstr "Muistiinpanoissa tuetaan nyt muotoiltua tekstiä ja @-mainintoja. Lisää lihavointia, kursivointia, koodia ja linkkejä, jotta palaute on selkeästi luettavissa. Kirjoita ”@”, niin saat esiin luettelon sivuston käyttäjistä, joista voit merkitä suoraan oikean henkilön. Järjestelmä lähettää automaattisesti sähköposti-ilmoituksen. Jätä muistiinpano tiettyyn tekstiosaan koko kappaleen sijaan. Aloita useampi kuin yksi keskustelu samassa kappaleessa. Piilota pitkät muistiinpanot, jotta editorin reuna pysyy siistinä."
 
-#: wp-admin/about.php:153
+#: wp-admin/about.php:218
 msgid "More ways to leave feedback."
 msgstr "Lisää tapoja antaa palautetta."
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:216
 msgid "Inline notes with mentions and rich text"
 msgstr "Tekstiin upotetut huomautukset, joissa on mainittuja käyttäjiä ja muotoiltua tekstiä"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:199
 msgid "A new media editor modal replaces the old inline cropping tool, bringing freeform and aspect-ratio cropping, flip, precise rotation, and metadata editing together in a single streamlined workflow. The familiar Crop button still gets you there, now opening a dedicated space to crop, rotate, and adjust images before publishing."
 msgstr "Uusi mediaeditorin modaalinäkymä korvaa vanhan suoraan sisällössä käytettävän rajauksen ja yhdistää vapaamuotoisen ja kuvasuhteeseen perustuvan rajauksen, peilauksen, tarkan kiertämisen sekä metatietojen muokkauksen samaan sujuvaan työnkulkuun. Tuttua ”Rajaa”-painikketta klikkaamalla pääset edelleen samaan toimintoon, mutta nyt se avaa erillisen alueen, jossa voit rajata, kiertää ja säätää kuvia ennen niiden julkaisemista."
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:198
 msgid "One dedicated workflow for editing your images."
 msgstr "Yksi kattava työnkulku kuvien muokkaamiseen."
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:196
 msgid "A new way to crop"
 msgstr "Uusi tapa rajata"
 
-#: wp-admin/about.php:124
+#: wp-admin/about.php:189
 msgid "The admin bar now stays with you across all editors, so you always know where you are. The admin bar also gets a small visual refresh."
 msgstr "Hallintapalkki näkyy nyt kaikissa muokkausnäkymissä, joten tiedät aina, missä olet. Hallintapalkkiin on myös tehty pieni ulkoasun päivitys."
 
-#: wp-admin/about.php:123
+#: wp-admin/about.php:188
 msgid "Consistent navigation, from dashboard to editor."
 msgstr "Yhtenäinen navigointi hallintapaneelista editoriin."
 
-#: wp-admin/about.php:121
+#: wp-admin/about.php:186
 msgid "Admin bar, now in every editor"
 msgstr "Hallintapalkki, nyt jokaisessa editorissa"
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:169
 msgid "WordPress 7.1 takes a major step toward built-in responsive design. Set how a block looks at different screen sizes directly in the editor, for both Global Styles and individual blocks, all without writing custom CSS."
 msgstr "WordPress 7.1 on ottanut merkittävän askeleen kohti sisäänrakennettua responsiivista suunnittelua. Voit määrittää suoraan editorissa, miltä lohko näyttää eri näytöillä sekä yleisten tyylien että yksittäisten lohkojen osalta ilman, että sinun tarvitsee kirjoittaa mukautettua CSS-koodia."
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:168
 msgid "Style content your way, on every screen."
 msgstr "Muokkaa sisältöä omalla tyylilläsi, millä tahansa näytöllä."
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:166
 msgid "Apply responsive styles"
 msgstr "Käytä responsiivisia tyylejä"
 
-#: wp-admin/about.php:95
+#: wp-admin/about.php:160
 msgid "WordPress 7.1 makes styling and collaborating easier. Style how all blocks look across screen sizes and how the Button block responds to hover, focus, and active states, all without writing custom CSS. A streamlined media editor brings cropping, rotation, and metadata editing together in one workflow. Notes now support rich text and @mentions, and the admin bar travels with you into every editor, so the tools you rely on stay with you wherever you&#8217;re working."
 msgstr "WordPress 7.1 helpottaa ulkoasun muokkaamista ja yhteistyötä. Voit määrittää kaikkien lohkojen ulkoasun eri näytökoissa sekä Painike-lohkon käyttäytymisen hiiren osoittamisen, kohdistamisen ja aktiivisen tilan yhteydessä ilman, että sinun tarvitsee kirjoittaa omaa CSS-koodia. Uudistettu mediaeditori yhdistää kuvien rajaamisen, kiertämisen ja metatietojen muokkaamisen yhdeksi työnkuluksi. Muistiinpanot tukevat nyt rikasta tekstiä ja @-mainintoja, ja hallintapalkki seuraa sinua jokaiseen editoriin, joten luotettavat työkalusi ovat käytettävissäsi missä tahansa työskenteletkin."
 
@@ -782,12 +782,12 @@ msgid "Skip to Editor"
 msgstr "Siirry editoriin"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:339
 msgid "WordPress %s Field Guide"
 msgstr "WordPress %s -kenttäopas"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:247
+#: wp-admin/about.php:312
 msgid "WordPress %s Release Notes"
 msgstr "WordPress %s -julkaisuhuomiot"
 
@@ -946,7 +946,7 @@ msgstr "Jos olet lisäosien kehittäjä, voit lukea <a href=\"https://developer.
 msgid "If you are a plugin author, you can learn more about <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">how to add the Personal Data Eraser to a plugin</a>."
 msgstr "Jos olet lisäosien kehittäjä, voit lukea <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">miten voit lisätä henkilötietojen poistajan (Personal Data Eraser) lisäosaasi</a>."
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:265
 msgid "See everything new"
 msgstr "Näytä kaikki uutuudet"
 
@@ -956,11 +956,11 @@ msgid "https://wordpress.org/download/releases/%s/"
 msgstr "https://wordpress.org/download/releases/%s/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:192
+#: wp-admin/about.php:257
 msgid "For a comprehensive overview of all the new features and enhancements in WordPress %s, please visit the feature-showcase website."
 msgstr "Saat kattavan yleiskatsauksen kaikista WordPress %s:n uusista ominaisuuksista ja parannuksista vierailemalla esittelysivustolla."
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:251
 msgid "And much more"
 msgstr "Ja paljon muuta"
 
@@ -1166,12 +1166,12 @@ msgid "When using Bulk Edit, you can change the metadata (categories, author, et
 msgstr "Massatoiminnolla voi muokata kerralla kaikkien valittujen artikkeleiden metadataa (kategoriat, kirjoittaja, jne.). Artikkelin voi poistaa ryhmästä painamalla %s<span class=\"screen-reader-text\">poista</span>-painiketta artikkelin nimen vieressä kun massamuokkaus-alue näkyy."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:257
+#: wp-admin/about.php:322
 msgid "Read the WordPress %s Release Notes for information on installation, enhancements, fixed issues, release contributors, learning resources, and the list of file changes."
 msgstr "Lue WordPressin %s muutosloki saadaksesi tietoa asennuksesta, parannuksista, korjatuista ongelmista, julkaisun avustajista, oppimisresursseista ja tiedostomuutoksista."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:284
+#: wp-admin/about.php:349
 msgid "Explore the WordPress %s Field Guide. Learn about the changes in this release with detailed developer notes to help you build with WordPress."
 msgstr "Tutustu WordPressin %s kenttäoppaaseen. Opi lisää tämän julkaisun muutoksista kehittäjän huomioiden avulla, jotka auttavat sinua rakentamaan WordPressilla."
 
@@ -1654,7 +1654,7 @@ msgid "Be the future of WordPress"
 msgstr "Ole WordPressin tulevaisuus"
 
 #. translators: 1: Learn WordPress link, 2: Workshops link.
-#: wp-admin/about.php:225
+#: wp-admin/about.php:290
 msgid "<a href=\"%1$s\">Learn WordPress</a> is a free resource for new and experienced WordPress users. Learn is stocked with how-to videos on using various features in WordPress, <a href=\"%2$s\">interactive workshops</a> for exploring topics in-depth, and lesson plans for diving deep into specific areas of WordPress."
 msgstr "<a href=\"%1$s\">Learn WordPress</a> on ilmainen resurssi uusille ja kokeneille WordPress-käyttäjille. Se on täynnä opastusvideoita WordPressin eri ominaisuuksien käytöstä, <a href=\"%2$s\">interaktiivisia työpajoja</a> aiheiden syvälliseen tutkimiseen ja oppituntisuunnitelmia, joilla voi sukeltaa syvälle WordPressin tiettyihin alueisiin."
 
@@ -1800,12 +1800,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentaatio mukauttimesta</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:365
+#: wp-admin/about.php:430
 msgid "https://wordpress.org/download/"
 msgstr "https://wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:362
+#: wp-admin/about.php:427
 msgid "This is the final release of WordPress %s"
 msgstr "Tämä on viimeinen julkaisu WordPress-versiosta %s"
 
@@ -2125,12 +2125,12 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "Ota yhteyttä WordPressin ytimen kehittäjiin varmistaaksesi, ettet kohtaa enää tätä ongelmaa."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:359
+#: wp-admin/about.php:424
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Tärkeää! Käyttämäsi WordPress-version (%1$s) tietoturvapäivitykset päättyvät lähitulevaisuudessa. Voit pitää sivustosi turvassa <a href=\"%2$s\">päivittämällä sen viimeisimpään WordPress-versioon</a>."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:356
+#: wp-admin/about.php:421
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "Tärkeää! Käyttämääsi WordPress-versiota (%1$s) ei enää tueta, jolloin sille ei julkaista enää tietoturvapäivityksiä. Voit pitää sivustosi turvassa <a href=\"%2$s\">päivittämällä sen viimeisimpään WordPress-versioon</a>."
 
@@ -2140,7 +2140,7 @@ msgid "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 msgstr "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:216
+#: wp-admin/about.php:281
 msgid "Learn more about WordPress %s"
 msgstr "Opi lisää WordPressin versiosta %s"
 
@@ -3035,7 +3035,7 @@ msgstr "Lisää sovellussalasana"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Vaaditaan sovellussalasanan luomiseksi, muttei käyttäjän päivittämiseksi."
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Updates"
 msgstr "Takaisin päivityksiin"
 
@@ -6140,9 +6140,10 @@ msgstr "Tämä lisäosa ei toimi käytössä olevien WordPress- ja PHP-versioide
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:21 wp-admin/about.php:83 wp-admin/includes/update.php:321
-#: wp-admin/index.php:119 wp-admin/install.php:242 wp-admin/update-core.php:94
-#: wp-admin/upgrade.php:96
+#: wp-admin/about.php:21 wp-admin/about.php:78 wp-admin/about.php:103
+#: wp-admin/about.php:123 wp-admin/about.php:148
+#: wp-admin/includes/update.php:321 wp-admin/index.php:119
+#: wp-admin/install.php:242 wp-admin/update-core.php:94 wp-admin/upgrade.php:96
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/documentation/wordpress-version/version-%s/"
 
@@ -8391,8 +8392,9 @@ msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "(Tämänhetkinen asetus: %s)"
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:330
+#: wp-admin/about.php:113 wp-admin/about.php:395
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Versio %s</strong> paikkasi yhden tietoturva-aukon."
 
@@ -8405,15 +8407,15 @@ msgstr "https://fi.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profiilikuva"
 
-#: wp-admin/about.php:63 wp-admin/about.php:327
+#: wp-admin/about.php:63 wp-admin/about.php:392
 msgid "Maintenance and Security Releases"
 msgstr "Ylläpito- ja tietoturvapäivitykset"
 
-#: wp-admin/about.php:324
+#: wp-admin/about.php:389
 msgid "Security Releases"
 msgstr "Tietoturvapäivitykset"
 
-#: wp-admin/about.php:321
+#: wp-admin/about.php:386
 msgid "Maintenance Releases"
 msgstr "Ylläpitopäivitykset"
 
@@ -10047,8 +10049,8 @@ msgstr "Sivustollasi osoitteessa %1$s tapahtui kriittinen virhe yrittäessä pä
 msgid "WordPress %s is also now available."
 msgstr "WordPress %s on myös saatavilla."
 
-#: wp-admin/includes/update-core.php:1619
-#: wp-admin/includes/update-core.php:1655
+#: wp-admin/includes/update-core.php:1620
+#: wp-admin/includes/update-core.php:1656
 msgid "The update cannot be installed because your site is unable to copy some files. This is usually due to inconsistent file permissions."
 msgstr "Päivitystä ei voitu asentaa, koska sivustosi ei voi kopioida joitakin tiedostoja. Tämä johtuu yleensä virheellisistä tiedosto-oikeuksista."
 
@@ -10163,7 +10165,7 @@ msgstr "Päivitä käännökset"
 msgid "Background updates"
 msgstr "Taustapäivitykset"
 
-#: wp-admin/includes/update-core.php:1722
+#: wp-admin/includes/update-core.php:1723
 msgid "There is not enough free disk space to complete the update."
 msgstr "Levytila ei riitä päivityksen suorittamiseen."
 
@@ -10241,7 +10243,7 @@ msgstr "Syöttämässäsi käyttäjätunnuksessa on merkkejä, jotka eivät kelp
 msgid "Please provide a valid username."
 msgstr "Anna hyväksyttävä käyttäjätunnus."
 
-#: wp-admin/includes/update-core.php:1636
+#: wp-admin/includes/update-core.php:1637
 msgid "Copying the required files&#8230;"
 msgstr "Kopioidaan vaadittavia tiedostoja&#8230;"
 
@@ -10927,7 +10929,7 @@ msgid "Search engine visibility"
 msgstr "Hakukonenäkyvyys"
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2024 wp-admin/update-core.php:923
+#: wp-admin/includes/update-core.php:2025 wp-admin/update-core.php:923
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
 msgstr "Tervetuloa WordPress-versioon %1$s. Sinut ohjataan Tietoa WordPressistä-sivulle. Jos ohjaus ei toimi, <a href=\"%2$s\">napsauta tästä</a>."
 
@@ -11638,13 +11640,15 @@ msgstr "Näytä työkalupalkki kun tarkastelet sivustoa"
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:80 wp-admin/about.php:353
+#: wp-admin/about.php:75 wp-admin/about.php:100 wp-admin/about.php:120
+#: wp-admin/about.php:145 wp-admin/about.php:418
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "<a href=\"%s\">Lisätietoja tästä päivityksestä</a>."
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:68 wp-admin/about.php:347
+#: wp-admin/about.php:88 wp-admin/about.php:133 wp-admin/about.php:412
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Versio %1$s</strong> paikkasi joitakin tietoturva-aukkoja ja korjasi %2$s bugin."
@@ -11652,33 +11656,34 @@ msgstr[1] "<strong>Versio %1$s</strong> paikkasi joitakin tietoturva-aukkoja ja 
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:341
+#: wp-admin/about.php:406
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Versio %1$s</strong> paikkasi tietoturva-aukon ja korjasi %2$s bugin."
 msgstr[1] "<strong>Versio %1$s</strong> paikkasi tietoturva-aukon ja korjasi %2$s bugia."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:335
+#: wp-admin/about.php:400
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Versio %1$s</strong> korjasi %2$s bugin."
 msgstr[1] "<strong>Versio %1$s</strong> korjasi %2$s bugia."
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:332
+#: wp-admin/about.php:68 wp-admin/about.php:397
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Versio %s</strong> paikkasi tietoturva-aukon."
 
-#: wp-admin/about.php:326
+#: wp-admin/about.php:391
 msgid "Maintenance and Security Release"
 msgstr "Huolto- ja tietoturvapäivitys"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:388
 msgid "Security Release"
 msgstr "Tietoturvapäivitys"
 
-#: wp-admin/about.php:320
+#: wp-admin/about.php:385
 msgid "Maintenance Release"
 msgstr "Huoltopäivitys"
 
@@ -11692,7 +11697,7 @@ msgid "This screen allows you to choose your permalink structure. You can choose
 msgstr "Tällä ruudulla pystyt valitsemaan kestolinkin rakenteen. Voit valita joko vakioasetukset tai luoda oman URL-rakenteen."
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2032 wp-admin/update-core.php:931
+#: wp-admin/includes/update-core.php:2033 wp-admin/update-core.php:931
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Tervetuloa käyttämään WordPressin versiota %1$s. <a href=\"%2$s\">Lue lisää</a>."
 
@@ -11951,15 +11956,15 @@ msgstr "<strong>Muokkaa</strong> vie sinut kyseisen artikkelin muokkausnäkymä�
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "Koska tämä on multisite-asennus, voit lisätä jo olemassaolevia tilejä antamalla käyttäjätunnuksen tai sähköpostin ja määrittämällä käyttäjälle roolin tälle sivustolle. Muiden käyttäjäasetusten (kuten käyttäjän salasanan) muokkaamiseksi tarvitset järjestelmänvalvojan oikeudet."
 
-#: wp-admin/about.php:94
+#: wp-admin/about.php:159
 msgid "Welcome to WordPress 7.1"
 msgstr "Tervetuloa käyttämään WordPress-versiota 7.1"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Mene ohjausnäkymän etusivulle"
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Siirry sivulle Ohjauspaneeli &rarr; Päivitykset"
 
@@ -13614,7 +13619,7 @@ msgid "User already exists. Password inherited."
 msgstr "Käyttäjä on jo olemassa. Salasana periytyy."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:529
-#: wp-admin/includes/update-core.php:2018 wp-admin/update-core.php:919
+#: wp-admin/includes/update-core.php:2019 wp-admin/update-core.php:919
 msgid "WordPress updated successfully."
 msgstr "WordPressin päivitys onnistui."
 
@@ -13643,7 +13648,7 @@ msgstr "WordPressin päivitykset"
 msgid "Edit menu item"
 msgstr "Muokkaa valikon kohtaa"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard"
 msgstr "Palaa Ohjausnäkymä-sivulle"
 
@@ -14712,7 +14717,7 @@ msgstr "Päivitä versioon %s"
 msgid "You are using a development version (%1$s). Cool! Please <a href=\"%2$s\">stay updated</a>."
 msgstr "Käytät WordPressin kehitysversiota %1$s. Hienoa! Pysy <a href=\"%2$s\">ajan tasalla</a>."
 
-#: wp-admin/includes/update-core.php:1891
+#: wp-admin/includes/update-core.php:1892
 msgid "Upgrading database&#8230;"
 msgstr "Päivitetään tietokantaa&#8230;"
 
@@ -15565,7 +15570,7 @@ msgid "Empty archive."
 msgstr "Arkisto on tyhjä"
 
 #: wp-admin/includes/file.php:1836 wp-admin/includes/file.php:1995
-#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1829
+#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1830
 msgid "Could not copy file."
 msgstr "Tiedoston kopiointi epäonnistui"
 
@@ -15870,12 +15875,12 @@ msgid "The plugin is at the latest version."
 msgstr "Käytät lisäosan viimeisintä versiota."
 
 #: wp-admin/includes/class-wp-upgrader.php:210
-#: wp-admin/includes/update-core.php:1776
+#: wp-admin/includes/update-core.php:1777
 msgid "Disabling Maintenance mode&#8230;"
 msgstr "Poistetaan käytöstä ylläpitotila&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:209
-#: wp-admin/includes/update-core.php:1627
+#: wp-admin/includes/update-core.php:1628
 msgid "Enabling Maintenance mode&#8230;"
 msgstr "Otetaan käyttöön ylläpitotila&#8230;"
 

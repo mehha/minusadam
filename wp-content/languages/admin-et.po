@@ -190,67 +190,67 @@ msgctxt "label for responsive previews group"
 msgid "Responsive Views"
 msgstr "Reageerivad vaated"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:244
 msgid "WordPress 7.1 continues to polish accessibility across WordPress Core and Gutenberg, advancing the goals to meet accessibility standards. In this release, high impact changes include the new accessible tooltips API, improved predictability for screen readers, and improved labeling in many places in the admin. The editor adds extensive improvements to navigation and interaction."
 msgstr "WordPress 7.1 jätkab ligipääsetavuse täiustamist WordPressi tuumas ja Gutenbergis, edendades eesmärke ligipääsetavusstandardite täitmiseks. Selles väljalaskes hõlmavad suure mõjuga muudatused uut ligipääsetavate kohtspikrite API-t, ekraanilugejate paremat ennustatavust ning paljudes haldusliidese kohtades täiustatud sildistamist. Redaktor lisab ulatuslikke täiustusi navigeerimisse ja suhtlusse."
 
-#: wp-admin/about.php:170
+#: wp-admin/about.php:235
 msgid "Image compression, resizing, and thumbnail generation now happen in the browser, via a WebAssembly build of libvips, so large uploads won&#8217;t hit PHP memory limits or time out on shared hosts. This also frees up server CPU and memory, while producing smaller files for visitors. Media handling includes built-in support for AVIF, HEIC and HDR gain maps."
 msgstr "Pildi tihendamine, suuruse muutmine ja pisipiltide genereerimine toimub nüüd brauseris WebAssembly abil loodud libvipsi versiooni kaudu, seega ei ületa suured üleslaadimised PHP mälupiiranguid ega aegu jagatud majutustes. See vabastab ka serveri protsessorit ja mälu, luues samal ajal külastajatele väiksemaid faile. Meedia käsitlemine sisaldab sisseehitatud tuge AVIF-i, HEIC-i ja HDR-i võimenduskaartide jaoks."
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:234
 msgid "Improved media handling"
 msgstr "Täiustatud meediahaldus"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:219
 msgid "Notes now support rich text and @mentions. Add bold, italic, code, and links so feedback reads clearly. Type &#8220;@&#8221; to pull up a list of collaborators to tag the right person directly, with built-in email notifications. Leave a note on a specific text selection instead of an entire block. Start more than one conversation on the same block. Collapse long notes to keep the margin tidy."
 msgstr "Märkmed toetavad nüüd vormindatud teksti ja @mainimisi. Lisa paksu kirja, kursiivi, koodi ja linke, et tagasiside oleks selgelt loetav. Sisesta „@“, et avada koostööpartnerite loend ja märkida otse õige inimene koos sisseehitatud e-posti teavitustega. Jäta märge konkreetse tekstivaliku, mitte terve ploki kohta. Alusta samal plokil rohkem kui üht vestlust. Ahenda pikad märkmed, et hoida veeris korras."
 
-#: wp-admin/about.php:153
+#: wp-admin/about.php:218
 msgid "More ways to leave feedback."
 msgstr "Rohkem viise tagasiside jätmiseks."
 
-#: wp-admin/about.php:151
+#: wp-admin/about.php:216
 msgid "Inline notes with mentions and rich text"
 msgstr "Reasisesed märkmed mainimiste ja rikastekstiga"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:199
 msgid "A new media editor modal replaces the old inline cropping tool, bringing freeform and aspect-ratio cropping, flip, precise rotation, and metadata editing together in a single streamlined workflow. The familiar Crop button still gets you there, now opening a dedicated space to crop, rotate, and adjust images before publishing."
 msgstr "Uus meediaredaktori modaalaken asendab vana reasisese kärpimistööriista, tuues vabakujulise ja küljesuhtega kärpimise, ümberpööramise, täpse pööramise ning metaandmete muutmise ühte sujuvasse töövoogu. Tuttav nupp Kärbi viib sind endiselt sinna, avades nüüd eraldi ala piltide kärpimiseks, pööramiseks ja kohandamiseks enne avaldamist."
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:198
 msgid "One dedicated workflow for editing your images."
 msgstr "Üks spetsiaalne töövoog sinu piltide töötlemiseks."
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:196
 msgid "A new way to crop"
 msgstr "Uus viis kärpimiseks"
 
-#: wp-admin/about.php:124
+#: wp-admin/about.php:189
 msgid "The admin bar now stays with you across all editors, so you always know where you are. The admin bar also gets a small visual refresh."
 msgstr "Adminiriba püsib nüüd sinuga kõigis redaktorites, nii et tead alati, kus sa oled. Adminiriba saab ka väikese visuaalse värskenduse."
 
-#: wp-admin/about.php:123
+#: wp-admin/about.php:188
 msgid "Consistent navigation, from dashboard to editor."
 msgstr "Ühtlane navigeerimine alates töölauast kuni redaktorini."
 
-#: wp-admin/about.php:121
+#: wp-admin/about.php:186
 msgid "Admin bar, now in every editor"
 msgstr "Administraatoririba, nüüd igas redaktoris"
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:169
 msgid "WordPress 7.1 takes a major step toward built-in responsive design. Set how a block looks at different screen sizes directly in the editor, for both Global Styles and individual blocks, all without writing custom CSS."
 msgstr "WordPress 7.1 teeb suure sammu sisseehitatud kohanduva kujunduse suunas. Määra otse redaktoris, kuidas plokk eri ekraanisuurustel välja näeb, nii globaalsete stiilide kui ka üksikute plokkide jaoks, ilma kohandatud CSS-i kirjutamata."
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:168
 msgid "Style content your way, on every screen."
 msgstr "Kujunda sisu omal moel igal ekraanil."
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:166
 msgid "Apply responsive styles"
 msgstr "Rakenda kohanduva kujunduse stiilid"
 
-#: wp-admin/about.php:95
+#: wp-admin/about.php:160
 msgid "WordPress 7.1 makes styling and collaborating easier. Style how all blocks look across screen sizes and how the Button block responds to hover, focus, and active states, all without writing custom CSS. A streamlined media editor brings cropping, rotation, and metadata editing together in one workflow. Notes now support rich text and @mentions, and the admin bar travels with you into every editor, so the tools you rely on stay with you wherever you&#8217;re working."
 msgstr "WordPress 7.1 muudab kujundamise ja koostöö lihtsamaks. Kujunda, kuidas kõik plokid eri ekraanisuurustel välja näevad ja kuidas nupuplokk reageerib hõljutus-, fookus- ja aktiivsetele olekutele – seda kõike ilma kohandatud CSS-i kirjutamata. Lihtsustatud meediaredaktor koondab kärpimise, pööramise ja metaandmete muutmise ühte töövoogu. Märkmed toetavad nüüd vormindatud teksti ja @mainimisi ning haldusriba liigub sinuga kaasa igasse redaktorisse, nii et tööriistad, millele toetuda, on sinuga kõikjal, kus töötad."
 
@@ -782,12 +782,12 @@ msgid "Skip to Editor"
 msgstr "Mine redaktorisse"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:339
 msgid "WordPress %s Field Guide"
 msgstr "WordPress %s juhend"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:247
+#: wp-admin/about.php:312
 msgid "WordPress %s Release Notes"
 msgstr "WordPress %s väljalaskemärkused"
 
@@ -946,7 +946,7 @@ msgstr "Kui sina oled plugina autor, saad lisateavet selle kohta, <a href=\"http
 msgid "If you are a plugin author, you can learn more about <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">how to add the Personal Data Eraser to a plugin</a>."
 msgstr "Kui sa oled plugina autor, saad lisateavet selle kohta, <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\">kuidas lisada isikuandmete kustutaja pluginale</a>."
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:265
 msgid "See everything new"
 msgstr "Vaata kõike uut"
 
@@ -956,11 +956,11 @@ msgid "https://wordpress.org/download/releases/%s/"
 msgstr "https://wordpress.org/download/releases/%s/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:192
+#: wp-admin/about.php:257
 msgid "For a comprehensive overview of all the new features and enhancements in WordPress %s, please visit the feature-showcase website."
 msgstr "WordPress %s kõigi uute funktsioonide ja täiustuste põhjaliku ülevaate saamiseks külasta funktsioonide tutvustuse veebisaiti."
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:251
 msgid "And much more"
 msgstr "Ja palju muud"
 
@@ -1166,12 +1166,12 @@ msgid "When using Bulk Edit, you can change the metadata (categories, author, et
 msgstr "Hulgimuutmise kasutamisel saad muuta kõigi valitud postituste metaandmeid (kategooriad, autor jne) korraga. Postituse eemaldamiseks rühmitusest kliki selle nime kõrval hulgimuutmise alal kuvatavat nuppu %s<span class=\"screen-reader-text\">eemalda</span>."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:257
+#: wp-admin/about.php:322
 msgid "Read the WordPress %s Release Notes for information on installation, enhancements, fixed issues, release contributors, learning resources, and the list of file changes."
 msgstr "Paigaldamise, täiustuste, parandatud probleemide, väljalaske kaastöötajate, õppematerjalide ja failimuudatuste loendi kohta leiate teavet WordPressi %s väljalaskemärkmetest."
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:284
+#: wp-admin/about.php:349
 msgid "Explore the WordPress %s Field Guide. Learn about the changes in this release with detailed developer notes to help you build with WordPress."
 msgstr "Tutvu WordPress %s väljade juhendiga. Loe selle väljalaske muudatuste kohta üksikasjalikest arendaja märkmetest, mis aitavad sul WordPressiga arendada."
 
@@ -1654,7 +1654,7 @@ msgid "Be the future of WordPress"
 msgstr "Ole WordPressi tulevik"
 
 #. translators: 1: Learn WordPress link, 2: Workshops link.
-#: wp-admin/about.php:225
+#: wp-admin/about.php:290
 msgid "<a href=\"%1$s\">Learn WordPress</a> is a free resource for new and experienced WordPress users. Learn is stocked with how-to videos on using various features in WordPress, <a href=\"%2$s\">interactive workshops</a> for exploring topics in-depth, and lesson plans for diving deep into specific areas of WordPress."
 msgstr "<a href=\"%1$s\">Õpi WordPressi</a> on tasuta allikas uutele ja kogenud WordPressi kasutajatele. Õpikeskkond sisaldab juhendvideoid WordPressi erinevate funktsioonide kasutamise kohta, <a href=\"%2$s\">interaktiivseid töötubasid</a> teemade põhjalikuks uurimiseks ning tunnikavasid WordPressi konkreetsetesse valdkondadesse süvitsi sukeldumiseks."
 
@@ -1800,12 +1800,12 @@ msgid "<a href=\"https://wordpress.org/documentation/article/customizer/\">Docum
 msgstr "<a href=\"https://wordpress.org/documentation/article/customizer/\">Dokumentatsioon kohandaja kohta</a>"
 
 #. translators: The localized WordPress download URL.
-#: wp-admin/about.php:365
+#: wp-admin/about.php:430
 msgid "https://wordpress.org/download/"
 msgstr "https://wordpress.org/download/"
 
 #. translators: %s: The major version of WordPress for this branch.
-#: wp-admin/about.php:362
+#: wp-admin/about.php:427
 msgid "This is the final release of WordPress %s"
 msgstr "See on WordPress %s lõppversioon"
 
@@ -2125,12 +2125,12 @@ msgid "Reach out to WordPress Core developers to ensure you'll never have this p
 msgstr "Et seda probleemi tulevikus mitte kohata, võta ühendust WordPressi arendajatega."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:359
+#: wp-admin/about.php:424
 msgid "Important! Your version of WordPress (%1$s) will stop receiving security updates in the near future. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versioon (%1$s) ei saa varsti enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
 #. translators: 1: WordPress version number, 2: Link to update WordPress
-#: wp-admin/about.php:356
+#: wp-admin/about.php:421
 msgid "Important! Your version of WordPress (%1$s) is no longer supported, you will not receive any security updates for your website. To keep your site secure, please <a href=\"%2$s\">update to the latest version of WordPress</a>."
 msgstr "NB! Sinu WordPressi versiooni (%1$s) enam ei toetata ning see ei saa enam turvauuendusi. Jätkuva turvalisuse saavutamiseks palun <a href=\"%2$s\">uuenda WordPress kõige uuemale versioonile</a>."
 
@@ -2140,7 +2140,7 @@ msgid "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 msgstr "https://make.wordpress.org/core/wordpress-%s-field-guide/"
 
 #. translators: %s: Version number.
-#: wp-admin/about.php:216
+#: wp-admin/about.php:281
 msgid "Learn more about WordPress %s"
 msgstr "Lisateave WordPressi %s kohta"
 
@@ -3036,7 +3036,7 @@ msgstr "Nõutav rakenduse parooli loomiseks, kuid mitte kasutajainfo uuendamisek
 msgid "Add Application Password"
 msgstr "Lisa rakenduse parool"
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Updates"
 msgstr "Uuenduste lehele"
 
@@ -6144,9 +6144,10 @@ msgstr "See plugin ei tööta sinu praeguste WordPressi ja PHP versioonidega."
 
 #. translators: %s: WordPress version number.
 #. translators: %s: WordPress version.
-#: wp-admin/about.php:21 wp-admin/about.php:83 wp-admin/includes/update.php:321
-#: wp-admin/index.php:119 wp-admin/install.php:242 wp-admin/update-core.php:94
-#: wp-admin/upgrade.php:96
+#: wp-admin/about.php:21 wp-admin/about.php:78 wp-admin/about.php:103
+#: wp-admin/about.php:123 wp-admin/about.php:148
+#: wp-admin/includes/update.php:321 wp-admin/index.php:119
+#: wp-admin/install.php:242 wp-admin/update-core.php:94 wp-admin/upgrade.php:96
 msgid "https://wordpress.org/documentation/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/documentation/wordpress-version/version-%s/"
 
@@ -8396,8 +8397,9 @@ msgctxt "menu location"
 msgid "(Currently set to: %s)"
 msgstr "(Praegu: %s)"
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:330
+#: wp-admin/about.php:113 wp-admin/about.php:395
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Versioon %s</strong> lahendas ühe turvaprobleemi."
 
@@ -8410,15 +8412,15 @@ msgstr "https://gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profiili pilt"
 
-#: wp-admin/about.php:321
+#: wp-admin/about.php:386
 msgid "Maintenance Releases"
 msgstr "Hooldusväljalasked"
 
-#: wp-admin/about.php:324
+#: wp-admin/about.php:389
 msgid "Security Releases"
 msgstr "Turvaväljalasked"
 
-#: wp-admin/about.php:63 wp-admin/about.php:327
+#: wp-admin/about.php:63 wp-admin/about.php:392
 msgid "Maintenance and Security Releases"
 msgstr "Hooldus- ja turvaväljalasked"
 
@@ -10052,8 +10054,8 @@ msgstr "WordPress %s on nüüd saadaval."
 msgid "Your site was running version %s."
 msgstr "Veebileht kasutas versiooni %s."
 
-#: wp-admin/includes/update-core.php:1619
-#: wp-admin/includes/update-core.php:1655
+#: wp-admin/includes/update-core.php:1620
+#: wp-admin/includes/update-core.php:1656
 msgid "The update cannot be installed because your site is unable to copy some files. This is usually due to inconsistent file permissions."
 msgstr "Uuendusi ei installeeritud, sest mõningaid faile ei õnnestunud kopeerida. Tavaliselt on põhjuseks ebapiisavad failiõigused."
 
@@ -10181,7 +10183,7 @@ msgstr "Tõlke uuendamine õnnestus."
 msgid "Updating theme: %s"
 msgstr "Uuendatav teema: %s"
 
-#: wp-admin/includes/update-core.php:1722
+#: wp-admin/includes/update-core.php:1723
 msgid "There is not enough free disk space to complete the update."
 msgstr "Kettal pole piisavalt vaba ruumi lõpetamaks uuendamist."
 
@@ -10260,7 +10262,7 @@ msgstr "Uuendab WordPress'i versioonile %s"
 msgid "<strong>Clicking the arrow to the right of any menu item</strong> in the editor will reveal a standard group of settings. Additional settings such as link target, CSS classes, link relationships, and link descriptions can be enabled and disabled via the Screen Options tab."
 msgstr "<strong>Vajutades menüüpunkti juures olevale noolekesele</strong> avatakse standartsed seaded. Lisaseaded nagu lingi asukoht, CSS klassid, lingi seosed ja kirjeldus saab nähtavale tuua ülal asuvate Ekraaniseadete alt."
 
-#: wp-admin/includes/update-core.php:1636
+#: wp-admin/includes/update-core.php:1637
 msgid "Copying the required files&#8230;"
 msgstr "Kopeerin tarvilikke faile&#8230;"
 
@@ -10935,7 +10937,7 @@ msgid "Get Favorites"
 msgstr "Tõmba lemmikud"
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2024 wp-admin/update-core.php:923
+#: wp-admin/includes/update-core.php:2025 wp-admin/update-core.php:923
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
 msgstr "Tere tulemast WordPressi versiooni %1$s. Sind suunatakse WordPressi tutvustusekraanile. Kui see ei toimi, klõpsa <a href=\"%2$s\">siia</a>."
 
@@ -11644,7 +11646,7 @@ msgid "Show Toolbar when viewing site"
 msgstr "Näita esilehel tööriistariba"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:335
+#: wp-admin/about.php:400
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas %2$s vea."
@@ -11652,15 +11654,16 @@ msgstr[1] "<strong>Versioon %1$s</strong> parandas %2$s viga."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:341
+#: wp-admin/about.php:406
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
 msgstr[1] "<strong>Versioon %1$s</strong> parandas turvavea ning %2$s bugi."
 
+#. translators: 1: WordPress version number, 2: Plural number of bugs.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:68 wp-admin/about.php:347
+#: wp-admin/about.php:88 wp-admin/about.php:133 wp-admin/about.php:412
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s vea."
@@ -11668,7 +11671,8 @@ msgstr[1] "<strong>Versioon %1$s</strong> tõstis turvalisust ning parandas %2$s
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:80 wp-admin/about.php:353
+#: wp-admin/about.php:75 wp-admin/about.php:100 wp-admin/about.php:120
+#: wp-admin/about.php:145 wp-admin/about.php:418
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 
@@ -11677,20 +11681,21 @@ msgstr "Lisainfot leiad <a href=\"%s\">väljalaskemärkmetest</a>."
 msgid "What&#8217;s New"
 msgstr "Uued asjad"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:388
 msgid "Security Release"
 msgstr "Turvaparanduste väljaanne"
 
-#: wp-admin/about.php:320
+#: wp-admin/about.php:385
 msgid "Maintenance Release"
 msgstr "Hooldusversioon"
 
+#. translators: %s: WordPress version.
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:332
+#: wp-admin/about.php:68 wp-admin/about.php:397
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Versioon %s</strong> lahendas paar turvaprobleemi."
 
-#: wp-admin/about.php:326
+#: wp-admin/about.php:391
 msgid "Maintenance and Security Release"
 msgstr "Hooldus- ja turvauuendus"
 
@@ -11699,7 +11704,7 @@ msgid "This screen allows you to choose your permalink structure. You can choose
 msgstr "Siit saad valida püsiviidete struktuuri - nii olemasolevate seast kui ka luues enda oma."
 
 #. translators: 1: WordPress version, 2: URL to About screen.
-#: wp-admin/includes/update-core.php:2032 wp-admin/update-core.php:931
+#: wp-admin/includes/update-core.php:2033 wp-admin/update-core.php:931
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Tere tulemast WordPressi versiooni %1$s. <a href=\"%2$s\">Loe lähemalt</a>."
 
@@ -11958,15 +11963,15 @@ msgstr "<strong>Viska ära</strong>-valik eemaldab postituse nimekirjast ja visk
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "Kuna WordPress on paigaldatud mitmiksaidina, võid juba võrgustikus olemasolevaid kasutajaid lisada lihtsalt kasutajanime või e-postiaadressi ja kasutajarolli määramisega. Täiendavate võimaluste (parooli määramine jne) kasutamiseks pead olema võrgustikuhaldur - sel juhul saad kasutajainfot redigeerida kasutajanime kohal asuva hõljukviite kaudu."
 
-#: wp-admin/about.php:94
+#: wp-admin/about.php:159
 msgid "Welcome to WordPress 7.1"
 msgstr "Tere tulemast WordPress 7.1-sse"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Töölauale &rarr; Esileht"
 
-#: wp-admin/about.php:300
+#: wp-admin/about.php:365
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "Töölaud &rarr; Uuendused"
 
@@ -13636,7 +13641,7 @@ msgid "You cannot update because <a href=\"%1$s\">WordPress %2$s</a> requires PH
 msgstr "Uuendamine pole võimalik, kuna <a href=\"%1$s\">WordPress %2$s</a> vajab PHP versiooni %3$s või uuemat ning MySQL-i versiooni %4$s või uuemat. Sinu PHP versioon on hetkel %5$s ja MySQL-il  %6$s."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:529
-#: wp-admin/includes/update-core.php:2018 wp-admin/update-core.php:919
+#: wp-admin/includes/update-core.php:2019 wp-admin/update-core.php:919
 msgid "WordPress updated successfully."
 msgstr "WordPress on edukalt uuendatud."
 
@@ -13683,7 +13688,7 @@ msgstr[1] "Kohustuslikud <span class=\"count\">(%s)</span>"
 msgid "Inactive:"
 msgstr "Väljalülitatud:"
 
-#: wp-admin/about.php:307
+#: wp-admin/about.php:372
 msgid "Go to Dashboard"
 msgstr "Töölauale"
 
@@ -14660,7 +14665,7 @@ msgstr "Kommenteerija peab sisestama nime ja e-postiaadressi"
 msgid "<strong><em>Note that password</em></strong> carefully! It is a <em>random</em> password that was generated just for you."
 msgstr "<strong><em>Jäta parool meelde!</em></strong> See on  <em>juhuslikult</em> genereeritud märgiühend."
 
-#: wp-admin/includes/update-core.php:1891
+#: wp-admin/includes/update-core.php:1892
 msgid "Upgrading database&#8230;"
 msgstr "Uuendan andmebaasi&#8230;"
 
@@ -15916,7 +15921,7 @@ msgid "Could not extract file from archive."
 msgstr "Faili ei saa arhiivist lahti pakkida."
 
 #: wp-admin/includes/file.php:1836 wp-admin/includes/file.php:1995
-#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1829
+#: wp-admin/includes/file.php:2053 wp-admin/includes/update-core.php:1830
 msgid "Could not copy file."
 msgstr "Faile ei õnnestu kopeerida."
 
@@ -16204,12 +16209,12 @@ msgid "Unpacking the update&#8230;"
 msgstr "Uuenduse lahtipakkimine&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:210
-#: wp-admin/includes/update-core.php:1776
+#: wp-admin/includes/update-core.php:1777
 msgid "Disabling Maintenance mode&#8230;"
 msgstr "Lülitan haldusrežiimi välja&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:209
-#: wp-admin/includes/update-core.php:1627
+#: wp-admin/includes/update-core.php:1628
 msgid "Enabling Maintenance mode&#8230;"
 msgstr "Lülitan haldusrežiimi sisse&#8230;"
 

@@ -5,7 +5,7 @@ Plugin URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=plugin-ur
 Description: This top rated Activity Log plugin helps you monitor & log all changes and actions on your WordPress site, so you can remain secure and organized.
 Author: Activity Log Team
 Author URI: https://activitylog.io/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
-Version: 2.15.0
+Version: 2.18.0
 Text Domain: aryo-activity-log
 License: GPLv2 or later
 
@@ -30,16 +30,20 @@ define( 'ACTIVITY_LOG__FILE__', __FILE__ );
 define( 'ACTIVITY_LOG_BASE', plugin_basename( ACTIVITY_LOG__FILE__ ) );
 
 include( 'classes/class-aal-maintenance.php' );
+include( 'classes/class-aal-changes.php' );
 include( 'classes/class-aal-log-query.php' );
 include( 'classes/class-aal-log-presenter.php' );
 include( 'classes/class-aal-admin-ui.php' );
+include( 'classes/class-aal-dashboard-widget.php' );
 include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
 include( 'classes/class-aal-rest.php' );
+include( 'classes/class-aal-abilities.php' );
 include( 'classes/class-aal-export.php' );
 include( 'classes/class-aal-privacy.php' );
 include( 'classes/abstract-class-aal-exporter.php' );
+include( 'classes/class-aal-cli.php' );
 
 // Integrations
 include( 'classes/class-aal-integration-woocommerce.php' );
@@ -83,6 +87,11 @@ final class AAL_Main {
 	public $rest;
 
 	/**
+	 * @var AAL_Abilities|null
+	 */
+	public $abilities;
+
+	/**
 	 * Construct
 	 */
 	protected function __construct() {
@@ -93,9 +102,11 @@ final class AAL_Main {
 		$this->settings      = new AAL_Settings();
 		$this->api           = new AAL_API();
 		$this->rest          = new AAL_REST();
+		$this->abilities     = new AAL_Abilities( $this->rest );
 
 		new AAL_Export();
 		new AAL_Privacy();
+		new AAL_Dashboard_Widget();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
@@ -155,3 +166,7 @@ final class AAL_Main {
 }
 
 AAL_Main::instance();
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	WP_CLI::add_command( 'activity-log', 'AAL_CLI_Command' );
+}

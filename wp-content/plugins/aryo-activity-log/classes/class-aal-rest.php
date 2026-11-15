@@ -17,6 +17,7 @@ class AAL_REST {
 			'callback'            => array( $this, 'get_logs' ),
 			'permission_callback' => array( $this, 'check_permissions' ),
 			'args'                => $this->get_logs_args(),
+			'schema'              => array( $this, 'get_item_schema' ),
 		) );
 
 		register_rest_route( self::NAMESPACE_V1, '/logs/filters', array(
@@ -156,6 +157,16 @@ class AAL_REST {
 					array( 'value' => 'no-collect-ip', 'label' => __( 'Do not collect IP', 'aryo-activity-log' ) ),
 				),
 			),
+			'abilities_agent_exposure' => array(
+				'value'       => AAL_Abilities::get_agent_exposure_setting(),
+				'label'       => __( 'Expose activity log to AI agents', 'aryo-activity-log' ),
+				'type'        => 'select',
+				'description' => __( 'When enabled, read-only Activity Log abilities are exposed via the WordPress Abilities REST API and MCP Adapter (requires WordPress 6.9+). Log data may include usernames, object names, and other personal information. IP addresses are not included in ability responses.', 'aryo-activity-log' ),
+				'options'     => array(
+					array( 'value' => 'no', 'label' => __( 'No', 'aryo-activity-log' ) ),
+					array( 'value' => 'yes', 'label' => __( 'Yes', 'aryo-activity-log' ) ),
+				),
+			),
 		);
 
 		return rest_ensure_response( array(
@@ -168,7 +179,7 @@ class AAL_REST {
 		$current = AAL_Main::instance()->settings->get_options();
 		$body    = $request->get_json_params();
 
-		$allowed_keys = array( 'logs_lifespan', 'logs_failed_login', 'logs_email', 'log_visitor_ip_source' );
+		$allowed_keys = array( 'logs_lifespan', 'logs_failed_login', 'logs_email', 'log_visitor_ip_source', 'abilities_agent_exposure' );
 		$sanitized    = array();
 
 		foreach ( $allowed_keys as $key ) {
@@ -195,6 +206,7 @@ class AAL_REST {
 
 				case 'logs_failed_login':
 				case 'logs_email':
+				case 'abilities_agent_exposure':
 					if ( ! in_array( $value, array( 'yes', 'no' ), true ) ) {
 						return new WP_Error(
 							'rest_invalid_param',
@@ -239,6 +251,58 @@ class AAL_REST {
 		AAL_Main::instance()->api->erase_all_items();
 
 		return rest_ensure_response( array( 'success' => true ) );
+	}
+
+	public function get_item_schema() {
+		return array(
+			'$schema'    => 'http://json-schema.org/draft-04/schema#',
+			'title'      => 'activity-log-logs',
+			'type'       => 'object',
+			'properties' => array(
+				'items' => array(
+					'type'  => 'array',
+					'items' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'id'     => array( 'type' => 'integer' ),
+							'date'   => array(
+								'type'       => 'object',
+								'properties' => array(
+									'iso8601'   => array( 'type' => 'string', 'format' => 'date-time' ),
+									'timestamp' => array( 'type' => 'integer' ),
+								),
+							),
+							'source' => array(
+								'type'       => 'object',
+								'properties' => array(
+									'channel'  => array( 'type' => 'string' ),
+									'app_name' => array( 'type' => 'string' ),
+								),
+							),
+							'changes' => array(
+								'type'                 => 'object',
+								'additionalProperties' => array(
+									'type'  => 'array',
+									'items' => array(
+										'type' => array( 'string', 'null' ),
+									),
+								),
+							),
+							'changes_omitted' => array(
+								'type' => 'integer',
+							),
+						),
+					),
+				),
+				'total'         => array( 'type' => array( 'integer', 'null' ) ),
+				'pages'         => array( 'type' => array( 'integer', 'null' ) ),
+				'has_more'      => array( 'type' => 'boolean' ),
+				'next_after_id' => array(
+					'type'        => 'integer',
+					'description' => __( 'Use next_after_id from the previous response as after_id to fetch only new events.', 'aryo-activity-log' ),
+				),
+			),
+		);
 	}
 
 	private function get_logs_args() {
@@ -291,6 +355,15 @@ class AAL_REST {
 				'default'           => '',
 				'sanitize_callback' => 'sanitize_text_field',
 			),
+			'skip_count' => array(
+				'default'           => false,
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			),
+			'after_id'   => array(
+				'type'              => 'integer',
+				'minimum'           => 0,
+				'sanitize_callback' => 'absint',
+			),
 		);
 	}
 
@@ -299,7 +372,7 @@ class AAL_REST {
 
 		$per_page = min( (int) $request->get_param( 'per_page' ), 100 );
 
-		$result = $query->query( array(
+		$query_args = array(
 			'typeshow'   => $request->get_param( 'typeshow' ),
 			'showaction' => $request->get_param( 'showaction' ),
 			'filter_ip'  => $request->get_param( 'filter_ip' ),
@@ -312,7 +385,14 @@ class AAL_REST {
 			'order'      => $request->get_param( 'order' ),
 			'page'       => $request->get_param( 'page' ),
 			'per_page'   => $per_page,
-		) );
+			'skip_count' => $request->get_param( 'skip_count' ),
+		);
+
+		if ( $request->has_param( 'after_id' ) ) {
+			$query_args['after_id'] = (int) $request->get_param( 'after_id' );
+		}
+
+		$result = $query->query( $query_args );
 
 		$collect_ip = 'no-collect-ip' !== AAL_Main::instance()->settings->get_option( 'log_visitor_ip_source' );
 
@@ -325,15 +405,24 @@ class AAL_REST {
 
 		$promotions = $this->get_promotions( $seen_types );
 
-		$response = new WP_REST_Response( array(
+		$response_data = array(
 			'items'      => $items,
 			'total'      => $result['total'],
 			'pages'      => $result['pages'],
+			'has_more'   => $result['has_more'],
 			'promotions' => $promotions,
-		) );
+		);
 
-		$response->header( 'X-WP-Total', $result['total'] );
-		$response->header( 'X-WP-TotalPages', $result['pages'] );
+		if ( isset( $result['next_after_id'] ) ) {
+			$response_data['next_after_id'] = $result['next_after_id'];
+		}
+
+		$response = new WP_REST_Response( $response_data );
+
+		if ( null !== $result['total'] ) {
+			$response->header( 'X-WP-Total', $result['total'] );
+			$response->header( 'X-WP-TotalPages', $result['pages'] );
+		}
 
 		return $response;
 	}
