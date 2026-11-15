@@ -1,27 +1,50 @@
 .wp-block-woocommerce-product-categories {
   &.green {
     height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: $white;
 
-    ul {
-      display: grid;
-      gap: 1rem;
+    // Rows with thin dividers instead of bullets; the product count sits on the right.
+    > ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
 
-      li {
-        color: $navy;
+      > li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba($white, 0.45);
 
-        ul {
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        > ul {
           display: none;
         }
       }
     }
 
-    // Navy on the green tile background: white text was 2.28:1, navy is 6.7:1.
     a {
-      color: $navy;
+      color: $white;
 
       @include hover-focus-active {
-        color: $navy;
+        color: $white;
         text-decoration: underline;
+      }
+    }
+
+    .wc-block-product-categories-list-item-count {
+      font-size: 0.875rem;
+
+      // WooCommerce wraps the count in brackets.
+      &::before,
+      &::after {
+        content: none;
       }
     }
   }
@@ -61,4 +84,10 @@
       border: none;
     }
   }
+}
+
+// White text needs a deeper green than the green-3 colour picked for this column in the
+// editor: white on green-3 is 2.28:1, white on $green-deep is 4.9:1.
+.wp-block-column.has-green-3-background-color:has(> .wp-block-woocommerce-product-categories.green) {
+  background-color: $green-deep !important;
 }
