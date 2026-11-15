@@ -15,6 +15,9 @@
 //Bootstrap CSS variables, used by the utility classes
 @import "~bootstrap/scss/root";
 
+//Self-hosted fonts, same as the front end
+@import "common/fonts";
+
 //Editor canvas: base typography, content width, editor-only fixes
 @import "editor/canvas";
 

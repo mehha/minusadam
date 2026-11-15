@@ -104,12 +104,12 @@ deny from all
 </IfModule>
 
 # 1 YEAR
-<FilesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav|woff)$">
+<FilesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav|woff2?)$">
 Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
 # 1 WEEK
-<FilesMatch "\.(jpg|jpeg|png|gif|swf|svg)$">
+<FilesMatch "\.(jpg|jpeg|png|gif|swf|svg|webp|avif)$">
 Header set Cache-Control "max-age=604800, public"
 </FilesMatch>
 

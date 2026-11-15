@@ -41,26 +41,6 @@ add_action('enqueue_block_editor_assets', function () {
 }, 100);
 
 /**
- * Load the front-end fonts (see the wp_head links below) in the block editor canvas.
- *
- * @return void
- */
-add_action('enqueue_block_assets', function () {
-    if (! is_admin()) {
-        return;
-    }
-
-    $fonts = [
-        'comfortaa' => 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap',
-        'lora' => 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
-    ];
-
-    foreach ($fonts as $name => $url) {
-        wp_enqueue_style('sage/font-' . $name, $url, [], null);
-    }
-});
-
-/**
  * Match the editor canvas width to the page's front-end layout, and dim the
  * title of pages that hide it on the front end.
  *
@@ -244,12 +224,6 @@ add_action('wp_head', function () { ?>
     <link rel="manifest" href="<?php print get_stylesheet_directory_uri(); ?>/public/images/site.webmanifest">
     <meta name="msapplication-TileColor" content="#09647c">
     <meta name="theme-color" content="#ffffff">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
     <?php
 }, 100);
 
