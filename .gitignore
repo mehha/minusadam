@@ -9,8 +9,7 @@ config-staging.php
 cookie.txt
 .dockerignore
 .env
-docker-compose.yml
-Dockerfile
+/Dockerfile
 /wp-content/themes/mehh/public/*
 !/wp-content/themes/mehh/public/.gitignore
 /wp-content/themes/mehh/vendor/*

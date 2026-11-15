@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run wp-cli in the wordpress container, e.g.: docker/wp plugin list --url=minusadam.test/
+cd "$(dirname "$0")/.." || exit 1
+tty=$([ -t 0 ] && [ -t 1 ] || echo "-T")
+exec docker compose exec $tty -u www-data wordpress wp "$@"

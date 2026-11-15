@@ -1,0 +1,74 @@
+# Local development stack for minusadam.com (WordPress multisite, subdirectory).
+# Local-only: this file, .env, config-local.php and docker/ are git-ignored.
+#
+#   docker compose up -d --build      start
+#   docker/db-import.sh dump.sql.gz   import a production dump + rewrite URLs
+#   docker/wp plugin list             run wp-cli inside the container
+
+name: minusadam
+
+services:
+  wordpress:
+    build:
+      context: ./docker
+      args:
+        PHP_VERSION: ${PHP_VERSION:-8.4}
+    ports:
+      - "80:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: wordpress
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
+      SITE_HOST: ${SITE_HOST:-minusadam.test}
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
+      PHP_IDE_CONFIG: serverName=${SITE_HOST:-minusadam.test}
+      WP_CLI_CACHE_DIR: /tmp/wp-cli-cache
+    extra_hosts:
+      # WordPress loopback requests (cron, site health) resolve back to this container.
+      - "${SITE_HOST:-minusadam.test}:127.0.0.1"
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb:11.4
+    command: --max_allowed_packet=512M
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - "3308:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 512M
+    ports:
+      - "8091:80"
+    depends_on:
+      - db
+
+  # Catches all outgoing mail (contact forms, membership applications). UI: http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+
+volumes:
+  db_data:
