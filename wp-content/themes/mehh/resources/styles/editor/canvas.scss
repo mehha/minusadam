@@ -1,0 +1,118 @@
+// Base styles for the block editor canvas, imported by editor.scss.
+// Only the parts of Bootstrap's reboot that content relies on are repeated here,
+// not the whole reboot, so editor controls inside the canvas (placeholders, block
+// appenders) keep their own styling.
+
+body {
+  // Content width: the front end's content column. Narrow by default; the front
+  // page and "Wide layout" pages use the full container. app/setup.php switches
+  // --content-width for those.
+  --content-width: #{$container-narrow};
+  --content-width-wide: calc(#{$container} - #{$container-padding-x});
+
+  font-family: $font-family-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  @include font-size($font-size-base);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-style: $headings-font-style;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1 { @include font-size($h1-font-size); }
+h2 { @include font-size($h2-font-size); }
+h3 { @include font-size($h3-font-size); }
+h4 { @include font-size($h4-font-size); }
+h5 { @include font-size($h5-font-size); }
+h6 { @include font-size($h6-font-size); }
+
+p {
+  margin-top: 0;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+ul,
+ol {
+  padding-left: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+b,
+strong {
+  font-weight: $font-weight-bolder;
+}
+
+small {
+  @include font-size($small-font-size);
+}
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+figure {
+  margin: 0 0 1rem;
+}
+
+.is-root-container,
+.editor-visual-editor__post-title-wrapper {
+  box-sizing: content-box;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding-x * 0.5;
+  padding-right: $container-padding-x * 0.5;
+}
+
+// Top-level content isn't a flow layout on the front end, so floated blocks keep
+// the theme's 1rem gap (see common/wp-classes) instead of the editor's 2em
+.is-root-container.is-layout-flow {
+  > .alignleft { margin-inline-end: 1rem; }
+  > .alignright { margin-inline-start: 1rem; }
+}
+
+// Page title, like .page-header h1
+.editor-post-title {
+  margin-bottom: 2rem;
+}
+
+// WooCommerce's editor styles indent the category list; the front end doesn't
+.editor-styles-wrapper .wc-block-product-categories.wc-block-product-categories ul {
+  margin-left: 0;
+}

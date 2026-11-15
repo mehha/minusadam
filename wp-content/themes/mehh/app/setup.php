@@ -38,9 +38,58 @@ add_action('enqueue_block_editor_assets', function () {
 
         wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
-
-    wp_enqueue_style('sage/editor.css', asset('styles/editor.css')->uri(), false, null);
 }, 100);
+
+/**
+ * Load the front-end fonts (see the wp_head links below) in the block editor canvas.
+ *
+ * @return void
+ */
+add_action('enqueue_block_assets', function () {
+    if (! is_admin()) {
+        return;
+    }
+
+    $fonts = [
+        'comfortaa' => 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap',
+        'lora' => 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
+    ];
+
+    foreach ($fonts as $name => $url) {
+        wp_enqueue_style('sage/font-' . $name, $url, [], null);
+    }
+});
+
+/**
+ * Match the editor canvas width to the page's front-end layout, and dim the
+ * title of pages that hide it on the front end.
+ *
+ * @return array
+ */
+add_filter('block_editor_settings_all', function (array $settings, \WP_Block_Editor_Context $context) {
+    $post = $context->post;
+
+    if (! $post instanceof \WP_Post || ! function_exists('get_field')) {
+        return $settings;
+    }
+
+    $css = '';
+    $is_front_page = (int) get_option('page_on_front') === $post->ID;
+
+    if ($is_front_page || ($post->post_type === 'page' && get_field('wide_layout', $post->ID))) {
+        $css .= 'body{--content-width:var(--content-width-wide)}';
+    }
+
+    if (get_field('hide_title', $post->ID)) {
+        $css .= '.editor-post-title{opacity:.4}';
+    }
+
+    if ($css) {
+        $settings['styles'][] = ['css' => $css, '__unstableType' => 'theme', 'isGlobalStyles' => false];
+    }
+
+    return $settings;
+}, 10, 2);
 
 /**
  * Register the initial theme setup.
@@ -65,6 +114,13 @@ add_action('after_setup_theme', function () {
      * @link https://wptavern.com/gutenberg-10-5-embeds-pdfs-adds-verse-block-color-options-and-introduces-new-patterns
      */
     remove_theme_support('block-templates');
+
+    /**
+     * Style the block editor canvas like the front end.
+     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#editor-styles
+     */
+    add_theme_support('editor-styles');
+    add_editor_style('public/styles/editor.css');
 
     /**
      * Register the navigation menus.

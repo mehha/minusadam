@@ -1,14 +1,33 @@
-.editor-styles-wrapper .wp-block {
-    margin-left: auto;
-    margin-right: auto;
-}
+// Block editor canvas styles, so the editor looks like the front end.
+// Registered with add_editor_style() in app/setup.php. The post editor canvas is
+// an iframe and gets these rules as written (`body` is the canvas, `:root` its
+// <html>); in non-iframed editors WordPress scopes them to .editor-styles-wrapper.
 
-html :where(.wp-block) {
-    margin-bottom: 28px;
-    margin-top: 28px;
-    max-width: 840px;
-}
+//Config
+@import "config/variables/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "config/mixins/mixins";
 
-.wp-block[data-type="core/widget-area"] {
-  max-width: 1000px;
-}
+//Bootstrap CSS variables, used by the utility classes
+@import "~bootstrap/scss/root";
+
+//Editor canvas: base typography, content width, editor-only fixes
+@import "editor/canvas";
+
+//Front-end content styles
+@import "common/type";
+@import "common/wp-classes";
+@import "blocks/cover";
+@import "blocks/spacer";
+@import "blocks/tag-cloud";
+@import "blocks/latest-posts";
+@import "blocks/woocommerce/product-categories-list";
+@import "blocks/woocommerce/product-new";
+@import "blocks/wp-block-media-text";
+
+//Bootstrap utility classes used in content (.mb-3, .gap-3, .text-primary ...)
+@import "~bootstrap/scss/utilities/api";
