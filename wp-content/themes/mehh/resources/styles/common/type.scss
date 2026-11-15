@@ -13,6 +13,15 @@ a {
   }
 }
 
+// Links inside running text need more than colour to stand out from the text
+// around them (WCAG 1.4.1), so underline them.
+.main :is(p, .wp-block-list, .product_meta, .woocommerce-product-details__short-description) {
+  a:not(.btn, .button, .wp-block-button__link, .wp-element-button) {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+}
+
 //h1 {
 //  margin-bottom: 1.2rem;
 //  margin-top: 1.6rem;

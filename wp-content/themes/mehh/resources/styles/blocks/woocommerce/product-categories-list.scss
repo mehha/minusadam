@@ -7,7 +7,7 @@
       gap: 1rem;
 
       li {
-        color: $white;
+        color: $navy;
 
         ul {
           display: none;
@@ -15,7 +15,15 @@
       }
     }
 
-    @include white-link;
+    // Navy on the green tile background: white text was 2.28:1, navy is 6.7:1.
+    a {
+      color: $navy;
+
+      @include hover-focus-active {
+        color: $navy;
+        text-decoration: underline;
+      }
+    }
   }
 
   &:has(.wc-block-product-categories-list-item__image) {

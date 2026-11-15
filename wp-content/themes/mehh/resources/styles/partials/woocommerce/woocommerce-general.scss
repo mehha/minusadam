@@ -5,12 +5,15 @@
     }
   }
 
+  // Navy text on the gold background (8.9:1); white text was 1.73:1.
   button.single_add_to_cart_button.button.alt {
     background-color: $beige;
+    color: $navy;
     border-radius: 0;
     font-weight: 400;
     @include hover-focus-active {
       background-color: $link-hover-color;
+      color: $navy;
     }
   }
 
@@ -122,7 +125,7 @@
 
 .woocommerce div.product p.price,
 .woocommerce div.product span.price {
-  color: $beige;
+  color: $beige-text;
   @include font-size(36px);
 }
 
@@ -131,7 +134,7 @@
   border-radius: 0;
 
   a {
-    color: $white;
+    color: $navy;
     font-weight: 400;
 
     &::before {
@@ -148,6 +151,7 @@
   border-radius: 0;
   font-weight: 400;
   background-color: $beige;
+  color: $navy;
   line-height: 1.4;
   padding: 4px 8px;
   min-height: unset;

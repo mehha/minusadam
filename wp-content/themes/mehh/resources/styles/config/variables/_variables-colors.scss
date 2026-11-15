@@ -12,6 +12,10 @@ $red: #ac0125;
 $green: #b1d1c9;
 $green-dark: #09647c;
 $beige: #dec18c;
+$navy: #06205c;
+
+// $beige is too light for text on white (1.73:1). Use this darker gold for text (4.9:1).
+$beige-text: #8e6b2a;
 
 $primary: $green-dark;
 $secondary: $red;
