@@ -2,7 +2,8 @@
   --bs-navbar-color: #000;
 
   .navbar-nav {
-    --bs-nav-link-hover-color: #b1d1c9;
+    // Desktop menu (black on white). The mobile menu keeps white links on its dark background.
+    --bs-nav-link-hover-color: #{$green-dark};
 
     > .menu-item {
       > .nav-link {

@@ -27,4 +27,5 @@ $danger: $red;
 $body-color: $gray-dark;
 $link-color: $primary;
 $link-decoration: none;
-$link-hover-color: $green;
+// Hover and focus too: $green was 1.64:1 on white, so focused links were almost invisible.
+$link-hover-color: $navy;

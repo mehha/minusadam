@@ -12,7 +12,7 @@
     border-radius: 0;
     font-weight: 400;
     @include hover-focus-active {
-      background-color: $link-hover-color;
+      background-color: $green;
       color: $navy;
     }
   }
@@ -55,7 +55,7 @@
             @include theme-transition;
 
             @include hover-focus-active {
-              color: $link-hover-color;
+              color: $link-color;
             }
           }
 
