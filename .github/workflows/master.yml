@@ -83,3 +83,16 @@ jobs:
           done | LC_ALL=C sort -ru | tr '\n' '\0' > dirs.lst
           ssh -p "$SSH_PORT" "$SSH_TARGET" "cd '$DEPLOY_PATH' && xargs -0 -r rm -f --" < deleted.lst
           ssh -p "$SSH_PORT" "$SSH_TARGET" "cd '$DEPLOY_PATH' && { xargs -0 -r rmdir -- 2>/dev/null; true; }" < dirs.lst
+      # Cached pages keep pointing at the old theme assets until the cache is purged.
+      # On multisite this empties the cache of every site in the network. The files are
+      # already deployed at this point, so a failed purge only warns.
+      - name: Purge LiteSpeed Cache
+        env:
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_TARGET: ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          if ! ssh -p "$SSH_PORT" "$SSH_TARGET" \
+            "PATH=\"\$PATH:\$HOME/bin:/usr/local/bin\"; cd '$DEPLOY_PATH' && wp litespeed-purge all --url=https://minusadam.com/"; then
+            echo "::warning::LiteSpeed Cache was not purged. Use Purge All in the WordPress admin bar."
+          fi
