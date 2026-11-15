@@ -177,3 +177,19 @@ msgstr "Peate nõustuma saatmiseks."
 #: resources/views/shortcodes/contact-form.blade.php:55
 msgid "Submit"
 msgstr "Saada"
+
+#: resources/views/components/cookie-banner.blade.php:1
+msgid "Cookie notice"
+msgstr "Küpsiste teade"
+
+#: resources/views/partials/header.blade.php:20
+msgid "Toggle navigation"
+msgstr "Menüü"
+
+#: app/filters.php
+msgid "Map"
+msgstr "Kaart"
+
+#: app/filters.php
+msgid "Embedded content"
+msgstr "Manustatud sisu"

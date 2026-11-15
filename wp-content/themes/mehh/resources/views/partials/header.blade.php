@@ -17,7 +17,7 @@
   <nav class="navbar navbar-primary navbar-expand-lg">
     <div class="container">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrimary" aria-controls="navbarPrimary" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrimary" aria-controls="navbarPrimary" aria-expanded="false" aria-label="{{ __('Toggle navigation', 'sage') }}">
         <span class="navbar-toggler-icon"></span>
       </button>
 
