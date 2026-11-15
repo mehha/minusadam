@@ -4,7 +4,7 @@ Disallow: /wp-admin/
 Disallow: /readme.html
 Disallow: /refer/
 
-Sitemap: https://minusadam.com/et/wp-sitemap.xml
-Sitemap: https://minusadam.com/et/wp-sitemap-posts-post-1.xml
-Sitemap: https://minusadam.com/et/wp-sitemap-posts-page-1.xml
-Sitemap: https://minusadam.com/et/wp-sitemap-posts-product-1.xml
+Sitemap: https://minusadam.com/et/sitemap_index.xml
+Sitemap: https://minusadam.com/en/sitemap_index.xml
+Sitemap: https://minusadam.com/pt/sitemap_index.xml
+Sitemap: https://minusadam.com/fi/sitemap_index.xml
