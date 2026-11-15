@@ -14,3 +14,12 @@ cookie.txt
 !/wp-content/themes/mehh/public/.gitignore
 /wp-content/themes/mehh/vendor/*
 !/wp-content/themes/mehh/vendor/.gitignore
+
+# LiteSpeed Cache: generated on the server, not deployed
+/wp-content/litespeed/
+/wp-content/litespeed-preset-backups/
+/wp-content/.litespeed_conf.php
+/wp-content/.litespeed_conf.dat
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+/wp-content/*.log
